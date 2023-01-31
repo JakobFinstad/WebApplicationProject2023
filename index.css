@@ -1,19 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700;800&display=swap');
 
 #Y {
-    color: cadetblue;
+    color: rgba(22, 89, 157, 0.65);
+    margin-right: 7px;
+
 }
 
 #CTAText {
-    font-size: 50px;
+    font-size: 120px;
     font-weight: bold;
-    margin-top: 15%;
+    margin-top: 13%;
 }
 
 h1{
-    font-size: 75px;
-    color: pink;
-    text-shadow: 5px 5px black;
+    font-size: 65px;
+    color: white;
+}
+#menu{
+    align-self: flex-end;
+    margin-top: -10px;
+    position: absolute;
 }
 
 #menu:hover{
@@ -22,24 +28,28 @@ h1{
     text-shadow: -2px -2px black;
 }
 
-#logo{
-    align-self: flex-start;
-    position: absolute;
-    margin-top: -10px;
-}
-
 #menu:active {
     opacity: 0.4;
 }
 
-#menu{
-    align-self: flex-end;
-    margin-top: -10px;
+#logo{
+    align-self: flex-start;
     position: absolute;
+    margin-top: -10px;
+    margin-left: 10px;
+}
+
+#logo:hover{
+    transform: scale(0.98);
+    cursor: pointer;
+}
+
+#logo:active{
+    opacity: 0.4;
 }
 
 body{
-    background-image: linear-gradient(to bottom left, dodgerblue, azure, magenta);
+    background-image: linear-gradient(to top, rgba(34, 184, 207, 0.7), azure, rgba(180, 46, 83, 0.62));
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: Inter;
@@ -66,4 +76,25 @@ a:link {
 a:visited {
     text-decoration: none;
     color: unset;
+}
+
+#menu-choice-list {
+    list-style: none;
+    color: white;
+    font-family: Inter;
+    font-size: 40px;
+    font-weight: bold;
+    float: left;
+    overflow: hidden;
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+li{
+    float: left;
+    margin-right: 15px;
+    margin-left: 15px;
 }
