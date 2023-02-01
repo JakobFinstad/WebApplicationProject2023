@@ -1,21 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700;800&display=swap');
 
 #Y {
-    color: rgba(22, 89, 157, 0.65);
+    color: rgba(34, 184, 207, 0.7);
     margin-right: 7px;
-
 }
 
 #CTAText {
+    position: absolute;
     font-size: 120px;
     font-weight: bold;
-    margin-top: 13%;
+    margin-top: 0;
+    margin-bottom: 0;
+    top: 23%;
+    color: #1f1e1e;
 }
 
 h1{
     font-size: 65px;
     color: white;
 }
+
 #menu{
     align-self: flex-end;
     margin-top: -10px;
@@ -61,6 +65,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-width:50%;
 }
 
 #topText {
@@ -89,7 +94,7 @@ a:visited {
     position: absolute;
     top: 8px;
     right: 16px;
-    margin-right: 10px;
+    margin-right: 0;
     margin-top: 10px;
 }
 
@@ -97,6 +102,8 @@ li{
     float: left;
     margin-right: 15px;
     margin-left: 15px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 #home-button:hover,#products-button:hover, #about-us-button:hover {
@@ -106,4 +113,12 @@ li{
 
 #home-button:active,#products-button:active, #about-us-button:active {
     opacity: 0.4;
+}
+
+#site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 300px;
+    width: 100%;
 }
