@@ -98,3 +98,12 @@ li{
     margin-right: 15px;
     margin-left: 15px;
 }
+
+#home-button:hover,#products-button:hover, #about-us-button:hover {
+    transform: scale(0.98);
+    cursor: pointer;
+}
+
+#home-button:active,#products-button:active, #about-us-button:active {
+    opacity: 0.4;
+}
