@@ -52,13 +52,13 @@ h1{
     opacity: 0.4;
 }
 
-body{
+body {
     background-image: linear-gradient(to top, rgba(34, 184, 207, 0.7), azure, rgba(180, 46, 83, 0.62));
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: Inter;
     min-width: 550px;
-    min-height: 600px;
+    min-height: 100vh;
 }
 
 header {
