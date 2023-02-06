@@ -5,7 +5,7 @@ body{
     min-height: 1270px;
 }
 
-#menu-choices {
+#menu-choices, #home-button, #About-us-button, #products-button {
     list-style: none;
     color: black;
     font-family: Inter;
