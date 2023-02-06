@@ -30,7 +30,7 @@ public class User {
 
     private void setEmail(String email) {
         if(email.isEmpty()) {
-            throw new IllegalArgumentException("Email cannot be empty!")
+            throw new IllegalArgumentException("Email cannot be empty!");
         } else {
             this.email = email;
         }
