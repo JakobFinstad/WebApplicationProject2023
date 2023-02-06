@@ -1,19 +1,16 @@
-
 h2, h3, p {
     color: white;
+    font-family: Inter;
 }
 #product-name {
-
+    width: 250px;
 }
 
 #product-description {
-
 }
 
 #title-description {
-
 }
 
 #title-reviews {
-
 }
