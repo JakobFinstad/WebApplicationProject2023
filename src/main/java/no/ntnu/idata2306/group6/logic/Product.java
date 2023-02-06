@@ -1,4 +1,4 @@
-package no.ntnu.idata2306.group6;
+package no.ntnu.idata2306.group6.logic;
 
 
 /**
@@ -12,6 +12,7 @@ public class Product {
     private String imgURL;
     private String name;
     private String description;
+    private int productNumber;
 
     /**
      * Constructor for a product. Have a few fields for describing the product.
@@ -21,11 +22,19 @@ public class Product {
      * @param name of the product
      * @param description more indepth on how this product is structured
      */
-    public Product (int price, String imgURL, String name, String description) {
+    public Product (int price, String imgURL, String name, String description, int productNumber) {
         setPrice(price);
         setImageURL(imgURL);
         setName(name);
         setDescription(description);
+        setProductNumber(productNumber);
+    }
+
+    private void setProductNumber(int productNumber) {
+        if (productNumber <= 0) {
+            throw new IllegalArgumentException("Product number cannot be zero or lower!");
+        }
+        this.productNumber = productNumber;
     }
 
     /**
@@ -77,6 +86,10 @@ public class Product {
             throw new IllegalArgumentException("Description cannot be empty!");
         }
         this.description = description;
+    }
+
+    public int getProductNumber() {
+        return this.productNumber;
     }
 
     /**
