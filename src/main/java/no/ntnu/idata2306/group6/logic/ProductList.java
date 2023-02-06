@@ -1,4 +1,5 @@
 package no.ntnu.idata2306.group6.logic;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -30,7 +31,7 @@ public class ProductList {
      * @param type of the list
      */
     private void setType(String type) {
-        if (type.isEmpty()){
+        if (type.isEmpty()) {
             throw new IllegalArgumentException("Type cannot be null!");
         }
         this.type = type;
@@ -42,7 +43,7 @@ public class ProductList {
      * @param product that shall be added
      */
     public void addProduct(Product product) {
-        if (productList.contains(product)){
+        if (productList.contains(product)) {
             throw new UnsupportedOperationException("Product allready in list.");
         }
         productList.add(product);
@@ -87,7 +88,7 @@ public class ProductList {
      * @param productNumber of the product that shall be found
      * @return the product of found, else return null
      */
-    public Product searchByProductNumber (int productNumber) {
+    public Product searchByProductNumber(int productNumber) {
         if (productNumber <= 0) {
             throw new IllegalArgumentException("Product number have to be positive");
         }
@@ -111,7 +112,7 @@ public class ProductList {
      * @return the position of the product
      */
     public int getIndexByProduct(Product product) {
-        if (!productList.contains(product) && product == null){
+        if (!productList.contains(product) && product == null) {
             throw new NullPointerException("No such item in directory.");
         }
         return productList.indexOf(product);
