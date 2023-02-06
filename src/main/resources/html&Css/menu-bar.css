@@ -1,8 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700;800&display=swap');
+
 body{
     background-color: white;
     font-family: Inter;
     max-width: 550px;
     min-height: 1270px;
+}
+
+li{
+    float: left;
+    margin: 0px 15px;
+    font-family: Inter;
 }
 
 #menu-choices {
@@ -16,7 +24,10 @@ body{
     position: absolute;
 }
 
-#home-button:hover,#products-button:hover, #about-us-button:hover {
+#home-button, #About-us-button, #products-button {
+}
+
+#home-button:hover,#products-button:hover, #About-us-button:hover {
     transform: scale(0.98);
     cursor: pointer;
 }
