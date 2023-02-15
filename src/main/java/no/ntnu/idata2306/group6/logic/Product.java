@@ -1,19 +1,30 @@
 package no.ntnu.idata2306.group6.logic;
 
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
 /**
  * A class representing different products in the store.
  *
  * @author group 6
  * @version 0.1
  */
+@Entity
 public class Product {
+    @Id
+    @GeneratedValue
     private int id;
     private int price;
     private String imgURL;
     private String name;
     private String description;
     private int productNumber;
+
+    public Product(){
+
+    }
 
     /**
      * Constructor for a product. Have a few fields for describing the product.

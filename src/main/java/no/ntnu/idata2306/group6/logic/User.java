@@ -1,5 +1,9 @@
 package no.ntnu.idata2306.group6.logic;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,12 +11,20 @@ import java.util.List;
  * Class representing a user on the website.
  *
  */
+@Entity
 public class User {
+    @Id
+    @GeneratedValue
+    private int UserId;
     private String firstName;
     private String lastName;
     private String email;
-    private List<Integer> phoneNumber;
-    private ProductList wishList;
+    private int phoneNumber;
+//    private ProductList wishList;
+
+    public User() {
+
+    }
 
     /**
      * Constructor for the user on the website.
@@ -22,8 +34,7 @@ public class User {
      * @param email that shall be connected with the account
      * @param phoneNumber number of the user
      */
-    public User(String firstName, String lastName, String email, List<Integer> phoneNumber) {
-        this.phoneNumber = new ArrayList<>(8);
+    public User(String firstName, String lastName, String email, int phoneNumber) {
         setEmail(email);
         setFirstName(firstName);
         setLastName(lastName);
@@ -47,8 +58,8 @@ public class User {
      *
      * @param phoneNumber number that shall be connected with the account
      */
-    protected void setPhoneNumber(List<Integer> phoneNumber) {
-        if (phoneNumber.size()==8) {
+    protected void setPhoneNumber(int phoneNumber) {
+        if (phoneNumber > 00000000 && 99999999 > phoneNumber ) {
             this.phoneNumber = phoneNumber;
         } else {
             throw new IllegalArgumentException("PhoneNumber must consist of 8 integers");
@@ -85,12 +96,12 @@ public class User {
      *
      * @param productList wishlist of the user
      */
-    protected void setWishList(ProductList productList) {
+    /*protected void setWishList(ProductList productList) {
         if (productList ==null){
             throw new IllegalArgumentException("Wishlist cannot be null!");
         }
         this.wishList = productList;
-    }
+    }*/
 
     /**
      * Get the first name of the user.
@@ -124,7 +135,7 @@ public class User {
      *
      * @return phonenumber
      */
-    public List<Integer> getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -133,7 +144,7 @@ public class User {
      *
      * @return list with product the user show interest in
      */
-    public ProductList getWishList() {
-        return wishList;
-    }
+//    public ProductList getWishList() {
+//        return wishList;
+//    }
 }
