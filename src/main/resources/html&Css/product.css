@@ -1,9 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700;800&display=swap');
+
 h2, h3, p {
     color: white;
     font-family: Inter;
 }
 #product-name {
-    width: 250px;
+    margin-right: 8px;
+    margin-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 16px;
+    padding-left: 16px;
+    transition: opacity 0.15s;
+    vertical-align: top;
+
 }
 
 #product-description {
