@@ -8,6 +8,7 @@ package no.ntnu.idata2306.group6.logic;
  * @version 0.1
  */
 public class Product {
+    private int id;
     private int price;
     private String imgURL;
     private String name;
