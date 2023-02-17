@@ -20,7 +20,6 @@ public class Product {
     private String imgURL;
     private String name;
     private String description;
-    private int productNumber;
 
     public Product(){
 
@@ -34,19 +33,19 @@ public class Product {
      * @param name of the product
      * @param description more indepth on how this product is structured
      */
-    public Product (int price, String imgURL, String name, String description, int productNumber) {
+    public Product (int id, int price, String imgURL, String name, String description) {
         setPrice(price);
         setImageURL(imgURL);
         setName(name);
         setDescription(description);
-        setProductNumber(productNumber);
+        setProductId(id);
     }
 
-    private void setProductNumber(int productNumber) {
-        if (productNumber <= 0) {
-            throw new IllegalArgumentException("Product number cannot be zero or lower!");
+    private void setProductId(int id) {
+        if (id <= 0) {
+            throw new IllegalArgumentException("Product ID cannot be zero or lower!");
         }
-        this.productNumber = productNumber;
+        this.id = id;
     }
 
     /**
@@ -100,8 +99,8 @@ public class Product {
         this.description = description;
     }
 
-    public int getProductNumber() {
-        return this.productNumber;
+    public int getProductId() {
+        return this.id;
     }
 
     /**
