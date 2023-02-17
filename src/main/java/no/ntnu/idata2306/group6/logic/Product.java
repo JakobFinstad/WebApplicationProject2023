@@ -1,6 +1,7 @@
 package no.ntnu.idata2306.group6.logic;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -137,5 +138,15 @@ public class Product {
      */
     public String getDescription() {
         return description;
+    }
+
+    /**
+     * Check if this object is a valid product
+     *
+     * @return True if the product is valid, false otherwise
+     */
+    @JsonIgnore
+    public boolean isValid() {
+        return name != null && !name.equals("");
     }
 }

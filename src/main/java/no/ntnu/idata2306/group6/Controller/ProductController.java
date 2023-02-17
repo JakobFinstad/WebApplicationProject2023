@@ -4,6 +4,7 @@ import no.ntnu.idata2306.group6.Repository.ProductRepository;
 import no.ntnu.idata2306.group6.logic.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -82,10 +83,6 @@ public class ProductController {
     return response;
   }
 
-  private void addProductToCollection(Product product) {
-
-  }
-
   /**
    * Delete a product from the collection
    *
@@ -104,7 +101,84 @@ public class ProductController {
     return response;
   }
 
+  /**
+   * Remove Product from the collection
+   *
+   * @param id ID of the product to remove
+   * @return True when product with that ID is removed, false otherwise
+   */
   private boolean removeProductFromCollection(int id) {
-    return true;
+    boolean deleted = false;
+    try {
+      productRepository.deleteById(id);
+      deleted = true;
+    } catch (DataAccessException e) {
+      logger.warn("Could not delete product with ID" + id + ": " + e.getMessage());
+    }
+    return deleted;
+  }
+
+  /**
+   * Update a product in the repository
+   *
+   * @param id   ID of the product to update, from the URL
+   * @param product New product data to store, from request body
+   * @return 200 OK on success, 400 Bad request on error
+   */
+  @PutMapping("/{id}")
+  public ResponseEntity<String> update(@PathVariable int id, @RequestBody Product product) {
+    ResponseEntity<String> response;
+    try {
+      updateProduct(id, product);
+      response = new ResponseEntity<>(HttpStatus.OK);
+    } catch (Exception e) {
+      response = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    return response;
+  }
+
+  /**
+   * Add a product to collection
+   *
+   * @param product the product to be added to collection if it is valid
+   * @throws IllegalArgumentException
+   */
+  private void addProductToCollection(Product product) throws IllegalArgumentException {
+    if (!product.isValid()) {
+      throw new IllegalArgumentException("Product is invalid");
+    }
+    productRepository.save(product);
+  }
+
+  /**
+   * Try to update a product with given ID. The product.id must match the id.
+   *
+   * @param id   ID of the product
+   * @param product The updated product data
+   * @throws IllegalArgumentException If something goes wrong.
+   *                                  Error message can be used in HTTP response.
+   */
+  private void updateProduct(int id, Product product) throws IllegalArgumentException {
+
+    Optional<Product> existingProduct = productRepository.findById(id);
+    if (existingProduct.isEmpty()) {
+      throw new IllegalArgumentException("No product with id " + id + " found");
+    }
+    if (product == null || !product.isValid()) {
+      throw new IllegalArgumentException("Wrong data in request body");
+    }
+    if (product.getProductId() != id) {
+      throw new IllegalArgumentException(
+          "Product ID in the URL does not match the ID in JSON data (response body)");
+    }
+
+    try {
+      productRepository.save(product);
+    } catch (Exception e) {
+      logger.warn("Could not update product " + product.getProductId() + ": " + e.getMessage());
+      throw new IllegalArgumentException("Could not update product " + product.getProductId());
+    }
   }
 }
+
