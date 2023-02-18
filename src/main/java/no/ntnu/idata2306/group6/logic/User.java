@@ -104,6 +104,15 @@ public class User {
     }*/
 
     /**
+     * Get the id of the user.
+     *
+     * @return id of the user
+     */
+    public int getUserId() {
+        return this.UserId;
+    }
+
+    /**
      * Get the first name of the user.
      *
      * @return first name of the user
@@ -147,4 +156,13 @@ public class User {
 //    public ProductList getWishList() {
 //        return wishList;
 //    }
+
+    /**
+     * Check if the item is valid.
+     *
+     * @return false if either firstname or email is empty
+     */
+    public boolean isValid() {
+        return !firstName.isEmpty() && !email.isEmpty();
+    }
 }

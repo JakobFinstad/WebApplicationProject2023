@@ -70,7 +70,7 @@ public class ProductController {
    */
   @PostMapping()
   @Operation(deprecated = true)
-  ResponseEntity<String> add(@RequestBody Product product) {
+  public ResponseEntity<String> add(@RequestBody Product product) {
     ResponseEntity<String> response;
 
     try {
