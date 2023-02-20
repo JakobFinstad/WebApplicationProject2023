@@ -1,19 +1,122 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700;800&display=swap');
 
-h2, h3, p {
-    color: white;
-    font-family: Inter;
+body {
+    background-image: linear-gradient(to top, rgba(34, 184, 207, 0.7), azure, rgba(180, 46, 83, 0.62));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Inter, sans-serif;
+    min-width: 550px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
-#product-name {
-    margin-right: 8px;
-    margin-left: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 16px;
-    padding-left: 16px;
-    transition: opacity 0.15s;
-    vertical-align: top;
 
+.navbar{
+    background: transparent;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.navbar-container{
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    padding: 0;
+}
+
+#proflex-logo{
+    padding-left: -10px;
+    font-size: 65px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 10px;
+    margin-top: -10px;
+}
+
+#proflex-logo:hover{
+    transform: scale(0.98);
+    cursor: pointer;
+}
+
+#proflex-logo:active{
+    opacity: 0.4;
+}
+
+.menu-choice-list{
+    list-style: none;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    float: left;
+    overflow: hidden;
+    position: absolute;
+    top: 2px;
+    right: 16px;
+    margin-right: 0;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+.menu-button {
+    float: left;
+    margin-left: 20px;
+    margin-right: 5px;
+    color: white;
+}
+
+.menu-button:hover{
+    transform: scale(0.98);
+    cursor: pointer;
+}
+
+.menu-button:active{
+    opacity: 0.4;
+}
+
+.menu-links{
+    color: white;
+    text-decoration: none;
+}
+
+.menu-links:hover{
+    transform: scale(0.98);
+    cursor: pointer;
+}
+
+.menu-links:active{
+    opacity: 0.4;
+}
+
+.center-text {
+    max-width: 1300px;
+    display: grid;
+    width: 100%;
+    margin: auto;
+}
+
+#CTAText {
+    position: absolute;
+    font-size: 140px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+    top: 22%;
+    left: 25%;
+    color: #1f1e1e;
+}
+
+a{
+    text-decoration: none;
+    color: unset;
 }
 
 #product-description {
