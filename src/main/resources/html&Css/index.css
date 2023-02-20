@@ -121,19 +121,18 @@ body {
     border-radius: 4px;
     background-size: cover;
     position: relative;
-    color: grey;
     top: 1000px;
-    background-color: rgba(128, 128, 128, 0.17);
     padding-top: 25px;
     display: flex;
     flex-direction: row;
     width: 100%;
+    margin-top: 150px;
 }
 
 .product-image{
-    width: 580px;
-    height: 412px;
-    margin-left: 600px;
+    width: 754px;
+    height: 535px;
+    margin-left: 50px;
 }
 
 .product-top-text{
@@ -143,7 +142,6 @@ body {
 }
 
 .product-description{
-    /*position: absolute;*/
     top: 80px;
     left: 900px;
     font-size: 27px;
@@ -162,44 +160,37 @@ body {
     color: black
 }
 
-.product-solutions-main2{
-    padding-top: 25px;
-    height: 412px;
-    border-radius: 4px;
-    background-size: cover;
-    position: relative;
-    color: grey;
-    top: 1000px;
-    background-color: rgba(128, 128, 128, 0.17);
-}
-
 .product-image2{
-    position: absolute;
-    width: 580px;
-    height: 412px;
-    left: 900px;
+    width: 754px;
+    height: 535px;
+    margin-right: 50px;
 }
 
 .product-top-text2{
-    position: absolute;
-    top: 0;
-    left: 300px;
     font-size: 39px;
     color: rgba(0, 0, 0, 0.71);
+    margin-left: 50px;
 }
 
 .product-description2{
-    position: absolute;
     top: 80px;
-    left: 300px;
+    left: 50px;
     font-size: 27px;
     max-width: 600px;
+    margin-left: 50px;
 }
 
-.product-button2:hover{
+
+.product-button-image2:hover{
     cursor: pointer;
     color: black
 }
+
+.product-button-text2:hover{
+    cursor: pointer;
+    color: black
+}
+
 
 .about-us-section{
     height: 412px;
