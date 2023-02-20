@@ -6,10 +6,10 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: Inter, sans-serif;
-    min-width: 550px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    /*min-width: 550px;*/
+    /*min-height: 100vh;*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
 }
 
 .navbar{
@@ -124,31 +124,39 @@ body {
     top: 1000px;
     background-color: rgba(128, 128, 128, 0.17);
     padding-top: 25px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 
 .product-image{
     width: 580px;
     height: 412px;
-    margin-left: 300px;
+    margin-left: 600px;
 }
 
 .product-top-text{
-    position: absolute;
-    top: 0;
-    left: 900px;
     font-size: 39px;
     color: rgba(0, 0, 0, 0.71);
+    margin-left: 50px;
 }
 
 .product-description{
-    position: absolute;
+    /*position: absolute;*/
     top: 80px;
     left: 900px;
     font-size: 27px;
     max-width: 600px;
+    margin-left: 50px;
 }
 
-.product-button:hover{
+
+.product-button-image:hover{
+    cursor: pointer;
+    color: black
+}
+
+.product-button-text:hover{
     cursor: pointer;
     color: black
 }
@@ -242,36 +250,9 @@ body {
     box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.44), 0 0 25px rgba(0, 0, 0, 0.44), 0 0 5px rgba(0, 0, 0, 0.44);
 }
 .footer-container{
-    max-width: 1300px;
-    display: grid;
-    grid-template-columns: 2fr repeat(3,1fr);
-    gap: 2rem;
-    width: 100%;
-    top: 100%;
-    alignment: bottom;
-    text-align: center;
-    margin-top: auto;
-    margin-bottom: 0;
-    bottom: 0;
-    position: sticky;
-    padding: 10px 10px 10px 10px;
-    bottom: 0;
-    height: 200px;
-    background: grey;
 }
 
-.footer-logo{
-    text-align: center;
-    font-size: 40px;
-    left: -20px;
-}
 
-.footer-paragraph {
-    position: relative;
-    text-align: center;
-    width: 150px;
-    left: 280px;
-}
 
 #Y {
     color: rgba(34, 184, 207, 0.7);
@@ -285,11 +266,10 @@ body {
 
 #Y {
     animation: text-flicker 3s linear infinite;
-}
-
-#offset {
     animation: letter-flicker 2s linear infinite;
 }
+
+
 
 @keyframes text-flicker {
     0% {
@@ -386,4 +366,11 @@ body {
         opacity:1;
         text-shadow: 0px 0px 29px rgba(34, 184, 207, 0.7);
     }
+}
+
+#mainContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
