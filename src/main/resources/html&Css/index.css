@@ -8,65 +8,51 @@ body {
     font-family: Inter, sans-serif;
     min-width: 550px;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-li{
-    float: left;
-    margin: 0 15px;
+.navbar{
+    background: transparent;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
 }
 
-h1{
+.navbar-container{
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    padding: 0;
+}
+
+#proflex-logo{
+    padding-left: -10px;
     font-size: 65px;
     color: white;
-}
-
-#Y {
-    color: rgba(34, 184, 207, 0.7);
-    margin-right: 7px;
-}
-
-#CTAText {
-    position: absolute;
-    font-size: 120px;
     font-weight: bold;
-    margin-top: 0;
-    margin-bottom: 0;
-    top: 23%;
-    left: 25%;
-    color: #1f1e1e;
-}
-
-
-
-#logo{
-    align-self: flex-start;
-    position: absolute;
-    margin-top: -10px;
+    text-decoration: none;
     margin-left: 10px;
-    display: flex;
-    flex: 200px;
+    margin-top: -10px;
 }
 
-#logo:hover{
+#proflex-logo:hover{
     transform: scale(0.98);
     cursor: pointer;
 }
 
-#logo:active{
+#proflex-logo:active{
     opacity: 0.4;
 }
 
-a:link {
-    text-decoration: none;
-    color: unset;
-}
-
-a:visited {
-    text-decoration: none;
-    color: unset;
-}
-
-#menu-choice-list {
+.menu-choice-list{
     list-style: none;
     color: white;
     font-size: 40px;
@@ -74,46 +60,219 @@ a:visited {
     float: left;
     overflow: hidden;
     position: absolute;
-    top: 8px;
+    top: 2px;
     right: 16px;
     margin-right: 0;
     margin-top: 10px;
+    text-decoration: none;
 }
 
+.menu-button {
+    float: left;
+    margin-left: 20px;
+    margin-right: 5px;
+    color: white;
+}
 
-
-#home-button:hover,#products-button:hover, #about-us-button:hover {
+.menu-button:hover{
     transform: scale(0.98);
     cursor: pointer;
 }
 
-#home-button:active,#products-button:active, #about-us-button:active {
+.menu-button:active{
     opacity: 0.4;
 }
 
-#main-page-product-container{
+.menu-links{
+    color: white;
+    text-decoration: none;
+}
+
+.menu-links:hover{
+    transform: scale(0.98);
+    cursor: pointer;
+}
+
+.menu-links:active{
+    opacity: 0.4;
+}
+
+.center-text {
+    max-width: 1300px;
+    display: grid;
     width: 100%;
-    height: 10px;
-    color: black;
+    margin: auto;
+}
+#CTAText {
+    position: absolute;
+    font-size: 140px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+    top: 22%;
+    left: 25%;
+    color: #1f1e1e;
 }
 
-.header {
-    padding: 10px 16px;
-    background: transparent;
-    color: black;
-    display: flex;
+#Y {
+    color: rgba(34, 184, 207, 0.7);
+    margin-right: 7px;
 }
 
-.content {
-    padding: 16px;
+.product-solutions-main{
+    height: 412px;
+    border-radius: 4px;
+    background-size: cover;
+    position: relative;
+    color: grey;
+    top: 1000px;
+    background-color: rgba(128, 128, 128, 0.17);
+    padding-top: 25px;
 }
 
-.sticky {
-    position: fixed;
+.product-image{
+    width: 580px;
+    height: 412px;
+    margin-left: 300px;
+}
+
+.product-top-text{
+    position: absolute;
     top: 0;
-    width: 100%;
+    left: 900px;
+    font-size: 39px;
+    color: rgba(0, 0, 0, 0.71);
 }
 
-.sticky + .content {
-    padding-top: 102px ;
+.product-description{
+    position: absolute;
+    top: 80px;
+    left: 900px;
+    font-size: 27px;
+    max-width: 600px;
+}
+
+.product-button:hover{
+    cursor: pointer;
+    color: black
+}
+
+.product-solutions-main2{
+    padding-top: 25px;
+    height: 412px;
+    border-radius: 4px;
+    background-size: cover;
+    position: relative;
+    color: grey;
+    top: 1000px;
+    background-color: rgba(128, 128, 128, 0.17);
+}
+
+.product-image2{
+    position: absolute;
+    width: 580px;
+    height: 412px;
+    left: 900px;
+}
+
+.product-top-text2{
+    position: absolute;
+    top: 0;
+    left: 300px;
+    font-size: 39px;
+    color: rgba(0, 0, 0, 0.71);
+}
+
+.product-description2{
+    position: absolute;
+    top: 80px;
+    left: 300px;
+    font-size: 27px;
+    max-width: 600px;
+}
+
+.product-button2:hover{
+    cursor: pointer;
+    color: black
+}
+
+.about-us-section{
+    height: 412px;
+    border-radius: 4px;
+    background-size: cover;
+    position: relative;
+    color: grey;
+    top: 1000px;
+    margin-top: 200px;
+}
+
+.about-us-top{
+    text-align: center;
+    font-size: 50px;
+    color: #1f1e1e;
+}
+
+.about-us-paragraph{
+    position: absolute;
+    top: 80px;
+    left: 900px;
+    max-width: 600px;
+    margin-left: 50px;
+    font-size: 45px;
+    line-height: 70px;
+    color: #1f1e1e;
+}
+
+.about-us-image{
+    width: 580px;
+    height: 412px;
+    margin-left: 300px;
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.44), 0 0 25px rgba(0, 0, 0, 0.44), 0 0 5px rgba(0, 0, 0, 0.44);
+}
+
+.about-us-paragraph2{
+    position: absolute;
+    top: 550px;
+    left: 300px;
+    max-width: 500px;
+    margin-left: 50px;
+    font-size: 45px;
+    line-height: 70px;
+    color: #1f1e1e;
+}
+
+.about-us-image2{
+    margin-left: 883px;
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.44), 0 0 25px rgba(0, 0, 0, 0.44), 0 0 5px rgba(0, 0, 0, 0.44);
+}
+.footer-container{
+    max-width: 1300px;
+    display: grid;
+    grid-template-columns: 2fr repeat(3,1fr);
+    gap: 2rem;
+    width: 100%;
+    top: 100%;
+    alignment: bottom;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: 0;
+    bottom: 0;
+    position: sticky;
+    padding: 10px 10px 10px 10px;
+    bottom: 0;
+    height: 200px;
+    background: grey;
+}
+
+.footer-logo{
+    text-align: center;
+    font-size: 40px;
+    left: -20px;
+}
+
+.footer-paragraph {
+    position: relative;
+    text-align: center;
+    width: 150px;
+    left: 280px;
 }
