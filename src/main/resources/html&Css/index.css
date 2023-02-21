@@ -245,9 +245,9 @@ body {
 }
 
 
-
 #Y {
-    color: rgba(34, 184, 207, 0.7);
+    font-family: Inter;
+    color: white; /*rgba(34, 184, 207, 0.7);*/
     margin-right: 7px;
 }
 
