@@ -1,16 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700;800&display=swap');
 
 
+
 body {
     background-image: linear-gradient(to top, #aeffff, azure, rgba(180, 46, 83, 0.62));
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-repeat: space;
+    background-attachment: scroll;
     font-family: Inter, sans-serif;
     /*min-width: 550px;*/
     /*min-height: 100vh;*/
     /*display: flex;*/
     /*flex-direction: column;*/
     /*margin:0;*/
+    margin: 0;
+    box-sizing: border-box;
 }
 
 .navbar{
