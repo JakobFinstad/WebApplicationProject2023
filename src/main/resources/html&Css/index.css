@@ -2,7 +2,7 @@
 
 
 body {
-    background-image: linear-gradient(to top, rgba(34, 184, 207, 0.7), azure, rgba(180, 46, 83, 0.62));
+    background-image: linear-gradient(to top, #aeffff, azure, rgba(180, 46, 83, 0.62));
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: Inter, sans-serif;
