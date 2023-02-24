@@ -147,6 +147,7 @@ body {
 .product-description{
     top: 80px;
     left: 900px;
+    font-weight: normal;
     font-size: 27px;
     max-width: 600px;
     margin-left: 50px;
