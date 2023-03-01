@@ -1,0 +1,48 @@
+html {
+    font-size: 10px;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    margin: 2rem; padding: 2rem;
+}
+
+h1 {
+    font-size: 4.8rem;
+}
+h2 {
+    font-size: 3.2rem;
+}
+
+p {
+    font-size: 2rem;
+}
+
+.card {
+    width: 25rem;
+    height: 40rem;
+    margin: 4rem 2rem;
+    border: 0.1rem dashed darkgray;
+    border-radius: 1rem;
+    overflow: hidden;
+
+    /*Shadow*/
+    box-shadow: 0 0 .5rem 0 lightgray;
+
+    position: relative;
+    top: 0;
+    transition: top ease .5s;
+}
+
+.card-description {
+    margin: 2rem 1rem;
+}
+
+.card:hover {
+    top: -1rem;
+    box-shadow: 0 0 2rem 1rem #78a7b4;
+}
+
