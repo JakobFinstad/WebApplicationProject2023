@@ -1,6 +1,98 @@
 html {
     font-size: 10px;
     box-sizing: border-box;
+    font-family: Inter, sans-serif;
+}
+
+.navbar{
+    background-image: linear-gradient(to top, rgba(34, 184, 207, 0.7), rgba(180, 46, 83, 0.62) 50%);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    padding-top: 10px;
+}
+
+.navbar-container{
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    padding: 0;
+}
+
+#proflex-logo{
+    padding-left: -10px;
+    font-size: 65px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 10px;
+    margin-top: -10px;
+}
+
+#proflex-logo:hover{
+    transform: scale(0.98);
+    cursor: pointer;
+}
+
+#proflex-logo:active{
+    opacity: 0.4;
+}
+
+.menu-choice-list{
+    list-style: none;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    float: left;
+    overflow: hidden;
+    position: absolute;
+    top: 2px;
+    right: 16px;
+    margin-right: 0;
+    margin-top: 15px;
+    text-decoration: none;
+}
+
+.menu-button {
+    float: left;
+    margin-left: 20px;
+    margin-right: 5px;
+    color: white;
+}
+
+.menu-button:hover{
+    transform: scale(0.98);
+    cursor: pointer;
+}
+
+.menu-button:active{
+    opacity: 0.4;
+}
+
+.menu-links{
+    color: white;
+    text-decoration: none;
+}
+
+.menu-links:hover{
+    transform: scale(0.98);
+    cursor: pointer;
+}
+
+.menu-links:active{
+    opacity: 0.4;
+}
+
+img {
+    display: block;
 }
 
 *, *:before, *:after {
@@ -28,6 +120,7 @@ p {
     border: 0.1rem dashed darkgray;
     border-radius: 1rem;
     overflow: hidden;
+    float: left;
 
     /*Shadow*/
     box-shadow: 0 0 .5rem 0 lightgray;
@@ -43,6 +136,6 @@ p {
 
 .card:hover {
     top: -1rem;
-    box-shadow: 0 0 2rem 1rem #78a7b4;
+    box-shadow: 0 0 2rem 1rem #b9f2ff;
 }
 
