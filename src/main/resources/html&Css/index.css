@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700;800&display=swap');
-
 @import url('https://fonts.googleapis.com/css?family=Raleway');
+
+html{
+    font-size: 10px;
+    box-sizing: border-box;
+}
 
 body {
     background-image: linear-gradient(to top, #aeffff, azure, rgba(180, 46, 83, 0.62));
-    background-repeat: space;
+    background-repeat:inherit;
     background-attachment: scroll;
     font-family: Inter, sans-serif;
     margin: 0;
@@ -14,8 +18,8 @@ body {
 
 .navbar{
     background: transparent;
-    padding: 10px;
-    height: 80px;
+    padding: 1rem;
+    height: 8rem;
     display: flex;
     align-items: center;
     font-size: 1.2rem;
@@ -25,19 +29,19 @@ body {
 .navbar-container{
     display: flex;
     justify-content: space-between;
-    height: 80px;
+    height: 8rem;
     width: 100%;
     max-width: 1300px;
 }
 
 #proflex-logo{
-    padding-left: -10px;
-    font-size: 65px;
+    padding-left: -1rem;
+    font-size: 6.5rem;
     color: white;
     font-weight: bold;
     text-decoration: none;
-    margin-left: 10px;
-    margin-top: -10px;
+    margin-left: 1rem;
+    margin-top: -1rem;
 }
 
 #proflex-logo:hover{
@@ -52,22 +56,23 @@ body {
 .menu-choice-list{
     list-style: none;
     color: white;
-    font-size: 40px;
+    font-size: 4rem;
     font-weight: bold;
     float: left;
     overflow: hidden;
-    top: 2px;
-    right: 16px;
+    top: 0.2rem;
+    right: 1.6rem;
     margin-right: 0;
-    margin-top: 10px;
+    margin-top: 4rem;
     text-decoration: none;
-    width: 900px;
+    width: 900rem;
+    position:sticky;
 }
 
 .menu-button {
     float: left;
-    margin-left: 20px;
-    margin-right: 5px;
+    margin-left: 2rem;
+    margin-right: 0.5rem;
     color: white;
 }
 
@@ -98,11 +103,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 2rem;
 }
 
 .center-text {
-    max-width: 1300px;
+    max-width: 130rem;
     display: grid;
     width: 100%;
     margin: auto;
@@ -110,7 +115,7 @@ body {
 
 #CTAText {
     position: relative;
-    font-size: 140px;
+    font-size: 14rem;
     font-weight: bold;
     margin-top: 0;
     margin-bottom: 0;
@@ -122,7 +127,7 @@ body {
 
 #Y {
     color: white; /*rgba(34, 184, 207, 0.7);*/
-    margin-right: 7px;
+    margin-right: 0.7rem;
     animation: text-flicker 3s linear infinite;
     animation: letter-flicker 2s linear infinite;
 }
@@ -227,37 +232,37 @@ body {
 
 
 .product-solutions-main{
-    height: 412px;
-    border-radius: 4px;
+    height: 41.2rem;
+    border-radius: 0.4rem;
     background-size: cover;
     position: relative;
-    top: 1000px;
-    padding-top: 25px;
+    top: 100rem;
+    padding-top: 2.5rem;
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin-top: 150px;
+    margin-top: 15rem;
 }
 
 .product-image{
-    width: 754px;
-    height: 535px;
-    margin-left: 50px;
+    width: 75.4rem;
+    height: 53.5rem;
+    margin-left: 5rem;
 }
 
 .product-top-text{
-    font-size: 39px;
+    font-size: 3.9rem;
     color: rgba(0, 0, 0, 0.71);
-    margin-left: 50px;
+    margin-left: 5rem;
 }
 
 .product-description{
-    top: 80px;
-    left: 900px;
+    top: 8rem;
+    left: 90rem;
     font-weight: normal;
-    font-size: 27px;
-    max-width: 600px;
-    margin-left: 50px;
+    font-size: 2.7rem;
+    max-width: 60rem;
+    margin-left: 5rem;
 }
 
 
@@ -272,25 +277,25 @@ body {
 }
 
 .product-image2{
-    width: 754px;
-    height: 535px;
-    margin-right: 50px;
-    right: 20px;
+    width: 75.4rem;
+    height: 53.5rem;
+    margin-right: 5rem;
+    right: 2rem;
     position: absolute;
 }
 
 .product-top-text2{
-    font-size: 39px;
+    font-size: 3.9rem;
     color: rgba(0, 0, 0, 0.71);
     margin-left: 50px;
 }
 
 .product-description2{
-    top: 80px;
-    left: 50px;
-    font-size: 27px;
-    max-width: 600px;
-    margin-left: 50px;
+    top: 8rem;
+    left: 5rem;
+    font-size: 2.7rem;
+    max-width: 60rem;
+    margin-left: 5rem;
 }
 
 
@@ -306,60 +311,60 @@ body {
 
 
 .about-us-section{
-    height: 412px;
-    border-radius: 4px;
+    height: 41.2rem;
+    border-radius: 0.4rem;
     background-size: cover;
     position: relative;
     color: grey;
-    top: 1000px;
-    margin-top: 200px;
+    top: 100rem;
+    margin-top: 20rem;
 }
 
 .about-us-top{
     text-align: center;
-    font-size: 50px;
+    font-size: 5rem;
     color: #1f1e1e;
 }
 
 .about-us-paragraph{
     position: absolute;
-    top: 80px;
-    left: 900px;
-    max-width: 600px;
-    margin-left: 50px;
-    font-size: 45px;
-    line-height: 70px;
+    top: 8rem;
+    left: 90rem;
+    max-width: 60rem;
+    margin-left: 5rem;
+    font-size: 4.5rem;
+    line-height: 7rem;
     color: #1f1e1e;
 }
 
 .about-us-image{
-    width: 580px;
-    height: 412px;
-    margin-left: 300px;
+    width: 58rem;
+    height: 41.2rem;
+    margin-left: 30rem;
     box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.44), 0 0 25px rgba(0, 0, 0, 0.44), 0 0 5px rgba(0, 0, 0, 0.44);
 }
 
 .about-us-paragraph2{
     position: absolute;
-    top: 550px;
-    left: 300px;
-    max-width: 500px;
-    margin-left: 50px;
-    font-size: 45px;
-    line-height: 70px;
+    top: 55rem;
+    left: 30rem;
+    max-width: 50rem;
+    margin-left: 5rem;
+    font-size: 4.5rem;
+    line-height: 7rem;
     color: #1f1e1e;
 }
 
 .about-us-image2{
-    margin-left: 883px;
+    margin-left: 88.3rem;
     box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.44), 0 0 25px rgba(0, 0, 0, 0.44), 0 0 5px rgba(0, 0, 0, 0.44);
 }
 .footer-container{
     background: transparent;
-    padding: 20px;
+    padding: 2rem;
     text-align: center;
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 60px;
+    height: 6rem;
 }
