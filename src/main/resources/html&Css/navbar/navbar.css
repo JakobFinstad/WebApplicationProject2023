@@ -1,0 +1,88 @@
+.navbar{
+    background-image: linear-gradient(to top, #00ffff, rgb(180, 46, 83) 50%);
+    height: 8rem;
+    display: block !important;
+    align-items: center;
+    align-content: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    padding-top: 1rem;
+    margin: 0;
+}
+
+.navbar-container{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    z-index: 1;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#proflex-logo{
+    padding-left: -1rem;
+    font-size: 6.5rem;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 1rem;
+    margin-top: -1rem;
+}
+
+#proflex-logo:hover{
+    transform: scale(0.98);
+    cursor: pointer;
+}
+
+#proflex-logo:active{
+    opacity: 0.4;
+}
+
+.menu-choice-list{
+    list-style: none;
+    color: white;
+    font-size: 4rem;
+    font-weight: bold;
+    float: left;
+    overflow: hidden;
+    position: absolute;
+    top: 0.2rem;
+    right: 1.6rem;
+    margin-right: 0;
+    margin-top: 1.5rem;
+    text-decoration: none;
+}
+
+.menu-button {
+    float: left;
+    margin-left: 2rem;
+    margin-right: .5rem;
+    color: white;
+}
+
+.menu-button:hover{
+    transform: scale(0.98);
+    cursor: pointer;
+}
+
+.menu-button:active{
+    opacity: 0.4;
+}
+
+.menu-links{
+    color: white;
+    text-decoration: none;
+}
+
+.menu-links:hover{
+    transform: scale(0.98);
+    cursor: pointer;
+}
+
+.menu-links:active{
+    opacity: 0.4;
+}
