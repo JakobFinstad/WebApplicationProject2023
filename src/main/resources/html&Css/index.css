@@ -8,7 +8,7 @@ html{
 
 body {
     background-image: linear-gradient(to top, #aeffff, azure, rgba(180, 46, 83, 0.62));
-    background-repeat:inherit;
+    background-repeat: no-repeat;
     background-attachment: scroll;
     font-family: Inter, sans-serif;
     margin: 0;
@@ -118,11 +118,11 @@ body {
     font-size: 14rem;
     font-weight: bold;
     margin-top: 0;
-    margin-bottom: 0;
     top: 10%;
     left: 20%;
     color: #1f1e1e;
     align-items: center;
+    max-width: 100rem;
 }
 
 #Y {
@@ -228,6 +228,26 @@ body {
         opacity:1;
         text-shadow: 0px 0px 29px rgba(34, 184, 207, 0.7);
     }
+}
+
+.used-by-section{
+    margin-top: 2rem;
+    padding: 5rem 0 10rem 0;
+    background-color: rgba(0, 0, 0, 0.16);
+    width: 100%;
+    height: 10rem;
+}
+
+.used-by-list{
+    display: flex;
+    position: relative;
+    list-style: none;
+    margin-bottom: 50rem;
+}
+
+.used-by-company{
+    margin-left: 10rem;
+    margin-right: 10rem;
 }
 
 
