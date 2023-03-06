@@ -2,6 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
+@import "navbar/navbar.css";
+
 html {
     font-family: Inter;
     font-size: 62.5%;
@@ -16,86 +18,15 @@ body {
     flex-direction: column;
 }
 
-.navbar{
-    background: transparent;
-    padding: 10px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    font-size: 1.2rem;
-
+h2{
+    font-size: 5rem;
+    text-align: center;
+    color: lime;
+    text-shadow: red 1rem 1rem;
 }
 
-.navbar-container{
-    display: flex;
-    justify-content: space-between;
-    height: 80px;
-    width: 100%;
-    max-width: 1300px;
-}
-
-#proflex-logo{
-    padding-left: -10px;
-    font-size: 65px;
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-    margin-left: 10px;
-    margin-top: -10px;
-}
-
-#proflex-logo:hover{
-    transform: scale(0.98);
-    cursor: pointer;
-}
-
-#proflex-logo:active{
-    opacity: 0.4;
-}
-
-.menu-choice-list{
-    list-style: none;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    float: left;
-    overflow: hidden;
-    top: 2px;
-    right: 16px;
-    margin-right: 0;
-    margin-top: 10px;
-    text-decoration: none;
-    width: 900px;
-}
-
-.menu-button {
-    float: left;
-    margin-left: 20px;
-    margin-right: 5px;
-    color: white;
-}
-
-.menu-button:hover{
-    transform: scale(0.98);
-    cursor: crosshair;
-}
-
-.menu-button:active{
-    opacity: 0.4;
-}
-
-.menu-links{
-    color: white;
-    text-decoration: none;
-}
-
-.menu-links:hover{
-    transform: scale(0.98);
-    cursor: pointer;
-}
-
-.menu-links:active{
-    opacity: 0.4;
+input{
+    border-radius: 0.5rem;
 }
 
 main{
@@ -163,3 +94,9 @@ button:hover {
     animation: rotating 0.01s linear infinite;
     animation-delay: 5s;
 }
+
+.passwords{
+    display: flex;
+    flex-direction: row;
+}
+
