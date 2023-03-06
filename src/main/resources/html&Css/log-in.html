@@ -43,7 +43,8 @@
 
     <script>
         const audio = document.getElementById("music");
-        audio.addEventListener("canplay", playing);
+        const button = document.getElementById("login-button");
+        button.addEventListener("pointerenter", playing);
 
         function playing(){
             console.log("playing audio")
