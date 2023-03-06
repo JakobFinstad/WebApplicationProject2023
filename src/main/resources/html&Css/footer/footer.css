@@ -35,6 +35,7 @@ ul{
 .footer-col{
     width: 25%;
     padding: 6rem 10rem;
+    min-width: 30rem;
 }
 
 .footer-col h1 {
@@ -78,11 +79,15 @@ ul{
     font-weight: 300;
     color: #bbbbbb;
     display: block;
-    transition: all 0.3s ease;
+    transition: all 0.15s ease;
 }
 
 .footer-col ul li a:hover{
     color: white;
+    padding-left: 0.8rem;
+}
+.footer-col ul li a:active{
+    color: rgba(255, 255, 255, 0.11);
     padding-left: 0.8rem;
 }
 
