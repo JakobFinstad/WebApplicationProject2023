@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700;800&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+html {
+    font-family: Inter;
+    font-size: 62.5%;
+}
+
+body {
+    margin: 0;
+    background-image: linear-gradient(to top, #aeffff, azure, rgba(180, 46, 83, 0.62));
+    background-repeat: space;
+    background-attachment: scroll;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar{
+    background: transparent;
+    padding: 10px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+
+}
+
+.navbar-container{
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    width: 100%;
+    max-width: 1300px;
+}
+
+#proflex-logo{
+    padding-left: -10px;
+    font-size: 65px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 10px;
+    margin-top: -10px;
+}
+
+#proflex-logo:hover{
+    transform: scale(0.98);
+    cursor: pointer;
+}
+
+#proflex-logo:active{
+    opacity: 0.4;
+}
+
+.menu-choice-list{
+    list-style: none;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    float: left;
+    overflow: hidden;
+    top: 2px;
+    right: 16px;
+    margin-right: 0;
+    margin-top: 10px;
+    text-decoration: none;
+    width: 900px;
+}
+
+.menu-button {
+    float: left;
+    margin-left: 20px;
+    margin-right: 5px;
+    color: white;
+}
+
+.menu-button:hover{
+    transform: scale(0.98);
+    cursor: crosshair;
+}
+
+.menu-button:active{
+    opacity: 0.4;
+}
+
+.menu-links{
+    color: white;
+    text-decoration: none;
+}
+
+.menu-links:hover{
+    transform: scale(0.98);
+    cursor: pointer;
+}
+
+.menu-links:active{
+    opacity: 0.4;
+}
+
+main{
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    justify-self: center;
+    justify-content: center;
+    justify-items: center;
+    width: fit-content;
+}
+
+#login-container{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+
+}
+
+span{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+}
+
+input{
+    margin: 1rem;
+    font-size: 2rem;
+    padding: 0.5rem;
+}
+
+label{
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+label:hover{
+
+}
+
+button{
+    padding: 1rem;
+    font-size: 3rem;
+    border-radius: 3rem;
+    cursor: url("../images/pointer.png") , pointer!important;
+}
+
+p{
+    font-size: 1.5rem;
+}
+
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+button:hover {
+    animation: rotating 0.01s linear infinite;
+    animation-delay: 5s;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Proflex- Login</title>
+  <link rel="stylesheet" href="login-signup.css">
+</head>
+<body>
+<header class="navbar">
+  <div class="navbar-container">
+    <a href="index.html" id="proflex-logo">ProFlex</a>
+
+  </div>
+
+  <ul class="menu-choice-list">
+    <li class="menu-button">
+      <a href="index.html" class="menu-links">Home</a>
+    </li>
+    <li class="menu-button">
+      <a href="#about-us-section" class="menu-links">About us</a>
+    </li>
+    <li class="menu-button">
+      <a class="menu-links" href="products/products.html">Products</a>
+    </li>
+  </ul>
+</header>
+
+<main id="login-container">
+    <span>
+      <label>Email</label>
+      <input type="email" id="email" name="email" placeholder="example@org.com">
+    </span>
+
+    <span>
+      <label>Password</label>
+      <input type="password" id="password" name="password" placeholder="Password">
+    </span>
+
+    <button disabled id="login-button">Log In</button>
+    <audio autoplay src="../images/audio.mp3" preload="metadata" id="music">
+    </audio>
+  <p>Don't have an account yet?&nbsp;&nbsp;<a href="index.css">Sign up here</a></p>
+
+    <script>
+        const audio = document.getElementById("music");
+        audio.addEventListener("canplay", playing);
+
+        function playing(){
+            console.log("playing audio")
+            try {
+                audio.play();
+            } catch (error) {
+                console.log("Something went wrong");
+            }
+
+        }
+    </script>
+</main>
+
+
+</body>
+</html>
