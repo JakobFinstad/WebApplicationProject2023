@@ -1,4 +1,5 @@
 .navbar{
+    font-family: Inter, sans-serif;
     background-image: linear-gradient(to top, #00ffff, rgb(180, 46, 83) 50%);
     height: 8rem;
     display: block !important;
