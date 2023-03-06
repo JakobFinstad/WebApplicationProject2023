@@ -45,6 +45,7 @@
         const audio = document.getElementById("music");
         const button = document.getElementById("login-button");
         button.addEventListener("pointerenter", playing);
+        button.addEventListener("pointerout", stopping)
 
         function playing(){
             console.log("playing audio")
@@ -53,7 +54,12 @@
             } catch (error) {
                 console.log("Something went wrong");
             }
+        }
 
+        function stopping(){
+            console.log("Stopping...");
+            audio.pause();
+            // audio.reset();
         }
     </script>
 </main>
