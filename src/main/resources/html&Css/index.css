@@ -230,19 +230,24 @@ body {
     }
 }
 
+
 .used-by-section{
     margin-top: 2rem;
     padding: 5rem 0 10rem 0;
     background-color: rgba(0, 0, 0, 0.16);
     width: 100%;
-    height: 10rem;
+    height: 15rem;
+    position: relative;
 }
 
 .used-by-list{
+    position: absolute;
     display: flex;
-    position: relative;
     list-style: none;
-    margin-bottom: 50rem;
+    justify-content: center;
+    left: 50%;
+    right: 50%;
+    top: 30%;
 }
 
 .used-by-company{
@@ -250,6 +255,34 @@ body {
     margin-right: 10rem;
 }
 
+.trusted-by-paragraph{
+    position: absolute;
+    text-align: center;
+    top: 10%;
+    font-size: 3rem;
+    color: rgba(0, 0, 0, 0.32);
+    width: 50%;
+    margin: 0 auto;
+    left: 27%;
+}
+
+.trusted-by-millions-paragraph{
+    position: absolute;
+    text-align: center;
+    top: 23%;
+    color: rgba(0, 0, 0, 0.52);
+    font-size: 2rem;
+    margin: 0 auto;
+    width: 50%;
+    left: 27%;
+}
+
+.front-page-products{
+    position: relative;
+    background-color: rgb(164, 164, 164);
+    width: 100%;
+    height: 45rem;
+}
 
 .product-solutions-main{
     height: 41.2rem;
