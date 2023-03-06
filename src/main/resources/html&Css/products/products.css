@@ -8,6 +8,8 @@ html {
 
 img {
     display: block;
+    max-width: 37.5rem;
+    max-height: 22.5rem;
 }
 
 *, *:before, *:after {
@@ -16,6 +18,7 @@ img {
 
 body {
     margin: 0; padding: 0;
+    background-color: white;
 }
 
 main {
@@ -34,10 +37,10 @@ p {
 }
 
 .card {
-    width: 25rem;
-    height: 40rem;
+    width: 37.5rem;
+    height: 60rem;
     margin: 4rem 2rem;
-    border: 0.1rem dashed darkgray;
+    border: 0.1rem groove darkgray;
     border-radius: 1rem;
     overflow: hidden;
     float: left;
@@ -48,6 +51,7 @@ p {
     position: relative;
     top: 0;
     transition: top ease .5s;
+    background-color: white;
 }
 
 .card-description {
