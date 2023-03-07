@@ -103,7 +103,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem;
 }
 
 .center-text {
@@ -232,7 +231,7 @@ body {
 
 
 .used-by-section{
-    margin-top: 2rem;
+    margin-top: 3rem;
     padding: 5rem 0 10rem 0;
     background-color: rgba(0, 0, 0, 0.16);
     width: 100%;
@@ -281,7 +280,7 @@ body {
     position: relative;
     background-color: rgb(164, 164, 164);
     width: 100%;
-    height: 45rem;
+    height: 55rem;
 }
 
 .product-solutions-main{
