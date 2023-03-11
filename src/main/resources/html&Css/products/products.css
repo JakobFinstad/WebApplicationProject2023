@@ -31,8 +31,16 @@ main {
 }
 
 #TopText {
+    font-family: "Work Sans", sans-serif;
     font-size: 14rem;
-    font-weight: bold;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+}
+
+.products-text {
+    color: #b42e53;
 }
 
 h1 {
