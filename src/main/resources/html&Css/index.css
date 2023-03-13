@@ -109,7 +109,7 @@ body {
     max-width: 130rem;
     display: grid;
     width: 100%;
-    margin: auto;
+    margin: 4.5rem auto auto;
 }
 
 #CTAText {
@@ -232,11 +232,13 @@ body {
 
 .used-by-section{
     display: flex;
-    margin-top: 3rem;
+    flex-wrap: wrap;
+    margin-top: 3.8rem;
+    margin-bottom: 3rem;
     padding: 5rem 0 10rem 0;
-    background-color: rgba(0, 0, 0, 0.08);
+    background-color: rgba(240, 255, 255, 0.32);
     width: 100%;
-    height: 15rem;
+    height: 25rem;
     position: relative;
 }
 
@@ -290,7 +292,7 @@ body {
     background-color: transparent;
     width: 100%;
     height: 55rem;
-    margin-top: 4rem;
+    margin: 8rem 10rem 6rem;
 }
 
 .card {
@@ -316,6 +318,7 @@ body {
 .card:hover {
     top: -1rem;
     box-shadow: 0 0 2rem 1rem rgba(180, 46, 83, 0.24);
+    cursor: pointer;
 }
 
 .card:active {
@@ -368,109 +371,222 @@ body {
     font-size: 1.5rem;
 }
 
-.product-description{
-    top: 8rem;
-    left: 90rem;
-    font-weight: normal;
-    font-size: 2.7rem;
-    max-width: 60rem;
-    margin-left: 5rem;
+.our-values{
+    position: relative;
+    background-color: transparent;
+    width: 100%;
+    max-width: 160rem;
+    height: 55rem;
+    margin-top: 6rem;
+    margin-bottom: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-evenly;
+    gap: 3rem;
 }
 
+.value{
+    padding: 2.5rem 4.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
 
-.product-button-image:hover{
-    cursor: pointer;
-    color: black
 }
 
-.product-button-text:hover{
-    cursor: pointer;
-    color: black
+.value-img{
+    margin-bottom: 1rem;
+    padding: 2rem;
+    position: relative;
+    border-radius: 50%;
+    background-color: rgba(240, 255, 255, 0.59);
+    opacity: 85%;
+    width: 15rem;
+    height: 15rem;
 }
 
-.product-image2{
-    width: 75.4rem;
-    height: 53.5rem;
-    margin-right: 5rem;
-    right: 2rem;
-    position: absolute;
+.value-text{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.product-top-text2{
-    font-size: 3.9rem;
-    color: rgba(0, 0, 0, 0.71);
-    margin-left: 50px;
+.value-heading{
+    font-family: "Freestyle Script", sans-serif;
+    font-size: 6.5rem;
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+    color: rgba(180, 46, 83, 0.78);
+
 }
 
-.product-description2{
-    top: 8rem;
-    left: 5rem;
-    font-size: 2.7rem;
-    max-width: 60rem;
-    margin-left: 5rem;
+.value-paragraph{
+    font-size: 2rem;
+    margin-top: 2rem;
+    padding: 0;
+    line-height: 3.5rem;
+    color: #383535;
+    max-width: 45rem;
 }
 
-
-.product-button-image2:hover{
-    cursor: pointer;
-    color: black
+.about-us{
+    position: relative;
+    background-color: transparent;
+    width: 100%;
+    max-width: 160rem;
+    height: auto;
+    margin: 8rem 10rem 6rem;
 }
 
-.product-button-text2:hover{
-    cursor: pointer;
-    color: black
+.about-us-head{
+    font-family: "Freestyle Script", sans-serif;
+    font-size: 10rem;
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+    color: rgba(180, 46, 83, 0.78);
+    text-align: center;
+
 }
 
+.about-us-head2{
+    font-size: 2rem;
+    padding: 0;
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+    color: rgba(24, 18, 20, 0.67);
+    text-align: center;
+    margin: 0 0 4rem;
+}
+
+.about-us-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
 
 .about-us-section{
-    height: 41.2rem;
-    border-radius: 0.4rem;
-    background-size: cover;
     position: relative;
-    color: grey;
-    top: 100rem;
-    margin-top: 20rem;
-}
-
-.about-us-top{
-    text-align: center;
-    font-size: 5rem;
-    color: #1f1e1e;
+    width: 47%;
+    margin: 2rem;
+    text-align: left;
+    flex: 1;
 }
 
 .about-us-paragraph{
-    position: absolute;
-    top: 8rem;
-    left: 90rem;
-    max-width: 60rem;
-    margin-left: 5rem;
-    font-size: 4.5rem;
-    line-height: 7rem;
-    color: #1f1e1e;
+    font-size: 2.3rem;
+    line-height: 5rem;
+    margin-top: 5rem;
 }
 
 .about-us-image{
-    width: 58rem;
-    height: 41.2rem;
-    margin-left: 30rem;
-    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.44), 0 0 25px rgba(0, 0, 0, 0.44), 0 0 5px rgba(0, 0, 0, 0.44);
+    margin: 4rem auto auto 2rem;
+    padding: 2rem;
+    position: relative;
+    border-radius: 50%;
+    background-color: rgba(240, 255, 255, 0.59);
+    opacity: 85%;
+    width: 30rem;
+    height: 30rem;
+    object-fit: cover;
 }
 
-.about-us-paragraph2{
-    position: absolute;
-    top: 55rem;
-    left: 30rem;
-    max-width: 50rem;
-    margin-left: 5rem;
-    font-size: 4.5rem;
-    line-height: 7rem;
-    color: #1f1e1e;
+.map-container{
+    align-items: center;
+    margin-bottom: 5rem;
+    background-color: rgba(240, 255, 255, 0.59);
+    border-radius: 5%;
 }
 
-.about-us-image2{
-    margin-left: 88.3rem;
-    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.44), 0 0 25px rgba(0, 0, 0, 0.44), 0 0 5px rgba(0, 0, 0, 0.44);
+.map{
+    margin: 2rem;
+    border-radius: 5%;
+    object-fit: cover;
 }
+
+.review-container{
+    max-width: 160rem;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    height: 60rem;
+    width: 100%;
+}
+
+.review-header{
+    font-family: "Freestyle Script", sans-serif;
+    font-size: 6rem;
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+    color: rgba(180, 46, 83, 0.78);
+    text-align: center;
+}
+
+.review-header2{
+    font-size: 2.5rem;
+    padding: 0;
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+    color: rgba(24, 18, 20, 0.67);
+    text-align: center;
+    margin: 3rem 0 4rem;
+}
+
+.reviewer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 30rem;
+    text-align: center;
+    align-items: center;
+}
+
+.review-box{
+    flex: 2 1 auto;
+}
+
+.review-paragraph{
+    width: 90%;
+    font-size: 2.5rem;
+    align-items: center;
+    margin-top: 8rem;
+    display: flex;
+    text-align: center;
+    font-weight: lighter;
+    line-height: 4.2rem;
+}
+
+.review-name{
+    font-weight: lighter;
+    font-size: 2.3rem;
+    padding: 0;
+    margin-top: 1rem;
+    width: 90%;
+}
+
+.review-image-container{
+    margin-top: 4rem;
+    align-items: center;
+    width: 90%;
+}
+
+.review-image{
+    margin: 0;
+    padding: 0;
+    position: relative;
+    border-radius: 50%;
+    opacity: 100%;
+    width: 11rem;
+    height: 11rem;
+    object-fit: cover;
+}
+
 .footer-container{
     background: transparent;
     padding: 2rem;
