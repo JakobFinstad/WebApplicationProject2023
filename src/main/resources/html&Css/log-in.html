@@ -7,17 +7,7 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-
-<!--Navigation bar-->
-<div id="navbar-placeholder">
-
-</div>
-
-<script>
-    $(function(){
-        $("#navbar-placeholder").load("navbar/navbar.html");
-    });
-</script>
+<h1>ProFlex</h1>
 
 <main id="login-container">
     <span>
@@ -33,29 +23,29 @@
     <button disabled id="login-button">Log In</button>
     <audio autoplay src="../images/audio.mp3" preload="metadata" id="music">
     </audio>
-  <p>Don't have an account yet?&nbsp;&nbsp;<a href="signup.html">Sign up here</a></p>
+  <p>Don't have an account yet?&nbsp;&nbsp;<a href="signup.html" id="signup_link">Sign up here</a></p>
 
-    <script>
-        const audio = document.getElementById("music");
-        const button = document.getElementById("login-button");
-        button.addEventListener("pointerenter", playing);
-        button.addEventListener("pointerout", stopping)
+<!--    <script>-->
+<!--        const audio = document.getElementById("music");-->
+<!--        const button = document.getElementById("login-button");-->
+<!--        button.addEventListener("pointerenter", playing);-->
+<!--        button.addEventListener("pointerout", stopping)-->
 
-        function playing(){
-            console.log("playing audio")
-            try {
-                setTimeout(function (){audio.play();},5000);
-            } catch (error) {
-                console.log("Something went wrong");
-            }
-        }
+<!--        function playing(){-->
+<!--            console.log("playing audio")-->
+<!--            try {-->
+<!--                setTimeout(function (){audio.play();},5000);-->
+<!--            } catch (error) {-->
+<!--                console.log("Something went wrong");-->
+<!--            }-->
+<!--        }-->
 
-        function stopping(){
-            console.log("Stopping...");
-            audio.pause();
-            // audio.reset();
-        }
-    </script>
+<!--        function stopping(){-->
+<!--            console.log("Stopping...");-->
+<!--            audio.pause();-->
+<!--            // audio.reset();-->
+<!--        }-->
+<!--    </script>-->
 </main>
 
 
