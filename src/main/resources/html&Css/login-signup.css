@@ -11,12 +11,15 @@ html {
 
 body {
     margin: 0;
-    /*background-image: linear-gradient(to top, #aeffff, azure, rgba(180, 46, 83, 0.62));*/
-    /*background-repeat: space;*/
-    /*background-attachment: scroll;*/
-    background-image: url('../images/matrix.gif');
+    background-image: linear-gradient(to top, #aeffff, azure, rgba(180, 46, 83, 0.62));
+    background-repeat: space;
+    background-attachment: scroll;
     display: flex;
     flex-direction: column;
+}
+
+#login-body{
+    background-image: url('../images/matrix.gif');
 }
 
 h2 {
