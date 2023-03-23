@@ -1,4 +1,4 @@
-package no.ntnu.idata2306.group6.Controller;
+package no.ntnu.idata2306.group6.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

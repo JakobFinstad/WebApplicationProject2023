@@ -1,6 +1,6 @@
-package no.ntnu.idata2306.group6.Controller;
+package no.ntnu.idata2306.group6.controller;
 
-import no.ntnu.idata2306.group6.Repository.ProductRepository;
+import no.ntnu.idata2306.group6.repository.ProductRepository;
 import no.ntnu.idata2306.group6.logic.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

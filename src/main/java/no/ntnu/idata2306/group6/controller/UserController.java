@@ -1,8 +1,8 @@
-package no.ntnu.idata2306.group6.Controller;
+package no.ntnu.idata2306.group6.controller;
 
 
 import io.swagger.v3.oas.annotations.Operation;
-import no.ntnu.idata2306.group6.Repository.UserRepository;
+import no.ntnu.idata2306.group6.repository.UserRepository;
 import no.ntnu.idata2306.group6.logic.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
