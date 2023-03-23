@@ -26,12 +26,11 @@ public class User {
     private String email;
     @NotNull
     private int phoneNumber;
+    @NotNull
+    private String password;
     private String imgURL;
 //    private ProductList wishList;
 
-    public User() {
-
-    }
 
     /**
      * Constructor for the user on the website.
@@ -40,12 +39,18 @@ public class User {
      * @param lastName of the user
      * @param email that shall be connected with the account
      * @param phoneNumber number of the user
+     * @param password of the user
      */
-    public User(String firstName, String lastName, String email, int phoneNumber) {
+    public User(String firstName, String lastName, String email, int phoneNumber, String password) {
         setEmail(email);
         setFirstName(firstName);
         setLastName(lastName);
         setPhoneNumber(phoneNumber);
+        setPassword(password);
+    }
+
+    public User() {
+
     }
 
     /**
@@ -189,5 +194,24 @@ public class User {
      */
     public boolean isValid() {
         return !firstName.isEmpty() && !email.isEmpty();
+    }
+
+    /**
+     * Get the password of the user.
+     *
+     * @return password of the user
+     */
+    public String getPassword() {
+        return this.password;
+    }
+
+    /**
+     * Set the password of the user.
+     *
+     * @param password of the user
+     */
+    protected void setPassword(String password) {
+        //TODO: Add regex checking in order to check the original password for the password rules
+        this.password = password;
     }
 }
