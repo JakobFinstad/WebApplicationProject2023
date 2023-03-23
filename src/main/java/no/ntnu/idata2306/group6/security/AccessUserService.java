@@ -11,13 +11,20 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 /**
- *
+ * Lets one access user service.
  */
 @Service
 public class AccessUserService implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
 
+    /**
+     * Returns the user by searching for username.
+     *
+     * @param username of the user
+     * @return user
+     * @throws UsernameNotFoundException
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user = userRepository.findByUsername(username);

@@ -1,6 +1,8 @@
 package no.ntnu.idata2306.group6.security;
 
+import io.jsonwebtoken.MalformedJwtException;
 import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
@@ -12,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
@@ -19,7 +22,7 @@ import java.io.IOException;
  * A filter that is applied to all HTTP requests and checks for a valid JWT token in the Authorizaation: Bearer header.
  */
 @Component
-public class JwtRequestFilter {
+public class JwtRequestFilter extends OncePerRequestFilter {
     private final static Logger logger = LoggerFactory.getLogger(JwtRequestFilter.class.getSimpleName());
 
     @Autowired
@@ -37,7 +40,7 @@ public class JwtRequestFilter {
      */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-        throws SecurityException, IOException {
+            throws SecurityException, IOException, ServletException {
         final String authorizationHeader = request.getHeader("Authorization");
         String username = null;
         String jwt = null;
@@ -46,7 +49,7 @@ public class JwtRequestFilter {
             try {
                 username = jwtUtil.extractUsername(jwt);
             } catch (MalformedJwtException e) {
-                logger.warning("Malformed JWT: " + e.getMessage);
+                logger.warn("Malformed JWT: " + e.getMessage());
             }
         }
 
