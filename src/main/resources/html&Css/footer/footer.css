@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700;800&display=swap');
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1.5;
+    font-family: Inter, sans-serif;
+    font-size: 10px;
+}
+
+.container{
+    max-width: 130rem;
+    /*Change to transparent*/
+    background-color: rgba(128, 128, 128, 0.18);
+    margin: auto;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ul{
+    list-style: none;
+}
+
+.footer{
+    background-color: transparent;
+    padding: 7rem 0;
+}
+
+.footer-col{
+    width: 25%;
+    padding: 6rem 10rem;
+    min-width: 30rem;
+}
+
+.footer-col h1 {
+    font-size: 5rem;
+    color: #ffffff;
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    position: relative;
+
+}
+
+.footer-col h4 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-transform: capitalize;
+    margin-bottom: 3.5rem;
+    font-weight: bold;
+    position: relative;
+}
+
+.footer-col h4::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1rem;
+    background-color: grey;
+    height: 0.2rem;
+    box-sizing: border-box;
+    width: 5rem;
+}
+
+.footer-col ul li:not(:last-child){
+    margin-bottom: 1rem;
+}
+
+.footer-col ul li a {
+    font-size: 1.8rem;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: 300;
+    color: #bbbbbb;
+    display: block;
+    transition: all 0.15s ease;
+}
+
+.footer-col ul li a:hover{
+    color: white;
+    padding-left: 0.8rem;
+}
+.footer-col ul li a:active{
+    color: rgba(255, 255, 255, 0.11);
+    padding-left: 0.8rem;
+}
+
+.footer-col p{
+    font-size: 2rem;
+    width: 30rem;
+}
+
+.footer-logo{
+    margin: 1.5rem;
+}
