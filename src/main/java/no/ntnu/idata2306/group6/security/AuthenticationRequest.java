@@ -11,6 +11,12 @@ public class AuthenticationRequest {
 
     }
 
+    /**
+     * Constructor for the authentication request.
+     *
+     * @param username to the user
+     * @param password to the user
+     */
     public AuthenticationRequest(String username, String password) {
         this.username = username;
         this.password = password;

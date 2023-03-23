@@ -1,6 +1,8 @@
 package no.ntnu.idata2306.group6.controller;
 
 import no.ntnu.idata2306.group6.security.AuthenticationRequest;
+import no.ntnu.idata2306.group6.security.AuthenticationResponse;
+import no.ntnu.idata2306.group6.security.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +42,6 @@ public class AuthenticationController {
         }
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final String jwt = jwtUtil.generateToken(userDetails);
-        return ResponseEntity.ok(new AuthenticationRespons(jwt));
+        return ResponseEntity.ok(new AuthenticationResponse(jwt));
     }
 }
