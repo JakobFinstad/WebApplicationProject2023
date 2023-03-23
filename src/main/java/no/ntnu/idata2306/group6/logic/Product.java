@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * A class representing different products in the store.
@@ -16,10 +17,15 @@ import jakarta.persistence.Id;
 public class Product {
     @Id
     @GeneratedValue
+    @NotNull
     private int id;
+    @NotNull
     private int price;
+    @NotNull
     private String imgURL;
+    @NotNull
     private String name;
+    @NotNull
     private String description;
 
     public Product(){

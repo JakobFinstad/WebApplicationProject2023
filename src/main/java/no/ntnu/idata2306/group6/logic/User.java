@@ -3,6 +3,7 @@ package no.ntnu.idata2306.group6.logic;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +16,17 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue
+    @NotNull
     private int UserId;
+    @NotNull
     private String firstName;
+    @NotNull
     private String lastName;
+    @NotNull
     private String email;
+    @NotNull
     private int phoneNumber;
+    private String imgURL;
 //    private ProductList wishList;
 
     public User() {
@@ -92,6 +99,15 @@ public class User {
     }
 
     /**
+     * Set the image URL of the user.
+     *
+     * @param imgURL of the user
+     */
+    private void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
+    }
+
+    /**
      * Set the wishlist of the user.
      *
      * @param productList wishlist of the user
@@ -146,6 +162,10 @@ public class User {
      */
     public int getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public String getImgURL() {
+        return imgURL;
     }
 
     /**
