@@ -164,6 +164,11 @@ public class User {
         return phoneNumber;
     }
 
+    /**
+     * Get the image URL of the user.
+     *
+     * @return image URL
+     */
     public String getImgURL() {
         return imgURL;
     }
