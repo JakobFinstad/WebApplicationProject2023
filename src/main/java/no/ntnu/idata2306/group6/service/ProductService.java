@@ -1,6 +1,6 @@
 package no.ntnu.idata2306.group6.service;
 
-import no.ntnu.idata2306.group6.Repository.ProductRepository;
+import no.ntnu.idata2306.group6.repository.ProductRepository;
 import no.ntnu.idata2306.group6.logic.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
