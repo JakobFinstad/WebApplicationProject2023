@@ -1,12 +1,12 @@
 package no.ntnu.idata2306.group6.logic;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Class representing a user on the website.
@@ -18,6 +18,7 @@ public class User {
     @GeneratedValue
     @NotNull
     private int UserId;
+    private boolean isActive = true;
     @NotNull
     private String firstName;
     @NotNull
@@ -28,6 +29,12 @@ public class User {
     private int phoneNumber;
     @NotNull
     private String password;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new LinkedHashSet<>();
     private String imgURL;
 //    private ProductList wishList;
 
@@ -51,6 +58,15 @@ public class User {
 
     public User() {
 
+    }
+
+    /**
+     * Set the roles of the user.
+     *
+     * @param roles set of roles the user has access to
+     */
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     /**
@@ -188,6 +204,14 @@ public class User {
 //    }
 
     /**
+     * Get the roles of the user.
+     * @return
+     */
+    public Set<Role> getRoles() {
+        return this.roles;
+    }
+
+    /**
      * Check if the item is valid.
      *
      * @return false if either firstname or email is empty
@@ -213,5 +237,28 @@ public class User {
     protected void setPassword(String password) {
         //TODO: Add regex checking in order to check the original password for the password rules
         this.password = password;
+    }
+
+    /**
+     * Deactivate this user.
+     */
+    public void deActivateAccount() {
+        this.isActive = false;
+    }
+
+    /**
+     * Activate this user.
+     */
+    public void activateAccount() {
+        this.isActive = true;
+    }
+
+    /**
+     * Check if this user is active or not.
+     *
+     * @return true if the user is active and false if the user is not active
+     */
+    public boolean isActive() {
+        return this.isActive;
     }
 }
