@@ -1,0 +1,25 @@
+<head>
+    <link rel="stylesheet" href="../static/navbar.css">
+    <script th:src="@{script.js}"></script>
+</head>
+
+<nav class="navbar">
+    <div class="navbar-container">
+        <a href="index.html" id="proflex-logo">ProFlex</a>
+    </div>
+
+    <ul class="menu-choice-list">
+        <li onClick="showPage('index')" class="menu-button">
+            <a class="menu-links">Home</a>
+        </li>
+        <li class="menu-button">
+            <a href="#about-us-section" class="menu-links">About us</a>
+        </li>
+        <li onClick="showPage('products')" class="menu-button">
+            <a href="products/products.html" class="menu-links">Products</a>
+        </li>
+        <li class="menu-button">
+            <img src="../static/images/user-icon.png" height="65" width="65"/>
+        </li>
+    </ul>
+</nav>

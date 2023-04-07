@@ -1,4 +1,4 @@
-@import "../navbar.css";
+@import "../navbar/navbar.css";
 
 html {
     font-size: 10px;
@@ -75,7 +75,7 @@ p {
 }
 #card-container {
     display: block;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 }
 
@@ -83,8 +83,8 @@ p {
     position: relative;
     padding: 2rem;
     display: flex;
-    /*justify-content: center;*/
-    /*align-items: center;*/
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     z-index: 2;
 }
