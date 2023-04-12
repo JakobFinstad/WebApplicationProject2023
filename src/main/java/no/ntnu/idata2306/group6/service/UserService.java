@@ -1,5 +1,6 @@
 package no.ntnu.idata2306.group6.service;
 
+import jakarta.validation.constraints.NotNull;
 import no.ntnu.idata2306.group6.repository.UserRepository;
 import no.ntnu.idata2306.group6.logic.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class UserService {
      * @param id ID of the user to find
      * @return The user or null if no user found by the id searched
      */
-    public User findById(int id) {
+    public User findById(@NotNull long id) {
         Optional<User> user = userRepository.findById(id);
         return user.orElse(null);
     }

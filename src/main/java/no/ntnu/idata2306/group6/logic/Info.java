@@ -57,7 +57,7 @@ public class Info {
      *
      * @return id of the product it is coupled to
      */
-    public int getProductID() {
+    public long getProductID() {
         return productID;
     }
 
@@ -66,7 +66,7 @@ public class Info {
      *
      * @param productID id of the product
      */
-    public void setProductID(int productID) {
+    public void setProductID(long productID) {
         this.productID = productID;
     }
 

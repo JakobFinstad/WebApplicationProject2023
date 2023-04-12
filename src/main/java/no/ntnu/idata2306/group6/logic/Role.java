@@ -15,7 +15,7 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
-    private Long id;
+    private int id;
     private String name;
 
     @ManyToMany(mappedBy = "roles")
@@ -41,7 +41,7 @@ public class Role {
      *
      * @return id
      */
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
@@ -50,7 +50,7 @@ public class Role {
      *
      * @param id of the role
      */
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

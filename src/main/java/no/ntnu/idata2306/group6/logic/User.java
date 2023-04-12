@@ -3,9 +3,7 @@ package no.ntnu.idata2306.group6.logic;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -15,8 +13,8 @@ import java.util.Set;
 @Entity
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int UserId;
     private boolean isActive = true;
     @NotNull
@@ -145,7 +143,7 @@ public class User {
      *
      * @return id of the user
      */
-    public int getUserId() {
+    public @NotNull long getUserId() {
         return this.UserId;
     }
 
