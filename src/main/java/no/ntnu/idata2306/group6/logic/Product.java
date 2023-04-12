@@ -4,6 +4,7 @@ package no.ntnu.idata2306.group6.logic;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
 
@@ -16,7 +17,7 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 public class Product {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     private int id;
     @NotNull

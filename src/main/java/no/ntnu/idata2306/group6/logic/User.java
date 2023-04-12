@@ -15,7 +15,7 @@ import java.util.Set;
 @Entity
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     private int UserId;
     private boolean isActive = true;

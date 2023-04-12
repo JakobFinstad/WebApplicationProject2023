@@ -1,10 +1,7 @@
 package no.ntnu.idata2306.group6.logic;
 
 import com.sun.source.tree.CaseTree;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.LinkedHashSet;
@@ -16,7 +13,7 @@ import java.util.Set;
 @Entity
 public class Role {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     private Long id;
     private String name;
