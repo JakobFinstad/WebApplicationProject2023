@@ -19,7 +19,7 @@ body {
 }
 
 #login-body{
-    background-image: url('images/matrix.gif');
+    background-image: url('../images/matrix.gif');
 }
 
 h2 {
@@ -83,7 +83,7 @@ button {
     padding: 1rem;
     font-size: 3rem;
     border-radius: 3rem;
-    cursor: url("images/pointer.png"), pointer !important;
+    cursor: url("../images/pointer.png"), pointer !important;
 }
 
 p {

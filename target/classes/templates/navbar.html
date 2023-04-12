@@ -9,17 +9,17 @@
     </div>
 
     <ul class="menu-choice-list">
-        <li onClick="showPage('index')" class="menu-button">
-            <a class="menu-links">Home</a>
+        <li class="menu-button">
+            <a href="index.html" class="menu-links">Home</a>
         </li>
         <li class="menu-button">
             <a href="#about-us-section" class="menu-links">About us</a>
         </li>
-        <li onClick="showPage('products')" class="menu-button">
-            <a href="products/products.html" class="menu-links">Products</a>
+        <li class="menu-button">
+            <a th:href="@{/products}" class="menu-links">Products</a>
         </li>
         <li class="menu-button">
-            <img src="../static/images/user-icon.png" height="65" width="65"/>
+            <img src="../images/user-icon.png" height="65" width="65"/>
         </li>
     </ul>
 </nav>

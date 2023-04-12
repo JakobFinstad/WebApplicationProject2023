@@ -2,12 +2,13 @@ package no.ntnu.idata2306.group6.logic;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Subscription {
-    @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int subID;
     @ManyToOne
     private int userID;
@@ -31,6 +32,10 @@ public class Subscription {
         this.productID = productID;
         this.startDate = startDate;
         setEndDate(endDate);
+    }
+
+    public Subscription() {
+
     }
 
     /**
