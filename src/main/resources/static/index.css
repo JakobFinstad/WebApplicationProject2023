@@ -493,22 +493,30 @@ body {
     width: 30rem;
     height: 30rem;
     object-fit: cover;
+    transition: 0.5s;
 }
 
-.map-container{
+.about-us-image:hover {
+    transform: scale(1.2);
+    background-color: transparent;
+}
+
+.map-container {
     align-items: center;
     margin-bottom: 5rem;
     background-color: rgba(240, 255, 255, 0.59);
     border-radius: 5%;
 }
 
-.map{
+.map {
     margin: 2rem;
     border-radius: 5%;
     object-fit: cover;
+    transition: 0.5s;
 }
 
-.review-container{
+
+.review-container {
     max-width: 160rem;
     margin: 0 auto;
     position: relative;
