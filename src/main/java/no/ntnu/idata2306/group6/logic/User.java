@@ -143,7 +143,7 @@ public class User {
      *
      * @return id of the user
      */
-    public @NotNull long getUserId() {
+    public int getUserId() {
         return this.UserId;
     }
 
