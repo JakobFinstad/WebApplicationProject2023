@@ -1,4 +1,4 @@
-package no.ntnu.idata2306.group6.logic;
+package no.ntnu.idata2306.group6.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;

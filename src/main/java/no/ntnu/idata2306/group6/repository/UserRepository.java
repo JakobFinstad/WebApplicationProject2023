@@ -1,7 +1,7 @@
 package no.ntnu.idata2306.group6.repository;
 
 import jakarta.validation.constraints.NotNull;
-import no.ntnu.idata2306.group6.logic.User;
+import no.ntnu.idata2306.group6.entity.User;
 import org.springdoc.core.converters.models.Sort;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

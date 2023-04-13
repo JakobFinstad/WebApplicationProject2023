@@ -1,8 +1,7 @@
 package no.ntnu.idata2306.group6.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
-import jdk.jshell.JShell;
-import no.ntnu.idata2306.group6.logic.Subscription;
+import no.ntnu.idata2306.group6.entity.Subscription;
 import no.ntnu.idata2306.group6.repository.SubscriptionRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.concurrent.Flow;
 
 @RestController
 @RequestMapping("/subscription")

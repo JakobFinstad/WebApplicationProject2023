@@ -1,7 +1,7 @@
 package no.ntnu.idata2306.group6.controller;
 
 import no.ntnu.idata2306.group6.repository.ProductRepository;
-import no.ntnu.idata2306.group6.logic.Product;
+import no.ntnu.idata2306.group6.entity.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;

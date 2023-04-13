@@ -1,7 +1,7 @@
 package no.ntnu.idata2306.group6.security;
 
-import no.ntnu.idata2306.group6.logic.Role;
-import no.ntnu.idata2306.group6.logic.User;
+import no.ntnu.idata2306.group6.entity.Role;
+import no.ntnu.idata2306.group6.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

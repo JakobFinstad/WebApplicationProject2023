@@ -1,6 +1,5 @@
-package no.ntnu.idata2306.group6.logic;
+package no.ntnu.idata2306.group6.entity;
 
-import com.sun.source.tree.CaseTree;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 

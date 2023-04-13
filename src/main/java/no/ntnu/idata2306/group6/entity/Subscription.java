@@ -1,6 +1,5 @@
-package no.ntnu.idata2306.group6.logic;
+package no.ntnu.idata2306.group6.entity;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import jakarta.persistence.*;

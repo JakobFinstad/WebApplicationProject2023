@@ -1,6 +1,6 @@
 package no.ntnu.idata2306.group6.repository;
 
-import no.ntnu.idata2306.group6.logic.Subscription;
+import no.ntnu.idata2306.group6.entity.Subscription;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 
