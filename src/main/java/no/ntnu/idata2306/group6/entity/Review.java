@@ -91,7 +91,7 @@ public class Review {
      *
      * @return id of this review
      */
-    public int getId() {
+    public int getReviewId() {
         return review_id;
     }
 }

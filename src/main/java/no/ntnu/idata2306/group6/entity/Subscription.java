@@ -63,7 +63,7 @@ public class Subscription {
      *
      * @return ID of the subscription
      */
-    public int getSubID() {
+    public int getSubscriptionId() {
         return subID;
     }
 

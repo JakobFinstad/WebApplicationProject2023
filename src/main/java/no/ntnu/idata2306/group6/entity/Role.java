@@ -40,7 +40,7 @@ public class Role {
      *
      * @return id
      */
-    public int getId() {
+    public int getRoleId() {
         return id;
     }
 

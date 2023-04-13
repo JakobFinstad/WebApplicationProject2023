@@ -28,7 +28,7 @@ public enum Category{
         this.id = id;
     }
 
-    public int getId() {
+    public int getCategoryId() {
         return id;
     }
 }

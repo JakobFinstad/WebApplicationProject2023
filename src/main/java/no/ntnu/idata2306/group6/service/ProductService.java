@@ -38,7 +38,7 @@ public class ProductService {
      */
     public boolean addProduct(Product product) {
         boolean added;
-        if (!product.isValid() || productRepository.findById(product.getProductId()).orElse(null) != product) {
+        if (!product.isValid() || productRepository.findById(product.getProductId()).orElse(null) == product) {
             //throw new IllegalArgumentException("Product cannot be added!");
             added = false;
         } else {
