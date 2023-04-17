@@ -2,7 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
-@import "navbar.css";
+@import "css/navbar.css";
 
 html {
     font-family: Inter;

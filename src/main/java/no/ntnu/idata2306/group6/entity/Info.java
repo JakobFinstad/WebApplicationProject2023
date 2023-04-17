@@ -9,8 +9,9 @@ public class Info {
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int infoId;
-    @ManyToOne
-    private int productID;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
+    private Product product;
     private String longDescription;
     private String description;
     private String shortDescription;
@@ -57,17 +58,17 @@ public class Info {
      *
      * @return id of the product it is coupled to
      */
-    public long getProductID() {
-        return productID;
+    public Product getProductID() {
+        return product;
     }
 
     /**
      * Set the product id.
      *
-     * @param productID id of the product
+     * @param product id of the product
      */
-    public void setProductID(long productID) {
-        this.productID = productID;
+    public void setProductID(Product product) {
+        this.product = product;
     }
 
     /**

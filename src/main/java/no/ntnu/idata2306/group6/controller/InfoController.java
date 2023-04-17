@@ -158,7 +158,7 @@ public class InfoController {
     private void updateInfo(int id, Info info) throws  IllegalArgumentException {
         Optional<Info> existingInfo = infoRepository.findById(id);
         if (existingInfo.isEmpty()) {
-            throw new IllegalArgumentException("No product with id " + id + " found")
+            throw new IllegalArgumentException("No product with id " + id + " found");
         }
         if (info == null) {
             throw new IllegalArgumentException("Wrong data in request body");
