@@ -33,12 +33,11 @@ html {
         max-width: 130rem;
         display: grid;
         width: 100%;
-        margin: 4.5rem auto auto;
     }
 
     #CTAText {
         position: relative;
-        font-size: 14rem;
+        font-size: 11rem;
         font-weight: bold;
         margin-top: 0;
         top: 10%;
@@ -46,6 +45,7 @@ html {
         color: #1f1e1e;
         align-items: center;
         max-width: 100rem;
+        margin-left: 1rem;
     }
 
     #Y {
@@ -160,7 +160,7 @@ html {
         margin-top: 3.8rem;
         margin-bottom: 3rem;
         padding: 5rem 0 10rem 0;
-        background-color: rgba(240, 255, 255, 0.32);
+        background-color: rgba(240, 255, 255, 0.18);
         width: 100%;
         height: 25rem;
         position: relative;
@@ -178,8 +178,8 @@ html {
     }
 
     .used-by-company {
-        margin-left: 10rem;
-        margin-right: 10rem;
+        margin-left: 4rem;
+        margin-right: 4rem;
         flex: 2rem;
     }
 
@@ -215,7 +215,7 @@ html {
         position: relative;
         background-color: transparent;
         width: 100%;
-        height: 55rem;
+        height: auto;
         margin: 8rem 10rem 6rem;
     }
 
@@ -255,6 +255,8 @@ html {
         margin-right: auto;
         max-width: 37.5rem;
         max-height: 22.5rem;
+        width: auto;
+        height: auto;
     }
 
     .top-text {
@@ -300,7 +302,7 @@ html {
         background-color: transparent;
         width: 100%;
         max-width: 160rem;
-        height: 55rem;
+        height: auto;
         margin-top: 6rem;
         margin-bottom: 4rem;
         display: grid;
@@ -391,11 +393,12 @@ html {
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
+        margin-left: 15rem;
     }
 
     .about-us-section {
         position: relative;
-        width: 47%;
+        width: 50%;
         margin: 2rem;
         text-align: left;
         flex: 1;
@@ -404,7 +407,13 @@ html {
     .about-us-paragraph {
         font-size: 2.3rem;
         line-height: 5rem;
-        margin-top: 5rem;
+        margin-top: 1rem;
+        font-weight: normal;
+    }
+
+    .signature {
+        font-size: 7rem;
+        font-family: "Freestyle Script", sans-serif;
     }
 
     .about-us-image {
@@ -447,6 +456,7 @@ html {
         text-align: center;
         height: 60rem;
         width: 100%;
+        align-items: center;
     }
 
     .review-header {
@@ -481,10 +491,11 @@ html {
 
     .review-box {
         flex: 2 1 auto;
+        margin: 1rem;
     }
 
     .review-paragraph {
-        width: 90%;
+        width: auto;
         font-size: 2.5rem;
         align-items: center;
         margin-top: 8rem;
