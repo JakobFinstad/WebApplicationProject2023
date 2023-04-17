@@ -98,10 +98,10 @@ public class InfoController {
     }
 
     /**
-     * Delete a info from the collection.
+     * Delete an info from the collection.
      *
      * @param id ID of the info to delete
-     * @return 200 OK on success, 404 Not found on erro
+     * @return 200 OK on success, 404 Not found on error
      */
     @DeleteMapping("/{id}")
     @Operation(hidden = true)
@@ -158,7 +158,7 @@ public class InfoController {
     private void updateInfo(int id, Info info) throws  IllegalArgumentException {
         Optional<Info> existingInfo = infoRepository.findById(id);
         if (existingInfo.isEmpty()) {
-            throw new IllegalArgumentException("No product with id " + id + " found")
+            throw new IllegalArgumentException("No product with id " + id + " found");
         }
         if (info == null) {
             throw new IllegalArgumentException("Wrong data in request body");
