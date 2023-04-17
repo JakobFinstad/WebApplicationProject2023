@@ -5,36 +5,27 @@
     <title>Sign up site</title>
     <link rel="stylesheet" href="../static/css/login-signup.css"/>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="../static/js/password-check.js"></script>
 </head>
-<body>
+<body id="signup-site">
 
-<!--Navigation bar-->
-<div id="navbar-placeholder">
+    <h1>ProFlex</h1>
 
-</div>
-
-<script>
-    $(function () {
-        $("#navbar-placeholder").load("navbar/navbar.html");
-    });
-</script>
-
-<main>
-    <h2>Sign up site</h2>
+    <main id="login-container">
+<!--        <h2>Sign up site</h2>-->
     <form>
         <span>
             <label for="firstname">First Name</label>
-            <input id="firstname" name="firstname" placeholder="first name" required/>
+            <input id="firstname" name="firstname" placeholder="First name" required/>
         </span>
         <span>
             <label for="lastname">Last Name</label>
-            <input id="lastname" name="lastname" placeholder="last name" required/>
+            <input id="lastname" name="lastname" placeholder="Last name" required/>
         </span>
         <span>
             <label for="email">Email</label>
             <input id="email" name="email" type="email" required placeholder="example@something.org"/>
         </span>
-        <div class="passwords">
             <span>
                 <script src="password-check.js"></script>
                 <label for="password">Password</label>
@@ -47,7 +38,6 @@
                 <label for="password-confirm">Confirm Password</label>
                 <input id="password-confirm" name="password-confirm" type="password" required oninput="check()"/>
             </span>
-        </div>
         <span>
             <label for="phoneNumber">PhoneNumber</label>
             <input id="phoneNumber" name="phoneNumber" type="number">
@@ -64,9 +54,10 @@
 
             </span>
         <span>
-            <input type="submit">
+            <button type="submit" id="submit" class="login-button">Submit</button>
         </span>
     </form>
+
 </main>
 </body>
 </html>

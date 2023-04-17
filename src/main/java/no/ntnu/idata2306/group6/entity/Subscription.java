@@ -1,5 +1,7 @@
 package no.ntnu.idata2306.group6.entity;
 
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Date;
 
 import jakarta.persistence.*;
@@ -101,5 +103,14 @@ public class Subscription {
      */
     public Date getEndDate() {
         return endDate;
+    }
+
+    public boolean isActive(){
+        boolean active = false;
+        Date now = Date.from(Instant.now());
+        if (now.after(getStartDate()) && now.before(getEndDate())){
+            active = true;
+        }
+        return active;
     }
 }
