@@ -10,6 +10,7 @@ footer {
     line-height: 1.5;
     font-family: Inter, sans-serif;
     background-color: transparent;
+    align-items: center;
 }
 
 .container {
