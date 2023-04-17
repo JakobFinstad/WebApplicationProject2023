@@ -6,14 +6,14 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 @Primary
 @Component
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends CrudRepository<User, Integer> {
 
     Iterable<User> findAll(Sort sort);
     Page<User> findAll(Pageable pageable);
