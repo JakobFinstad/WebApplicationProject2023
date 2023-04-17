@@ -21,13 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class AuthenticationController {
-    @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Autowired
     private UserDetailsService userDetailsService;
-
-    @Autowired
     private JwtUtil jwtUtil;
 
 
