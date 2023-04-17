@@ -2,6 +2,7 @@ package no.ntnu.idata2306.group6.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -15,7 +16,9 @@ import java.util.Set;
  * @author group 6
  * @version 0.1
  */
+@Schema(description = "Represent a product", title = "Product")
 @Entity
+@Table(name = "product")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
