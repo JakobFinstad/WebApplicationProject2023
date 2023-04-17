@@ -5,9 +5,9 @@ import org.springframework.data.domain.Page;
 
 import java.awt.print.Pageable;
 import java.util.Optional;
-import org.springframework.data.repository.Repository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface SubscriptionRepository extends Repository<Subscription, Integer> {
+public interface SubscriptionRepository extends CrudRepository<Subscription, Integer> {
     Subscription createSubscription(Subscription subscription);
     Subscription updateSubscription(Subscription subscription);
     Page<Subscription> findAll (Pageable pageable);
