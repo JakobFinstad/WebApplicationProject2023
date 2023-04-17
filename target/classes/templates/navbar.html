@@ -1,13 +1,29 @@
 <head>
-    <link rel="stylesheet" href="../static/navbar.css">
+    <link rel="stylesheet" href="../static/css/navbar.css">
     <script th:src="@{script.js}"></script>
 </head>
 
 <nav class="navbar">
     <div class="navbar-container">
         <a href="index.html" id="proflex-logo">ProFlex</a>
-    </div>
 
+<<<<<<< Updated upstream
+        <ul class="menu-choice-list">
+            <li class="menu-button">
+                <a href="index.html" class="menu-links">Home</a>
+            </li>
+            <li class="menu-button">
+                <a href="#about-us-section" class="menu-links">About us</a>
+            </li>
+            <li class="menu-button">
+                <a href=products.html class="menu-links">Products</a>
+            </li>
+            <li class="menu-button log-in-button">
+                <img src="../images/user-icon.png"/>
+            </li>
+        </ul>
+    </div>
+=======
     <ul class="menu-choice-list">
         <li class="menu-button">
             <a href="index.html" class="menu-links">Home</a>
@@ -19,7 +35,8 @@
             <a th:href="@{/products}" class="menu-links">Products</a>
         </li>
         <li class="menu-button">
-            <img src="../images/user-icon.png" height="65" width="65"/>
+            <img src="../static/images/user-icon.png" height="65" width="65"/>
         </li>
     </ul>
+>>>>>>> Stashed changes
 </nav>

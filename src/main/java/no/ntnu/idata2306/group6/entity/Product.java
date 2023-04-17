@@ -2,11 +2,12 @@ package no.ntnu.idata2306.group6.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 /**
  * A class representing different products in the store.
@@ -25,6 +26,9 @@ public class Product {
     @NotNull
     private String name;
 
+    @OneToMany(mappedBy = "product")
+    private List<Info> infos = new ArrayList<>();
+
     public Product(){
 
     }
@@ -33,9 +37,7 @@ public class Product {
      * Constructor for a product. Have a few fields for describing the product.
      *
      * @param price amount of currency that need to be paid in order to achieve this product
-     * @param imgURL the relative url from the root to the image associated with the product
      * @param name of the product
-     * @param description more indepth on how this product is structured
      */
     public Product (int id, int price, String name) {
         setPrice(price);
@@ -92,7 +94,6 @@ public class Product {
   /*  *//**
      * Set the description of the product.
      *
-     * @param description of the product, cannot be empty
      *//*
     public void setDescription (String description) {
         if (description == null || description.isEmpty()) {

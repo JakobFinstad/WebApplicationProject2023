@@ -10,9 +10,9 @@ public class Subscription {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int subID;
     @ManyToOne
-    private int userID;
+    private User user;
     @ManyToOne
-    private int productID;
+    private Product product;
     private Date startDate;
     private Date endDate;
 
@@ -20,15 +20,15 @@ public class Subscription {
      * Class which represents a subscription.
      *
      * @param subID Subscription ID
-     * @param userID User ID
-     * @param productID Product ID
+     * @param user User ID
+     * @param product Product ID
      * @param startDate When one starts the subscription
      * @param endDate When one ends the subscription
      */
-    public Subscription(int subID, int userID, int productID, Date startDate, Date endDate) {
+    public Subscription(int subID, User user, Product product, Date startDate, Date endDate) {
         this.subID = subID;
-        this.userID = userID;
-        this.productID = productID;
+        this.user = user;
+        this.product = product;
         this.startDate = startDate;
         setEndDate(endDate);
     }
@@ -68,21 +68,21 @@ public class Subscription {
     }
 
     /**
-     * Return the user ID.
+     * Return the user.
      *
      * @return ID of the user
      */
-    public int getUserID() {
-        return userID;
+    public User getUser() {
+        return this.user;
     }
 
     /**
-     * Return the product ID.
+     * Return the product.
      *
      * @return ID of the product
      */
-    public int getProductID() {
-        return productID;
+    public Product getProductID() {
+        return this.product;
     }
 
     /**

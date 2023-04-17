@@ -31,7 +31,7 @@ public class UserService {
      * @param id ID of the user to find
      * @return The user or null if no user found by the id searched
      */
-    public User findById(@NotNull long id) {
+    public User findById(@NotNull int id) {
         Optional<User> user = userRepository.findById(id);
         return user.orElse(null);
     }
