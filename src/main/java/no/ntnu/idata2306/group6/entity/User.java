@@ -13,6 +13,7 @@ import java.util.Set;
  *
  */
 @Entity
+@Table
 public class User {
     @Id
     @NotNull

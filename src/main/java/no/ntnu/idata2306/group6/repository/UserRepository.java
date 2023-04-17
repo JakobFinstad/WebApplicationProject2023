@@ -1,24 +1,24 @@
 package no.ntnu.idata2306.group6.repository;
 
+import jakarta.transaction.Transactional;
 import no.ntnu.idata2306.group6.entity.User;
 import org.springdoc.core.converters.models.Sort;
 import org.springframework.context.annotation.Primary;
-import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 @Primary
 @Component
+@Repository
+@Transactional
 public interface UserRepository extends CrudRepository<User, Integer> {
 
-    Iterable<User> findAll(Sort sort);
     Page<User> findAll(Pageable pageable);
-    List<User> findAll();
     Optional<User> findByEmail(String email);
     Optional<User> findById(Integer integer);
-    List findAll(final String name);
 }
