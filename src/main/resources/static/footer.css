@@ -2,40 +2,36 @@
 
 
 
-*{
+footer {
+    font-size: 10px;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     line-height: 1.5;
     font-family: Inter, sans-serif;
-    font-size: 10px;
+    background-color: transparent;
 }
 
-.container{
-    max-width: 130rem;
+.container {
+    width: 100%;
     /*Change to transparent*/
     background-color: rgba(128, 128, 128, 0.18);
     margin: auto;
 }
 
-.row{
+.row {
     display: flex;
     flex-wrap: wrap;
 }
 
-ul{
+ul {
     list-style: none;
 }
 
-.footer{
-    background-color: transparent;
-    padding: 7rem 0;
-}
-
-.footer-col{
-    width: 25%;
-    padding: 6rem 10rem;
-    min-width: 30rem;
+.footer-col {
+    width: 20%;
+    padding: 5rem 1rem;
+    min-width: 35rem;
 }
 
 .footer-col h1 {
@@ -77,14 +73,16 @@ ul{
     text-transform: capitalize;
     text-decoration: none;
     font-weight: 300;
-    color: #bbbbbb;
+    color: #383535;
     display: block;
     transition: all 0.15s ease;
+    white-space: nowrap;
 }
 
 .footer-col ul li a:hover{
     color: white;
     padding-left: 0.8rem;
+    white-space: nowrap;
 }
 .footer-col ul li a:active{
     color: rgba(255, 255, 255, 0.11);

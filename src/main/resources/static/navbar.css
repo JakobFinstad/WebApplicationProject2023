@@ -1,6 +1,10 @@
+html {
+    font-size: 10px;
+}
+
 .navbar{
     font-family: Inter, sans-serif;
-    background-image: linear-gradient(to top, #00ffff, rgb(180, 46, 83) 50%);
+    background-color: #b42e53; /**linear-gradient(to top, #00ffff, rgb(180, 46, 83) 50%);*//
     height: 8rem;
     display: block !important;
     align-items: center;
@@ -54,7 +58,7 @@
     top: 0.2rem;
     right: 1.6rem;
     margin-right: 0;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     text-decoration: none;
 }
 
@@ -63,6 +67,12 @@
     margin-left: 2rem;
     margin-right: .5rem;
     color: white;
+
+}
+
+.log-in-button {
+    max-width: 6rem;
+    margin-top: -0.5rem;
 }
 
 .menu-button:hover{

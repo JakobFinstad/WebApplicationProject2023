@@ -10,17 +10,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ProFlex</title>
 
+<!--Navigation bar-->
+<div id="navbar-placeholder">
+
+</div>
+
+<script>
+    $(function(){
+        $("#navbar-placeholder").load("navbar.html");
+    });
+</script>
+
+<!--End of navigation bar -->
 </head>
+
 <body>
-<nav class="navbar">
-    <script>
-        $(function(){
-            $("#navbar-placeholder").load("navbar/navbar.html");
-        });
-    </script>
-
-</nav>
-
 <article id ="mainContent">
 
     <div class="center-text">
@@ -202,14 +206,15 @@
     </section>
 </article>
 
-
-<footer class="footer-container">
-    <script>
-        $(function(){
-            $("#footer-placeholder").load("../footer/footer.html");
-        });
-    </script>
-</footer>
-
 </body>
+<!-- Footer -->
+<div id="footer-placeholder">
+</div>
+
+<script>
+    $(function(){
+        $("#footer-placeholder").load("footer.html");
+    });
+</script>
+<!-- End of footer -->
 </html>
