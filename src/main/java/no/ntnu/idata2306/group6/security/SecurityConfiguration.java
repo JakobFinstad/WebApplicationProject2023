@@ -1,6 +1,8 @@
 package no.ntnu.idata2306.group6.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -48,12 +50,26 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain configureAuthorizationFilterChain(HttpSecurity http) throws Exception{
         http.cors().and().csrf().disable()
-                .authorizeHttpRequests().requestMatchers("/authenticate")
-                .permitAll().anyRequest().authenticated().and()
+                .authorizeHttpRequests().requestMatchers("/authenticate").permitAll()
+//                .requestMatchers("src/main/resources/static/css/**").permitAll()
+//                .requestMatchers("src/main/resources/static/images/**").permitAll()
+//                .requestMatchers("src/main/resources/static/js/**").permitAll()
+//                .requestMatchers("src/main/resources/templates/**").permitAll()
+                .anyRequest().authenticated().and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
+    }
+
+    protected HttpSecurity configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeHttpRequests()
+                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                .requestMatchers("src/main/resources/static/css/**").permitAll()
+                .requestMatchers("src/main/resources/static/images/**").permitAll()
+                .requestMatchers("src/main/resources/static/js/**").permitAll();
+        return http;
     }
 
     /**
