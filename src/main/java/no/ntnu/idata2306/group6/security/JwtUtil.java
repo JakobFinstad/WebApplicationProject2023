@@ -22,6 +22,8 @@ public class JwtUtil {
     // Key inside JWT token where roles are stored
     private static final String ROLE_KEY = "roles";
 
+    public JwtUtil(){}
+
     /**
      * Generate a token for the given user. Lasts one hour.
      *
