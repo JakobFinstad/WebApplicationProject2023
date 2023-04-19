@@ -4,6 +4,7 @@ package no.ntnu.idata2306.group6.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import no.ntnu.idata2306.group6.repository.UserRepository;
 import no.ntnu.idata2306.group6.entity.User;
+import no.ntnu.idata2306.group6.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class UserController {
     public ResponseEntity<Object> getAll() {
         logger.info("Getting all ");
         Iterable<User> users = userRepository.findAll();
-        return new ResponseEntity<>(users, HttpStatus.OK);
+        return new ResponseEntity<>(UserService.getAllStringFormat(users.iterator()), HttpStatus.OK);
     }
 
     /**

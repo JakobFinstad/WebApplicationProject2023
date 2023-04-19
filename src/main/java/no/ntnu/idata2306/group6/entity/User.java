@@ -262,4 +262,13 @@ public class User {
     public boolean isActive() {
         return this.isActive;
     }
+
+    public String getPrintFormat(){
+        return String.format(
+                "| %-15s | %-15s | %-22s | "
+                        + "%8d",
+                this.getFirstName(), this.getLastName(),
+                this.getEmail(), this.getPhoneNumber()
+        );
+    }
 }
