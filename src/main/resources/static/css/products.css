@@ -3,6 +3,7 @@ html {
     font-size: 10px;
     box-sizing: border-box;
     font-family: Inter, sans-serif;
+    max-width: 192rem;
 }
 
 @media screen and (max-width: 192rem) {
@@ -27,7 +28,9 @@ html {
     }
 
     main {
-        /* margin: 2rem; padding: 2rem; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     #TopText {
@@ -71,7 +74,7 @@ html {
         top: 0;
         transition: top ease .5s;
 
-        background: linear-gradient(60deg, white 0%, white 50%, cyan 0%, cyan 50%);
+        background: linear-gradient(to top, rgba(174, 255, 255, 0.75), azure, rgba(180, 46, 83, 0.62));
     }
 
     #card-container {
@@ -85,34 +88,8 @@ html {
         position: relative;
         padding: 2rem;
         display: flex;
-        /*justify-content: center;*/
-        /*align-items: center;*/
         flex-direction: column;
         z-index: 2;
-    }
-
-    /*.card::before {*/
-    /*    content: "";*/
-    /*    position: absolute;*/
-    /*    top: -50%;*/
-    /*    width: 100%;*/
-    /*    height: 100%;*/
-    /*    background: cyan;*/
-    /*    transform: skewY(345deg);*/
-    /*    transition: .5s;*/
-    /*}*/
-    /*.card:hover::before {*/
-    /*    top: -70%;*/
-    /*    transform: skewY(390deg);*/
-    /*}*/
-    .card::after {
-        content: "ProFlex";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        font-weight: 600;
-        font-size: 6em;
-        color: rgba(0, 0, 0, 0.1);
     }
 
     .card .imgBox {
@@ -125,25 +102,6 @@ html {
         height: auto;
     }
 
-
-    /*.card .card-description .check-out {*/
-    /*    position: relative;*/
-    /*    top: 10rem;*/
-    /*    opacity: 0;*/
-    /*    padding: 1rem 3rem;*/
-    /*    margin-top: 1.5rem;*/
-    /*    color: white;*/
-    /*    text-decoration: none;*/
-    /*    background: #b42e53;*/
-    /*    border-radius: 3rem;*/
-    /*    text-transform: uppercase;*/
-    /*    letter-spacing: .1rem;*/
-    /*    transition: .5s;*/
-    /*}*/
-    /*.card:hover .card-description .check-out {*/
-    /*    top: 0;*/
-    /*    opacity: 1;*/
-    /*}*/
     .card:hover {
         top: -1rem;
         box-shadow: 0 0 2rem 1rem #b9f2ff;
