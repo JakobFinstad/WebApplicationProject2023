@@ -1,5 +1,7 @@
 html {
     font-size: 10px;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .navbar{
@@ -167,11 +169,11 @@ the whole menu choice list */
     }
     .menu__box {
         display: block;
-        position: fixed;
+        position: absolute;
         top: 0;
         right: -100%;
         width: 30rem;
-        height: 100%;
+        height: 100rem;
         margin: 0;
         padding: 8rem 0;
         list-style: none;
