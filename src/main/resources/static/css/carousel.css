@@ -1,0 +1,117 @@
+html {
+    font-size: 10px;
+}
+
+html,
+body {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+.swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: auto;
+    height: 52rem;
+}
+
+.front-page-products {
+    position: relative;
+    background-color: transparent;
+    width: 100%;
+    height: auto;
+    margin: 8rem 10rem 6rem;
+}
+
+.card {
+    background-color: rgba(240, 255, 255, 0.59);
+    width: 30rem;
+    height: 52rem;
+    margin: 2rem 2rem;
+    border: 0.2rem solid rgb(255, 255, 255);
+    border-radius: 1rem;
+    overflow: hidden;
+    float: left;
+    /*Shadow*/
+    box-shadow: 0 0 .5rem 0 lightgray;
+    position: relative;
+    top: 0;
+    transition: top ease .5s;
+}
+
+.card-description {
+    margin: 2rem 1rem;
+}
+
+.card:hover {
+    top: -1rem;
+    box-shadow: 0 0 2rem 1rem rgba(180, 46, 83, 0.24);
+    cursor: pointer;
+}
+
+.card:active {
+    box-shadow: 0 0 2rem 1rem rgba(185, 242, 255, 0.21);
+}
+
+.products-picture {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 37.5rem;
+    max-height: 22.5rem;
+    width: auto;
+    height: auto;
+}
+
+.top-text {
+    font-size: 3.5rem;
+    color: Black;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0;
+}
+
+.product-solutions-main {
+    height: 41.2rem;
+    border-radius: 0.4rem;
+    background-size: cover;
+    position: relative;
+    top: 100rem;
+    padding-top: 2.5rem;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 15rem;
+}
+
+.product-image {
+    width: 75.4rem;
+    height: 53.5rem;
+    margin-left: 5rem;
+}
+
+.product-top-text {
+    font-size: 3.9rem;
+    color: rgba(0, 0, 0, 0.71);
+    margin-left: 5rem;
+}
+
+.card-p {
+    text-align: center;
+    font-size: 1.5rem;
+}
