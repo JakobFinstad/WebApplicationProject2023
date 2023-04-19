@@ -17,7 +17,7 @@ import java.util.Date;
  */
 @Component
 public class JwtUtil {
-    @Value("yolo") //${jwt_secret_key}
+    @Value("${jwt_secret_key}")
     private String SECRET_KEY;
     // Key inside JWT token where roles are stored
     private static final String ROLE_KEY = "roles";
