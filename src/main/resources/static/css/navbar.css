@@ -66,13 +66,11 @@ html {
     float: left;
     margin-left: 2rem;
     margin-right: .5rem;
-    color: white;
-
 }
 
 .log-in-button {
-    max-width: 6rem;
-    margin-top: -0.5rem;
+    max-width: 5rem;
+    margin-top: -0.3rem;
 }
 
 .menu-button:hover{
@@ -96,4 +94,110 @@ html {
 
 .menu-links:active{
     opacity: 0.4;
+}
+
+/* Hides the hamburger menu because the screen is wide enough to fit
+the whole menu choice list */
+.hamburger-menu {
+    display: none;
+}
+
+/* TODO- Cite the website where I got this code:
+    https://alvarotrigo.com/blog/hamburger-menu-css/
+    date: 18.04.2023*/
+@media screen and (max-width: 60em) {
+
+    html {
+        font-size: 8px;
+    }
+
+    /* Hides The Menu choice list because the screen is to small to fit
+    the whole menu choice list*/
+    .menu-choice-list {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+
+    #menu__toggle {
+        opacity: 0;
+    }
+    #menu__toggle:checked + .menu__btn > span {
+        transform: rotate(45deg);
+    }
+    #menu__toggle:checked + .menu__btn > span::before {
+        top: 0;
+        transform: rotate(0deg);
+    }
+    #menu__toggle:checked + .menu__btn > span::after {
+        top: 0;
+        transform: rotate(90deg);
+    }
+    #menu__toggle:checked ~ .menu__box {
+        right: 0 !important;
+    }
+    .menu__btn {
+        position: absolute;
+        top: 4rem;
+        right: 3rem;
+        width: 4rem;
+        height: 2.6rem;
+        cursor: pointer;
+        z-index: 1;
+    }
+    .menu__btn > span,
+    .menu__btn > span::before,
+    .menu__btn > span::after {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: .2rem;
+        background-color: white;
+        transition-duration: .25s;
+    }
+    .menu__btn > span::before {
+        content: '';
+        top: -.8rem;
+    }
+    .menu__btn > span::after {
+        content: '';
+        top: .8rem;
+    }
+    .menu__box {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 30rem;
+        height: 100%;
+        margin: 0;
+        padding: 8rem 0;
+        list-style: none;
+        background-color: #a02849;
+        box-shadow: .2rem .2rem .6rem rgba(0, 0, 0, .4);
+        transition-duration: .25s;
+    }
+    .menu__item {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        min-height: 1rem;
+        flex-direction: row;
+        padding: 1.2rem 2.4rem;
+        color: white;
+        font-family: 'Roboto', sans-serif;
+        font-size: 2rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition-duration: .25s;
+    }
+    .menu__item:hover {
+        background-color: #B42E53;
+    }
+
+
+
+
 }
