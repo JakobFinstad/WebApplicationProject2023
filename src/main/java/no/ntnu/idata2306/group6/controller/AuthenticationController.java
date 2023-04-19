@@ -21,10 +21,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class AuthenticationController {
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
+    private final UserDetailsService userDetailsService;
+    private final JwtUtil jwtUtil;
 
-    private UserDetailsService userDetailsService;
-    private JwtUtil jwtUtil;
+    @Autowired
+    public AuthenticationController(AuthenticationManager authenticationManager, UserDetailsService userDetailsService, JwtUtil jwtUtil) {
+        this.authenticationManager = authenticationManager;
+        this.userDetailsService = userDetailsService;
+        this.jwtUtil = jwtUtil;
+    }
 
 
     @PostMapping("/authentication")

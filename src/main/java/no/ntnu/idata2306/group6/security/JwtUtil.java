@@ -17,10 +17,12 @@ import java.util.Date;
  */
 @Component
 public class JwtUtil {
-    @Value("${jwt_secret_key}")
+    @Value("yolo") //${jwt_secret_key}
     private String SECRET_KEY;
     // Key inside JWT token where roles are stored
     private static final String ROLE_KEY = "roles";
+
+    public JwtUtil(){}
 
     /**
      * Generate a token for the given user. Lasts one hour.

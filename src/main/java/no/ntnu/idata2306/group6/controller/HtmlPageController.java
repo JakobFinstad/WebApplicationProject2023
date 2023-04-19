@@ -27,7 +27,7 @@ public class HtmlPageController {
      *
      * @return user page
      */
-    @GetMapping("/user")
+    @GetMapping("/this_user")
     @PreAuthorize("hasRole('USER')")
     public String userPage() {
         return "This is the users page";
