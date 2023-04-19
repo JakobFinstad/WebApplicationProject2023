@@ -50,7 +50,7 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain configureAuthorizationFilterChain(HttpSecurity http) throws Exception{
         http.cors().and().csrf().disable()
-                .authorizeHttpRequests().requestMatchers("/authenticate").permitAll()
+                .authorizeHttpRequests().requestMatchers("/authentication").permitAll()
 //                .requestMatchers("src/main/resources/static/css/**").permitAll()
 //                .requestMatchers("src/main/resources/static/images/**").permitAll()
 //                .requestMatchers("src/main/resources/static/js/**").permitAll()
