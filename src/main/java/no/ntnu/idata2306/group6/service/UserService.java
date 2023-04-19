@@ -102,7 +102,11 @@ public class UserService {
     }
 
     public static String getAllStringFormat(Iterator<User> it){
-        String str = "";
+        String str = String.format(
+                "| %-8s | %-15s | %-15s | %-22s | "
+                        + "%8s |\n", "USERID", "FIRSTNAME", "LASTNAME"
+                , "EMAIL", "PHONE NUMBER"
+        );
         while (it.hasNext()) {
             str += it.next().getPrintFormat();
         }

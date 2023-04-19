@@ -265,9 +265,9 @@ public class User {
 
     public String getPrintFormat(){
         return String.format(
-                "| %-15s | %-15s | %-22s | "
-                        + "%8d",
-                this.getFirstName(), this.getLastName(),
+                "| %-8d | %-15s | %-15s | %-22s | "
+                        + "%8d |\n",
+                this.getUserId(), this.getFirstName(), this.getLastName(),
                 this.getEmail(), this.getPhoneNumber()
         );
     }
