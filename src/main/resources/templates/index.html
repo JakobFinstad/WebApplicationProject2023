@@ -7,14 +7,17 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-
-
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ProFlex</title>
 
 <!--Navigation bar-->
+
+    <!--End of navigation bar -->
+</head>
+
+<body>
 <div id="navbar-placeholder">
 
 </div>
@@ -25,10 +28,6 @@
     });
 </script>
 
-<!--End of navigation bar -->
-</head>
-
-<body>
 <article id ="mainContent">
 
     <div class="center-text">
@@ -40,15 +39,80 @@
             <em id="trusted-by-millions-paragraph">And millions of others</em></h3>
     </section>
 
-    <section id="frontpage-products-placeholder">
-
+    <section>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="card">
+                        <img src="../static/images/Online-scheduling-software-2.jpg" class="products-picture" alt="picture of online scheduling software"/>
+                        <div class="card-description">
+                            <h2 class="top-text">Online scheduling Software1</h2>
+                            <p class="card-p">&#10003;Easy scheduling process</p>
+                            <p class="card-p">&#10003;Quick and easy</p>
+                            <p class="card-p">&#10003;Powerful calendar management</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card">
+                        <img src="../static/images/Online-scheduling-software-2.jpg" class="products-picture" alt="picture of online scheduling software"/>
+                        <div class="card-description">
+                            <h2 class="top-text">Online scheduling Software2</h2>
+                            <p class="card-p">&#10003;Easy scheduling process</p>
+                            <p class="card-p">&#10003;Quick and easy</p>
+                            <p class="card-p">&#10003;Powerful calendar management</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card">
+                        <img src="../static/images/Online-scheduling-software-2.jpg" class="products-picture" alt="picture of online scheduling software"/>
+                        <div class="card-description">
+                            <h2 class="top-text">Online scheduling Software3</h2>
+                            <p class="card-p">&#10003;Easy scheduling process</p>
+                            <p class="card-p">&#10003;Quick and easy</p>
+                            <p class="card-p">&#10003;Powerful calendar management</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card">
+                        <img src="../static/images/Online-scheduling-software-2.jpg" class="products-picture" alt="picture of online scheduling software"/>
+                        <div class="card-description">
+                            <h2 class="top-text">Online scheduling Software4</h2>
+                            <p class="card-p">&#10003;Easy scheduling process</p>
+                            <p class="card-p">&#10003;Quick and easy</p>
+                            <p class="card-p">&#10003;Powerful calendar management</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card">
+                        <img src="../static/images/Online-scheduling-software-2.jpg" class="products-picture" alt="picture of online scheduling software"/>
+                        <div class="card-description">
+                            <h2 class="top-text">Online scheduling Software5</h2>
+                            <p class="card-p">&#10003;Easy scheduling process</p>
+                            <p class="card-p">&#10003;Quick and easy</p>
+                            <p class="card-p">&#10003;Powerful calendar management</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card">
+                        <img src="../static/images/Online-scheduling-software-2.jpg" class="products-picture" alt="picture of online scheduling software"/>
+                        <div class="card-description">
+                            <h2 class="top-text">Online scheduling Software6</h2>
+                            <p class="card-p">&#10003;Easy scheduling process</p>
+                            <p class="card-p">&#10003;Quick and easy</p>
+                            <p class="card-p">&#10003;Powerful calendar management</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
     </section>
-
-    <script>
-        $(function(){
-            $("#frontpage-products-placeholder").load("carousel.html");
-        });
-    </script>
 
     <section class="our-values">
         <div class="value">
@@ -181,6 +245,27 @@
 <script>
     $(function(){
         $("#footer-placeholder").load("footer.html");
+    });
+</script>
+
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        loop: true,
+        autoplay: {
+            delay: 6000,
+        },
+        speed: 3000,
+        slidesPerView: "auto",
+        centeredSlides: true,
+        spaceBetween: 20,
+        pagination: {
+            el: ".swiper-pagination",
+            type: "fraction",
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
     });
 </script>
 <!-- End of footer -->
