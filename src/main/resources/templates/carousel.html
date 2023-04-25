@@ -5,14 +5,15 @@
     <meta charset="utf-8" />
     <title>Swiper demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="../static/css/carousel.css">
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" th:href="@{'https://cdn.jsdelivr.net/npm/swiper9/swiper-bundle.min.css'}" />
+    <script th:href="@{'https://cdn.jsdelivr.net/npm/swiper9/swiper-bundle.min.js'}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/carousel.css}">
+    <script th:src="@{/js/carousel.js}"></script>
 </head>
 
 <body>
 
-<div #swiperRef="" class="swiper mySwiper">
+<section #swiperRef="" class="swiper mySwiper">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
             <div class="card">
@@ -83,28 +84,7 @@
     </div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
-</div>
-
-<script>
-    const swiper = new Swiper(".mySwiper", {
-        loop: true,
-        autoplay: {
-            delay: 6000,
-        },
-        speed: 3000,
-        slidesPerView: "auto",
-        centeredSlides: true,
-        spaceBetween: 20,
-        pagination: {
-            el: ".swiper-pagination",
-            type: "fraction",
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-    });
-</script>
+</section>
 </body>
 
 </html>
