@@ -22,15 +22,63 @@ public class HtmlPageController {
         return "index";
     }
 
+    /**
+     * Get the index page of the main site.
+     *
+     * @return index
+     */
+    @GetMapping("/home")
+    public String home2() {
+        return home();
+    }
+
+    /**
+     * Get the index page of the main site.
+     *
+     * @return index
+     */
+    @GetMapping("/index")
+    public String index() {
+        return home();
+    }
+
+    /**
+     * Get the product page.
+     *
+     * @return product page
+     */
     @GetMapping("/products")
-    public String product(){
+    public String products(){
         return "products";
     }
 
+    /**
+     * Get the login page.
+     *
+     * @return login page
+     */
     @GetMapping("/login")
     public String login() {
         return "log-in";
     }
+
+    /**
+     * Get the signup page.
+     *
+     * @return signup page
+     */
+    @GetMapping("/signup")
+    public String signup() {return "sign-up";}
+
+    /**
+     * Get the accounting solution page.
+     *
+     * @return accounting solution page
+     */
+    @GetMapping("/products/1")
+    public String accountingSolution() {return "proFlexAccountingSolution";}
+
+
     /**
      * Get the user page for the user.
      *
@@ -42,6 +90,11 @@ public class HtmlPageController {
         return "This is the users page";
     }
 
+    /**
+     * Get the admin page.
+     *
+     * @return admin page
+     */
     @GetMapping("/admin")
     @PreAuthorize("hasRole('ADMIN')")
     public String adminPage() {
