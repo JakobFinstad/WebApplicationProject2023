@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Proflex- Login</title>
-    <link rel="stylesheet" href="../static/css/login-signup.css">
+    <link rel="stylesheet" th:href="@{/css/login-signup.css}">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body id="login-body">
-<a href="index.html"><h1>ProFlex</h1></a>
+<a th:href="@{/}"><h1>ProFlex</h1></a>
 
 <main id="login-container">
     <span>
@@ -23,7 +23,7 @@
     <button disabled class="login-button">Log In</button>
 <!--    <audio autoplay src="../static/images/audio.mp3" preload="metadata" id="music">-->
 <!--    </audio>-->
-  <p>Don't have an account yet?&nbsp;&nbsp;<a href="sign-up.html" id="signup_link">Sign up here</a></p>
+  <p>Don't have an account yet?&nbsp;&nbsp;<a th:href="@{/sign-up}" id="signup_link">Sign up here</a></p>
 
 <!--    <script>-->
 <!--        const audio = document.getElementById("music");-->

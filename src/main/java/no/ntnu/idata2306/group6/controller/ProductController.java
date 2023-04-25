@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
 
@@ -15,7 +16,8 @@ import java.util.*;
 /**
  * REST API controller for product collection
  */
-@RestController
+@Controller
+@CrossOrigin
 @RequestMapping("/product")
 public class ProductController {
   private ProductRepository productRepository;
@@ -41,6 +43,11 @@ public class ProductController {
     logger.error("Getting all ");
     Iterable<Product> products = productRepository.findAll();
     return new ResponseEntity<>(products, HttpStatus.OK);
+  }
+
+  @GetMapping("/h")
+  public String getPage() {
+    return "products";
   }
 
   /**
