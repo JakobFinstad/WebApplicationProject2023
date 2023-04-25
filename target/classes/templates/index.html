@@ -14,19 +14,19 @@
     <title>ProFlex</title>
 
 <!--Navigation bar-->
-<!--
-<script>
-    $(function(){
-        $("#navbar-placeholder").load("@{/navbar.html}");
-    });
-</script>
 
-<!-End of navigation bar -->
+<!--<script>-->
+<!--    $(function(){-->
+<!--        $("#navbar-placeholder").load("@{/navbar.html}");-->
+<!--    });-->
+<!--</script>-->
+
+<!--End of navigation bar -->
 </head>
 
 <body>
-<div id="navbar-placeholder">
-    <link th:href="@{/templates/navbar.html}">
+<div id="navbar-placeholder" th:replace="navbar :: nav">
+
 </div>
 <article id ="mainContent">
 

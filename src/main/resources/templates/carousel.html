@@ -86,7 +86,12 @@
 </div>
 
 <script>
-    var swiper = new Swiper(".mySwiper", {
+    const swiper = new Swiper(".mySwiper", {
+        loop: true,
+        autoplay: {
+            delay: 6000,
+        },
+        speed: 3000,
         slidesPerView: "auto",
         centeredSlides: true,
         spaceBetween: 20,
