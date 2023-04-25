@@ -75,7 +75,7 @@ public class HtmlPageController {
      *
      * @return accounting solution page
      */
-    @GetMapping("/accountingSolution")
+    @GetMapping("/products/1")
     public String accountingSolution() {return "proFlexAccountingSolution";}
 
 
