@@ -23,7 +23,7 @@ public class HtmlPageController {
     }
 
     @GetMapping("/products")
-    public String product(){
+    public String products(){
         return "products";
     }
 
@@ -31,6 +31,14 @@ public class HtmlPageController {
     public String login() {
         return "log-in";
     }
+    
+    @GetMapping("/signup")
+    public String signup() {return "sign-up";}
+
+    @GetMapping("/accountingSolution")
+    public String accountingSolution() {return "proFlexAccountingSolution.html";}
+
+
     /**
      * Get the user page for the user.
      *
