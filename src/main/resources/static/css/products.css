@@ -6,105 +6,114 @@ html {
     max-width: 192rem;
 }
 
-@media screen and (max-width: 192rem) {
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    max-height: 30rem;
+    width: auto;
+    height: auto;
+}
 
-    img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 100%;
-        max-height: 30rem;
-        width: auto;
-        height: auto;
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#TopText {
+    font-family: "Work Sans", sans-serif;
+    font-size: 14rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+}
+
+.products-text {
+    color: #b42e53;
+}
+
+h1 {
+    font-size: 4.8rem;
+}
+
+h2 {
+    font-size: 3.2rem;
+}
+
+p {
+    font-size: 2rem;
+}
+
+.card {
+    width: 37.5rem;
+    height: 60rem;
+    margin: 4rem 2rem;
+    border: 0.1rem solid darkgray;
+    border-radius: 1rem;
+    overflow: hidden;
+    float: left;
+
+    /*Shadow*/
+    box-shadow: 0 0 .5rem 0 lightgray;
+
+    position: relative;
+    top: 0;
+    transition: top ease .5s;
+
+    background: linear-gradient(to top, rgba(174, 255, 255, 0.75), azure, rgba(180, 46, 83, 0.62));
+}
+
+#card-container {
+    display: block;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.card .card-description {
+    position: relative;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+}
+
+.card .imgBox {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    max-height: 30rem;
+    width: auto;
+    height: auto;
+}
+
+.card:hover {
+    top: -1rem;
+    box-shadow: 0 0 2rem 1rem #b9f2ff;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 60em) {
+    html {
+        font-size: 8px !important;
     }
+}
 
-    *, *:before, *:after {
-        box-sizing: inherit;
-    }
-
-    body {
-        margin: 0;
-        padding: 0;
-    }
-
-    main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #TopText {
-        font-family: "Work Sans", sans-serif;
-        font-size: 14rem;
-        font-weight: 900;
-        text-transform: uppercase;
-        text-align: center;
-        line-height: 1;
-    }
-
-    .products-text {
-        color: #b42e53;
-    }
-
-    h1 {
-        font-size: 4.8rem;
-    }
-
-    h2 {
-        font-size: 3.2rem;
-    }
-
-    p {
-        font-size: 2rem;
-    }
-
-    .card {
-        width: 37.5rem;
-        height: 60rem;
-        margin: 4rem 2rem;
-        border: 0.1rem solid darkgray;
-        border-radius: 1rem;
-        overflow: hidden;
-        float: left;
-
-        /*Shadow*/
-        box-shadow: 0 0 .5rem 0 lightgray;
-
-        position: relative;
-        top: 0;
-        transition: top ease .5s;
-
-        background: linear-gradient(to top, rgba(174, 255, 255, 0.75), azure, rgba(180, 46, 83, 0.62));
-    }
-
-    #card-container {
-        display: block;
-        justify-content: flex-start;
-        align-items: center;
-        width: 100%;
-    }
-
-    .card .card-description {
-        position: relative;
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        z-index: 2;
-    }
-
-    .card .imgBox {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 100%;
-        max-height: 30rem;
-        width: auto;
-        height: auto;
-    }
-
-    .card:hover {
-        top: -1rem;
-        box-shadow: 0 0 2rem 1rem #b9f2ff;
-        cursor: pointer;
+@media screen and (max-width: 50em) {
+    html {
+        font-size: 5px !important;
     }
 }
