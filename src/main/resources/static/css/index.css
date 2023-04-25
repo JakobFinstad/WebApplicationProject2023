@@ -154,60 +154,75 @@ html {
 
 
     .used-by-section {
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: 3.8rem;
-        margin-bottom: 3rem;
+        margin-top: 2rem;
         padding: 5rem 0 10rem 0;
-        background-color: rgba(240, 255, 255, 0.18);
+        background-color: rgba(240, 255, 255, 0.09);
         width: 100%;
-        height: 25rem;
-        position: relative;
-    }
-
-    .used-by-list {
-        position: absolute;
-        display: flex;
-        list-style: none;
-        justify-content: center;
-        left: 50%;
-        right: 50%;
-        top: 30%;
-        align-items: center;
-    }
-
-    .used-by-company {
-        margin-left: 4rem;
-        margin-right: 4rem;
-        flex: 2rem;
+        height: auto;
+        position: center;
     }
 
     .trusted-by-paragraph {
         position: absolute;
         text-align: center;
-        top: 10%;
-        font-size: 3rem;
         color: rgba(0, 0, 0, 0.32);
+        font-size: 3rem;
+        margin: 0 auto 0;
         width: 50%;
-        margin: 0 auto;
         left: 27%;
         justify-content: center;
-        white-space: nowrap;
         align-items: center;
+        white-space: nowrap;
+        overflow: initial;
     }
 
-    .trusted-by-millions-paragraph {
-        position: absolute;
-        text-align: center;
-        top: 23%;
+    #trusted-by-millions-paragraph {
         color: rgba(0, 0, 0, 0.52);
         font-size: 2rem;
-        margin: 0 auto;
-        width: 50%;
-        left: 27%;
+    }
+
+    .front-page-products {
+        position: relative;
+        background-color: transparent;
+        width: 100%;
+        height: auto;
+        margin: 0 10rem 6rem;
+    }
+
+    .swiper-button-next {
+        color: #AEFFFFBF;
+    }
+
+    .swiper-button-prev {
+        color: #AEFFFFBF;
+    }
+
+    .swiper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: transparent;
+        display: flex;
         justify-content: center;
         align-items: center;
-        white-space: nowrap;
+        width: 30rem;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .swiper {
+        width: 100%;
+        height: auto;
+        margin: 2rem auto;
     }
 
     .front-page-products {
@@ -220,8 +235,8 @@ html {
 
     .card {
         background-color: rgba(240, 255, 255, 0.59);
-        width: 37.5rem;
-        height: 50rem;
+        width: 30rem;
+        height: 52rem;
         margin: 2rem 2rem;
         border: 0.2rem solid rgb(255, 255, 255);
         border-radius: 1rem;
@@ -295,6 +310,7 @@ html {
         text-align: center;
         font-size: 1.5rem;
     }
+
 
     .our-values {
         position: relative;
@@ -407,7 +423,6 @@ html {
         font-size: 2.3rem;
         line-height: 5rem;
         margin-top: 1rem;
-        font-weight: normal;
     }
 
     .signature {
@@ -539,3 +554,19 @@ html {
         height: 6rem;
     }
 }
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}
