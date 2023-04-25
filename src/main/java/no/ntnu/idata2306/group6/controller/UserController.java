@@ -18,7 +18,7 @@ import java.util.Optional;
  * REST API for alternating the users in this project.
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
 
     private UserRepository userRepository;
