@@ -36,7 +36,7 @@ public class HtmlPageController {
     public String signup() {return "sign-up";}
 
     @GetMapping("/accountingSolution")
-    public String accountingSolution() {return "proFlexAccountingSolution.html";}
+    public String accountingSolution() {return "proFlexAccountingSolution";}
 
 
     /**
