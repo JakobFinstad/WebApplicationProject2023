@@ -22,6 +22,11 @@ public class HtmlPageController {
         return "index";
     }
 
+    @GetMapping("/products")
+    public String product(){
+        return "products";
+    }
+
     @GetMapping("/login")
     public String login() {
         return "log-in";

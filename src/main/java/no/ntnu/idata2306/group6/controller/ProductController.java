@@ -18,7 +18,7 @@ import java.util.*;
  */
 @Controller
 @CrossOrigin
-@RequestMapping("/product")
+@RequestMapping("/api/product")
 public class ProductController {
   private ProductRepository productRepository;
 
@@ -45,10 +45,6 @@ public class ProductController {
     return new ResponseEntity<>(products, HttpStatus.OK);
   }
 
-  @GetMapping("/h")
-  public String getPage() {
-    return "products";
-  }
 
   /**
    * Get a specific product
