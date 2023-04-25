@@ -5,7 +5,9 @@ import org.springframework.boot.actuate.autoconfigure.observation.ObservationPro
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -49,28 +51,34 @@ public class SecurityConfiguration {
      */
     @Bean
     public SecurityFilterChain configureAuthorizationFilterChain(HttpSecurity http) throws Exception{
-        http.cors().and().csrf().disable()
-                .authorizeHttpRequests().requestMatchers("/authentication").permitAll()
-//                .requestMatchers("src/main/resources/static/css/**").permitAll()
-//                .requestMatchers("src/main/resources/static/images/**").permitAll()
-//                .requestMatchers("src/main/resources/static/js/**").permitAll()
-//                .requestMatchers("src/main/resources/templates/**").permitAll()
-                .anyRequest().authenticated().and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+        boolean enableSecurity = true;
+
+        if (enableSecurity) {
+            http.csrf(csrf -> csrf.disable())
+                    .cors(Customizer.withDefaults())
+                    .authorizeHttpRequests().requestMatchers("/authentication").permitAll()
+                    .requestMatchers("/css/**").permitAll()
+                    .requestMatchers("/images/**").permitAll()
+                    .requestMatchers("/js/**").permitAll()
+                    .requestMatchers("/templates/**").permitAll()
+                    .requestMatchers("/").permitAll()
+                    .requestMatchers("/admin").permitAll()
+                    .anyRequest().authenticated().and()
+                    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                    .and().addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+        } else {
+            http.csrf(csrf -> csrf.disable())
+                    .cors(Customizer.withDefaults())
+                    .authorizeHttpRequests()
+                    .anyRequest()
+                    .permitAll();
+        }
+
 
         return http.build();
     }
 
-    protected HttpSecurity configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests()
-                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .requestMatchers("src/main/resources/static/css/**").permitAll()
-                .requestMatchers("src/main/resources/static/images/**").permitAll()
-                .requestMatchers("src/main/resources/static/js/**").permitAll();
-        return http;
-    }
+
 
     /**
      * Returns the authentication manager.
