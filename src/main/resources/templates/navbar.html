@@ -8,10 +8,10 @@
         <a href="index.html" id="proflex-logo">ProFlex</a>
 
         <ul class="menu-choice-list">
-            <li class="menu-button"> <a href="index.html" class="menu-links">Home</a> </li>
+            <li class="menu-button"> <a th:href="@{/}" class="menu-links">Home</a> </li>
             <li class="menu-button"> <a onClick="index.getElementById('about-us-section').scrollIntoView();" class="menu-links">About us</a> </li>
-            <li class="menu-button"> <a href=products.html class="menu-links">Products</a> </li>
-            <li class="menu-button log-in-button"> <a href="log-in.html"> <img th:src="@{/images/user-icon.png}" width="55"/> </a> </li>
+            <li class="menu-button"> <a th:href="@{/products}" class="menu-links">Products</a> </li>
+            <li class="menu-button log-in-button"> <a th:href="@{/login}"> <img th:src="@{/images/user-icon.png}" width="55"/> </a> </li>
         </ul>
     </div>
 
@@ -22,10 +22,10 @@
         </label>
 
         <ul class="menu__box">
-            <li><a class="menu__item" href="index.html">Home</a></li>
+            <li><a class="menu__item" th:href="@{/}">Home</a></li>
             <li><a class="menu__item" href="#AboutUsSection">About us</a></li>
-            <li><a class="menu__item" href="products.html">Products</a></li>
-            <li><a class="menu__item" href="log-in.html">Sign in</a></li>
+            <li><a class="menu__item" th:href="@{/products}">Products</a></li>
+            <li><a class="menu__item" th:href="@{/login}">Sign in</a></li>
         </ul>
     </div>
 </nav>
