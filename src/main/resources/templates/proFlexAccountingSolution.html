@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" th:href="@{product.css}">
+  <link rel="stylesheet" th:href="@{/css/product.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
     <meta charset="UTF-8">
     <title>Product</title>
 </head>
@@ -30,6 +32,7 @@
   <h3 id="title-reviews">Reviews</h3>
 </main>
 
+<div th:replace="footer :: footer"></div>
 
 </body>
 </html>

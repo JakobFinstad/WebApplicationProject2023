@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Sign up site</title>
     <link rel="stylesheet" th:href="@{/css/login-signup.css/}">
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script th:src="@{https://code.jquery.com/jquery-1.10.2.js}"></script>
     <script th:src="@{js/password-check.js}"></script>
 </head>
 <body id="signup-site">
@@ -27,7 +27,7 @@
             <input id="email" name="email" type="email" required placeholder="example@something.org"/>
         </span>
             <span>
-                <script src="password-check.js"></script>
+                <script th:src="@{/js/password-check.js}"></script>
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password"
                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
