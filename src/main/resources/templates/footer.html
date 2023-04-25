@@ -1,7 +1,7 @@
 <head>
-   <link rel="stylesheet" href="../static/footer.css">
+   <link rel="stylesheet" th:href="@{static/footer.css}">
 </head>
-<link rel="stylesheet" href="../static/css/footer.css">
+<link rel="stylesheet" th:href="@{/css/footer.css}">
 
 
 <footer class="footer">
@@ -18,7 +18,7 @@
         <ul>
           <li><a href="#">Account policy</a></li>
           <li><a href="#">Create account</a></li>
-          <li><a href="#">Sign in</a></li>
+          <li><a th:href="@{/templates/log-in.html}">Sign in</a></li>
         </ul>
       </div>
 

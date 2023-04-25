@@ -14,9 +14,6 @@
     <title>ProFlex</title>
 
 <!--Navigation bar-->
-<div id="navbar-placeholder">
-
-</div>
 <!--
 <script>
     $(function(){
@@ -28,6 +25,9 @@
 </head>
 
 <body>
+<div id="navbar-placeholder">
+    <link th:href="@{/templates/navbar.html}">
+</div>
 <article id ="mainContent">
 
     <div class="center-text">
@@ -38,11 +38,7 @@
         <h3 class="trusted-by-paragraph">Trusted by the biggest companies</h3>
         <h4 class="trusted-by-millions-paragraph">And millions of others</h4>
 
-        <ul class="used-by-list">
-            <li class="used-by-company"><img th:src="@{/images/lorem-logo.png}" height="241.15" width="339.43"/></li>
-            <li class="used-by-company"><img th:src="@{/images/lorem-logo.png}" height="241.15" width="339.43"/></li>
-            <li class="used-by-company"><img th:src="@{/images/lorem-logo.png}" height="241.15" width="339.43"/></li>
-        </ul>
+
     </section>
 
     <section class="swiper-section">
@@ -122,7 +118,7 @@
 
     <section class="our-values">
         <div class="value">
-            <img class="value-img" src="../static/images/clock.png" height="170" width="170"/>
+            <img class="value-img" th:src="@{/images/clock.png}" height="170" width="170"/>
             <div class="value-text">
                 <h2 class="value-heading">
                     Efficiency

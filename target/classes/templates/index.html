@@ -14,14 +14,6 @@
     <title>ProFlex</title>
 
 <!--Navigation bar-->
-
-    <!--End of navigation bar -->
-</head>
-
-<body>
-<div id="navbar-placeholder">
-
-</div>
 <!--
 <script>
     $(function(){
@@ -29,6 +21,13 @@
     });
 </script>
 
+<!-End of navigation bar -->
+</head>
+
+<body>
+<div id="navbar-placeholder">
+    <link th:href="@{/templates/navbar.html}">
+</div>
 <article id ="mainContent">
 
     <div class="center-text">
@@ -36,16 +35,18 @@
     </div>
 
     <section class="used-by-section">
-        <h3 class="trusted-by-paragraph">Trusted by the biggest companies<br>
-            <em id="trusted-by-millions-paragraph">And millions of others</em></h3>
+        <h3 class="trusted-by-paragraph">Trusted by the biggest companies</h3>
+        <h4 class="trusted-by-millions-paragraph">And millions of others</h4>
+
+
     </section>
 
-    <section>
+    <section class="swiper-section">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="card">
-                        <img src="../static/images/Online-scheduling-software-2.jpg" class="products-picture" alt="picture of online scheduling software"/>
+                        <img th:src="@{/images/Online-scheduling-software-2.jpg}" class="products-picture" alt="picture of online scheduling software"/>
                         <div class="card-description">
                             <h2 class="top-text">Online scheduling Software1</h2>
                             <p class="card-p">&#10003;Easy scheduling process</p>
@@ -117,7 +118,7 @@
 
     <section class="our-values">
         <div class="value">
-            <img class="value-img" src="../static/images/clock.png" height="170" width="170"/>
+            <img class="value-img" th:src="@{/images/clock.png}" height="170" width="170"/>
             <div class="value-text">
                 <h2 class="value-heading">
                     Efficiency
@@ -250,7 +251,7 @@
 </script>
 
 <script>
-    var swiper = new Swiper(".mySwiper", {
+    const swiper = new Swiper(".mySwiper", {
         loop: true,
         autoplay: {
             delay: 6000,
