@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @RestController
-@RequestMapping("/subscription")
+@RequestMapping("/api/subscription")
 public class SubscriptionController {
 
     private SubscriptionRepository subscriptionRepository;

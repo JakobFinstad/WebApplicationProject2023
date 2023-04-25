@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/info")
+@RequestMapping("/api/info")
 public class InfoController {
     private InfoRepository infoRepository;
 
