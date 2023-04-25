@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
@@ -63,7 +64,7 @@
         </div>
 
         <div class="value">
-            <img class="value-img" src="../static/images/handshake.png" height="170" width="170"/>
+            <img class="value-img" th:src="@{/images/handshake.png}" height="170" width="170"/>
             <div class="value-text">
                 <h2 class="value-heading">
                     Professionalism
@@ -78,7 +79,7 @@
         </div>
 
         <div class="value">
-            <img class="value-img" src="../static/images/innovation.png" height="170" width="170"/>
+            <img class="value-img" th:src="@{/images/innovation.png}" height="170" width="170"/>
             <div class="value-text">
                 <h2 class="value-heading">
                     Innovation
@@ -106,14 +107,14 @@
                 </p>
             </div>
             <div class="about-us-section">
-                <img class="about-us-image" src="../static/images/ntnu.jpg" height="302" width="529"/>
-                <img class="about-us-image" src="../static/images/BPA-solution.jpg" height="491.2" width="736.8"/>
+                <img class="about-us-image" th:src="@{/images/ntnu.jpg}" height="302" width="529"/>
+                <img class="about-us-image" th:src="@{/images/BPA-solution.jpg}" height="491.2" width="736.8"/>
             </div>
         </div>
     </section>
 
     <section class="map-container">
-        <iframe title="barcode" class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4000.8789472454346!2d10.753822329497973!3d59.908253477460505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416ef4d43988db%3A0x193e074c83f141bf!2sBarcode%2C%20Oslo!5e0!3m2!1sno!2sno!4v1678727903269!5m2!1sno!2sno" width="700" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe title="barcode" class="map" th:src="@{https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4000.8789472454346!2d10.753822329497973!3d59.908253477460505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416ef4d43988db%3A0x193e074c83f141bf!2sBarcode%2C%20Oslo!5e0!3m2!1sno!2sno!4v1678727903269!5m2!1sno!2sno}" width="700" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
     </section>
 
@@ -129,7 +130,7 @@
                 </div>
 
                 <div class="review-image-container">
-                    <img class="review-image" src="../static/images/headshot2.jpg" height="408" width="612"/>
+                    <img class="review-image" th:src="@{/images/headshot2.jpg}" height="408" width="612"/>
                 </div>
 
                 <div class="review-name">
@@ -143,7 +144,7 @@
                 </div>
 
                 <div class="review-image-container">
-                    <img class="review-image" src="../static/images/headshot.jpg" height="408" width="612"/>
+                    <img class="review-image" th:src="@{/images/headshot.jpg}" height="408" width="612"/>
                 </div>
 
                 <div class="review-name">
@@ -157,7 +158,7 @@
                 </div>
 
                 <div class="review-image-container">
-                    <img class="review-image" src="../static/images/headshot1.jpg" height="408" width="612"/>
+                    <img class="review-image" th:src="@{/images/headshot1.jpg}" height="408" width="612"/>
                 </div>
 
                 <div class="review-name">
@@ -170,14 +171,7 @@
     </section>
 </article>
 </body>
-<!-- Footer -->
-<div id="footer-placeholder">
-</div>
 
-<script>
-    $(function(){
-        $("#footer-placeholder").load("http://localhost:8080/resources/templates/footer.html");
-    });
-</script>
+<div th:replace="footer :: footer"></div>
 <!-- End of footer -->
 </html>
