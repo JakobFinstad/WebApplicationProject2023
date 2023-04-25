@@ -22,6 +22,10 @@ public class HtmlPageController {
         return "index";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "log-in";
+    }
     /**
      * Get the user page for the user.
      *
