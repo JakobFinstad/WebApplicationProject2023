@@ -1,11 +1,10 @@
 <head xmlns:th="http://www.w3.org/1999/xhtml">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}">
     <script th:src="@{script.js}"></script>
 </head>
 
 <nav class="navbar">
     <div class="navbar-container">
-        <a href="index.html" id="proflex-logo">ProFlex</a>
+        <a th:href="@{/}" id="proflex-logo">ProFlex</a>
 
         <ul class="menu-choice-list">
             <li class="menu-button"> <a th:href="@{/}" class="menu-links">Home</a> </li>
