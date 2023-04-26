@@ -23,6 +23,7 @@ public class User {
     private String lastName;
     @NotNull
     private String email;
+    private int age;
     @NotNull
     private int phoneNumber;
     @NotNull
@@ -45,19 +46,42 @@ public class User {
      * @param email that shall be connected with the account
      * @param phoneNumber number of the user
      * @param password of the user
+     * @param age of the user
      */
-    public User(String firstName, String lastName, String email, int phoneNumber, String password) {
+    public User(String firstName, String lastName, String email, int phoneNumber, String password, int age) {
         setEmail(email);
         setFirstName(firstName);
         setLastName(lastName);
         setPhoneNumber(phoneNumber);
         setPassword(password);
+        setAge(age);
+    }
+
+    /**
+     * Set age for the user.
+     *
+     * @param age of the user
+     */
+    private void setAge(int age) {
+        if (age < 0) {
+            throw new IllegalArgumentException("Age cannot be under 0");
+        }
+        this.age = age;
     }
 
     public User() {
 
     }
 
+
+    /**
+     * Get the age of a user.
+     *
+     * @return age of user
+     */
+    public int getAge() {
+        return this.age;
+    }
     /**
      * Set the roles of the user.
      *
@@ -262,9 +286,10 @@ public class User {
 
     public String getPrintFormat(){
         return String.format(
-                "| %-8d | %-15s | %-15s | %-22s | "
+                "| %-8d | %-15s | %-15s | %-3d | %-30s | "
                         + "%8d |\n",
                 this.getUserId(), this.getFirstName(), this.getLastName(),
+                this.getAge(),
                 this.getEmail(), this.getPhoneNumber()
         );
     }
