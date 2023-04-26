@@ -3,7 +3,7 @@
 
 
 html {
-    font-size: 10px;
+    font-size: 10x;
     box-sizing: border-box;
 }
 @media screen and (max-width: 192rem) {
@@ -32,19 +32,16 @@ html {
         max-width: 130rem;
         display: grid;
         width: 100%;
+        justify-content: center;
     }
 
     #CTAText {
-        position: relative;
         font-size: 11rem;
         font-weight: bold;
-        margin-top: 0;
-        top: 10%;
-        left: 20%;
         color: #1f1e1e;
         align-items: center;
         max-width: 100rem;
-        margin-left: 1rem;
+        margin: 4rem 0 0;
     }
 
     #Y {
@@ -150,35 +147,6 @@ html {
             opacity: 1;
             text-shadow: 0 0 2.9rem rgba(34, 184, 207, 0.7);
         }
-    }
-
-
-    .used-by-section {
-        margin-top: 2rem;
-        padding: 5rem 0 10rem 0;
-        background-color: rgba(240, 255, 255, 0.09);
-        width: 100%;
-        height: auto;
-        position: center;
-    }
-
-    .trusted-by-paragraph {
-        position: absolute;
-        text-align: center;
-        color: rgba(0, 0, 0, 0.32);
-        font-size: 3rem;
-        margin: 0 auto 0;
-        width: 50%;
-        left: 27%;
-        justify-content: center;
-        align-items: center;
-        white-space: nowrap;
-        overflow: initial;
-    }
-
-    #trusted-by-millions-paragraph {
-        color: rgba(0, 0, 0, 0.52);
-        font-size: 2rem;
     }
 
 
@@ -427,15 +395,21 @@ html {
     }
 }
 
-@media screen and (max-width: 60em) {
+@media screen and (max-width: 960px) {
     html {
         font-size: 8px !important;
     }
 }
 
-@media screen and (max-width: 50em) {
+@media screen and (max-width: 700px) {
     html {
-        font-size: 5px !important;
+        font-size: 6px !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    html {
+        font-size: 4px !important;
     }
 }
 
