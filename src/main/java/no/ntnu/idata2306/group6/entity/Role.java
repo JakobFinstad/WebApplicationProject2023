@@ -32,7 +32,7 @@ public class Role {
      * @param name of the role
      */
     public Role(String name) {
-        this.name = name;
+        this.name = name.toUpperCase();
     }
 
     /**

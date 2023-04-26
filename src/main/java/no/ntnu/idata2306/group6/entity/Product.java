@@ -91,7 +91,7 @@ public class Product {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Name cannot be empty!");
         }
-        this.name = name;
+        this.name = name.toLowerCase();
     }
 
   /*  *//**

@@ -53,7 +53,7 @@ public class Category{
 
     public void setCategoryName(String newName) {
         try {
-            this.categoryName = validateString(newName, "categoryName");
+            this.categoryName = validateString(newName.toLowerCase(), "categoryName");
         } catch (IllegalArgumentException e) {
             LOGGER.warning(e.getMessage());
         }

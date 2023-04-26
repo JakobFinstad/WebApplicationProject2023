@@ -3,10 +3,7 @@ package no.ntnu.idata2306.group6.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Class representing a user on the website.
@@ -79,7 +76,7 @@ public class User {
         if (firstName.isEmpty()) {
             throw new IllegalArgumentException("Name cannot be null!");
         }
-        this.firstName = firstName;
+        this.firstName = firstName.toLowerCase();
     }
 
     /**
@@ -104,7 +101,7 @@ public class User {
         if(email.isEmpty()) {
             throw new IllegalArgumentException("Email cannot be empty!");
         } else {
-            this.email = email;
+            this.email = email.toLowerCase();
         }
     }
 
@@ -117,7 +114,7 @@ public class User {
         if(lastName.isEmpty()) {
             throw new IllegalArgumentException("Last name cannot be null!");
         }
-        this.lastName = lastName;
+        this.lastName = lastName.toLowerCase(Locale.ROOT);
     }
 
     /**
