@@ -72,14 +72,17 @@ p {
     top: 0;
     transition: top ease .5s;
 
-    background: linear-gradient(to top, rgba(174, 255, 255, 0.75), azure, rgba(180, 46, 83, 0.62));
+    background: linear-gradient(to top, rgba(174, 255, 255, 0.75), azure, white, white);
 }
 
 #card-container {
-    display: block;
-    justify-content: flex-start;
-    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: space-around;
+    gap: 2rem;
     width: 100%;
+    margin-bottom: 20rem;
 }
 
 .card .card-description {
@@ -106,14 +109,16 @@ p {
     cursor: pointer;
 }
 
-@media screen and (max-width: 60em) {
+@media screen and (max-width: 960px) and (min-width: 700px) {
+
     html {
         font-size: 8px !important;
     }
 }
 
-@media screen and (max-width: 50em) {
-    html {
+@media screen and (max-width: 700px) {
+
+    .top-text {
         font-size: 5px !important;
     }
 }
