@@ -103,7 +103,7 @@ public class UserService {
 
     public static String getAllStringFormat(Iterator<User> it){
         String str = String.format(
-                "| %-8s | %-15s | %-15s | %-3d | %-30s | "
+                "| %-8s | %-15s | %-15s | %-3s | %-30s | "
                         + "%8s |\n", "USERID", "FIRSTNAME", "LASTNAME", "AGE"
                 , "EMAIL", "PHONE NUMBER"
         );
