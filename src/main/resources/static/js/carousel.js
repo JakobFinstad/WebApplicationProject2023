@@ -1,4 +1,6 @@
- const swiper = new Swiper(".mySwiper", {
+href="@{'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js'}"
+
+const swiper = new Swiper(".mySwiper", {
     loop: true,
     autoplay: {
     delay: 6000,
@@ -16,5 +18,3 @@
     prevEl: ".swiper-button-prev",
 },
 });
-
-th:href="@{https://cdn.jsdelivr.net/npm/swiper9/swiper-bundle.min.js}"

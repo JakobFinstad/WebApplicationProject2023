@@ -4,7 +4,7 @@ html {
     overflow-x: hidden;
 }
 
-.navbar{
+#navbar{
     font-family: Inter, sans-serif;
     background-color: #b42e53; /**linear-gradient(to top, #00ffff, rgb(180, 46, 83) 50%);*//
     height: 8rem;
@@ -17,6 +17,7 @@ html {
     z-index: 999;
     padding-top: 1rem;
     margin: 0;
+    transition: 0.5s;
 }
 
 .navbar-container{

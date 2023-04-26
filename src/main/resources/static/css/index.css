@@ -18,7 +18,7 @@ html {
         background-color: black;
     }
 
-    .navbar {
+    #navbar {
         background: transparent !important;
     }
 
@@ -181,136 +181,6 @@ html {
         font-size: 2rem;
     }
 
-    .front-page-products {
-        position: relative;
-        background-color: transparent;
-        width: 100%;
-        height: auto;
-        margin: 0 10rem 6rem;
-    }
-
-    .swiper-button-next {
-        color: #AEFFFFBF;
-    }
-
-    .swiper-button-prev {
-        color: #AEFFFFBF;
-    }
-
-    .swiper {
-        width: 100%;
-        height: 100%;
-    }
-
-    .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: transparent;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 30rem;
-    }
-
-    .swiper-slide img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .swiper {
-        width: 100%;
-        height: auto;
-        margin: 2rem auto;
-    }
-
-    .front-page-products {
-        position: relative;
-        background-color: transparent;
-        width: 100%;
-        height: auto;
-        margin: 8rem 10rem 6rem;
-    }
-
-    .card {
-        background-color: rgba(240, 255, 255, 0.59);
-        width: 30rem;
-        height: 52rem;
-        margin: 2rem 2rem;
-        border: 0.2rem solid rgb(255, 255, 255);
-        border-radius: 1rem;
-        overflow: hidden;
-        float: left;
-        /*Shadow*/
-        box-shadow: 0 0 .5rem 0 lightgray;
-        position: relative;
-        top: 0;
-        transition: top ease .5s;
-    }
-
-    .card-description {
-        margin: 2rem 1rem;
-    }
-
-    .card:hover {
-        top: -1rem;
-        box-shadow: 0 0 2rem 1rem rgba(180, 46, 83, 0.24);
-        cursor: pointer;
-    }
-
-    .card:active {
-        box-shadow: 0 0 2rem 1rem rgba(185, 242, 255, 0.21);
-    }
-
-    .products-picture {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 37.5rem;
-        max-height: 22.5rem;
-        width: auto;
-        height: auto;
-    }
-
-    .top-text {
-        font-size: 3.5rem;
-        color: Black;
-        font-weight: bold;
-        text-align: center;
-        margin-top: 0;
-    }
-
-    .product-solutions-main {
-        height: 41.2rem;
-        border-radius: 0.4rem;
-        background-size: cover;
-        position: relative;
-        top: 100rem;
-        padding-top: 2.5rem;
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        margin-top: 15rem;
-    }
-
-    .product-image {
-        width: 75.4rem;
-        height: 53.5rem;
-        margin-left: 5rem;
-    }
-
-    .product-top-text {
-        font-size: 3.9rem;
-        color: rgba(0, 0, 0, 0.71);
-        margin-left: 5rem;
-    }
-
-    .card-p {
-        text-align: center;
-        font-size: 1.5rem;
-    }
-
 
     .our-values {
         position: relative;
@@ -460,6 +330,8 @@ html {
         border-radius: 5%;
         object-fit: cover;
         transition: 0.5s;
+        height: 35rem;
+        width: 70rem;
     }
 
 
@@ -555,9 +427,22 @@ html {
     }
 }
 
+@media screen and (max-width: 60em) {
+    html {
+        font-size: 8px !important;
+    }
+}
+
+@media screen and (max-width: 50em) {
+    html {
+        font-size: 5px !important;
+    }
+}
+
 
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {}
+@media only screen and (max-width: 600px) {
+}
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {}
