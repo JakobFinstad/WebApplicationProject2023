@@ -21,6 +21,7 @@ body {
 }
 
 .proFlexLogo {
+    margin: 1rem;
     position: fixed;
     font-weight: bold;
     font-size: 8rem;
@@ -47,9 +48,10 @@ main {
     flex-direction: column;
     min-width: 50rem;
     background-color: rgba(0,0,0,0.91);
-    border-radius: .5rem;
+    border-radius: .9rem;
     min-height: 50rem;
     margin: 10rem;
+    padding: 2rem 0;
     color: white;
 }
 
@@ -115,16 +117,14 @@ button:hover {
     color: #ef4374;
 }
 
-h1{
-    color: white;
-    font-weight: bold;
-    font-size: 6.5rem;
-    margin: 1rem;
-}
-
 .login-button {
     color: #b42e53;
     background-color: rgba(255, 255, 255, 1);
     border: 1px solid #b42e53;
+
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
 
