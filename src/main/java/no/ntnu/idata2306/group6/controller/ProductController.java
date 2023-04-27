@@ -1,6 +1,7 @@
 package no.ntnu.idata2306.group6.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import no.ntnu.idata2306.group6.entity.Category;
 import no.ntnu.idata2306.group6.entity.Product;
 import no.ntnu.idata2306.group6.service.ProductService;
 import org.slf4j.Logger;
@@ -50,6 +51,24 @@ public class ProductController {
     logger.error("Getting all ");
 
     return new ResponseEntity<>(products, HttpStatus.OK);
+  }
+
+  @GetMapping("/{id}/categories")
+  @Operation(
+          summary = "Get all categories that one product has",
+          description = "List of all categories currently linked to the product with product id"
+  )
+  public ResponseEntity<Object> getAllCategories(@PathVariable int id){
+
+    Product product = productService.findById(id);
+    Iterable<Category> categories;
+    if (product == null){
+      categories = null;
+    } else {
+      categories = productService.getAllCategoriesByProduct(product);
+    }
+
+    return new ResponseEntity<>(categories, HttpStatus.OK);
   }
 
 

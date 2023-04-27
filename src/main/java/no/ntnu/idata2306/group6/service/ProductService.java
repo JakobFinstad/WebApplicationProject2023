@@ -1,5 +1,6 @@
 package no.ntnu.idata2306.group6.service;
 
+import no.ntnu.idata2306.group6.entity.Category;
 import no.ntnu.idata2306.group6.repository.ProductRepository;
 import no.ntnu.idata2306.group6.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,5 +96,9 @@ public class ProductService {
 
     public Iterable<Product> getAllByCategory(String category) {
         return productRepository.findByCategoriesCategoryName(category);
+    }
+
+    public Iterable<Category> getAllCategoriesByProduct(Product product) {
+        return productRepository.findAllCategoriesById(product);
     }
 }
