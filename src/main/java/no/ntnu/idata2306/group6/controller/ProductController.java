@@ -105,7 +105,7 @@ public class ProductController {
     ResponseEntity<String> response;
     Product productToDelete = productService.findById(id);
     if (removeProductFromCollection(productToDelete)) {
-      response = new ResponseEntity<>(HttpStatus.OK);
+      response = new ResponseEntity<>(HttpStatus.FOUND);
     } else {
       response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -141,7 +141,7 @@ public class ProductController {
     ResponseEntity<String> response;
     try {
       updateProduct(id, product);
-      response = new ResponseEntity<>(HttpStatus.OK);
+      response = new ResponseEntity<>(HttpStatus.FOUND);
     } catch (Exception e) {
       response = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
