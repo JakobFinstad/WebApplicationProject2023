@@ -1,0 +1,14 @@
+<main class="flex-container" th:fragment="product-card">
+    <div class="card" th:each="products: ${products}">
+
+        <div class="imgBox">
+            <img th:src="${info.imageurl}" alt="picture of the product"/>
+        </div>
+
+        <div class="card-description">
+            <h2 th:text="${product.name}"></h2>
+            <p th:text="${info.short_description}"></p>
+            <p th:text="${product.price} + ${valuta}"></p>
+        </div>
+    </div>
+</main>
