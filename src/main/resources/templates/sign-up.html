@@ -9,10 +9,10 @@
 </head>
 <body id="signup-site">
 
-<a th:href="@{/}"><h1>ProFlex</h1></a>
+<a class=proFlexLogo th:href="@{/}">ProFlex</a>
 
     <main id="login-container">
-<!--        <h2>Sign up site</h2>-->
+        <h2 class="login-text">Sign up</h2>
     <form>
         <span>
             <label for="firstname">First Name</label>
@@ -21,6 +21,10 @@
         <span>
             <label for="lastname">Last Name</label>
             <input id="lastname" name="lastname" placeholder="Last name" required/>
+        </span>
+        <span>
+            <label for="phoneNumber">PhoneNumber</label>
+            <input id="phoneNumber" name="phoneNumber" type="tel">
         </span>
         <span>
             <label for="email">Email</label>
@@ -38,10 +42,7 @@
                 <label for="password-confirm">Confirm Password</label>
                 <input id="password-confirm" name="password-confirm" type="password" required oninput="check()"/>
             </span>
-        <span>
-            <label for="phoneNumber">PhoneNumber</label>
-            <input id="phoneNumber" name="phoneNumber" type="number">
-        </span>
+
             <span>
                 <div class="passwords">
                     <input name="terms" id="terms" type="checkbox" required>
@@ -53,9 +54,7 @@
                 </div>
 
             </span>
-        <span>
-            <button type="signin" class="login-button">Sign up</button>
-        </span>
+        <button type="signin" class="login-button">Sign up</button>
     </form>
 
 </main>
