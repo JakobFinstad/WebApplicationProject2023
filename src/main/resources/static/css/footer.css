@@ -29,13 +29,14 @@
 
     ul {
         list-style: none;
+        padding: 0;
     }
 
     .footer-col {
         padding: 5rem 1rem;
         width: auto;
         height: auto;
-        margin-right: 4rem;
+        margin-right: 8rem;
         align-items: center;
     }
 
@@ -85,8 +86,8 @@
     }
 
     .footer-col ul li a:hover{
+        transform: scale(1.1);
         color: white;
-        padding-left: 0.8rem;
         white-space: nowrap;
     }
     .footer-col ul li a:active{

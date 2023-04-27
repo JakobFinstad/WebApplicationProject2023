@@ -3,7 +3,7 @@
 
 
 html {
-    font-size: 10x;
+    font-size: 10px;
     box-sizing: border-box;
 }
 @media screen and (max-width: 192rem) {
@@ -243,13 +243,13 @@ html {
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
+        justify-content: center;
+        align-items: center;
         margin-left: 15rem;
     }
 
     .about-us-section {
         position: relative;
-        width: 50%;
-        margin: 2rem;
         text-align: left;
         flex: 1;
     }
@@ -285,7 +285,7 @@ html {
 
     .map-container {
         align-items: center;
-        margin-bottom: 5rem;
+        margin-bottom: 8rem;
         background-color: rgba(240, 255, 255, 0.59);
         border-radius: 5%;
     }
@@ -343,14 +343,14 @@ html {
 
     .review-box {
         flex: 2 1 auto;
-        margin: 1rem;
+        margin: 1rem 1rem 4rem;
     }
 
     .review-paragraph {
         width: auto;
         font-size: 2.5rem;
         align-items: center;
-        margin-top: 8rem;
+        margin-top: 2rem;
         display: flex;
         text-align: center;
         font-weight: lighter;
@@ -362,13 +362,11 @@ html {
         font-size: 2.3rem;
         padding: 0;
         margin-top: 1rem;
-        width: 90%;
     }
 
     .review-image-container {
         margin-top: 4rem;
         align-items: center;
-        width: 90%;
     }
 
     .review-image {
@@ -410,6 +408,12 @@ html {
         font-size: 4px !important;
     }
 
+    #CTAText {
+        font-size: 12rem;
+        line-height: 20rem;
+        margin-top: 10rem;
+    }
+
     .our-values {
         display: block !important;
     }
@@ -423,12 +427,48 @@ html {
     }
 
     .value-img {
-        width: 25rem !important;
-        height: 25rem !important;
+        width: 35rem !important;
+        height: 35rem !important;
     }
 
     .value-heading {
-        font-size: 10rem !important;
+        font-size: 15rem !important;
+    }
+
+    .about-us-container {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .about-us-head {
+        font-size: 15rem;
+    }
+
+    .about-us-head2 {
+        font-size: 4rem;
+    }
+
+    .about-us-paragraph {
+        width: 70rem;
+        align-items: center;
+        font-size: 4rem;
+        line-height: 6rem;
+    }
+
+    .about-us-image {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        width: 40rem;
+        height: 40rem;
+    }
+
+    .review-header {
+        font-size: 10rem;
+    }
+
+    .review-header2 {
+        font-size: 6rem;
     }
 
     .reviewer {
@@ -437,23 +477,18 @@ html {
 
     .review-paragraph {
         max-width: 80rem;
-        font-size: 4rem;
+        font-size: 6rem;
         line-height: 8rem;
     }
 
     .review-image {
-        width: 15rem;
-        height: 15rem;
+        width: 20rem;
+        height: 20rem;
     }
 
     .review-name {
-        font-size: 3rem;
+        font-size: 5rem;
     }
-}
-
-
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
