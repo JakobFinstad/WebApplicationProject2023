@@ -5,8 +5,8 @@
 @import "navbar.css";
 
 html {
-    font-family: Inter;
-    font-size: 62.5%;
+    font-family: Inter, sans-serif;
+    font-size: 10px;
 }
 
 body {
@@ -21,7 +21,7 @@ body {
 
 
 body{
-    background: rgb(0, 0, 0, 0.7) url('../images/allImages.png') repeat fixed;
+    background: url('../images/Background.png') repeat fixed;
     background-size: cover;
 }
 
@@ -29,8 +29,6 @@ body{
 h2 {
     font-size: 5rem;
     text-align: center;
-    color: lime;
-    text-shadow: red 1rem 1rem;
 }
 
 input {
@@ -56,8 +54,8 @@ main {
     flex-direction: column;
     justify-items: center;
     min-width: 50rem;
-    background-color: rgba(56, 53, 53, 0.8);
-    color: lightgrey;
+    background-color: rgba(121,121,121,0.66); /*rgba(56, 53, 53, 0.8);*/
+    color: white;
     border-radius: 1rem;
     min-height: 50rem;
     margin-bottom: 10rem;
@@ -88,10 +86,14 @@ label:hover {
 }
 
 button {
-    padding: 1rem;
-    font-size: 3rem;
-    border-radius: 3rem;
-    cursor: url("../images/pointer.png"), pointer !important;
+    border: 0;
+    border-radius: 4rem;
+    cursor: pointer;
+    font-weight: 600;
+    margin: 0 1rem;
+    width: 20rem;
+    padding: 1rem 0;
+    transition: .4s;
 }
 
 p {
@@ -109,8 +111,8 @@ p {
 }
 
 button:hover {
-    animation: rotating 0.01s linear infinite;
-    animation-delay: 5s;
+    color: white;
+    background-color: #ef4374;
 }
 
 .passwords {
@@ -125,9 +127,14 @@ button:hover {
 
 h1{
     color: white;
-    font-family: Inter;
     font-weight: bold;
     font-size: 6.5rem;
     margin: 1rem;
+}
+
+.login-button {
+    color: #b42e53;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid #b42e53;
 }
 
