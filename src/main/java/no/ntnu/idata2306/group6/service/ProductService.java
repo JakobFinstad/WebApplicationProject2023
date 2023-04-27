@@ -92,4 +92,8 @@ public class ProductService {
 
         return errorMessage;
     }
+
+    public Iterable<Product> getAllByCategory(String category) {
+        return productRepository.findByCategoriesCategoryName(category);
+    }
 }

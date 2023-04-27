@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -28,6 +29,10 @@ public class Product {
     private int price;
     @NotNull
     private String name;
+    @ManyToMany
+    @NotNull
+    @Column(nullable = false)
+    private Set<Category> categories = new HashSet<>();
 
     @OneToMany(mappedBy = "product")
     private List<Info> infos = new ArrayList<>();

@@ -1,7 +1,7 @@
 package no.ntnu.idata2306.group6.security;
 
 import no.ntnu.idata2306.group6.entity.User;
-import no.ntnu.idata2306.group6.repository.UserRepository;
+import no.ntnu.idata2306.group6.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,7 +16,7 @@ import java.util.Optional;
 @Service
 public class AccessUserService implements UserDetailsService {
     @Autowired
-    UserRepository userRepository;
+    UserService userService;
 
     /**
      * Returns the user by searching for username.
@@ -27,7 +27,7 @@ public class AccessUserService implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<User> user = userRepository.findByEmail(email);
+        Optional<User> user = userService.findByEmail(email);
         if (user.isPresent()) {
             return new AccessUserDetails(user.get());
         } else {
