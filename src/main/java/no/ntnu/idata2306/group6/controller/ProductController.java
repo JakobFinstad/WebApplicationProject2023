@@ -1,7 +1,9 @@
 package no.ntnu.idata2306.group6.controller;
 
+import no.ntnu.idata2306.group6.entity.User;
 import no.ntnu.idata2306.group6.repository.ProductRepository;
 import no.ntnu.idata2306.group6.entity.Product;
+import no.ntnu.idata2306.group6.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
@@ -20,12 +22,12 @@ import java.util.*;
 @CrossOrigin
 @RequestMapping("/api/product")
 public class ProductController {
-  private ProductRepository productRepository;
+  private ProductService productService;
 
   private static final Logger logger = LoggerFactory.getLogger(ProductController.class.getSimpleName());
 
-  public ProductController(ProductRepository productRepository) {
-    this.productRepository = productRepository;
+  public ProductController(ProductService productService) {
+    this.productService = productService;
   }
 
   /**
@@ -39,9 +41,16 @@ public class ProductController {
       summary = "Get all products",
       description = "List of all products currently stored in collection"
   )
-  public ResponseEntity<Object> getAll() {
+  public ResponseEntity<Object> getAll(@RequestParam(required = false) String category) {
+    Iterable<Product> products;
+    if (category == null) {
+      products = productService.getAll();
+    } else {
+      products = productService.getAllByCategory(category);
+    }
+
     logger.error("Getting all ");
-    Iterable<Product> products = productRepository.findAll();
+
     return new ResponseEntity<>(products, HttpStatus.OK);
   }
 
@@ -55,7 +64,7 @@ public class ProductController {
    @GetMapping("/{id}")
   public ResponseEntity<Product> getOne(@PathVariable Integer id) {
     ResponseEntity<Product> response;
-    Optional<Product> product = productRepository.findById(id);
+    Optional<Product> product = Optional.ofNullable(productService.findById(id));
     if (product.isPresent()) {
       response = new ResponseEntity<>(product.get(), HttpStatus.OK);
     } else {
@@ -96,7 +105,8 @@ public class ProductController {
   @Operation(hidden = true)
   public ResponseEntity<String> delete(@PathVariable int id) {
     ResponseEntity<String> response;
-    if (removeProductFromCollection(id)) {
+    Product productToDelete = productService.findById(id);
+    if (removeProductFromCollection(productToDelete)) {
       response = new ResponseEntity<>(HttpStatus.OK);
     } else {
       response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -107,16 +117,16 @@ public class ProductController {
   /**
    * Remove Product from the collection
    *
-   * @param id ID of the product to remove
+   * @param product to remove
    * @return True when product with that ID is removed, false otherwise
    */
-  private boolean removeProductFromCollection(int id) {
+  private boolean removeProductFromCollection(Product product) {
     boolean deleted = false;
     try {
-      productRepository.deleteById(id);
+      productService.remove(product);
       deleted = true;
     } catch (DataAccessException e) {
-      logger.warn("Could not delete product with ID" + id + ": " + e.getMessage());
+      logger.warn("Could not delete product with ID" + product.getProductId() + ": " + e.getMessage());
     }
     return deleted;
   }
@@ -151,7 +161,7 @@ public class ProductController {
     if (!product.isValid()) {
       throw new IllegalArgumentException("Product is invalid");
     }
-    productRepository.save(product);
+    productService.addProduct(product);
   }
 
   /**
@@ -164,7 +174,7 @@ public class ProductController {
    */
   private void updateProduct(int id, Product product) throws IllegalArgumentException {
 
-    Optional<Product> existingProduct = productRepository.findById(id);
+    Optional<Product> existingProduct = Optional.ofNullable(productService.findById(id));
     if (existingProduct.isEmpty()) {
       throw new IllegalArgumentException("No product with id " + id + " found");
     }
@@ -177,7 +187,7 @@ public class ProductController {
     }
 
     try {
-      productRepository.save(product);
+      productService.update(id, product);
     } catch (Exception e) {
       logger.warn("Could not update product " + product.getProductId() + ": " + e.getMessage());
       throw new IllegalArgumentException("Could not update product " + product.getProductId());
