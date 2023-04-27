@@ -14,8 +14,12 @@ import java.util.Optional;
  */
 @Service
 public class UserService {
+    private final UserRepository userRepository;
+
     @Autowired
-    private UserRepository userRepository;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     /**
      * Get all users from the application state.
@@ -32,9 +36,9 @@ public class UserService {
      * @param id ID of the user to find
      * @return The user or null if no user found by the id searched
      */
-    public User findById(@NotNull int id) {
+    public Optional<User> findById(@NotNull int id) {
         Optional<User> user = userRepository.findById(id);
-        return user.orElse(null);
+        return Optional.ofNullable(user.orElse(null));
     }
 
     /**
@@ -46,7 +50,7 @@ public class UserService {
     public boolean addUser(User user) {
         boolean added = false;
         if (user != null && user.isValid()) {
-            User existingUser = findById(user.getUserId());
+            User existingUser = findById(user.getUserId()).get();
             if (existingUser == null) {
                 userRepository.save(user);
                 added = true;
@@ -78,7 +82,7 @@ public class UserService {
      */
     public String updateUser(Integer id, User user) {
         String errorMessage = null;
-        User existingUser = findById(id);
+        Optional<User> existingUser = findById(id);
         if (existingUser == null) {
             errorMessage = "No user with id " + id + " found";
         } else if (user == null || !user.isValid()) {
@@ -101,7 +105,7 @@ public class UserService {
         return userRepository.count();
     }
 
-    public static String getAllStringFormat(Iterator<User> it){
+    public String getAllStringFormat(Iterator<User> it){
         String str = String.format(
                 "| %-8s | %-15s | %-15s | %-3s | %-30s | "
                         + "%8s |\n", "USERID", "FIRSTNAME", "LASTNAME", "AGE"
@@ -114,4 +118,12 @@ public class UserService {
         return str;
     }
 
+    public Iterable<User> findByRole(String role) {
+//        return userRepository.findAllByRoleName(role);
+        return null;
+    }
+
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 }

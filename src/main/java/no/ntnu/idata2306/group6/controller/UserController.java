@@ -21,12 +21,13 @@ import java.util.Optional;
 @RequestMapping("/api/user")
 public class UserController {
 
-    private UserRepository userRepository;
+    @Autowired
+    private UserService userService;
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class.getSimpleName());
 
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     /**
@@ -39,10 +40,15 @@ public class UserController {
             summary = "Get all the users",
             description = "List of all the users currently stored in the collection"
     )
-    public ResponseEntity<Object> getAll() {
+    public ResponseEntity<Object> getAll(@RequestParam(required = false) String role) {
         logger.info("Getting all ");
-        Iterable<User> users = userRepository.findAll();
-        return new ResponseEntity<>(UserService.getAllStringFormat(users.iterator()), HttpStatus.OK);
+        Iterable<User> users;
+        if (role == null) {
+            users = userService.getAll();
+        } else {
+            users = userService.findByRole(role);
+        }
+        return new ResponseEntity<>(userService.getAllStringFormat(users.iterator()), HttpStatus.OK);
     }
 
     /**
@@ -58,7 +64,7 @@ public class UserController {
      )
     public ResponseEntity<User> getUser(@PathVariable Integer id) {
         ResponseEntity<User> response;
-         Optional<User> user = userRepository.findById(id);
+         Optional<User> user = userService.findById(id);
 
          if (user.isPresent()) {
              response = new ResponseEntity<>(user.get(), HttpStatus.OK);
@@ -141,7 +147,7 @@ public class UserController {
          if (!user.isValid()) {
              throw new IllegalArgumentException("User not valid");
          }
-         userRepository.save(user);
+         userService.addUser(user);
     }
 
     /**
@@ -153,7 +159,7 @@ public class UserController {
     private boolean removeUserFromCollection(int id) {
         boolean deleted;
         try {
-            userRepository.deleteById(id);
+            userService.removeUser(id);
             deleted = true;
         } catch (NullPointerException ne) {
             deleted = false;
@@ -173,7 +179,7 @@ public class UserController {
      * @param user the new entity that shall be saved to the repository
      */
     private void updateUser(int id, User user) {
-        Optional<User> existingUser = userRepository.findById(id);
+        Optional<User> existingUser = userService.findById(id);
 
         if (existingUser.isEmpty()) {
             throw new IllegalArgumentException("No user with id " + id + " in the collection.");
@@ -186,7 +192,7 @@ public class UserController {
         }
 
         try {
-            userRepository.save(user);
+            userService.updateUser(id, user);
             logger.info("Added to the collection!");
         } catch (Exception e) {
             // TODO- Discuss with the others, is this error or warn?
