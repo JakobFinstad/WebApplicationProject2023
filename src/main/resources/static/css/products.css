@@ -3,7 +3,8 @@ html {
     font-size: 10px;
     box-sizing: border-box;
     font-family: Inter, sans-serif;
-    max-width: 192rem;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 img {
@@ -118,7 +119,7 @@ p {
 
 @media screen and (max-width: 700px) {
 
-    .top-text {
+    html {
         font-size: 5px !important;
     }
 }
