@@ -32,6 +32,11 @@ public class Product {
     @ManyToMany
     @NotNull
     @Column(nullable = false)
+    @JoinTable(
+            name = "product_categories",
+            joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "categoryId")
+    )
     private Set<Category> categories = new HashSet<>();
 
     @OneToMany(mappedBy = "product")

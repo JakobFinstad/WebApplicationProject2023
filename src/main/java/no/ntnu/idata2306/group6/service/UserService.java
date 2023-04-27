@@ -118,10 +118,10 @@ public class UserService {
         return str;
     }
 
-    public Iterable<User> findByRole(String role) {
-//        return userRepository.findAllByRoleName(role);
+ /*   public Iterable<User> findByRole(String role) {
+        return userRepository.findAllByRoleName(role);
         return null;
-    }
+    }*/
 
     public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);

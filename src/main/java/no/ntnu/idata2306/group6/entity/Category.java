@@ -26,7 +26,7 @@ public class Category{
     private String categoryName;
 
 
-    @ManyToMany //Implement function
+    @ManyToMany(mappedBy = "categories")
     @NotNull
     @Column(nullable = false)
     private Set<Product> products = new LinkedHashSet<>();

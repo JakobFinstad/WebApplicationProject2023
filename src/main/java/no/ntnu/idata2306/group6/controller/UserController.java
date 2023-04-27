@@ -45,7 +45,8 @@ public class UserController {
         if (role == null) {
             users = userService.getAll();
         } else {
-            users = userService.findByRole(role);
+//            users = userService.findByRole(role);
+            users = null;
         }
         return new ResponseEntity<>(userService.getAllStringFormat(users.iterator()), HttpStatus.OK);
     }
