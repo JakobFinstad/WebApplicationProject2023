@@ -2,24 +2,24 @@ package no.ntnu.idata2306.group6.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import no.ntnu.idata2306.group6.entity.Subscription;
-import no.ntnu.idata2306.group6.repository.SubscriptionRepository;
+import no.ntnu.idata2306.group6.service.SubscriptionService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/api/subscription")
 public class SubscriptionController {
 
-    private SubscriptionRepository subscriptionRepository;
+    private SubscriptionService subscriptionService;
     private static final Logger logger = LoggerFactory.getLogger(SubscriptionController.class.getSimpleName());
 
-    public SubscriptionController(SubscriptionRepository subscriptionRepository) {
-        this.subscriptionRepository = subscriptionRepository;
+    public SubscriptionController(SubscriptionService subscriptionService) {
+        this.subscriptionService = subscriptionService;
     }
 
     @GetMapping
@@ -29,7 +29,7 @@ public class SubscriptionController {
     )
     public ResponseEntity<Object> getALl() {
         logger.info("Getting all ");
-        Iterable<Subscription> subscriptions = subscriptionRepository.findAll();
+        Iterable<Subscription> subscriptions = subscriptionService.getAll();
         return new ResponseEntity<>(subscriptions, HttpStatus.OK);
     }
 }

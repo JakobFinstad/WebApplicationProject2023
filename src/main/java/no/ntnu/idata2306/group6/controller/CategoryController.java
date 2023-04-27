@@ -2,11 +2,9 @@ package no.ntnu.idata2306.group6.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import no.ntnu.idata2306.group6.entity.Category;
-import no.ntnu.idata2306.group6.repository.CategoryRepository;
-import org.slf4j.ILoggerFactory;
+import no.ntnu.idata2306.group6.service.CategoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,12 +15,12 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/category")
 public class CategoryController {
-    private CategoryRepository categoryRepository;
+    private CategoryService categoryService;
 
     private static final Logger logger = LoggerFactory.getLogger(CategoryController.class.getSimpleName());
 
-    public CategoryController(CategoryRepository categoryRepository) {
-        this.categoryRepository = categoryRepository;
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
     }
 
     /**
@@ -38,7 +36,7 @@ public class CategoryController {
     )
     public ResponseEntity<Object> getAll() {
         logger.error("Getting all ");
-        Iterable<Category> categories = categoryRepository.findAll();
+        Iterable<Category> categories = categoryService.getAll();
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
@@ -51,7 +49,7 @@ public class CategoryController {
     @GetMapping("/{id}")
     public ResponseEntity<Category> getOne(@PathVariable Integer id) {
         ResponseEntity<Category> response;
-        Optional<Category> category = categoryRepository.findById(id);
+        Optional<Category> category = Optional.ofNullable(categoryService.findById(id));
         if (category.isPresent()) {
             response = new ResponseEntity<>(category.get(), HttpStatus.OK);
         } else {
@@ -84,16 +82,16 @@ public class CategoryController {
     /**
      * Remove category from the collection.
      *
-     * @param id ID of the product to remove
+     * @param category to remove
      * @return true when product with that ID is removed, false otherwise
      */
-    private boolean removeCategoryFromCollection(int id) {
+    private boolean removeCategoryFromCollection(Category category) {
         boolean deleted = false;
         try {
-            categoryRepository.deleteById(id);
+            categoryService.remove(category);
             deleted = true;
         } catch (DataAccessException e) {
-            logger.warn("Could not delete the category with ID: " + id + " : " + e.getMessage());
+            logger.warn("Could not delete the category with ID: " + category.getCategoryId() + " : " + e.getMessage());
         }
         return deleted;
     }
@@ -108,7 +106,8 @@ public class CategoryController {
     @Operation(hidden = true)
     public ResponseEntity<String> delete(@PathVariable int id) {
         ResponseEntity<String> response;
-        if (removeCategoryFromCollection(id)) {
+        Category categoryToDelete = categoryService.findById(id);
+        if (removeCategoryFromCollection(categoryToDelete)) {
             response = new ResponseEntity<>(HttpStatus.OK);
         } else {
             response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -146,7 +145,7 @@ public class CategoryController {
         if (category == null || category.getCategoryId() < 0) {
             throw new IllegalArgumentException("Product is invalid");
         }
-        categoryRepository.save(category);
+        categoryService.addCategory(category);
     }
 
     /**
@@ -157,7 +156,7 @@ public class CategoryController {
      * @throws IllegalArgumentException if something goes wrong
      */
     private void updateCategory(int id, Category category) throws  IllegalArgumentException {
-        Optional<Category> existingCategory = categoryRepository.findById(id);
+        Optional<Category> existingCategory = Optional.ofNullable(categoryService.findById(id));
         if (existingCategory.isEmpty()) {
             throw new IllegalArgumentException("No product with id " + id + " found");
         }
@@ -170,7 +169,7 @@ public class CategoryController {
         }
 
         try {
-            categoryRepository.save(category);
+            categoryService.update(id, category);
         } catch (Exception e) {
             logger.warn("Could not update category " + category.getCategoryId() + ": " + e.getMessage());
             throw new IllegalArgumentException("Could not update category " + category.getCategoryId());

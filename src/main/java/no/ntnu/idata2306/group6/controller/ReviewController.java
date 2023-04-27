@@ -2,8 +2,7 @@ package no.ntnu.idata2306.group6.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import no.ntnu.idata2306.group6.entity.Review;
-import no.ntnu.idata2306.group6.repository.ReviewRepository;
-import org.slf4j.ILoggerFactory;
+import no.ntnu.idata2306.group6.service.ReviewService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
@@ -16,12 +15,12 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/review")
 public class ReviewController {
-    private ReviewRepository reviewRepository;
+    private ReviewService reviewService;
 
     private static final Logger logger = LoggerFactory.getLogger(ReviewController.class.getSimpleName());
 
-    public ReviewController(ReviewRepository reviewRepository) {
-        this.reviewRepository = reviewRepository;
+    public ReviewController(ReviewService reviewService) {
+        this.reviewService = reviewService;
     }
 
     /**
@@ -37,7 +36,7 @@ public class ReviewController {
     )
     public ResponseEntity<Object> getAll() {
         logger.error("Getting all ");
-        Iterable<Review> reviews = reviewRepository.findAll();
+        Iterable<Review> reviews = reviewService.getAll();
         return new ResponseEntity<>(reviews, HttpStatus.OK);
     }
 
@@ -50,7 +49,7 @@ public class ReviewController {
     @GetMapping("/{id}")
     public ResponseEntity<Review> getOne(@PathVariable Integer id) {
         ResponseEntity<Review> response;
-        Optional<Review> review = reviewRepository.findById(id);
+        Optional<Review> review = Optional.ofNullable(reviewService.findById(id));
         if (review.isPresent()) {
             response = new ResponseEntity<>(review.get(), HttpStatus.OK);
         } else {
@@ -83,16 +82,16 @@ public class ReviewController {
     /**
      * Remove review from the collection.
      *
-     * @param id ID of the product to remove
+     * @param review to remove
      * @return true when product with that ID is removed, false otherwise
      */
-    private boolean removeReviewFromCollection(int id) {
+    private boolean removeReviewFromCollection(Review review) {
         boolean deleted = false;
         try {
-            reviewRepository.deleteById(id);
+            reviewService.remove(review);
             deleted = true;
         } catch (DataAccessException e) {
-            logger.warn("Could not delete the review with ID: " + id + " : " + e.getMessage());
+            logger.warn("Could not delete the review with ID: " + review.getReviewId() + " : " + e.getMessage());
         }
         return deleted;
     }
@@ -107,7 +106,8 @@ public class ReviewController {
     @Operation(hidden = true)
     public ResponseEntity<String> delete(@PathVariable int id) {
         ResponseEntity<String> response;
-        if (removeReviewFromCollection(id)) {
+        Review reviewToDelete = reviewService.findById(id);
+        if (removeReviewFromCollection(reviewToDelete)) {
             response = new ResponseEntity<>(HttpStatus.OK);
         } else {
             response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -145,7 +145,7 @@ public class ReviewController {
         if (review == null || review.getReviewId() < 0) {
             throw new IllegalArgumentException("Product is invalid");
         }
-        reviewRepository.save(review);
+        reviewService.addReview(review);
     }
 
     /**
@@ -156,7 +156,7 @@ public class ReviewController {
      * @throws IllegalArgumentException if something goes wrong
      */
     private void updateReview(int id, Review review) throws  IllegalArgumentException {
-        Optional<Review> existingReview = reviewRepository.findById(id);
+        Optional<Review> existingReview = Optional.ofNullable(reviewService.findById(id));
         if (existingReview.isEmpty()) {
             throw new IllegalArgumentException("No product with id " + id + " found");
         }
@@ -169,7 +169,7 @@ public class ReviewController {
         }
 
         try {
-            reviewRepository.save(review);
+            reviewService.update(id, review);
         } catch (Exception e) {
             logger.warn("Could not update review " + review.getReviewId() + ": " + e.getMessage());
             throw new IllegalArgumentException("Could not update review " + review.getReviewId());

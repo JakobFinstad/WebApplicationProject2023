@@ -1,7 +1,6 @@
 package no.ntnu.idata2306.group6.controller;
 
-import no.ntnu.idata2306.group6.entity.User;
-import no.ntnu.idata2306.group6.repository.ProductRepository;
+import io.swagger.v3.oas.annotations.Operation;
 import no.ntnu.idata2306.group6.entity.Product;
 import no.ntnu.idata2306.group6.service.ProductService;
 import org.slf4j.Logger;
@@ -11,9 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.v3.oas.annotations.Operation;
 
-import java.util.*;
+import java.util.Optional;
 
 /**
  * REST API controller for product collection

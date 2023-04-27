@@ -2,7 +2,7 @@ package no.ntnu.idata2306.group6.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import no.ntnu.idata2306.group6.entity.Role;
-import no.ntnu.idata2306.group6.repository.RoleRepository;
+import no.ntnu.idata2306.group6.service.RoleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
@@ -15,12 +15,12 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/role")
 public class RoleController {
-    private RoleRepository roleRepository;
+    private RoleService roleService;
 
     private static final Logger logger = LoggerFactory.getLogger(RoleController.class.getSimpleName());
 
-    public RoleController(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
+    public RoleController(RoleService roleService) {
+        this.roleService = roleService;
     }
 
     /**
@@ -36,7 +36,7 @@ public class RoleController {
     )
     public ResponseEntity<Object> getAll() {
         logger.error("Getting all ");
-        Iterable<Role> roles = roleRepository.findAll();
+        Iterable<Role> roles = roleService.getAll();
         return new ResponseEntity<>(roles, HttpStatus.OK);
     }
 
@@ -49,7 +49,7 @@ public class RoleController {
     @GetMapping("/{id}")
     public ResponseEntity<Role> getOne(@PathVariable Integer id) {
         ResponseEntity<Role> response;
-        Optional<Role> role = roleRepository.findById(id);
+        Optional<Role> role = Optional.ofNullable(roleService.findById(id));
         if (role.isPresent()) {
             response = new ResponseEntity<>(role.get(), HttpStatus.OK);
         } else {
@@ -82,16 +82,16 @@ public class RoleController {
     /**
      * Remove role from the collection.
      *
-     * @param id ID of the product to remove
+     * @param role to remove
      * @return true when product with that ID is removed, false otherwise
      */
-    private boolean removeRoleFromCollection(int id) {
+    private boolean removeRoleFromCollection(Role role) {
         boolean deleted = false;
         try {
-            roleRepository.deleteById(id);
+            roleService.remove(role);
             deleted = true;
         } catch (DataAccessException e) {
-            logger.warn("Could not delete the role with ID: " + id + " : " + e.getMessage());
+            logger.warn("Could not delete the role with ID: " + role.getRoleId() + " : " + e.getMessage());
         }
         return deleted;
     }
@@ -106,7 +106,8 @@ public class RoleController {
     @Operation(hidden = true)
     public ResponseEntity<String> delete(@PathVariable int id) {
         ResponseEntity<String> response;
-        if (removeRoleFromCollection(id)) {
+        Role roleToDelete = roleService.findById(id);
+        if (removeRoleFromCollection(roleToDelete)) {
             response = new ResponseEntity<>(HttpStatus.OK);
         } else {
             response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -144,7 +145,7 @@ public class RoleController {
         if (role == null || role.getRoleId() < 0) {
             throw new IllegalArgumentException("Product is invalid");
         }
-        roleRepository.save(role);
+        roleService.addRole(role);
     }
 
     /**
@@ -155,7 +156,7 @@ public class RoleController {
      * @throws IllegalArgumentException if something goes wrong
      */
     private void updateRole(int id, Role role) throws  IllegalArgumentException {
-        Optional<Role> existingRole = roleRepository.findById(id);
+        Optional<Role> existingRole = Optional.ofNullable(roleService.findById(id));
         if (existingRole.isEmpty()) {
             throw new IllegalArgumentException("No product with id " + id + " found");
         }
@@ -168,7 +169,7 @@ public class RoleController {
         }
 
         try {
-            roleRepository.save(role);
+            roleService.update(id, role);
         } catch (Exception e) {
             logger.warn("Could not update role " + role.getRoleId() + ": " + e.getMessage());
             throw new IllegalArgumentException("Could not update role " + role.getRoleId());
