@@ -10,7 +10,7 @@ public class Info {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int infoId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "productId")
     private Product product;
     private String longDescription;
     private String description;

@@ -9,10 +9,10 @@ public class Review {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int review_id;
+    private int reviewId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userId")
     private User user;
 
     @NotNull
@@ -83,7 +83,7 @@ public class Review {
      * @param id new id
      */
     private void setId(int id) {
-        this.review_id = id;
+        this.reviewId = id;
     }
 
     /**
@@ -92,6 +92,6 @@ public class Review {
      * @return id of this review
      */
     public int getReviewId() {
-        return review_id;
+        return reviewId;
     }
 }

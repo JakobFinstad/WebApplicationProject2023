@@ -1,5 +1,7 @@
 package no.ntnu.idata2306.group6.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -30,13 +32,15 @@ public class User {
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "UserId"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "userId"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "roleId")
     )
     private Set<Role> roles = new LinkedHashSet<>();
     private String imgURL;
-//    private ProductList wishList;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("subscriptions")
+    private Set<Subscription> subscriptions = new HashSet<>();
 
     /**
      * Constructor for the user on the website.
@@ -292,5 +296,14 @@ public class User {
                 this.getAge(),
                 this.getEmail(), this.getPhoneNumber()
         );
+    }
+
+    public Set<Subscription> subscriptions() {
+        return subscriptions;
+    }
+
+    public User setSubscriptions(Set<Subscription> subscriptions) {
+        this.subscriptions = subscriptions;
+        return this;
     }
 }

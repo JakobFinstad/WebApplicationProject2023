@@ -2,6 +2,7 @@ package no.ntnu.idata2306.group6.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -24,7 +25,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
-    private int id;
+    private int productId;
     @NotNull
     private int price;
     @NotNull
@@ -34,13 +35,17 @@ public class Product {
     @Column(nullable = false)
     @JoinTable(
             name = "product_categories",
-            joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"),
+            joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "productId"),
             inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "categoryId")
     )
     private Set<Category> categories = new HashSet<>();
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     private List<Info> infos = new ArrayList<>();
+
+    @OneToMany(mappedBy = "product")
+    @JsonIgnoreProperties("subscriptions")
+    private List<Subscription> subscriptions = new ArrayList<>();
 
     public Product(){
 
@@ -52,17 +57,17 @@ public class Product {
      * @param price amount of currency that need to be paid in order to achieve this product
      * @param name of the product
      */
-    public Product (int id, int price, String name) {
+    public Product (int productId, int price, String name) {
         setPrice(price);
         setName(name);
-        setProductId(id);
+        setProductId(productId);
     }
 
     private void setProductId(int id) {
         if (id <= 0) {
             throw new IllegalArgumentException("Product ID cannot be zero or lower!");
         }
-        this.id = id;
+        this.productId = id;
     }
 
     /**
@@ -116,7 +121,7 @@ public class Product {
     }*/
 
     public int getProductId() {
-        return this.id;
+        return this.productId;
     }
 
     /**
@@ -163,5 +168,14 @@ public class Product {
     @JsonIgnore
     public boolean isValid() {
         return name != null && !name.equals("");
+    }
+
+    public List<Subscription> subscriptions() {
+        return subscriptions;
+    }
+
+    public Product setSubscriptions(List<Subscription> subscriptions) {
+        this.subscriptions = subscriptions;
+        return this;
     }
 }

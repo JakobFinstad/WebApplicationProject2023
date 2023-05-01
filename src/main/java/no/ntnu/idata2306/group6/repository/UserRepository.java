@@ -1,8 +1,6 @@
 package no.ntnu.idata2306.group6.repository;
 
 import jakarta.transaction.Transactional;
-import no.ntnu.idata2306.group6.entity.Category;
-import no.ntnu.idata2306.group6.entity.Role;
 import no.ntnu.idata2306.group6.entity.User;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
