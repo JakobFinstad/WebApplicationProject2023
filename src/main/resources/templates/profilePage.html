@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile-page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{css/navbar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/footer.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/profilePage.css}">
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+<!--Navigation bar-->
+<div th:replace="navbar :: nav"></div>
+<!--End of navigation bar -->
+
+<ul class="profile_box">
+    <img th:src="${user.imageurl}" alt="picture of the user"/>
+    <li><a class="profile_item" th:src="@{user.name}"></a></li>
+    <li><a class="profile_item" th:src="@{user.mail}"></a></li>
+    <li><a class="profile_item" th:src="@{user.tlfnumber}"></a></li>
+    <li><a class="profile_item" id="sign_out_button">Sign out</a></li>
+</ul>
+
+<main>
+<div id="my_subscriptions">
+    <h1>Subscriptions</h1>
+    <!-- TODO - Only include cards that the user subscribes to -->
+    <div class="subscription-list" th:replace="~{fragments/product-card.html :: product-card}"> </div>
+</div>
+</main>
+
+
+<!-- Footer -->
+<div th:replace="footer :: footer"></div>
+<!-- End of footer -->
+</body>
+</html>

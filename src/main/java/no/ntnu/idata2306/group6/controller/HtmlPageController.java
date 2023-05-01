@@ -71,6 +71,14 @@ public class HtmlPageController {
     public String signup() {return "sign-up";}
 
     /**
+     * Get the profile page.
+     *
+     * @return profile page
+     */
+     @GetMapping("/profile-page")
+     public String profilePage() {return "profilePage";}
+
+    /**
      * Get the accounting solution page.
      *
      * @return accounting solution page

@@ -9,13 +9,13 @@
   <link rel="stylesheet" type="text/css" th:href="@{css/footer.css}">
   <script th:src="@{https://code.jquery.com/jquery-1.10.2.js}"></script>
 
-<!--Navigation bar-->
-<!--End of navigation bar -->
-
 </head>
 
 <body>
-<div th:replace="navbar :: nav"></div>
+<!--Navigation bar-->
+<div th:replace="navbar :: nav">
+  <!--End of navigation bar -->
+
 <main>
   <section id="info">
     <p id="TopText">All of our <span class="products-text"> products</span></p>
