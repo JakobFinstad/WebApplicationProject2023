@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initialscale=1">
@@ -13,7 +13,7 @@
 
 <body>
 <!--Navigation bar-->
-<div th:replace="navbar :: nav">
+<div th:replace="navbar :: nav"></div>
   <!--End of navigation bar -->
 
 <main>
@@ -21,99 +21,114 @@
     <p id="TopText">All of our <span class="products-text"> products</span></p>
   </section>
 
+  <div id="Products-category-container">
+    <p>Filter by category</p>
+    <a th:href="@{/products}">All</a>
+    <a th:href="@{/products(category='Accounting')}">Accounting</a>
+    <a th:href="@{/products(category='Automation')}">Automation</a>
+    <a th:href="@{/products(category='Finance')}">Finance</a>
+    <a th:href="@{/products(category='Legal')}">Legal</a>
+    <a th:href="@{/products(category='Automation')}">Planning</a>
+    <a th:href="@{/products(category='Processes')}">Processes</a>
+    <a th:href="@{/products(category='Scheduling')}">Scheduling</a>
+    <a th:href="@{/products(category='Tax')}">Tax</a>
+  </div>
+
+
   <section id="card-container">
-
-    <!-- Online Scheduling Software -->
-    <div class="card">
-      <a th:href="@{/products/1}">
-
-      <div class="imgBox">
-      <img th:src="@{images/Online-scheduling-software-2.jpg}"
-           alt="picture of online scheduling software"/>
-      </div>
-
-      <div class="card-description">
-        <h2>Online Scheduling Software</h2>
-        <p>Easy scheduling process, quick and easy, powerful calendar management</p>
-      </div>
-      </a>
-    </div>
-
-    <!-- BPA Solutions -->
-    <div class="card">
-
-      <div class="imgBox">
-      <img th:src="@{images/BPA-solution.jpg}"
-           alt="Picture of Proflex BPA solutions"/>
-      </div>
-
-      <div class="card-description">
-        <h2>ProFlex BPA Solutions</h2>
-        <p>Automation processes for only 5000</p>
-      </div>
-
-    </div>
-
-    <!-- ProFlex Tax Solutions -->
-    <div class="card">
-
-      <div class="imgBox">
-      <img th:src="@{images/tax-solutions.jpg}"
-           alt="Picture of Proflex tax solutions"/>
-      </div>
-
-      <div class="card-description">
-        <h2>ProFlex Tax Solutions</h2>
-        <p>Tax, legal, accounting</p>
-      </div>
-
-    </div>
-
-    <!-- ProFlex accounting solutions -->
-    <div class="card">
-
-      <div class="imgBox">
-      <img th:src="@{images/accounting-solutions.jpg}"
-           alt="Picture of proflex accounting solutions"/>
-      </div>
-
-      <div class="card-description">
-        <h2>ProFlex Accounting Solutions</h2>
-        <p>Accounting, legal, tax, finance</p>
-      </div>
-
-    </div>
-
-    <!-- Legal Solutions -->
-    <div class="card">
-
-      <div class="imgBox">
-      <img th:src="@{images/legal-solutions.jpg}"
-           alt="Picture of legal solutions"/>
-      </div>
-
-      <div class="card-description">
-        <h2>Legal solutions</h2>
-        <p>Legal solutions to help your company</p>
-      </div>
-
-    </div>
-
-    <!-- ProFlex Financial Advisor Pro -->
-    <div class="card">
-
-      <div class="imgBox">
-      <img th:src="@{images/financial-advisor-pro.jpg}"
-           alt="Picture of Proflex financial advisor pro"/>
-      </div>
-
-      <div class="card-description">
-        <h2>ProFlex Financial Advisor Pro</h2>
-        <p>Finance, planning</p>
-      </div>
-
-    </div>
+    <div th:replace="~fragments/product-card.html :: product-card"></div>
   </section>
+
+<!--    &lt;!&ndash; Online Scheduling Software &ndash;&gt;-->
+<!--    <div class="card">-->
+
+<!--      <div class="imgBox">-->
+<!--      <img th:src="@{images/Online-scheduling-software-2.jpg}"-->
+<!--           alt="picture of online scheduling software"/>-->
+<!--      </div>-->
+
+<!--      <div class="card-description">-->
+<!--        <h2>Online Scheduling Software</h2>-->
+<!--        <p>Easy scheduling process, quick and easy, powerful calendar management</p>-->
+<!--      </div>-->
+
+<!--    </div>-->
+
+<!--    &lt;!&ndash; BPA Solutions &ndash;&gt;-->
+<!--    <div class="card">-->
+
+<!--      <div class="imgBox">-->
+<!--      <img th:src="@{images/BPA-solution.jpg}"-->
+<!--           alt="Picture of Proflex BPA solutions"/>-->
+<!--      </div>-->
+
+<!--      <div class="card-description">-->
+<!--        <h2>ProFlex BPA Solutions</h2>-->
+<!--        <p>Automation processes for only 5000</p>-->
+<!--      </div>-->
+
+<!--    </div>-->
+
+<!--    &lt;!&ndash; ProFlex Tax Solutions &ndash;&gt;-->
+<!--    <div class="card">-->
+
+<!--      <div class="imgBox">-->
+<!--      <img th:src="@{images/tax-solutions.jpg}"-->
+<!--           alt="Picture of Proflex tax solutions"/>-->
+<!--      </div>-->
+
+<!--      <div class="card-description">-->
+<!--        <h2>ProFlex Tax Solutions</h2>-->
+<!--        <p>Tax, legal, accounting</p>-->
+<!--      </div>-->
+
+<!--    </div>-->
+
+<!--    &lt;!&ndash; ProFlex accounting solutions &ndash;&gt;-->
+<!--    <div class="card">-->
+
+<!--      <div class="imgBox">-->
+<!--      <img th:src="@{images/accounting-solutions.jpg}"-->
+<!--           alt="Picture of proflex accounting solutions"/>-->
+<!--      </div>-->
+
+<!--      <div class="card-description">-->
+<!--        <h2>ProFlex Accounting Solutions</h2>-->
+<!--        <p>Accounting, legal, tax, finance</p>-->
+<!--      </div>-->
+
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Legal Solutions &ndash;&gt;-->
+<!--    <div class="card">-->
+
+<!--      <div class="imgBox">-->
+<!--      <img th:src="@{images/legal-solutions.jpg}"-->
+<!--           alt="Picture of legal solutions"/>-->
+<!--      </div>-->
+
+<!--      <div class="card-description">-->
+<!--        <h2>Legal solutions</h2>-->
+<!--        <p>Legal solutions to help your company</p>-->
+<!--      </div>-->
+
+<!--    </div>-->
+
+<!--    &lt;!&ndash; ProFlex Financial Advisor Pro &ndash;&gt;-->
+<!--    <div class="card">-->
+
+<!--      <div class="imgBox">-->
+<!--      <img th:src="@{images/financial-advisor-pro.jpg}"-->
+<!--           alt="Picture of Proflex financial advisor pro"/>-->
+<!--      </div>-->
+
+<!--      <div class="card-description">-->
+<!--        <h2>ProFlex Financial Advisor Pro</h2>-->
+<!--        <p>Finance, planning</p>-->
+<!--      </div>-->
+
+<!--    </div>-->
+<!--  </section>-->
 </main>
 
 </body>
