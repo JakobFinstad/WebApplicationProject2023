@@ -65,7 +65,7 @@ public class ProductController {
     if (product == null){
       categories = null;
     } else {
-      categories = productService.getAllCategoriesByProduct(product);
+      categories = productService.getAllCategoriesByProduct(id);
     }
 
     return new ResponseEntity<>(categories, HttpStatus.OK);

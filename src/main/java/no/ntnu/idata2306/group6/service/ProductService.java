@@ -98,7 +98,7 @@ public class ProductService {
         return productRepository.findByCategoriesCategoryName(category);
     }
 
-    public Iterable<Category> getAllCategoriesByProduct(Product product) {
-        return productRepository.findAllCategoriesById(product);
+    public Iterable<Category> getAllCategoriesByProduct(int id) {
+        return productRepository.findAllCategoriesById(id);
     }
 }
