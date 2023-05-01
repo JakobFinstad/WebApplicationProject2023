@@ -12,93 +12,6 @@ body {
     margin: 0;
 }
 
-.navbar{
-    background-image: linear-gradient(to top, rgba(34, 184, 207, 0.7), rgba(180, 46, 83, 0.62) 50%);
-    height: 80px;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    font-size: 1.2rem;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    padding-top: 10px;
-}
-
-.navbar-container{
-    display: flex;
-    justify-content: space-between;
-    height: 80px;
-    z-index: 1;
-    width: 100%;
-    max-width: 1300px;
-    padding: 0;
-}
-
-#proflex-logo{
-    padding-left: -10px;
-    font-size: 65px;
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-    margin-left: 10px;
-    margin-top: -10px;
-}
-
-#proflex-logo:hover{
-    transform: scale(0.98);
-    cursor: pointer;
-}
-
-#proflex-logo:active{
-    opacity: 0.4;
-}
-
-.menu-choice-list{
-    list-style: none;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    float: left;
-    overflow: hidden;
-    position: absolute;
-    top: 2px;
-    right: 16px;
-    margin-right: 0;
-    margin-top: 15px;
-    text-decoration: none;
-}
-
-.menu-button {
-    float: left;
-    margin-left: 20px;
-    margin-right: 5px;
-    color: white;
-}
-
-.menu-button:hover{
-    transform: scale(0.98);
-    cursor: pointer;
-}
-
-.menu-button:active{
-    opacity: 0.4;
-}
-
-.menu-links{
-    color: white;
-    text-decoration: none;
-}
-
-.menu-links:hover{
-    transform: scale(0.98);
-    cursor: pointer;
-}
-
-.menu-links:active{
-    opacity: 0.4;
-}
-
 a{
     text-decoration: none;
     color: unset;
@@ -107,7 +20,7 @@ a{
 h2{
     font-size: 4em;
     font-weight: bold;
-    color: azure;
+    color: rgba(0, 0, 0, 0.7);
 }
 
 main{
@@ -117,34 +30,36 @@ main{
     align-content: center;
 }
 
-#buy-option{
+#product-page{
     width: 100%;
-    background: #22B8CFB2;
-    /*align-items: center;*/
+    align-items: center;
     text-align: center;
+    margin: 5rem;
+    display: flex;
+    justify-content: center;
 }
 
-#button-container {
-    display: grid;
-    grid-template-columns: repeat(2,auto);
-    gap: 25em;
-    justify-content: center;
+.info-section {
+    flex-direction: column;
     align-items: center;
-    align-content: center;
-    /*flex-wrap: wrap;*/
-    /*width: fit-content;*/
-    margin-top: auto;
-    padding: 1em 10em;
+    justify-content: center;
+    display: flex;
+    margin-left: 5rem;
+}
+
+#title-description {
+    font-size: 2rem;
+    color: #000000B2;
 }
 
 #buy-now-button {
-    margin: 10px;
-    padding: 30px;
+    margin: 5rem 1rem 1rem;
+    padding: 2rem;
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
     background-size: 200% auto;
-    color: black;
+    color: rgba(0, 0, 0, 0.7);
     box-shadow: 0 0 20px #eee;
     border-radius: 0.1em;
     background-image: linear-gradient(to right,  azure 50%, rgba(180, 46, 83) 100%);
@@ -160,15 +75,23 @@ main{
 }
 
 #buy-now-button:active {
-    color: black;
+    color: rgba(0, 0, 0, 0.7);
     transition: 0s;
+}
+
+#review {
+
+}
+
+.product-description {
+    font-size: 1.5rem;
 }
 
 img{
     border-radius: 1em;
 }
 
-#text-and-button-container{
+.main-button{
     display: flex;
     flex-direction: column;
     max-width: 25em;
@@ -176,6 +99,51 @@ img{
 
 p{
     font-family: inter;
-    color: white;
+    color: #000000;
     font-size: 1em;
+}
+.product-name {
+    margin: 0;
+}
+
+.add-review-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 5rem;
+}
+
+textarea {
+    resize: none;
+    height: 20rem;
+    width: 40rem;
+    font-family: Inter, sans-serif;
+}
+
+.submit-button {
+    margin: 5rem 1rem 1rem;
+    padding: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 20px #eee;
+    border-radius: 0.1em;
+    background-image: linear-gradient(to right,  azure 50%, rgba(180, 46, 83) 100%);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 2em;
+    border: none;
+}
+
+.submit-button:hover {
+    background-position: right center;
+    cursor: pointer;
+}
+
+.submit-button:active {
+    color: rgba(0, 0, 0, 0.7);
+    transition: 0s;
 }

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" th:href="@{css/product.css}">
-  <link rel="stylesheet" type="text/css" th:href="@{css/navbar.css}">
-  <link rel="stylesheet" type="text/css" th:href="@{css/footer.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/product.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
     <meta charset="UTF-8">
     <title>Product</title>
 </head>
@@ -11,25 +11,30 @@
 <div th:replace="navbar :: nav"></div>
 
 <main>
-  <article id="buy-option">
-    <h2>ProFlex Accounting</h2>
-    <div id="button-container" >
-      <span id="text-and-button-container">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium nesciunt nobis, nostrum omnis perferendis vero!</p>
-        <a id="buy-now-button" title="Click her to see subscription options" href="">
-          Buy Now
-      </a></span>
+  <article id="product-page">
+    <img th:src="@{/images/accounting-solutions.jpg}" title="Our Solution for you!" alt="Picture of our solution" height="400" width="640"/>
+    <section class="info-section">
+      <h2 class="product-name">ProFlex Accounting</h2>
+      <h3 id="review">
 
-      <img th:src="@{images/accounting-solutions.jpg}" title="Our Solution for you!" alt="Picture of our solution" height="500" width="800"/>
-    </div>
+      </h3>
+      <p class="product-description" id="product-description1">&#10003;Easy scheduling process</p>
+      <p class="product-description" id="product-description2">&#10003;Quick and easy</p>
+      <p class="product-description" id="product-description3">&#10003;Powerful calendar management</p>
+      <div id="button-container" >
+        <span class="main-button" id="text-and-button-container">
+          <a id="buy-now-button" title="Click her to see subscription options" href="">
+            Buy Now
+        </a></span>
+      </div>
+    </section>
   </article>
 
-
-  <h3 id="title-description">Description</h3>
-
-  <p id="product-description">Description-of-product</p>
-
-  <h3 id="title-reviews">Reviews</h3>
+  <section class="add-review-section">
+    <h2>Got feedback?</h2>
+    <textarea placeholder="Anything on your heart?"></textarea>
+    <button class="submit-button"><a>Submit review</a></button>
+  </section>
 </main>
 
 <div th:replace="footer :: footer"></div>
