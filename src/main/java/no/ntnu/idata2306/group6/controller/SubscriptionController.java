@@ -7,9 +7,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 @RestController
 @RequestMapping("/api/subscription")
@@ -31,5 +32,40 @@ public class SubscriptionController {
         logger.info("Getting all ");
         Iterable<Subscription> subscriptions = subscriptionService.getAll();
         return new ResponseEntity<>(subscriptions, HttpStatus.OK);
+    }
+
+    @PostMapping
+    @Operation(deprecated = true)
+    public ResponseEntity<String> addSub(@RequestBody Subscription subscription) {
+        logger.info("Adding");
+
+        ResponseEntity<String> response;
+
+        try {
+            LocalDate startDate = subscription.getStartDate();
+//            logger.warn("Start date : " + startDate);
+            LocalDate endDate = subscription.getEndDate();
+//            logger.warn("End date : " + endDate);
+            if (startDate == null || endDate == null) {
+                throw new IllegalArgumentException("Start date and end date cannot be null.");
+            }
+            long daysBetween = ChronoUnit.DAYS.between(startDate, endDate);
+            if (daysBetween < 0) {
+                throw new IllegalArgumentException("Start date must be before end date.");
+            }
+            addSubscription(subscription);
+            response = new ResponseEntity<>("" + subscription.getSubscriptionId(), HttpStatus.CREATED);
+        } catch (IllegalArgumentException e) {
+            response = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+
+        return response;
+    }
+
+    private void addSubscription(Subscription subscription) {
+        if (!subscription.isActive()) {
+            throw new IllegalArgumentException("Subscription is not active");
+        }
+        subscriptionService.addSubscription(subscription);
     }
 }

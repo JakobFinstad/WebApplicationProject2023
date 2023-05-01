@@ -1,11 +1,9 @@
 package no.ntnu.idata2306.group6.entity;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table
@@ -20,8 +18,10 @@ public class Subscription {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id")
     private Product product;
-    private Date startDate;
-    private Date endDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate startDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate endDate;
 
     /**
      * Class which represents a subscription.
@@ -32,7 +32,7 @@ public class Subscription {
      * @param startDate When one starts the subscription
      * @param endDate When one ends the subscription
      */
-    public Subscription(int subID, User user, Product product, Date startDate, Date endDate) {
+    public Subscription(int subID, User user, Product product, LocalDate startDate, LocalDate endDate) {
         this.subID = subID;
         this.user = user;
         this.product = product;
@@ -48,7 +48,7 @@ public class Subscription {
      *
      * @param startDate The date one starts the subscription
      */
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
@@ -57,8 +57,8 @@ public class Subscription {
      *
      * @param endDate The date one ends the subscription
      */
-    public void setEndDate(Date endDate) {
-        if (endDate.compareTo(startDate) > 0) {
+    public void setEndDate(LocalDate endDate) {
+        if (endDate.isAfter(startDate)) {
             throw new IllegalArgumentException("The date you wish to end your description cannot before the start date");
         }
         this.endDate = endDate;
@@ -96,7 +96,7 @@ public class Subscription {
      *
      * @return start date of subscription
      */
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
@@ -105,14 +105,14 @@ public class Subscription {
      *
      * @return end date of subscription
      */
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
     public boolean isActive(){
         boolean active = false;
-        Date now = Date.from(Instant.now());
-        if (now.after(getStartDate()) && now.before(getEndDate())){
+        LocalDate now = LocalDate.now();
+        if (now.isAfter(getStartDate()) && now.isBefore(getEndDate())){
             active = true;
         }
         return active;
