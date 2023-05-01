@@ -10,6 +10,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -40,7 +41,7 @@ public class ProductController {
       summary = "Get all products",
       description = "List of all products currently stored in collection"
   )
-  public ResponseEntity<Object> getAll(@RequestParam(required = false) String category) {
+  public ResponseEntity<Object> getAll(@RequestParam(required = false) String category, Model model) {
     Iterable<Product> products;
     if (category == null) {
       products = productService.getAll();
@@ -49,6 +50,7 @@ public class ProductController {
     }
 
     logger.error("Getting all ");
+    model.addAttribute("products",products);
 
     return new ResponseEntity<>(products, HttpStatus.OK);
   }

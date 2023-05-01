@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -35,9 +36,12 @@ public class InfoController {
             summary = "Get all infos",
             description = "List of all infos currently stored in collection"
     )
-    public ResponseEntity<Object> getAll() {
+    public ResponseEntity<Object> getAll(Model model, int id) {
+        Info info = infoService.findById(id);
         logger.error("Getting all ");
         Iterable<Info> infos = infoService.getAll();
+        model.addAttribute("info", info);
+
         return new ResponseEntity<>(infos, HttpStatus.OK);
     }
 
