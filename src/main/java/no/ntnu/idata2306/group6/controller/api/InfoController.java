@@ -50,7 +50,7 @@ public class InfoController {
      * @return info with the given id or status 404
      */
     @GetMapping("/{id}")
-    public ResponseEntity<Info> getOne(@PathVariable Integer id) {
+    public ResponseEntity<Info> getOne(@PathVariable int id) {
         ResponseEntity<Info> response;
         Optional<Info> info = Optional.ofNullable(infoService.findById(id));
         if (info.isPresent()) {
