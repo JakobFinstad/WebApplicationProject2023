@@ -40,7 +40,7 @@ public class Product {
     )
     private Set<Category> categories = new HashSet<>();
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
     private List<Info> infos = new ArrayList<>();
 
     @OneToMany(mappedBy = "product")

@@ -36,11 +36,9 @@ public class InfoController {
             summary = "Get all infos",
             description = "List of all infos currently stored in collection"
     )
-    public ResponseEntity<Object> getAll(Model model, int id) {
-        Info info = infoService.findById(id);
+    public ResponseEntity<Object> getAll() {
         logger.error("Getting all ");
         Iterable<Info> infos = infoService.getAll();
-        model.addAttribute("info", info);
 
         return new ResponseEntity<>(infos, HttpStatus.OK);
     }

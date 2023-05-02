@@ -9,8 +9,8 @@ public class Info {
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int infoId;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "productId")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id")
     private Product product;
     private String longDescription;
     private String description;
@@ -177,4 +177,17 @@ public class Info {
     public void setWidgetURL(String widgetURL) {
         this.widgetURL = widgetURL;
     }
+
+  /*  @Override
+    public String toString() {
+        String str = "infoID: " + this.getInfoId() + " \n " +
+                "longDescription: " + this.getLongDescription() + " \n" +
+                "description: " + this.getDescription() + " \n" +
+                "shortDescription: " + this.getShortDescription() + " \n" +
+                "imageURL: " + this.getImageURL() + " \n" +
+                "croppedURL: " + this.getCroppedURL() + " \n" +
+                "widgetURL: " + this.getWidgetURL() + " \n" +
+                "productId: " + this.getProductID();
+        return str;
+    }*/
 }

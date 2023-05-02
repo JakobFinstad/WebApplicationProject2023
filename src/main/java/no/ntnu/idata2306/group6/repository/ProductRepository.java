@@ -18,7 +18,7 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
 
     Page<Product> findAll(Pageable pageable);
     Optional<Product> findById(int id);
-    @Query(value = "SELECT c FROM Category c JOIN c.products p WHERE p.product_id = ?1\n")
+    @Query(value = "SELECT c FROM Category c JOIN c.products p WHERE p.id = ?1\n")
     List<Category> findAllCategoriesById(int id);
     Iterable<Product> findByCategoriesCategoryName(String categoryName);
 }
