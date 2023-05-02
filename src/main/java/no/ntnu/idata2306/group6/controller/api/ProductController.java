@@ -184,7 +184,7 @@ public class ProductController {
   }
 
   /**
-   * Try to update a product with given ID. The product.id must match the id.
+   * Try to update a product with given ID. The product id must match the id.
    *
    * @param id   ID of the product
    * @param product The updated product data
