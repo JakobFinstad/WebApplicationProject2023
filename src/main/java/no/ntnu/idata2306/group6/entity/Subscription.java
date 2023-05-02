@@ -26,14 +26,12 @@ public class Subscription {
     /**
      * Class which represents a subscription.
      *
-     * @param subID Subscription ID
      * @param user User ID
      * @param product Product ID
      * @param startDate When one starts the subscription
      * @param endDate When one ends the subscription
      */
-    public Subscription(int subID, User user, Product product, LocalDate startDate, LocalDate endDate) {
-        this.subID = subID;
+    public Subscription(User user, Product product, LocalDate startDate, LocalDate endDate) {
         this.user = user;
         this.product = product;
         this.startDate = startDate;
@@ -58,7 +56,7 @@ public class Subscription {
      * @param endDate The date one ends the subscription
      */
     public void setEndDate(LocalDate endDate) {
-        if (endDate.isAfter(startDate)) {
+        if (!endDate.isAfter(startDate)) {
             throw new IllegalArgumentException("The date you wish to end your description cannot before the start date");
         }
         this.endDate = endDate;
