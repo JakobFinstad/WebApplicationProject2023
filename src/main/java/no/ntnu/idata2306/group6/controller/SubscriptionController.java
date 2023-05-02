@@ -1,6 +1,7 @@
 package no.ntnu.idata2306.group6.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import no.ntnu.idata2306.group6.entity.Product;
 import no.ntnu.idata2306.group6.entity.Subscription;
 import no.ntnu.idata2306.group6.entity.SubscriptionDTO;
 import no.ntnu.idata2306.group6.service.ProductService;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/subscription")
@@ -40,6 +42,23 @@ public class SubscriptionController {
         logger.info("Getting all ");
         Iterable<Subscription> subscriptions = subscriptionService.getAll();
         return new ResponseEntity<>(subscriptions, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    @Operation(
+            summary = "Get one subscription",
+            description = "Get out one subscription in the collection"
+    )
+    public ResponseEntity<Subscription> getOne(@PathVariable int id) {
+        logger.info("Getting sub with id: " + id);
+        ResponseEntity<Subscription> response;
+        Optional<Subscription> subscription = Optional.ofNullable(subscriptionService.findById(id));
+        if (subscription.isPresent()) {
+            response = new ResponseEntity<>(subscription.get(), HttpStatus.OK);
+        } else {
+            response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return response;
     }
 
     @PostMapping
