@@ -5,6 +5,7 @@ import no.ntnu.idata2306.group6.repository.ProductRepository;
 import no.ntnu.idata2306.group6.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.Optional;
 
@@ -15,7 +16,8 @@ import java.util.Optional;
 public class ProductService {
     @Autowired
     private ProductRepository productRepository;
-
+    
+    @ModelAttribute("products")
     public Iterable<Product> getAll() {
         return productRepository.findAll();
     }

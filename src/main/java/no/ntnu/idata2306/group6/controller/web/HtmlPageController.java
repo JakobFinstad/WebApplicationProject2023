@@ -1,4 +1,4 @@
-package no.ntnu.idata2306.group6.controller;
+package no.ntnu.idata2306.group6.controller.web;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -84,7 +84,9 @@ public class HtmlPageController {
      * @return accounting solution page
      */
     @GetMapping("/products/1")
-    public String accountingSolution() {return "proFlexAccountingSolution";}
+    public String accountingSolution() {
+        return "proFlexAccountingSolution";
+    }
 
 
     /**

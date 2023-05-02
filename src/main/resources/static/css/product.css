@@ -78,13 +78,12 @@ main{
     color: rgba(0, 0, 0, 0.7);
     transition: 0s;
 }
-
-#review {
-
+.description-container {
+    margin-top: 2rem;
 }
-
 .product-description {
     font-size: 1.5rem;
+    margin-top: 1rem;
 }
 
 img{
@@ -121,6 +120,10 @@ textarea {
     font-family: Inter, sans-serif;
 }
 
+.header-feedback {
+    margin: 0;
+}
+
 .submit-button {
     margin: 5rem 1rem 1rem;
     padding: 2rem;
@@ -147,3 +150,21 @@ textarea {
     color: rgba(0, 0, 0, 0.7);
     transition: 0s;
 }
+
+.review-container {
+    height: auto;
+    margin-top: 2rem;
+}
+
+.star {
+    font-size: 2rem;
+}
+
+.review-container-static {
+    height: auto;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+
+

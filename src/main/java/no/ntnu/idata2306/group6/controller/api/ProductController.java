@@ -1,4 +1,4 @@
-package no.ntnu.idata2306.group6.controller;
+package no.ntnu.idata2306.group6.controller.api;
 
 import io.swagger.v3.oas.annotations.Operation;
 import no.ntnu.idata2306.group6.entity.Category;
@@ -50,7 +50,7 @@ public class ProductController {
     }
 
     logger.error("Getting all ");
-    model.addAttribute("products",products);
+    model.addAttribute("products", products);
 
     return new ResponseEntity<>(products, HttpStatus.OK);
   }

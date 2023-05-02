@@ -1,4 +1,4 @@
-package no.ntnu.idata2306.group6.controller;
+package no.ntnu.idata2306.group6.controller.api;
 
 
 import io.swagger.v3.oas.annotations.Operation;

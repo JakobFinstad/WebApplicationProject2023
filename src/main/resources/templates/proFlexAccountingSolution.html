@@ -15,12 +15,18 @@
     <img th:src="@{/images/accounting-solutions.jpg}" title="Our Solution for you!" alt="Picture of our solution" height="400" width="640"/>
     <section class="info-section">
       <h2 class="product-name">ProFlex Accounting</h2>
-      <h3 id="review">
-
-      </h3>
-      <p class="product-description" id="product-description1">&#10003;Easy scheduling process</p>
-      <p class="product-description" id="product-description2">&#10003;Quick and easy</p>
-      <p class="product-description" id="product-description3">&#10003;Powerful calendar management</p>
+      <div class="review-container">
+        <span class="star checked 1">&bigstar;</span>
+        <span class="star checked 2">&bigstar;</span>
+        <span class="star 3">&bigstar;</span>
+        <span class="star 4">&star;</span>
+        <span class="star 5">&star;</span>
+      </div>
+      <div class="description-container">
+        <p class="product-description" id="product-description1">&#10003;Easy scheduling process</p>
+        <p class="product-description" id="product-description2">&#10003;Quick and easy</p>
+        <p class="product-description" id="product-description3">&#10003;Powerful calendar management</p>
+      </div>
       <div id="button-container" >
         <span class="main-button" id="text-and-button-container">
           <a id="buy-now-button" title="Click her to see subscription options" href="">
@@ -31,13 +37,19 @@
   </article>
 
   <section class="add-review-section">
-    <h2>Got feedback?</h2>
+    <h2 class="header-feedback">Got feedback?</h2>
+    <div class="review-container-static">
+      <span class="star checked 1">&bigstar;</span>
+      <span class="star checked 2">&bigstar;</span>
+      <span class="star 3">&bigstar;</span>
+      <span class="star 4">&star;</span>
+      <span class="star 5">&star;</span>
+    </div>
     <textarea maxlength="500" placeholder="Anything on your heart?"></textarea>
     <button class="submit-button"><a>Submit review</a></button>
   </section>
 </main>
 
 <div th:replace="footer :: footer"></div>
-
 </body>
 </html>
