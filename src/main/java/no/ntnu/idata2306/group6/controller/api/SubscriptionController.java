@@ -1,9 +1,8 @@
 package no.ntnu.idata2306.group6.controller.api;
 
 import io.swagger.v3.oas.annotations.Operation;
-import no.ntnu.idata2306.group6.entity.Product;
 import no.ntnu.idata2306.group6.entity.Subscription;
-import no.ntnu.idata2306.group6.entity.SubscriptionDTO;
+import no.ntnu.idata2306.group6.entity.dto.SubscriptionDTO;
 import no.ntnu.idata2306.group6.service.ProductService;
 import no.ntnu.idata2306.group6.service.SubscriptionService;
 import no.ntnu.idata2306.group6.service.UserService;

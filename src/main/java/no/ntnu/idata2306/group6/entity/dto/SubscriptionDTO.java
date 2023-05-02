@@ -1,6 +1,4 @@
-package no.ntnu.idata2306.group6.entity;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
+package no.ntnu.idata2306.group6.entity.dto;
 
 import java.time.LocalDate;
 
