@@ -34,7 +34,7 @@ main {
 
 #TopText {
     font-family: "Work Sans", sans-serif;
-    font-size: 14rem;
+    font-size: 12rem;
     font-weight: 900;
     text-transform: uppercase;
     text-align: center;
@@ -58,7 +58,24 @@ p {
 }
 
 #Products-category-container {
+    text-align: center;
+    font-size: 1rem;
+    margin: 10rem 0 0 0;
+    font-family: Verdana, serif;
+    font-weight: lighter;
+    color: gray;
+    text-transform: uppercase;
+}
 
+#Products-category-container a {
+    padding: 2rem;
+    color:gray;
+    text-decoration: none;
+    transition: .5s;
+}
+
+#Products-category-container a:hover {
+    color: darkgray;
 }
 
 .card {

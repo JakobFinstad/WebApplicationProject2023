@@ -1,18 +1,13 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <main class="flex-container" th:fragment="product-card">
-    <div class="card" th:each="products: ${products}">
-
+    <div class="card" th:object="product: ${product}">
         <div class="imgBox">
-            <img th:src="${info.imageurl}" alt="picture of the product"/>
+            <img th:src="${product.info.imageurl}" alt="picture of the product"/>
         </div>
 
-        <div th:each="card : ${ids}" class="card-description">
-            <h2 th:text="${product.name}"></h2>
-            <p th:text="${info.short_description}"></p>
-            <p th:text="${product.price} + ${valuta}"></p>
+        <div class="card-description">
+            <h2 th:text="${product.productName}"></h2>
+            <p th:text="${product.info.short_description}"></p>
+            <p th:text="${product.price}"></p>
         </div>
     </div>
 </main>
-
-</html>
