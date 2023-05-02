@@ -15,7 +15,7 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     private int roleId;
-    private String name;
+    private String roleName;
 
     @ManyToMany(mappedBy = "roles")
     private Set<User> users = new LinkedHashSet<>();
@@ -29,10 +29,10 @@ public class Role {
     /**
      * Constructor for the role
      *
-     * @param name of the role
+     * @param roleName of the role
      */
-    public Role(String name) {
-        this.name = name.toUpperCase();
+    public Role(String roleName) {
+        this.roleName = roleName.toUpperCase();
     }
 
     /**
@@ -76,8 +76,8 @@ public class Role {
      *
      * @return the name
      */
-    public String getName() {
-        return name;
+    public String getRoleName() {
+        return roleName;
     }
 
     /**
@@ -85,7 +85,7 @@ public class Role {
      *
      * @param name of the role
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setRoleName(String name) {
+        this.roleName = name;
     }
 }
