@@ -1,7 +1,11 @@
 package no.ntnu.idata2306.group6.controller.web;
 
+import no.ntnu.idata2306.group6.entity.Product;
+import no.ntnu.idata2306.group6.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui. Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -11,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 @CrossOrigin
 public class HtmlPageController {
+    @Autowired
+    ProductService productService;
 
     /**
      * Get the index page of the main site.
@@ -48,7 +54,9 @@ public class HtmlPageController {
      * @return product page
      */
     @GetMapping("/products")
-    public String products(){
+    public String products(Model model){
+        Iterable<Product> products = productService.getAll();
+        model.addAttribute("products", products);
         return "products";
     }
 
@@ -85,7 +93,7 @@ public class HtmlPageController {
      */
     @GetMapping("/products/1")
     public String accountingSolution() {
-        return "proFlexAccountingSolution";
+        return "singleProductPage";
     }
 
 
