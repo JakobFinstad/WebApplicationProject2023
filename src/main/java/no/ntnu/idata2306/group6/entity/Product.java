@@ -29,7 +29,7 @@ public class Product {
     @NotNull
     private int price;
     @NotNull
-    private String name;
+    private String productName;
     @ManyToMany
     @NotNull
     @Column(nullable = false)
@@ -55,11 +55,11 @@ public class Product {
      * Constructor for a product. Have a few fields for describing the product.
      *
      * @param price amount of currency that need to be paid in order to achieve this product
-     * @param name of the product
+     * @param productName of the product
      */
-    public Product (int productId, int price, String name) {
+    public Product (int productId, int price, String productName) {
         setPrice(price);
-        setName(name);
+        setProductName(productName);
         setProductId(productId);
     }
 
@@ -102,11 +102,11 @@ public class Product {
      * @param name of the product, cannot be empty
      * @throws IllegalArgumentException if the name is empty
      */
-    private void setName (String name) throws IllegalArgumentException {
+    private void setProductName(String name) throws IllegalArgumentException {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Name cannot be empty!");
         }
-        this.name = name.toLowerCase();
+        this.productName = name.toLowerCase();
     }
 
   /*  *//**
@@ -147,8 +147,8 @@ public class Product {
      *
      * @return the name of the product
      */
-    public String getName() {
-        return name;
+    public String getProductName() {
+        return productName;
     }
 
     /**
@@ -167,7 +167,7 @@ public class Product {
      */
     @JsonIgnore
     public boolean isValid() {
-        return name != null && !name.equals("");
+        return productName != null && !productName.equals("");
     }
 
     public List<Subscription> subscriptions() {
