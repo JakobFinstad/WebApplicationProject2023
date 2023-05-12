@@ -1,6 +1,6 @@
 <main class="flex-container" th:fragment="product-card">
     <div class="card" th:each="product: ${products}">
-        <div th:href="@/{product/id}{(id=${product.productId})}">
+        <div th:href="@{/product/id}{id ='${product.productId}'}">
             <div class="imgBox">
                 <img th:src="${info.imageURL}" alt="picture of the product"/>
             </div>

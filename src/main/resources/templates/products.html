@@ -13,7 +13,7 @@
 
 <body>
 <!--Navigation bar-->
-<div th:replace="navbar :: nav"></div>
+<div th:replace="~{navbar :: nav}"></div>
   <!--End of navigation bar -->
 
 <main>
@@ -23,15 +23,15 @@
 
   <div id="Products-category-container">
     <p>Filter by category</p>
-    <a th:href="@{/products}">All</a>
-    <a th:href="@{/products(category='Accounting')}">Accounting</a>
-    <a th:href="@{/products(category='Automation')}">Automation</a>
-    <a th:href="@{/products(category='Finance')}">Finance</a>
-    <a th:href="@{/products(category='Legal')}">Legal</a>
-    <a th:href="@{/products(category='Automation')}">Planning</a>
-    <a th:href="@{/products(category='Processes')}">Processes</a>
-    <a th:href="@{/products(category='Scheduling')}">Scheduling</a>
-    <a th:href="@{/products(category='Tax')}">Tax</a>
+<!--    <a th:href="@{/products}">All</a>-->
+<!--    <a th:href="@{/products(category='Accounting')}">Accounting</a>-->
+<!--    <a th:href="@{/products(category='Automation')}">Automation</a>-->
+<!--    <a th:href="@{/products(category='Finance')}">Finance</a>-->
+<!--    <a th:href="@{/products(category='Legal')}">Legal</a>-->
+<!--    <a th:href="@{/products(category='Automation')}">Planning</a>-->
+<!--    <a th:href="@{/products(category='Processes')}">Processes</a>-->
+<!--    <a th:href="@{/products(category='Scheduling')}">Scheduling</a>-->
+<!--    <a th:href="@{/products(category='Tax')}">Tax</a>-->
   </div>
 
 
