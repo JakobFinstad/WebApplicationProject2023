@@ -36,15 +36,14 @@
 
 
   <section id="card-container">
-    <div th:insert="fragments/product-card.html"></div>
+    <div th:replace="~{fragments/product-card.html :: product-card}"></div>
   </section>
-  
 </main>
 
 </body>
 
 <!-- Footer -->
-<div th:replace="footer :: footer">
+<div th:replace="~{footer :: footer}">
 </div>
 <!-- End of footer -->
 
