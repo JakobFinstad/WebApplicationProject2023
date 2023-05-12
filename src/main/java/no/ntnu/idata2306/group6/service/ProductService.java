@@ -1,12 +1,14 @@
 package no.ntnu.idata2306.group6.service;
 
 import no.ntnu.idata2306.group6.entity.Category;
+import no.ntnu.idata2306.group6.entity.Info;
 import no.ntnu.idata2306.group6.repository.ProductRepository;
 import no.ntnu.idata2306.group6.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -28,6 +30,7 @@ public class ProductService {
      * @param id of the product that shall be returned
      * @return product if found else null
      */
+    @ModelAttribute("product")
     public Product findById(int id) {
         Optional<Product> product = productRepository.findById(id);
         return product.orElse(null);
@@ -96,11 +99,17 @@ public class ProductService {
         return errorMessage;
     }
 
+    @ModelAttribute("products")
     public Iterable<Product> getAllByCategory(String category) {
         return productRepository.findByCategoriesCategoryName(category);
     }
 
+    @ModelAttribute("categories")
     public Iterable<Category> getAllCategoriesByProduct(int id) {
         return productRepository.findAllCategoriesById(id);
+    }
+
+    public Iterable<Info> getInfo(int id) {
+        return this.productRepository.findInfosById(id);
     }
 }
