@@ -47,6 +47,9 @@ public class Product {
     @JsonIgnoreProperties("subscriptions")
     private List<Subscription> subscriptions = new ArrayList<>();
 
+    @Transient
+    private Info info;
+
     public Product(){
 
     }
@@ -61,6 +64,7 @@ public class Product {
         setPrice(price);
         setProductName(productName);
         setProductId(productId);
+        this.info = infos.get(0);
     }
 
     private void setProductId(int id) {
@@ -177,5 +181,9 @@ public class Product {
     public Product setSubscriptions(List<Subscription> subscriptions) {
         this.subscriptions = subscriptions;
         return this;
+    }
+
+    public Info getInfo() {
+        return this.infos.get(0);
     }
 }

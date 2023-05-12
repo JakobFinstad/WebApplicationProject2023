@@ -34,7 +34,7 @@ public class ProductWebController {
         for (Product p : products) {
             infos.addAll((Collection<? extends Info>) productService.getInfo(p.getProductId()));
         }
-        model.addAttribute("infos", infos);
+        model.addAttribute("infos", infos.iterator());
         model.addAttribute("products", products);
         model.addAttribute("separator", ",");
         return "products";
