@@ -27,4 +27,6 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
     List<Category> findAllCategoriesById(int id);
     @Query(value = "SELECT p FROM Product p JOIN p.categories c WHERE c.categoryName = ?1\n")
     List<Product> findByCategoriesCategoryName(String categoryName);
+
+
 }

@@ -46,7 +46,8 @@ public class ProductController {
     if (category == null) {
       products = productService.getAll();
     } else {
-      products = productService.getAllByCategory(category);
+      //products = productService.getAllByCategory(category);
+      products = productService.getProductsByCategory(category);
     }
 
     logger.error("Getting all ");

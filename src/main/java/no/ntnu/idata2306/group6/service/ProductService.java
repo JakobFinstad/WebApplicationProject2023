@@ -112,4 +112,8 @@ public class ProductService {
     public Iterable<Info> getInfo(int id) {
         return this.productRepository.findInfosById(id);
     }
+
+    public Iterable<Product> getProductsByCategory(String category) {
+        return productRepository.findByCategoriesCategoryName(category);
+    }
 }
