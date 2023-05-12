@@ -152,7 +152,10 @@ public class Product {
      * @return the name of the product
      */
     public String getProductName() {
-        return productName;
+        String firstLetter = productName.substring(0,1).toUpperCase();
+        String restOfProductName = productName.substring(1);
+
+        return firstLetter + restOfProductName;
     }
 
     /**

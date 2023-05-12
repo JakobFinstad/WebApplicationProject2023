@@ -181,7 +181,10 @@ public class User {
      * @return first name of the user
      */
     public String getFirstName() {
-        return firstName;
+        String firstLetter = firstName.substring(0,1).toUpperCase();
+        String restOfFirstName = firstName.substring(1);
+
+        return firstLetter + restOfFirstName;
     }
 
     /**
@@ -190,7 +193,10 @@ public class User {
      * @return last name of the user
      */
     public String getLastName() {
-        return lastName;
+        String firstLetter = lastName.substring(0,1).toUpperCase();
+        String restOfLastName = lastName.substring(1);
+
+        return firstLetter + restOfLastName;
     }
 
     /**
