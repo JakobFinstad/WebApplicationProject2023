@@ -3,6 +3,7 @@ package no.ntnu.idata2306.group6.repository;
 import no.ntnu.idata2306.group6.entity.Category;
 import no.ntnu.idata2306.group6.entity.Info;
 import no.ntnu.idata2306.group6.entity.Product;
+import org.hibernate.event.spi.SaveOrUpdateEventListener;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -24,5 +25,6 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
     List<Info> findInfosById(int id);
     @Query(value = "SELECT c FROM Category c JOIN c.products p WHERE p.productId = ?1\n")
     List<Category> findAllCategoriesById(int id);
-    Iterable<Product> findByCategoriesCategoryName(String categoryName);
+    @Query(value = "SELECT p FROM Product p JOIN p.categories c WHERE c.categoryName = ?1\n")
+    List<Product> findByCategoriesCategoryName(String categoryName);
 }

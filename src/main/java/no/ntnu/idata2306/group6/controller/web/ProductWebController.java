@@ -21,20 +21,15 @@ public class ProductWebController {
     private ProductService productService;
 
     @GetMapping
-    public String getProducts(@RequestParam(required = false) Category category, Model model) {
+    public String getProducts(@RequestParam(required = false) String categoryName, Model model) {
 
-        Iterable<Product> products;
-        if (category == null) {
+        Iterable<Product> products = null;
+        if (categoryName == null || categoryName.equals("all")) {
             products = this.productService.getAll();
         } else {
-            products = this.productService.getAllByCategory(category.getCategoryName());
+            products = this.productService.getAllByCategory(categoryName);
         }
 
-        List<Info> infos = new ArrayList<>();
-        for (Product p : products) {
-            infos.addAll((Collection<? extends Info>) productService.getInfo(p.getProductId()));
-        }
-        model.addAttribute("infos", infos.iterator());
         model.addAttribute("products", products);
         model.addAttribute("separator", ",");
         return "products";

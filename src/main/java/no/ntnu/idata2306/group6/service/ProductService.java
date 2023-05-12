@@ -99,7 +99,7 @@ public class ProductService {
         return errorMessage;
     }
 
-    @ModelAttribute("products")
+
     public Iterable<Product> getAllByCategory(String category) {
         return productRepository.findByCategoriesCategoryName(category);
     }
