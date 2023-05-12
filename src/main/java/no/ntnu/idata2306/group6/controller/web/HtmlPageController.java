@@ -53,12 +53,12 @@ public class HtmlPageController {
      *
      * @return product page
      */
-    @GetMapping("/products")
+  /*  @GetMapping("/products")
     public String products(Model model){
         Iterable<Product> products = productService.getAll();
         model.addAttribute("products", products);
         return "products";
-    }
+    }*/
 
     /**
      * Get the login page.

@@ -16,7 +16,6 @@
 <div th:replace="~{navbar :: nav}"></div>
   <!--End of navigation bar -->
 
-<main>
   <section id="info">
     <p id="TopText">All of our <span class="products-text"> products</span></p>
   </section>
@@ -37,15 +36,16 @@
 
   <section id="card-container">
 <!--    <div th:replace="~{fragments/product-card.html :: product-card}"></div>-->
-    <div th:insert="~{fragments/product-card.html}"></div>
+    <main th:replace="~{fragments/product-card.html :: product-card}"></main>
   </section>
-</main>
+
+<div th:replace="~{footer :: footer}">
+</div>
+
 
 </body>
 
 <!-- Footer -->
-<div th:replace="~{footer :: footer}">
-</div>
 <!-- End of footer -->
 
 </html>
