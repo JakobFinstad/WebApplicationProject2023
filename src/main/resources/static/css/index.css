@@ -300,7 +300,7 @@ html {
     }
 
 
-    .review-container {
+    #review-container {
         max-width: 160rem;
         margin: 0 auto;
         position: relative;

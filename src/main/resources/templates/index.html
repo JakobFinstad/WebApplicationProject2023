@@ -112,14 +112,12 @@
 
     </section>
 
-    <section class="review-container">
+    <section id="review-container">
         <h1 class="review-header">Don't just take our word for it</h1>
         <h2 class="review-header2">Testimonials</h2>
         <div class="reviewer">
             <div class="review-box">
                 <div class="review-paragraph">
-                    "Proflex Solutions has enabled us to streamline our operations and
-                    save time. Their products are easy to use and their customer service is top-notch."
 
                 </div>
 
@@ -133,8 +131,7 @@
             </div>
             <div class="review-box">
                 <div class="review-paragraph">
-                    "We were looking for a reliable and cost-effective solution to our
-                    business needs and Proflex Solutions delivered.
+
                 </div>
 
                 <div class="review-image-container">
@@ -147,8 +144,7 @@
             </div>
             <div class="review-box">
                 <div class="review-paragraph">
-                    "Proflex Solutions has been a great partner for our business. They have
-                    provided us with the tools and resources we need to succeed.
+
                 </div>
 
                 <div class="review-image-container">
@@ -168,4 +164,50 @@
 
 <div th:replace="footer :: footer"></div>
 <!-- End of footer -->
+
+<script>
+    fetch('api/user')
+        .then(response => response.json())
+        .then(data => {
+            // Extract the "firstname" field from the data
+            const reviewBox = document.querySelector('.review-box');
+
+            reviewBox.forEach((reviewBox, index) => {
+                const user = data[index];
+                const firstname = user.firstname;
+                const lastname = user.lastname;
+                const imgURL = user.img;
+
+                const reviewImageContainer = reviewBox.querySelector('.review-image-container');
+                const reviewImage = reviewImageContainer.querySelector('.review-image');
+                const reviewName = reviewBox.querySelector('.review-name');
+
+                reviewImage.src = imgURL;
+                reviewName.textContent = `- ${firstname} ${lastname}`;
+            })
+
+
+
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+    fetch('api/review')
+        .then(response => response.json())
+        .then(data => {
+            const reviewParagraphs = document.querySelectorAll('.review-paragraph');
+
+
+            reviewParagraphs.forEach((reviewParagraphs, index) => {
+                const statement = data[index].statement;
+
+                reviewParagraphs.textContent = `"${statement}"`;
+            })
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+</script>
 </html>
