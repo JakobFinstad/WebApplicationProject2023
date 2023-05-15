@@ -40,15 +40,16 @@ public class Product {
     )
     private Set<Category> categories = new HashSet<>();
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
-    private List<Info> infos = new ArrayList<>();
+//    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
+//    private List<Info> infos = new ArrayList<>();
 
     @OneToMany(mappedBy = "product")
     @JsonIgnoreProperties("subscriptions")
     private List<Subscription> subscriptions = new ArrayList<>();
 
-    @Transient
-    private Info info;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "infoId", referencedColumnName = "infoId")
+//    private Info info;
 
     public Product(){
 
@@ -60,11 +61,12 @@ public class Product {
      * @param price amount of currency that need to be paid in order to achieve this product
      * @param productName of the product
      */
-    public Product (int productId, int price, String productName) {
+    public Product (int productId, int price, String productName, Info info) {
         setPrice(price);
         setProductName(productName);
         setProductId(productId);
-        this.info = infos.get(0);
+//        this.info = infos.get(0);
+//        this.info = info;
     }
 
     private void setProductId(int id) {
@@ -186,7 +188,10 @@ public class Product {
         return this;
     }
 
-    public Info getInfo() {
-        return this.infos.get(0);
-    }
+//    public void setInfo() {
+//        this.info = info;
+//    }
+//    public Info getInfo() {
+//        return info;
+//    }
 }

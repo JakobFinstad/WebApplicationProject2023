@@ -3,6 +3,7 @@ package no.ntnu.idata2306.group6.service;
 import no.ntnu.idata2306.group6.entity.Info;
 import no.ntnu.idata2306.group6.repository.InfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -10,7 +11,7 @@ import java.util.Optional;
 /**
  * Service class for service logic to info.
  */
-@Service
+@Component
 public class InfoService {
 
     @Autowired

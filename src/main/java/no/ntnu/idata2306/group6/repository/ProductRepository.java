@@ -12,12 +12,16 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
 
 /**
  * Handle SQL database access, for products.
  */
+@RepositoryRestResource
 public interface ProductRepository extends CrudRepository<Product, Integer> {
 
+//    @Query(value = "SELECT p FROM Product p join p.info")
     Page<Product> findAll(Pageable pageable);
     Optional<Product> findById(int id);
 

@@ -9,8 +9,8 @@ public class Info {
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int infoId;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "product_id")
+    @OneToOne
+    @JoinColumn(name = "productId")
     private Product product;
     private String longDescription;
     private String description;

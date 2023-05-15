@@ -18,7 +18,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/subscription")
+@RequestMapping("/api/subscriptions")
 public class SubscriptionController {
 
     private SubscriptionService subscriptionService;

@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotNull;
 import no.ntnu.idata2306.group6.repository.UserRepository;
 import no.ntnu.idata2306.group6.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Iterator;
@@ -12,7 +13,7 @@ import java.util.Optional;
 /**
  * Business logic related to users.
  */
-@Service
+@Component
 public class UserService {
     private final UserRepository userRepository;
 
