@@ -58,7 +58,7 @@ public class Info {
      *
      * @return id of the product it is coupled to
      */
-    public Product getProductID() {
+    public Product getProduct() {
         return product;
     }
 

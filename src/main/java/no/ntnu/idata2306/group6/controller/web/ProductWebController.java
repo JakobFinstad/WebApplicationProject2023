@@ -21,6 +21,7 @@ import java.util.List;
 public class ProductWebController {
     @Autowired
     private ProductService productService;
+    @Autowired
     private InfoService infoService;
 
     @GetMapping
