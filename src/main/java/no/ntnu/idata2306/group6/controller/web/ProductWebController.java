@@ -21,7 +21,7 @@ public class ProductWebController {
     private ProductService productService;
 
     @GetMapping
-    public String getProducts(@RequestParam(required = false) String categoryName, Model model) {
+    public String getProducts(@RequestParam(required = false, name = "category") String categoryName, Model model) {
 
         Iterable<Product> products = null;
         if (categoryName == null || categoryName.equals("all")) {

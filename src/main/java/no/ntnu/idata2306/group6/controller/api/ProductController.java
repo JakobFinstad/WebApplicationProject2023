@@ -20,7 +20,7 @@ import java.util.Optional;
  */
 @Controller
 @CrossOrigin
-@RequestMapping("/api/product")
+@RequestMapping("/api/products")
 public class ProductController {
   private ProductService productService;
 
