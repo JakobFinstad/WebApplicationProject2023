@@ -94,4 +94,7 @@ public class InfoService {
         return errorMessage;
     }
 
+    public Iterable<Info> findByProdId(int productId) {
+        return infoRepository.findByProductId(productId);
+    }
 }
