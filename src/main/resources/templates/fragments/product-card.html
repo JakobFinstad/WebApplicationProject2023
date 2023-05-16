@@ -14,7 +14,7 @@
 <!--    </div>-->
 <!--</main>-->
 
-<main class="flex-container" th:fragment="product-card">
+<main class="flex-container" th:fragment="product-list">
     <div class="card" th:each="products : ${products}">
         <div  th:each="info : ${infos}" th:href="@{/product/{id}(id =${products.productId})}" th:if="${
                     info.product.productId == products.productId}">
