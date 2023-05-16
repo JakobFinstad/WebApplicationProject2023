@@ -13,14 +13,14 @@
 </head>
 <body>
 <!--Navigation bar-->
-<div th:replace="navbar :: nav"></div>
+<div th:replace="~{fragments/header :: nav}"></div>
 <!--End of navigation bar -->
 
 <ul class="profile_box">
-    <img th:src="${user.imageurl}" alt="picture of the user"/>
-    <li><a class="profile_item" th:src="@{user.name}"></a></li>
-    <li><a class="profile_item" th:src="@{user.mail}"></a></li>
-    <li><a class="profile_item" th:src="@{user.tlfnumber}"></a></li>
+    <img th:src="${user.imageURL}" alt="picture of the user"/>
+    <li><a class="profile_item" th:text="@{user.firstName} + ' ' + @{user.lastname}"></a></li>
+    <li><a class="profile_item" th:text="@{user.email}"></a></li>
+    <li><a class="profile_item" th:text="@{user.phoneNumber}"></a></li>
     <li><a class="profile_item" id="sign_out_button">Sign out</a></li>
 </ul>
 
@@ -34,7 +34,7 @@
 
 
 <!-- Footer -->
-<div th:replace="footer :: footer"></div>
+<div th:replace="~{fragments/footer :: footer}"></div>
 <!-- End of footer -->
 </body>
 </html>
