@@ -27,7 +27,7 @@
 </head>
 
 <body>
-<div id="navbar-placeholder" th:replace="navbar :: nav">
+<div id="navbar-placeholder" th:replace="~{fragments/header :: nav}">
 
 </div>
 <article id ="mainContent">
@@ -162,7 +162,7 @@
 </article>
 </body>
 
-<div th:replace="footer :: footer"></div>
+<div th:replace="~{fragments/footer :: footer"}></div>
 <!-- End of footer -->
 
 <script>
