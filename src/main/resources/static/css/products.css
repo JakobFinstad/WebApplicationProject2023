@@ -1,6 +1,5 @@
 
 html {
-    font-size: 10px;
     box-sizing: border-box;
     font-family: Inter, sans-serif;
     max-width: 100%;
@@ -96,7 +95,7 @@ p {
     background: linear-gradient(to top, rgba(174, 255, 255, 0.75), azure, white, white);
 }
 
-#card-container {
+.card-container {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -128,18 +127,4 @@ p {
     top: -1rem;
     box-shadow: 0 0 2rem 1rem #b9f2ff;
     cursor: pointer;
-}
-
-@media screen and (max-width: 960px) and (min-width: 700px) {
-
-    html {
-        font-size: 8px !important;
-    }
-}
-
-@media screen and (max-width: 700px) {
-
-    html {
-        font-size: 5px !important;
-    }
 }

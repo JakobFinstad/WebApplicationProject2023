@@ -2,10 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/navbar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/styles/responsive.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/footer.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/carousel.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
     <link rel="stylesheet" th:href="@{'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css'}"/>
     <script th:src="@{'https://code.jquery.com/jquery-1.10.2.js'}"></script>
     <script th:src="@{'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js'}"></script>
@@ -14,22 +15,13 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ProFlex</title>
-
-<!--Navigation bar-->
-
-<!--<script>-->
-<!--    $(function(){-->
-<!--        $("#navbar-placeholder").load("@{/header.html}");-->
-<!--    });-->
-<!--</script>-->
-
-<!--End of navigation bar -->
 </head>
 
 <body>
-<div id="navbar-placeholder" th:replace="~{fragments/header :: nav}">
+<!-- Header -->
+<div id="navbar-placeholder" th:replace="~{fragments/header :: nav}"></div>
+<!-- Header -->
 
-</div>
 <article id ="mainContent">
 
     <div class="center-text">
@@ -162,7 +154,8 @@
 </article>
 </body>
 
-<div th:replace="~{fragments/footer :: footer"}></div>
+<!-- Footer -->
+<div th:replace="~{fragments/footer :: footer}"></div>
 <!-- End of footer -->
 
 <script>

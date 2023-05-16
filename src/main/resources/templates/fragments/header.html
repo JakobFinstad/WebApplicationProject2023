@@ -1,11 +1,5 @@
-<html>
 
-<head lang="en" xmlns:th="http://www.thymeleaf.org">
-    <script type="text/javascript" th:src="@{../static/js/script.js}"></script>
-    <script type="text/javascript" th:src="@{/static/js/navbar.js}"></script>
-</head>
-
-<nav id="header">
+<nav id="header" th:fragment="header">
     <div class="header-container">
         <a th:href="@{/}" id="proflex-logo">ProFlex</a>
 
@@ -55,5 +49,3 @@
         lastScrollTop = scrollTop; //New Position Stored
     });
 </script>
-
-</html>
