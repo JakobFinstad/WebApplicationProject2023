@@ -56,13 +56,14 @@ public class SecurityConfiguration {
         if (enableSecurity) {
             http.csrf(csrf -> csrf.disable())
                     .cors(Customizer.withDefaults())
-                    .authorizeHttpRequests().requestMatchers("/authentication").permitAll()
+                    .authorizeHttpRequests().requestMatchers("/api/authentication").permitAll()
                     .requestMatchers("/css/**").permitAll()
                     .requestMatchers("/images/**").permitAll()
                     .requestMatchers("/js/**").permitAll()
                     .requestMatchers("/templates/**").permitAll()
                     .requestMatchers("/").permitAll()
                     .requestMatchers("/admin").permitAll()
+                    .requestMatchers("/api/user/signup").permitAll()
                     .anyRequest().authenticated().and()
                     .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                     .and().addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

@@ -3,11 +3,13 @@ package no.ntnu.idata2306.group6.service;
 import jakarta.validation.constraints.NotNull;
 import no.ntnu.idata2306.group6.repository.UserRepository;
 import no.ntnu.idata2306.group6.entity.User;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -28,7 +30,12 @@ public class UserService {
      * @return A list of users, empty list if there are none
      */
     public Iterable<User> getAll() {
-        return userRepository.findAll();
+        Iterable<User> users = userRepository.findAll();
+        for (User user : users) {
+            Hibernate.initialize(user.getRoles());
+        }
+
+        return users;
     }
 
     /**
@@ -51,7 +58,7 @@ public class UserService {
     public boolean addUser(User user) {
         boolean added = false;
         if (user != null && user.isValid()) {
-            User existingUser = findById(user.getUserId()).get();
+            User existingUser = findById(user.getUserId()).orElse(null);
             if (existingUser == null) {
                 userRepository.save(user);
                 added = true;
@@ -127,4 +134,5 @@ public class UserService {
     public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
+
 }

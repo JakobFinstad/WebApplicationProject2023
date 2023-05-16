@@ -30,7 +30,7 @@ public class User {
     private int phoneNumber;
     @NotNull
     private String password;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "userId"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "roleId")
@@ -38,7 +38,7 @@ public class User {
     private Set<Role> roles = new LinkedHashSet<>();
     private String imgURL;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user")
     @JsonIgnoreProperties("subscriptions")
     private Set<Subscription> subscriptions = new HashSet<>();
 
@@ -95,6 +95,9 @@ public class User {
         this.roles = roles;
     }
 
+    public void addRole(Role role) {
+        this.roles.add(role);
+    }
     /**
      * Set the firstname of the user.
      *

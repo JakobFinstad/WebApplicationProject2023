@@ -2,7 +2,12 @@ package no.ntnu.idata2306.group6.controller.api;
 
 
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.persistence.Transient;
+import jakarta.transaction.Transactional;
+import no.ntnu.idata2306.group6.entity.Role;
 import no.ntnu.idata2306.group6.entity.User;
+import no.ntnu.idata2306.group6.entity.dto.UserDTO;
+import no.ntnu.idata2306.group6.service.RoleService;
 import no.ntnu.idata2306.group6.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +27,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private RoleService roleService;
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class.getSimpleName());
 
@@ -78,15 +85,27 @@ public class UserController {
     /**
      * Add a user to the collection.
      *
-     * @param user that shall be added to the collection
+     * @param userDTO that shall be added to the collection
      * @return the user id and <CODE>CREATED</CODE> status if success, else 400
      */
-    @PostMapping
+    @PostMapping("/signup")
+    @Transactional
     @Operation(deprecated = true)
-    public ResponseEntity<String> add(@RequestBody User user) {
+    public ResponseEntity<String> add(@RequestBody UserDTO userDTO) {
          ResponseEntity<String> response;
 
          try {
+             Role role = roleService.findById(3);
+             User user = new User(
+                     userDTO.getFirstName(),
+                     userDTO.getLastName(),
+                     userDTO.getEmail(),
+                     userDTO.getPhoneNumber(),
+                     userDTO.getPassword(),
+                     userDTO.getAge()
+             );
+//             user.getRoles().size();
+//             user.addRole(role);
              addUserToCollection(user);
              response= new ResponseEntity<>("" + user.getUserId(), HttpStatus.CREATED);
          } catch (IllegalArgumentException e) {

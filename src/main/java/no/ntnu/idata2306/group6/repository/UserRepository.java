@@ -5,6 +5,7 @@ import no.ntnu.idata2306.group6.entity.User;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,8 @@ public interface UserRepository extends CrudRepository<User, Integer> {
     Page<User> findAll(Pageable pageable);
     Optional<User> findByEmail(String email);
     Optional<User> findById(Integer integer);
+
+//    void setRoleToUser(int userId);
 
 //    Iterable<User> findAllByRoleName(String role);
 //    Iterable<Role> findRoleByID(int id);
