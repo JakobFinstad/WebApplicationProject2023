@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <title>Proflex- Login</title>
     <link rel="stylesheet" type="text/css" th:href="@{css/styles/responsive.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/footer.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
     <link rel="stylesheet" th:href="@{css/login-signup.css}">
     <script th:src="@{https://code.jquery.com/jquery-1.10.2.js}"></script>
 </head>
 <body id="login-body">
-<a class=proFlexLogo th:href="@{/}">ProFlex</a>
+<!-- Header -->
+<div id="navbar-placeholder" th:replace="~{fragments/header :: nav}"></div>
+<!-- Header -->
 
 <main id="login-container">
     <h2 class="login-text">Login</h2>
@@ -49,6 +53,11 @@
 <!--        }-->
 <!--    </script>-->
 </main>
+
+<!-- Footer -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+<!-- End of footer -->
+
 
 
 </body>

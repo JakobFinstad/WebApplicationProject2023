@@ -9,13 +9,12 @@ html {
 @media screen and (max-width: 192rem) {
 
     body {
-        background-image: linear-gradient(to top, rgba(174, 255, 255, 0.75), azure, rgba(180, 46, 83, 0.62));
+        background-image: linear-gradient(to top, rgba(174, 255, 255, 0.75), azure, rgba(180, 46, 83, 1));
         background-repeat: no-repeat;
         background-attachment: scroll;
         font-family: Inter, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: black;
     }
 
     #header {

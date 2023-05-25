@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Sign up site</title>
-    <link rel="stylesheet" th:href="@{/css/login-signup.css/}">
     <link rel="stylesheet" type="text/css" th:href="@{css/styles/responsive.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/footer.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/login-signup.css/}">
     <script th:src="@{https://code.jquery.com/jquery-1.10.2.js}"></script>
     <script th:src="@{js/password-check.js}"></script>
 </head>
 <body id="signup-site">
 
-<a class=proFlexLogo th:href="@{/}">ProFlex</a>
+<!-- Header -->
+<div id="navbar-placeholder" th:replace="~{fragments/header :: nav}"></div>
+<!-- Header -->
 
     <main id="login-container">
         <h2 class="login-text">Sign up</h2>
@@ -48,10 +52,6 @@
             <div class="passwords">
                 <input name="terms" id="terms" type="checkbox" required>
                 <p>Read our term of knowledge</p>
-            </div>
-            <div class="passwords">
-                <input name="subscription" id="subscription" type="checkbox">
-                <p>Want to be up-to-date? Subscribe to our newsletter</p>
             </div>
         </span>
 
@@ -106,4 +106,7 @@
 
     </main>
 </body>
+<!-- Footer -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+<!-- End of footer -->
 </html>

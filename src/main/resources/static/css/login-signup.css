@@ -6,25 +6,26 @@
 
 html {
     font-family: Inter, sans-serif;
+    height: 100%;
+    background-image: linear-gradient(to top, rgba(174, 255, 255, 0.75), azure, rgba(180, 46, 83, 1));
+    background-attachment: scroll;
+    background-repeat: no-repeat;
 }
 
 body {
     margin: 0;
-    /*background-image: linear-gradient(to top, #aeffff, azure, rgba(180, 46, 83, 0.62));*/
-    /*background-repeat: space;*/
     display: flex;
     flex-direction: column;
     width: 100%;
-    background: url('../images/Background.png') repeat fixed;
-    background-size: cover;
+    /*background: url('../images/Background.png') repeat fixed;*/
 }
 
-.proFlexLogo {
-    margin: 1rem;
-    position: fixed;
-    font-weight: bold;
-    font-size: 8rem;
-    color: white;
+#header {
+    visibility: hidden;
+}
+
+#proflex-logo {
+    visibility: visible;
 }
 
 .login-text {

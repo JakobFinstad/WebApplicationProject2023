@@ -92,7 +92,7 @@ p {
     top: 0;
     transition: top ease .5s;
 
-    background: linear-gradient(to top, rgba(174, 255, 255, 0.75), azure, white, white);
+    background: linear-gradient(to top, rgba(174, 255, 255, 0.75), azure, white);
 }
 
 .card-container {

@@ -1,0 +1,13 @@
+* {
+    /* Font style */
+    font-family: Inter, sans-serif;
+    text-decoration: none;
+
+    /* Sizing */
+    width: 100%;
+
+    /* Layout */
+    padding: 0;
+    margin: 0;
+
+}
