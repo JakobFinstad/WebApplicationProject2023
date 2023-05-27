@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Profile-page</title>
@@ -17,10 +17,12 @@
 <!--End of navigation bar -->
 
 <ul class="profile_box">
-    <img th:src="${user.imageURL}" alt="picture of the user"/>
-    <li><a class="profile_item" th:text="@{user.firstName} + ' ' + @{user.lastname}"></a></li>
-    <li><a class="profile_item" th:text="@{user.email}"></a></li>
-    <li><a class="profile_item" th:text="@{user.phoneNumber}"></a></li>
+<!--    <img th:src="${user.imageURL}" alt="picture of the user"/>-->
+    <li><div class="profile_item" sec:authentication="name"></div></li>
+    <li><div class="profile_item" sec:authentication="principal.email"></div> </li>
+    <li><div class="profile_item" sec:authentication="principal.phoneNumber"></div></li>
+<!--    <li><a class="profile_item" th:text="${user.email}"></a></li>-->
+<!--    <li><a class="profile_item" th:text="${user.phoneNumber}"></a></li>-->
     <li><a class="profile_item" id="sign_out_button">Sign out</a></li>
 </ul>
 
@@ -28,7 +30,9 @@
 <div id="my_subscriptions">
     <h1>Subscriptions</h1>
     <!-- TODO - Only include cards that the user subscribes to -->
-    <div class="subscription-list" th:replace="{fragments/product-card.html :: product-card}"> </div>
+<!--    <section id="card-container">-->
+<!--        <main th:replace="~{fragments/product-card.html :: product-list}"></main>-->
+<!--    </section>-->
 </div>
 </main>
 

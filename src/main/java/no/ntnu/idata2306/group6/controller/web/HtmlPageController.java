@@ -1,6 +1,7 @@
 package no.ntnu.idata2306.group6.controller.web;
 
 import no.ntnu.idata2306.group6.entity.Product;
+import no.ntnu.idata2306.group6.repository.UserRepository;
 import no.ntnu.idata2306.group6.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HtmlPageController {
     @Autowired
     ProductService productService;
+
+    @Autowired
+    private UserRepository userRepository;
 
     /**
      * Get the index page of the main site.

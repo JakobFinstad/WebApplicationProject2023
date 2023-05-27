@@ -4,6 +4,7 @@ import no.ntnu.idata2306.group6.security.AuthenticationRequest;
 import no.ntnu.idata2306.group6.security.AuthenticationResponse;
 import no.ntnu.idata2306.group6.security.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
