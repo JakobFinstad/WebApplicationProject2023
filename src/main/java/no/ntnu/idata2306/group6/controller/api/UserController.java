@@ -218,6 +218,5 @@ public class UserController {
             logger.error("Could not update user " + user.getUserId());
             throw new IllegalArgumentException("Could not update user");
         }
-
     }
 }

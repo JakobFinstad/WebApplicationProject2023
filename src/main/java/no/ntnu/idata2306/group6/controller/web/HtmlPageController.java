@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui. Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  * A controller serving the html pages.
@@ -91,8 +92,8 @@ public class HtmlPageController {
      *
      * @return accounting solution page
      */
-    @GetMapping("/products/1")
-    public String accountingSolution() {
+    @GetMapping("/products/{productId}")
+    public String singleProductPage(@PathVariable String productId) {
         return "singleProductPage";
     }
 

@@ -4,8 +4,10 @@ import com.google.common.collect.Iterables;
 import no.ntnu.idata2306.group6.entity.Category;
 import no.ntnu.idata2306.group6.entity.Info;
 import no.ntnu.idata2306.group6.entity.Product;
+import no.ntnu.idata2306.group6.entity.Review;
 import no.ntnu.idata2306.group6.service.InfoService;
 import no.ntnu.idata2306.group6.service.ProductService;
+import no.ntnu.idata2306.group6.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,8 @@ public class ProductWebController {
     private ProductService productService;
     @Autowired
     private InfoService infoService;
+    @Autowired
+    private ReviewService reviewService;
 
     @GetMapping
     public String getProducts(@RequestParam(required = false, name = "category") String categoryName, Model model) {
@@ -45,10 +49,13 @@ public class ProductWebController {
         return "products";
     }
 
-    @GetMapping("products/{id}")
-    public String getOneProduct(Model model, @ModelAttribute("id")@PathVariable int id) {
-        model.addAttribute("product", this.productService.findById(id));
-        model.addAttribute("info", this.productService.getInfo(id));
+    @GetMapping("/products/{id}")
+    public String getOneProduct(Model model, @PathVariable("id") int id) {
+        model.addAttribute("products", this.productService.findById(id));
+        model.addAttribute("infos", infoService.findById(id));
+        model.addAttribute("reviews", reviewService.findById(id));
+        Info info = infoService.findById(id);
+        model.addAttribute("info", info);
         return "singleProductPage";
     }
 }
