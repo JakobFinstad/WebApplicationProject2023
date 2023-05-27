@@ -69,6 +69,7 @@ public class Product {
 //        this.info = info;
     }
 
+
     private void setProductId(int id) {
         if (id <= 0) {
             throw new IllegalArgumentException("Product ID cannot be zero or lower!");
