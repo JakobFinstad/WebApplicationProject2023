@@ -105,7 +105,7 @@ public class UserController {
                      userDTO.getAge()
              );
 //             user.getRoles().size();
-//             user.addRole(role);
+             user.addRole(role);
              addUserToCollection(user);
              response= new ResponseEntity<>("" + user.getUserId(), HttpStatus.CREATED);
          } catch (IllegalArgumentException e) {
