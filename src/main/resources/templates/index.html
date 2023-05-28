@@ -110,43 +110,44 @@
         <h2 class="review-header2">Testimonials</h2>
         <div class="reviewer">
             <div class="review-box">
-                <div class="review-paragraph">
+                <p class="review-paragraph">
 
-                </div>
-
-                <div class="review-image-container">
-                    <img alt="user-image" class="review-image" height="408" width="612"/>
-                </div>
-
-                <div class="review-name">
-                </div>
-            </div>
-            <div class="review-box">
-                <div class="review-paragraph">
-
-                </div>
+                </p>
 
                 <div class="review-image-container">
                     <img alt="user-image" class="review-image" height="408" width="612"/>
                 </div>
 
-                <div class="review-name">
-                </div>
+                <h2 class="review-name">
+                </h2>
             </div>
             <div class="review-box">
-                <div class="review-paragraph">
+                <p class="review-paragraph">
 
+                </p>
+
+                <div class="review-image-container">
+                    <img alt="user-image" class="review-image" height="408" width="612"/>
                 </div>
+
+                <h2 class="review-name">
+                </h2>
+            </div>
+            <div class="review-box">
+                <p class="review-paragraph">
+
+                </p>
 
                 <div class="review-image-container">
                     <img alt="user-image" class="review-image"  height="408" width="612"/>
                 </div>
 
-                <div class="review-name">
-                </div>
+                <h2 class="review-name">
+                </h2>
 
             </div>
         </div>
+        <script th:src="@{/js/testimonialRetrival.js}"></script>
 
     </section>
 </article>
@@ -155,53 +156,4 @@
 <!-- Footer -->
 <div th:replace="~{fragments/footer :: footer}"></div>
 <!-- End of footer -->
-
-<script>
-    fetch('api/testimonial')
-        .then(response => response.json())
-        .then(([data]) => {
-            const reviewParagraphs = document.querySelectorAll('.review-paragraph');
-
-            reviewParagraphs.forEach((reviewParagraphs, index) => {
-                const statement = data.statement;
-
-            reviewParagraphs.textContent = `"${statement}"`;
-            });
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-
-    fetch('api/user')
-        .then(response => response.json())
-        .then(data => {
-            const reviewNames = document.querySelectorAll('.review-name');
-
-            reviewNames.forEach((reviewNames, index) => {
-                const first_name = data.firstname;
-                const last_name = data.l;
-
-                reviewNames.textContent = `"${first_name} ${last_name}"`;
-            });
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-
-    fetch('api/user')
-        .then(response => response.json())
-        .then(userData => {
-            const reviewImages = document.querySelectorAll('.review-image');
-
-            reviewImages.forEach((reviewImage, index) => {
-                const imgurl = userData[index].imgurl;
-
-                reviewImages.src = imgurl;
-            });
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            console.log('Response: ', error.response);
-        });
-</script>
 </html>

@@ -365,7 +365,9 @@ html {
 
     .review-image-container {
         margin-top: 4rem;
-        align-items: center;
+        /*align-items: center;*/
+        justify-content: center;
+        display: flex;
     }
 
     .review-image {

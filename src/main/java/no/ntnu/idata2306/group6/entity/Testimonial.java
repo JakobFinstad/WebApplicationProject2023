@@ -15,7 +15,7 @@ public class Testimonial {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int reviewId;
+    private int testimonialId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
@@ -53,7 +53,7 @@ public class Testimonial {
      *
      * @return user who wrote the testimonial
      */
-    private User getUser() {
+    public User getUser() {
         return this.user;
     }
 
@@ -84,7 +84,7 @@ public class Testimonial {
      * @param id of the testimonial
      */
     private void setId(int id) {
-        this.reviewId = id;
+        this.testimonialId = id;
     }
 
     /**
@@ -92,7 +92,8 @@ public class Testimonial {
      *
      * @return the review id
      */
-    public int getReviewId() {
-        return reviewId;
+    public int getTestimonialId() {
+        return testimonialId;
     }
+
 }
