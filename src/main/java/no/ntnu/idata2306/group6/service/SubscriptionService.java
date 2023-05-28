@@ -1,11 +1,13 @@
 package no.ntnu.idata2306.group6.service;
 
 import no.ntnu.idata2306.group6.entity.Subscription;
+import no.ntnu.idata2306.group6.entity.User;
 import no.ntnu.idata2306.group6.repository.SubscriptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -30,6 +32,10 @@ public class SubscriptionService {
     public Subscription findById(int id) {
         Optional<Subscription> subscription = subscriptionRepository.findById(id);
         return subscription.orElse(null);
+    }
+
+    public List<Subscription> findByUser(User user) {
+        return this.subscriptionRepository.findByUser(user);
     }
 
     /**

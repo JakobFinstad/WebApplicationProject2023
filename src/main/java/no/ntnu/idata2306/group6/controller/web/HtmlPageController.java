@@ -83,6 +83,16 @@ public class HtmlPageController {
      public String profilePage() {return "profilePage";}
 
     /**
+     * Get the no-access page.
+     *
+     * @return no-access page
+     */
+    @GetMapping("/no-access")
+    public String noAcess() {
+        return "noAcess";
+    }
+
+    /**
      * Get the accounting solution page.
      *
      * @return accounting solution page

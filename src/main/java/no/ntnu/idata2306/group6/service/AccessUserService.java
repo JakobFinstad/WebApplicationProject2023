@@ -1,10 +1,11 @@
-package no.ntnu.idata2306.group6.security;
+package no.ntnu.idata2306.group6.service;
 
 import no.ntnu.idata2306.group6.entity.Role;
 import no.ntnu.idata2306.group6.entity.User;
 import no.ntnu.idata2306.group6.entity.dto.UserDTO;
 import no.ntnu.idata2306.group6.repository.RoleRepository;
 import no.ntnu.idata2306.group6.repository.UserRepository;
+import no.ntnu.idata2306.group6.security.AccessUserDetails;
 import no.ntnu.idata2306.group6.service.RoleService;
 import no.ntnu.idata2306.group6.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -130,14 +131,10 @@ public class AccessUserService implements UserDetailsService {
         System.out.println(roleRepository.findOneByName("USER"));
         if (userRole != null) {
             System.out.println("here2");
-            User user = new User(firstName, lastName, email, phoneNumber, createHash(password), age);
+            User user = new User(firstName, lastName, email, phoneNumber, PasswordUtil.createHash(password), age);
             user.addRole(userRole);
             userRepository.save(user);
         }
-    }
-
-    private String createHash(String password) {
-        return BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
     public boolean updateProfile(User user, UserDTO userDto) {

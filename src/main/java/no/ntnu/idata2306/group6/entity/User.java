@@ -317,4 +317,15 @@ public class User {
         this.subscriptions = subscriptions;
         return this;
     }
+
+    public boolean hasRole(String role) {
+        boolean hasRole = false;
+        for (Role currentRole: getRoles()
+             ) {
+            if(currentRole.getRoleName().equals(role)) {
+                hasRole = true;
+            }
+        }
+        return hasRole;
+    }
 }
