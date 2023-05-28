@@ -1,40 +1,40 @@
 <main th:fragment="product-individual">
   <section id="product-page">
-      <div th:each="info : ${infos}" th:if="${info.product.productId == products.productId}">
-          <img th:src="${info.imageURL}" alt="Picture of our solution"/>
+      <div  th:each="info : ${infos}" th:if="${info.product.productId == products.productId}">
           <section class="info-section">
-            <h2 th:text="${products.productName}" class="product-name"></h2>
+              <div class="img-container">
+                  <img class="product-img" th:src="${info.imageURL}" alt="Picture of our solution"/>
+              </div>
+              <div class="description-container">
+                  <h2 th:text="${products.productName}" class="product-name"></h2>
 
-    <!--        <div th:text="${reviews.rating}" class="review-container" id="stars-container">-->
-    <!--            <span id="star1"></span>-->
-    <!--            <span id="star2"></span>-->
-    <!--            <span id="star3"></span>-->
-    <!--            <span id="star4"></span>-->
-    <!--            <span id="star5"></span>-->
-    <!--        </div>-->
-            <div class="description-container">
-              <p th:text="${info.longDescription}" class="product-description" id="product-description1"></p>
-            </div>
-            <div id="button-container" >
-              <span class="main-button" id="text-and-button-container">
-                <a id="buy-now-button" title="Click here to see subscription options">
-                  Buy Now
-              </a></span>
-            </div>
+<!--                    <div class="review-container" id="stars-container" th:if="${reviews.rating != null}">-->
+<!--                        <span id="star" th:each="star : ${#numbers.sequence(1,5)}"-->
+<!--                                        th:class="${reviews.rating >= star} ? 'star-filled' : 'star-empty'">&#9733;</span>-->
+<!--                    </div>-->
+
+                  <p th:text="${info.longDescription}" class="product-description" id="product-description1"></p>
+
+                  <div id="button-container">
+                  <span class="main-button" id="text-and-button-container">
+                    <a id="buy-now-button" title="Click here to see subscription options">
+                      Buy Now
+                  </a></span>
+                  </div>
+                </div>
+          </section>
+
+          <section class="price-button-container">
+              <div class="price-container">
+                  <p class="product-price" th:text="${products.price} + ',-/month'"></p>
+              </div>
           </section>
       </div>
   </section>
 
     <section class="add-review-section">
-        <h2 class="header-feedback">Got feedback?</h2>
-<!--        <div class="review-container-static">-->
-<!--            <span th:class="${reviews.rating >= 1} ? 'star checked' : 'star'"></span>-->
-<!--            <span th:class="${reviews.rating >= 2} ? 'star checked' : 'star'"></span>-->
-<!--            <span th:class="${reviews.rating >= 3} ? 'star checked' : 'star'"></span>-->
-<!--            <span th:class="${reviews.rating >= 4} ? 'star' : 'star'"></span>-->
-<!--            <span th:class="${reviews.rating >= 5} ? 'star' : 'star'"></span>-->
-<!--        </div>-->
-        <textarea maxlength="500" placeholder="Anything on your heart?"></textarea>
+        <h2 class="header-feedback">Got feedback on the product?</h2>
+        <textarea class="feedback-box" maxlength="500"placeholder="Anything on your heart?"></textarea>
         <button class="submit-button">Submit review</button>
     </section>
 </main>

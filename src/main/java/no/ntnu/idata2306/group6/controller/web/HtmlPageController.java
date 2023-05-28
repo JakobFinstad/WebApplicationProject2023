@@ -87,15 +87,15 @@ public class HtmlPageController {
      @GetMapping("/profile-page")
      public String profilePage() {return "profilePage";}
 
-    /**
-     * Get the accounting solution page.
-     *
-     * @return accounting solution page
-     */
-    @GetMapping("/products/{productId}")
-    public String singleProductPage(@PathVariable String productId) {
-        return "singleProductPage";
-    }
+//    /**
+//     * Get the accounting solution page.
+//     *
+//     * @return accounting solution page
+//     */
+//    @GetMapping("/products/{productId}")
+//    public String singleProductPage(@PathVariable String productId) {
+//        return "singleProductPage";
+//    }
 
 
     /**

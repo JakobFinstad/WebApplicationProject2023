@@ -49,13 +49,10 @@ public class ProductWebController {
         return "products";
     }
 
-    @GetMapping("/products/{id}")
+    @GetMapping("/{id}")
     public String getOneProduct(Model model, @PathVariable("id") int id) {
         model.addAttribute("products", this.productService.findById(id));
-        model.addAttribute("infos", infoService.findById(id));
-        model.addAttribute("reviews", reviewService.findById(id));
-        Info info = infoService.findById(id);
-        model.addAttribute("info", info);
+        model.addAttribute("infos", infoService.findByProdId(id));
         return "singleProductPage";
     }
 }

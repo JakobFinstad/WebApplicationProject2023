@@ -40,12 +40,54 @@ main{
 }
 
 .info-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-container {
+    margin: 4rem 4rem 4rem 20rem;
+}
+
+.description-container {
+    margin: 4rem 20rem 4rem 4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-name {
+    margin: 0;
+    font-size: 4rem;
+}
+
+.product-description {
+    width: 50rem;
+    font-size: 1.5rem;
+    line-height: 3rem;
+}
+
+.product-price {
+    font-size: 5rem;
+    font-weight: bolder;
+    color: #000000B2;
+    margin: 0;
+    text-decoration: underline;
+}
+
+.price-button-container {
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    display: flex;
-    margin-left: 5rem;
 }
+
+
+#star {
+    font-size: 2rem;
+}
+
+
 
 #title-description {
     font-size: 2rem;
@@ -81,10 +123,7 @@ main{
 .description-container {
     margin-top: 2rem;
 }
-.product-description {
-    font-size: 1.5rem;
-    margin-top: 1rem;
-}
+
 
 img{
     border-radius: 1em;
@@ -93,16 +132,12 @@ img{
 .main-button{
     display: flex;
     flex-direction: column;
-    max-width: 25em;
 }
 
 p{
     font-family: inter, serif;
     color: #000000;
     font-size: 1em;
-}
-.product-name {
-    margin: 0;
 }
 
 .add-review-section {
@@ -111,18 +146,22 @@ p{
     justify-content: center;
     flex-direction: column;
     margin-bottom: 5rem;
+    width: 100rem;
 }
 
 textarea {
     resize: none;
     height: 20rem;
-    width: 40rem;
+    width: 100%;
+    max-width: 60rem;
     font-family: Inter, sans-serif;
+    margin-top: 2rem;
 }
 
 .header-feedback {
     margin: 0;
 }
+
 
 .submit-button {
     margin: 5rem 1rem 1rem;
@@ -164,6 +203,16 @@ textarea {
     height: auto;
     margin-top: 2rem;
     margin-bottom: 1rem;
+}
+
+.product-img {
+    height: 50rem;
+    margin-bottom: 2rem;
+}
+
+
+.add-review-section {
+    margin: 6rem;
 }
 
 
