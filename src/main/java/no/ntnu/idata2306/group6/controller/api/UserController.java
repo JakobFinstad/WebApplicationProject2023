@@ -9,6 +9,7 @@ import no.ntnu.idata2306.group6.entity.User;
 import no.ntnu.idata2306.group6.entity.dto.UserDTO;
 import no.ntnu.idata2306.group6.service.RoleService;
 import no.ntnu.idata2306.group6.service.UserService;
+import no.ntnu.idata2306.group6.util.PasswordUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,6 +97,7 @@ public class UserController {
 
          try {
              Role role = roleService.findById(3);
+             userDTO.setPassword(PasswordUtil.hashPassword(userDTO.getPassword()));
              User user = new User(
                      userDTO.getFirstName(),
                      userDTO.getLastName(),
