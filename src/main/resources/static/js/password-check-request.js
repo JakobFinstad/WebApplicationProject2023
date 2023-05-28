@@ -46,6 +46,8 @@ document.getElementById('signup-form').addEventListener('submit', function (even
                 // Handle the response from the server
                 if (response.ok) {
                     // User created successfully
+                    document.getElementById("password-error").textContent = "User created successfully"
+                    window.location.href = "https://group06.web-tek.ninja/"
                     console.log('User created successfully!');
                 } else {
                     // Error creating user
