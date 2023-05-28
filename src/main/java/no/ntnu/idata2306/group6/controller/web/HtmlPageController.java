@@ -75,14 +75,6 @@ public class HtmlPageController {
     }
 
     /**
-     * Get the signup page.
-     *
-     * @return signup page
-     */
-    @GetMapping("/signup")
-    public String signup() {return "sign-up";}
-
-    /**
      * Get the profile page.
      *
      * @return profile page

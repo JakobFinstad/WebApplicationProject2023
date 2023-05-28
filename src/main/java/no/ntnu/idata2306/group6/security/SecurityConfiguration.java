@@ -53,7 +53,7 @@ public class SecurityConfiguration {
      */
     @Bean
     public SecurityFilterChain configureAuthorizationFilterChain(HttpSecurity http) throws Exception{
-        boolean enableSecurity = false;
+        boolean enableSecurity = true;
 
         if (enableSecurity) {
             http.csrf(csrf -> csrf.disable())
@@ -98,8 +98,7 @@ public class SecurityConfiguration {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
+        auth.inMemoryAuthentication()
                 .withUser("user").password(getPasswordEncoder().encode("password")).roles("USER")
                 .and()
                 .withUser("admin").password(getPasswordEncoder().encode("admin")).roles("ADMIN");
@@ -126,4 +125,5 @@ public class SecurityConfiguration {
     public BCryptPasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }

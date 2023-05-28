@@ -20,22 +20,22 @@
 
     <main id="login-container">
         <h2 class="login-text">Sign up</h2>
-    <form>
+    <form th:action="@{/signup}" method="post" th:object="${user}">
         <span>
             <label for="firstname">First Name</label>
-            <input id="firstname" name="firstname" placeholder="First name" required/>
+            <input type="text" id="firstname" name="firstname" placeholder="First name" th:field="*{firstName}" required/>
         </span>
         <span>
             <label for="lastname">Last Name</label>
-            <input id="lastname" name="lastname" placeholder="Last name" required/>
+            <input type="text" id="lastname" name="lastname" placeholder="Last name" th:field="*{lastName}" required/>
         </span>
         <span>
             <label for="phoneNumber">PhoneNumber</label>
-            <input id="phoneNumber" name="phoneNumber" type="tel">
+            <input id="phoneNumber" name="phoneNumber" type="tel" th:field="*{phoneNumber}">
         </span>
         <span>
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" required placeholder="example@something.org"/>
+            <input id="email" name="email" type="email" placeholder="example@something.org" th:field="*{email}" required/>
         </span>
         <span>
             <script th:src="@{/js/password-check.js}"></script>
@@ -43,7 +43,9 @@
             <input type="password" id="password" name="password"
                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                    title="Must contain at least one number and one uppercase and
-                       lowercase letter, and at least 8 or more characters" required oninput="check()"/>
+                       lowercase letter, and at least 8 or more characters"
+                   th:field="*{password}"
+                   required oninput="check()"/>
         </span>
         <span>
                 <label for="password-confirm">Confirm Password</label>
