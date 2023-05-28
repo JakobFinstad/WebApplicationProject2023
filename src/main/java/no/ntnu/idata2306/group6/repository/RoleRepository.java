@@ -14,5 +14,5 @@ public interface RoleRepository extends CrudRepository<Role, Integer> {
     Page<Role> findAll(Pageable pageable);
     Optional<Role> findById(int id);
 
-    Role findOneByName(String name);
+    Role findOneByRoleName(String roleName);
 }

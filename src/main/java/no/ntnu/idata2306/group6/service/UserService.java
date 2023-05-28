@@ -17,6 +17,8 @@ import java.util.Optional;
  */
 @Component
 public class UserService {
+
+    @Autowired
     private final UserRepository userRepository;
 
     @Autowired

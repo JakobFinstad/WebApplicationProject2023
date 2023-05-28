@@ -8,6 +8,7 @@ import no.ntnu.idata2306.group6.repository.UserRepository;
 import no.ntnu.idata2306.group6.security.AccessUserDetails;
 import no.ntnu.idata2306.group6.service.RoleService;
 import no.ntnu.idata2306.group6.service.UserService;
+import no.ntnu.idata2306.group6.util.PasswordUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -127,11 +128,12 @@ public class AccessUserService implements UserDetailsService {
 
     private void createUser(String firstName, String lastName, String email, int phoneNumber,  String password, int age) {
         System.out.println("here1");
-        Role userRole = roleRepository.findOneByName("USER");
-        System.out.println(roleRepository.findOneByName("USER"));
+        Role userRole = roleRepository.findOneByRoleName("USER");
+        System.out.println(roleRepository.findOneByRoleName("USER"));
+
         if (userRole != null) {
             System.out.println("here2");
-            User user = new User(firstName, lastName, email, phoneNumber, PasswordUtil.createHash(password), age);
+            User user = new User(firstName, lastName, email, phoneNumber, PasswordUtil.hashPassword(password), age);
             user.addRole(userRole);
             userRepository.save(user);
         }
