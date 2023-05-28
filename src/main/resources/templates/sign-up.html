@@ -38,7 +38,7 @@
             <input id="email" name="email" type="email" placeholder="example@something.org" th:field="*{email}" required/>
         </span>
         <span>
-            <script th:src="@{/js/password-check.js}"></script>
+            <script th:src="@{/js/password-check-request.js}"></script>
             <label for="password">Password</label>
             <input type="password" id="password" name="password"
                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
@@ -51,6 +51,7 @@
                 <label for="password-confirm">Confirm Password</label>
                 <input id="password-confirm" name="password-confirm" type="password" required oninput="check()"/>
             </span>
+        <h2 id="password-error"></h2>
 
         <span>
             <div class="passwords">
