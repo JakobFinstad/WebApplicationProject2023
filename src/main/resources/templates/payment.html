@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/payment.css}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+  <div class="payment-container">
+    <section class="payment-information-container">
+      <h1 class="top-text">Checkout</h1>
+
+      <form class="form-information">
+
+        <input placeholder="Name of card holder">
+
+        <input placeholder="Email Address">
+
+        <input placeholder="Card Number">
+
+        <input placeholder="Expiry-date">
+
+        <input placeholder="CVC">
+
+        <button id="place-order-button">Place order</button>
+      </form>
+      <div class="payment-options">
+        <img class="payment-picture" src="/images/visa-logo.png" height="26.31" width="40.20"/>
+        <img class="payment-picture" src="/images/paypal-logo.png" height="32.0" width="64.0"/>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

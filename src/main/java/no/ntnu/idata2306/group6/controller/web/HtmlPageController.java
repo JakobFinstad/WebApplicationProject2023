@@ -119,4 +119,9 @@ public class HtmlPageController {
     public String adminPage() {
         return "adminPage";
     }
+
+    @GetMapping("/payment")
+    public String getPayment(Model model) {
+        return "payment";
+    }
 }

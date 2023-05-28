@@ -56,4 +56,9 @@ public class ProductWebController {
         model.addAttribute("infos", infoService.findByProdId(id));
         return "singleProductPage";
     }
+
+    @GetMapping("/payment")
+    public String getPayment(Model model) {
+        return "payment";
+    }
 }
