@@ -31,15 +31,16 @@ public class ProductWebController {
     @GetMapping
     public String getProducts(@RequestParam(required = false, name = "category") String categoryName, Model model) {
 
-        Iterable<Product> products = null;
-        Iterable<Info> infos = null;
+        Iterable<Product> products;
+        List<Info> infos = new ArrayList<>();
         if (categoryName == null || categoryName.equals("all")) {
             products = this.productService.getAll();
-            infos = infoService.getAll();
+            infos.addAll((Collection<? extends Info>) infoService.getAll());
         } else {
             products = this.productService.getAllByCategory(categoryName);
             for (Product p: products) {
-                infos = Iterables.concat(infos, infoService.findByProdId(p.getProductId()));
+             infos.addAll((Collection<? extends Info>) infoService.findByProdId(p.getProductId()));
+//                     Iterables.concat(infos, infoService.findByProdId(p.getProductId()));
             }
         }
 
