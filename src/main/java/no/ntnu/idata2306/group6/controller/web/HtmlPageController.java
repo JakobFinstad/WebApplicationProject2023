@@ -75,6 +75,14 @@ public class HtmlPageController {
     }
 
     /**
+     * Get the signup page.
+     *
+     * @return signup page
+     */
+    @GetMapping("/signup")
+    public String signup() {return "sign-up";}
+
+    /**
      * Get the profile page.
      *
      * @return profile page
@@ -88,8 +96,8 @@ public class HtmlPageController {
      * @return no-access page
      */
     @GetMapping("/no-access")
-    public String noAcess() {
-        return "noAcess";
+    public String noAccess() {
+        return "noAccess";
     }
 
     /**

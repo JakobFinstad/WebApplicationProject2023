@@ -28,11 +28,15 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration {
-    
+
+    private final UserDetailsService userDetailsService;
+    private final JwtRequestFilter jwtRequestFilter;
+
     @Autowired
-    private UserDetailsService userDetailsService;
-    @Autowired
-    private JwtRequestFilter jwtRequestFilter;
+    public SecurityConfiguration(UserDetailsService userDetailsService, JwtRequestFilter jwtRequestFilter) {
+        this.userDetailsService = userDetailsService;
+        this.jwtRequestFilter = jwtRequestFilter;
+    }
 
     /**
      * Called automatically by the framework to find out what authentication to use.
@@ -54,7 +58,7 @@ public class SecurityConfiguration {
      */
     @Bean
     public SecurityFilterChain configureAuthorizationFilterChain(HttpSecurity http) throws Exception{
-        boolean enableSecurity = true;
+        boolean enableSecurity = false;
 
         if (enableSecurity) {
             http.csrf(csrf -> csrf.disable())
@@ -76,34 +80,19 @@ public class SecurityConfiguration {
                     .authorizeHttpRequests()
                     .anyRequest()
                     .permitAll();
-            http.userDetailsService(userDetailsService)
-                    .authorizeRequests()
-                    .anyRequest()
-                    .authenticated()
-                    .and()
-                    .formLogin()
-                    .loginPage("/login")
-                    .permitAll()
-                    .successForwardUrl("/index")
-                    .and()
-                    .logout()
-                    .permitAll()
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                    .logoutSuccessUrl("/login");
-            return http.build();
         }
 
 
         return http.build();
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user").password(getPasswordEncoder().encode("password")).roles("USER")
-                .and()
-                .withUser("admin").password(getPasswordEncoder().encode("admin")).roles("ADMIN");
-    }
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication()
+//                .withUser("user").password(getPasswordEncoder().encode("password")).roles("USER")
+//                .and()
+//                .withUser("admin").password(getPasswordEncoder().encode("admin")).roles("ADMIN");
+//    }
 
     /**
      * Returns the authentication manager.
