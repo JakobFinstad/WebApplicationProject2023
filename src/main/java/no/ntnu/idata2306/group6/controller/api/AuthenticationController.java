@@ -1,5 +1,6 @@
 package no.ntnu.idata2306.group6.controller.api;
 
+import io.swagger.v3.core.util.Json;
 import no.ntnu.idata2306.group6.security.AuthenticationRequest;
 import no.ntnu.idata2306.group6.security.AuthenticationResponse;
 import no.ntnu.idata2306.group6.security.JwtUtil;
@@ -13,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
@@ -50,17 +53,39 @@ public class  AuthenticationController {
     }
 
 
+//    @PostMapping("/authentication")
+//    public ResponseEntity<Object> authenticate(@RequestBody AuthenticationRequest authenticationRequest) {
+//        try {
+//            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+//                    authenticationRequest.getUsername(),authenticationRequest.getPassword()
+//            ));
+//        } catch (BadCredentialsException e) {
+//            return new ResponseEntity<>("Invalid username or password", HttpStatus.UNAUTHORIZED);
+//        }
+//        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+//        final String jwt = jwtUtil.generateToken(userDetails);
+//        return ResponseEntity.ok(new AuthenticationResponse(jwt));
+//    }
+
     @PostMapping("/authentication")
     public ResponseEntity<Object> authenticate(@RequestBody AuthenticationRequest authenticationRequest) {
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                    authenticationRequest.getUsername(),authenticationRequest.getPassword()
-            ));
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
+            );
+
+            SecurityContextHolder.getContext().setAuthentication(authentication);
         } catch (BadCredentialsException e) {
             return new ResponseEntity<>("Invalid username or password", HttpStatus.UNAUTHORIZED);
         }
+
+        // User authentication is successful at this point
+
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final String jwt = jwtUtil.generateToken(userDetails);
-        return ResponseEntity.ok(new AuthenticationResponse(jwt));
+
+        return ResponseEntity.ok(new AuthenticationResponse().setJwt(jwt));
     }
+
+
 }

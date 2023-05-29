@@ -27,8 +27,8 @@
     </span>
 
     <p th:if="${param.error}" class="alert">Invalid username or password</p>
-    <input type="submit" value="login" class="login-button" th:href="@{/profile-page}">
-  <p>Don't have an account yet?&nbsp;&nbsp;<a th:href="@{/signup}" id="signup_link">Sign up here</a></p>
+    <input type="submit" onclick="sendRequest()" value="login" class="login-button" th:href="@{/profile-page}">
+    <p>Don't have an account yet?&nbsp;&nbsp;<a th:href="@{/signup}" id="signup_link">Sign up here</a></p>
 </form>
 
 <!-- Footer -->
@@ -36,38 +36,44 @@
 <!-- End of footer -->
 <script>
 
-    const submit = document.getElementById("login-container");
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-    const email = document.getElementById("email");
-    const password = document.getElementById("password");
-
-    const body = {
+    const requestBody = {
         username: email,
         password: password
     }
 
-    function sendRequest() {fetch('api/authentication', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body),
-    })
+    function sendRequest() {
+        fetch('api/authentication', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestBody),
+        })
+            .then(function (response) {
+                if (response.ok) {
 
-        .then(response => response.json())
-    .then(data => {
-        const jwtToken = data.jwt;
-        const newUrl = "localhost:8080/index?token=" + encodeURIComponent(jwtToken);
 
-        const newWindow = window.open(newUrl, "_blank");
+                    const jwtToken = response.jwt;
+                    console.log(jwtToken)
+                    const newUrl = "localhost:8080/index?token=" + jwtToken;
 
-        newWindow.focus();
-    })
-    .catch(error => {
-        console.error('Error: ', error);
-    })}
+                    // window.location.href = newUrl;
 
-    submit.addEventListener("submit", sendRequest);
+                    // const newWindow = window.open(newUrl, "_blank");
+                    //
+                    // newWindow.focus();
+                } else {
+                    console.log("Error logging in");
+                    console.log(response);
+                }
+            })
+            .catch(error => {
+                console.error('Error: ', error);
+            })
+    }
 </script>
 
 
