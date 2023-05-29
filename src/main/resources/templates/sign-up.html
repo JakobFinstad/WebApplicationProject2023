@@ -9,7 +9,7 @@
     <link rel="stylesheet" th:href="@{/css/login-signup.css/}">
     <script th:src="@{https://code.jquery.com/jquery-1.10.2.js}"></script>
 
-<!--    <script th:src="@{js/password-check-request.js}"></script>-->
+    <!--    <script th:src="@{js/password-check-request.js}"></script>-->
 
 </head>
 <body id="signup-site">
@@ -19,8 +19,8 @@
 <!-- Header -->
 
 
-    <main id="login-container">
-        <h2 class="login-text">Sign up</h2>
+<main id="login-container">
+    <h2 class="login-text">Sign up</h2>
     <form id="signup-form">
         <span>
             <label for="firstname">First Name</label>
@@ -55,14 +55,14 @@
         <span>
             <div class="passwords">
                 <input name="terms" id="terms" type="checkbox" required>
-                <p>Read our term of knowledge</p>
+                <label for="terms">Read our term of knowledge</label>
             </div>
         </span>
 
         <button type="submit" onclick="signUp()" class="login-button">Sign up</button>
     </form>
 
-    </main>
+</main>
 
 </body>
 <!-- Footer -->
