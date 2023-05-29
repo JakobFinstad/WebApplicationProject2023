@@ -190,6 +190,20 @@ textarea {
     transition: 0s;
 }
 
+.date-form {
+    margin: 2rem;
+}
+
+.date-text {
+    font-size: 2rem;
+}
+
+.date-box {
+    height: 3rem;
+    width: 10rem;
+    margin-right: 2rem;
+}
+
 .review-container {
     height: auto;
     margin-top: 2rem;

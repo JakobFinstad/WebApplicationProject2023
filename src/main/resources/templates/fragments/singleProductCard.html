@@ -1,40 +1,55 @@
-<main th:fragment="product-individual">
-  <section id="product-page">
-      <div  th:each="info : ${infos}" th:if="${info.product.productId == products.productId}">
-          <section class="info-section">
-              <div class="img-container">
-                  <img class="product-img" th:src="${info.imageURL}" alt="Picture of our solution"/>
-              </div>
-              <div class="description-container">
-                  <h2 th:text="${products.productName}" class="product-name"></h2>
+<html>
+<head>
+    <script th:src="@{/js/date-check.js}"></script>
+</head>
 
-<!--                    <div class="review-container" id="stars-container" th:if="${reviews.rating != null}">-->
-<!--                        <span id="star" th:each="star : ${#numbers.sequence(1,5)}"-->
-<!--                                        th:class="${reviews.rating >= star} ? 'star-filled' : 'star-empty'">&#9733;</span>-->
-<!--                    </div>-->
-
-                  <p th:text="${info.longDescription}" class="product-description" id="product-description1"></p>
-
-                  <div id="button-container">
-                  <span class="main-button" id="text-and-button-container">
-                    <a th:href="@{/products/payment}" id="buy-now-button" title="Click here to see subscription options">
-                      Buy Now
-                  </a></span>
+<body>
+    <main th:fragment="product-individual">
+      <section id="product-page">
+          <div  th:each="info : ${infos}" th:if="${info.product.productId == products.productId}">
+              <section class="info-section">
+                  <div class="img-container">
+                      <img class="product-img" th:src="${info.imageURL}" alt="Picture of our solution"/>
                   </div>
-                </div>
-          </section>
+                  <div class="description-container">
+                      <h2 th:text="${products.productName}" class="product-name"></h2>
 
-          <section class="price-button-container">
-              <div class="price-container">
-                  <p class="product-price" th:text="${products.price} + ',-/month'"></p>
-              </div>
-          </section>
-      </div>
-  </section>
+    <!--                    <div class="review-container" id="stars-container" th:if="${reviews.rating != null}">-->
+    <!--                        <span id="star" th:each="star : ${#numbers.sequence(1,5)}"-->
+    <!--                                        th:class="${reviews.rating >= star} ? 'star-filled' : 'star-empty'">&#9733;</span>-->
+    <!--                    </div>-->
 
-    <section class="add-review-section">
-        <h2 class="header-feedback">Got feedback on the product?</h2>
-        <textarea class="feedback-box" maxlength="500"placeholder="Anything on your heart?"></textarea>
-        <button class="submit-button">Submit review</button>
-    </section>
-</main>
+                      <p th:text="${info.longDescription}" class="product-description" id="product-description1"></p>
+
+                      <div id="button-container">
+                      <span class="main-button" id="text-and-button-container">
+                        <a th:href="@{/products/payment}" id="buy-now-button" title="Click here to see subscription options">
+                          Buy Now
+                      </a></span>
+                      </div>
+
+                      <form class="date-form">
+                          <label class="date-text">Start date: </label>
+                          <input type="date" id="start-date" class="date-box">
+                          <label class="date-text">End date: </label>
+                          <input type="date" id="end-date" class="date-box">
+                      </form>
+                    </div>
+              </section>
+
+              <section class="price-button-container">
+                  <div class="price-container">
+                      <p class="product-price" th:text="${products.price} + ',-/month'"></p>
+                  </div>
+              </section>
+          </div>
+      </section>
+
+        <section class="add-review-section">
+            <h2 class="header-feedback">Got feedback on the product?</h2>
+            <textarea class="feedback-box" maxlength="500"placeholder="Anything on your heart?"></textarea>
+            <button class="submit-button">Submit review</button>
+        </section>
+    </main>
+</body>
+</html>
