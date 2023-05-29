@@ -1,7 +1,7 @@
 function check() {
     const input = document.getElementById('password-confirm');
-    if ((document.getElementById('password-confirm').value != document.getElementById('password').value)) {
-        input.setCustomValidity('pASSword NOT MaTChIng!');
+    if ((document.getElementById('password-confirm').value !== document.getElementById('password').value)) {
+        input.setCustomValidity('password not matching!');
     } else {
         // input is valid -- reset the error message
         input.setCustomValidity('');
@@ -47,7 +47,7 @@ document.getElementById('signup-form').addEventListener('submit', function (even
                 if (response.ok) {
                     // User created successfully
                     document.getElementById("password-error").textContent = "User created successfully"
-                    window.location.href = "https://group06.web-tek.ninja/"
+                    window.location.href = "https://group06.web-tek.ninja:8080/"
                     console.log('User created successfully!');
                 } else {
                     // Error creating user

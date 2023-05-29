@@ -14,7 +14,7 @@
 <div id="navbar-placeholder" th:replace="~{fragments/header :: nav}"></div>
 <!-- Header -->
 
-<main id="login-container">
+<form id="login-container">
     <h2 class="login-text">Login</h2>
     <span>
       <label>Email</label>
@@ -22,42 +22,53 @@
     </span>
 
     <span>
-      <label>Password</label>
-      <input type="password" id="password" name="password" placeholder="Password">
+        <label>Password</label>
+        <input type="password" id="password" name="password" placeholder="Password">
     </span>
 
-    <button class="login-button" th:href="@{/profile-page}">Login</button>
-<!--    <audio autoplay src="../static/images/audio.mp3" preload="metadata" id="music">-->
-<!--    </audio>-->
+    <p th:if="${param.error}" class="alert">Invalid username or password</p>
+    <input type="submit" value="login" class="login-button" th:href="@{/profile-page}">
   <p>Don't have an account yet?&nbsp;&nbsp;<a th:href="@{/signup}" id="signup_link">Sign up here</a></p>
-
-<!--    <script>-->
-<!--        const audio = document.getElementById("music");-->
-<!--        const button = document.getElementById("login-button");-->
-<!--        button.addEventListener("pointerenter", playing);-->
-<!--        button.addEventListener("pointerout", stopping)-->
-
-<!--        function playing(){-->
-<!--            console.log("playing audio")-->
-<!--            try {-->
-<!--                setTimeout(function (){audio.play();},5000);-->
-<!--            } catch (error) {-->
-<!--                console.log("Something went wrong");-->
-<!--            }-->
-<!--        }-->
-
-<!--        function stopping(){-->
-<!--            console.log("Stopping...");-->
-<!--            audio.pause();-->
-<!--            // audio.reset();-->
-<!--        }-->
-<!--    </script>-->
-</main>
+</form>
 
 <!-- Footer -->
 <div th:replace="~{fragments/footer :: footer}"></div>
 <!-- End of footer -->
+<script>
 
+    const submit = document.getElementById("login-container");
+
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+
+    const body = {
+        username: email,
+        password: password
+    }
+
+    function sendRequest() {fetch('api/authentication', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body),
+    })
+
+        .then(response => response.json())
+    .then(data => {
+        const jwtToken = data.jwt;
+        const newUrl = "localhost:8080/index?token=" + encodeURIComponent(jwtToken);
+
+        const newWindow = window.open(newUrl, "_blank");
+
+        newWindow.focus();
+    })
+    .catch(error => {
+        console.error('Error: ', error);
+    })}
+
+    submit.addEventListener("submit", sendRequest);
+</script>
 
 
 </body>

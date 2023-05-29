@@ -64,15 +64,15 @@ public class HtmlPageController {
         return "products";
     }*/
 
-    /**
-     * Get the login page.
-     *
-     * @return login page
-     */
-    @GetMapping("/login")
-    public String login() {
-        return "log-in";
-    }
+//    /**
+//     * Get the login page.
+//     *
+//     * @return login page
+//     */
+//    @GetMapping("/login")
+//    public String login() {
+//        return "log-in";
+//    }
 
     /**
      * Get the signup page.

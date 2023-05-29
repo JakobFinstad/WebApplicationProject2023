@@ -8,9 +8,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
     <link rel="stylesheet" th:href="@{/css/login-signup.css/}">
     <script th:src="@{https://code.jquery.com/jquery-1.10.2.js}"></script>
-    <script th:src="@{js/password-check.js}"></script>
-    <script type="text/javascript" th:src="@{'/webjars/jquery/jquery.min.js'}"></script>
-    <script type="text/javascript" th:src="@{'/webjars/bootstrap/js/bootstrap.min.js'}"></script>
+    <!--    <script th:src="@{js/password-check-request.js}"></script>-->
 </head>
 <body id="signup-site">
 
@@ -18,98 +16,46 @@
 <div id="navbar-placeholder" th:replace="~{fragments/header :: nav}"></div>
 <!-- Header -->
 
-    <main id="login-container">
-        <h2 class="login-text">Sign up</h2>
-    <form th:action="@{/signup}" method="post" th:object="${user}">
-        <span>
-            <label for="firstname">First Name</label>
-            <input type="text" id="firstname" name="firstname" placeholder="First name" th:field="*{firstName}" required/>
-        </span>
-        <span>
-            <label for="lastname">Last Name</label>
-            <input type="text" id="lastname" name="lastname" placeholder="Last name" th:field="*{lastName}" required/>
-        </span>
-        <span>
-            <label for="phoneNumber">PhoneNumber</label>
-            <input id="phoneNumber" name="phoneNumber" type="tel" th:field="*{phoneNumber}">
-        </span>
-        <span>
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="example@something.org" th:field="*{email}" required/>
-        </span>
-        <span>
-            <script th:src="@{/js/password-check-request.js}"></script>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password"
-                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                   title="Must contain at least one number and one uppercase and
-                       lowercase letter, and at least 8 or more characters"
-                   th:field="*{password}"
-                   required oninput="check()"/>
-        </span>
-        <span>
-                <label for="password-confirm">Confirm Password</label>
-                <input id="password-confirm" name="password-confirm" type="password" required oninput="check()"/>
-            </span>
-        <h2 id="password-error"></h2>
+<form id="signup-form">
+    <h2 class="login-text">Sign up</h2>
+    <span>
+        <label for="firstname">First Name</label>
+        <input id="firstname" name="firstname" placeholder="First name" required/>
+    </span>
+    <span>
+        <label for="lastname">Last Name</label>
+        <input id="lastname" name="lastname" placeholder="Last name" required/>
+    </span>
+    <span>
+        <label for="phoneNumber">PhoneNumber</label>
+        <input id="phoneNumber" name="phoneNumber" type="tel">
+    </span>
+    <span>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required placeholder="example@something.org"/>
+    </span>
+    <span>
+        <script th:src="@{/js/password-check-request.js}"></script>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password"
+               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+               title="Must contain at least one number and one uppercase and
+                      lowercase letter, and at least 8 or more characters" required oninput="check()"/>
+    </span>
+    <span>
+        <label for="password-confirm">Confirm Password</label>
+        <input id="password-confirm" name="password-confirm" type="password" required oninput="check()"/>
+    </span>
+    <h2 id="password-error"></h2>
+    <span>
+        <div class="passwords">
+            <input name="terms" id="terms" type="checkbox" required>
+            <p>Read our term of knowledge</p>
+        </div>
+    </span>
 
-        <span>
-            <div class="passwords">
-                <input name="terms" id="terms" type="checkbox" required>
-                <p>Read our term of knowledge</p>
-            </div>
-        </span>
-
-        <button type="submit" onclick="signUp()" class="login-button">Sign up</button>
-    </form>
-
-        <script>
-            // Function to handle the form submission
-            function signUp() {
-                // Get the form values
-                const email = document.getElementById("email").value;
-                const password = document.getElementById("password").value;
-                const firstName = document.getElementById("firstname").value;
-                const lastName = document.getElementById("lastname").value;
-                const phoneNumber = document.getElementById("phoneNumber").value;
-                // Add any additional form fields you have
-
-                // Create the user object
-                const user = {
-                    firstName: firstName,
-                    lastName: lastName,
-                    email: email,
-                    password: password,
-                    phoneNumber: phoneNumber
-
-                    // Add any additional fields you want to include
-                };
-
-                // Send a POST request to your server
-                fetch("api/user/signup", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(user),
-                })
-                    .then(function(response) {
-                        // Handle the response from the server
-                        if (response.ok) {
-                            // User created successfully
-                            console.log("User created successfully!");
-                        } else {
-                            // Error creating user
-                            console.log("Error creating user.");
-                        }
-                    })
-                    .catch(function(error) {
-                        console.log("Error:", error);
-                    });
-            }
-        </script>
-
-    </main>
+    <input type="submit" value="sign up" onclick="signUp()" class="login-button">
+</form>
 </body>
 <!-- Footer -->
 <div th:replace="~{fragments/footer :: footer}"></div>

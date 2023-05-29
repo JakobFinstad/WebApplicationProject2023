@@ -39,6 +39,7 @@ html {
     text-decoration: none;
     margin-left: 1rem;
     margin-top: -1rem;
+    text-shadow: .15rem .15rem .15rem dimgrey;
 }
 
 #proflex-logo:hover{
@@ -69,6 +70,7 @@ html {
     float: left;
     margin-left: 2rem;
     margin-right: .5rem;
+    text-shadow: .15rem .15rem .15rem grey;
 }
 
 .log-in-button {
