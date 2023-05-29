@@ -1,6 +1,7 @@
 package no.ntnu.idata2306.group6.controller.web;
 
 import no.ntnu.idata2306.group6.entity.Product;
+import no.ntnu.idata2306.group6.repository.UserRepository;
 import no.ntnu.idata2306.group6.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,6 +19,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class HtmlPageController {
     @Autowired
     ProductService productService;
+
+    @Autowired
+    private UserRepository userRepository;
 
     /**
      * Get the index page of the main site.
@@ -61,15 +65,15 @@ public class HtmlPageController {
         return "products";
     }*/
 
-    /**
-     * Get the login page.
-     *
-     * @return login page
-     */
-    @GetMapping("/login")
-    public String login() {
-        return "log-in";
-    }
+//    /**
+//     * Get the login page.
+//     *
+//     * @return login page
+//     */
+//    @GetMapping("/login")
+//    public String login() {
+//        return "log-in";
+//    }
 
     /**
      * Get the signup page.
@@ -87,15 +91,18 @@ public class HtmlPageController {
      @GetMapping("/profile-page")
      public String profilePage() {return "profilePage";}
 
-//    /**
-//     * Get the accounting solution page.
-//     *
-//     * @return accounting solution page
-//     */
-//    @GetMapping("/products/{productId}")
-//    public String singleProductPage(@PathVariable String productId) {
-//        return "singleProductPage";
-//    }
+
+    /**
+     * Get the no-access page.
+     *
+     * @return no-access page
+     */
+    @GetMapping("/no-access")
+    public String noAccess() {
+        return "noAccess";
+    }
+
+    
 
 
     /**

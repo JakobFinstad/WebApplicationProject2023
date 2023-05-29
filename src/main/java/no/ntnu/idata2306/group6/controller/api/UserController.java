@@ -15,6 +15,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -205,7 +207,7 @@ public class UserController {
         if (existingUser.isEmpty()) {
             throw new IllegalArgumentException("No user with id " + id + " in the collection.");
         }
-        if (user == null ||  !user.isValid()) {
+        if (user == null || !user.isValid()) {
             throw new IllegalArgumentException("Entered user is invalid");
         }
         if (user.getUserId() != id) {

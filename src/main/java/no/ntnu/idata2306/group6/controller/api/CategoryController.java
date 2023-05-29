@@ -72,7 +72,7 @@ public class CategoryController {
 
         try {
             addCategoryToCollection(category);
-            response = new ResponseEntity<>("" + category.getCategoryId(), HttpStatus.CREATED);
+            response = new ResponseEntity<>(String.valueOf(category.getCategoryId()), HttpStatus.CREATED);
         } catch (IllegalArgumentException e) {
             response = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }

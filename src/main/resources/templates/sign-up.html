@@ -8,13 +8,16 @@
     <link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
     <link rel="stylesheet" th:href="@{/css/login-signup.css/}">
     <script th:src="@{https://code.jquery.com/jquery-1.10.2.js}"></script>
+
 <!--    <script th:src="@{js/password-check-request.js}"></script>-->
+
 </head>
 <body id="signup-site">
 
 <!-- Header -->
 <div id="navbar-placeholder" th:replace="~{fragments/header :: nav}"></div>
 <!-- Header -->
+
 
     <main id="login-container">
         <h2 class="login-text">Sign up</h2>
@@ -60,6 +63,7 @@
     </form>
 
     </main>
+
 </body>
 <!-- Footer -->
 <div th:replace="~{fragments/footer :: footer}"></div>

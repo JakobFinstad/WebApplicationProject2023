@@ -50,7 +50,7 @@ public class RoleService {
     }
 
     /**
-     * Remove an role from the collection.
+     * Remove a role from the collection.
      *
      * @param role that shall be removed
      * @return true on success, false on error
@@ -68,7 +68,7 @@ public class RoleService {
     }
 
     /**
-     * Update an role in the collection.
+     * Update a role in the collection.
      *
      * @param id of the role that shall be edited
      * @param role the new role that shall be saved

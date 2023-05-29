@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>no-access</title>
+    <link rel="stylesheet" type="text/css" th:href="@{css/styles/responsive.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/noAccess.css}">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, ma ximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../static/js/noAccess.js"></script>
+</head>
+<body>
+<div class="lock"></div>
+<div class="message">
+    <h1>Access to this page is restricted</h1>
+    <p>Oops, it looks like you does not have access to this page, we are sorry.</p>
+    <button type="button" onclick="goBackToLastPage()">Go Back</button>
+</div>
+</body>
+</html> 

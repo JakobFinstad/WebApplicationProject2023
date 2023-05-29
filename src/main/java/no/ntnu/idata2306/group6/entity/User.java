@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.util.*;
 
@@ -30,6 +31,7 @@ public class User {
     private int phoneNumber;
     @NotNull
     private String password;
+
     @ManyToMany
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "userId"),
@@ -103,7 +105,7 @@ public class User {
      *
      * @param firstName of the user
      */
-    private void setFirstName(String firstName) {
+    public void setFirstName(String firstName) {
         if (firstName.isEmpty()) {
             throw new IllegalArgumentException("Name cannot be null!");
         }
@@ -124,11 +126,11 @@ public class User {
     }
 
     /**
-     * Link a email to the user.
+     * Link an email to the user.
      *
      * @param email that shall be connected
      */
-    private void setEmail(String email) {
+    public void setEmail(String email) {
         if(email.isEmpty()) {
             throw new IllegalArgumentException("Email cannot be empty!");
         } else {
@@ -141,7 +143,7 @@ public class User {
      *
      * @param lastName of the user
      */
-    private void setLastName(String lastName) {
+    public void setLastName(String lastName) {
         if(lastName.isEmpty()) {
             throw new IllegalArgumentException("Last name cannot be null!");
         }
@@ -269,7 +271,7 @@ public class User {
      *
      * @param password of the user
      */
-    protected void setPassword(String password) {
+    public void setPassword(String password) {
         //TODO: Add regex checking in order to check the original password for the password rules
         this.password = password;
     }
@@ -314,5 +316,16 @@ public class User {
     public User setSubscriptions(Set<Subscription> subscriptions) {
         this.subscriptions = subscriptions;
         return this;
+    }
+
+    public boolean hasRole(String role) {
+        boolean hasRole = false;
+        for (Role currentRole: getRoles()
+             ) {
+            if(currentRole.getRoleName().equals(role)) {
+                hasRole = true;
+            }
+        }
+        return hasRole;
     }
 }
