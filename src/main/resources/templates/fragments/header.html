@@ -1,18 +1,19 @@
-
 <nav id="header" th:fragment="header">
     <div class="header-container">
         <a th:href="@{/}" id="proflex-logo">ProFlex</a>
 
         <ul class="menu-choice-list">
-            <li class="menu-button"> <a th:href="@{/}" class="menu-links">Home</a> </li>
-            <li class="menu-button"> <a th:href="@{/#AboutUsSection}" class="menu-links" >About us</a> </li>
-            <li class="menu-button"> <a th:href="@{/products}" class="menu-links">Products</a> </li>
-            <li class="menu-button log-in-button"> <a th:href="@{/login}"> <img th:src="@{/images/user-icon.png}" width="55"/> </a> </li>
+            <li class="menu-button"><a th:href="@{/}" class="menu-links">Home</a></li>
+            <li class="menu-button"><a th:href="@{/#AboutUsSection}" class="menu-links">About us</a></li>
+            <li class="menu-button"><a th:href="@{/products}" class="menu-links">Products</a></li>
+            <li class="menu-button log-in-button"><a th:href="@{/login}"> <img alt="Image for login icon"
+                                                                               th:src="@{/images/user-icon.png}"
+                                                                               width="55"/> </a></li>
         </ul>
     </div>
 
     <div class="hamburger-menu">
-        <input id="menu__toggle" type="checkbox" />
+        <input id="menu__toggle" type="checkbox"/>
         <label class="menu__btn" for="menu__toggle">
             <span></span>
         </label>
@@ -25,27 +26,25 @@
         </ul>
     </div>
 
-<script>
-    var lastScrollTop; // This Varibale will store the top position
+    <script>
+        var lastScrollTop; // This Varibale will store the top position
 
-    navbar = document.getElementById('navbar'); // Get The NavBar
+        navbar = document.getElementById('navbar'); // Get The NavBar
 
-    window.addEventListener('scroll',function(){
-        //on every scroll this funtion will be called
+        window.addEventListener('scroll', function () {
+            //on every scroll this funtion will be called
 
-        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        //This line will get the location on scroll
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            //This line will get the location on scroll
 
-        if(scrollTop > lastScrollTop){ //if it will be greater than the previous
-            navbar.style.top='-80px';
-            //set the value to the negetive of height of navbar
-        }
+            if (scrollTop > lastScrollTop) { //if it will be greater than the previous
+                navbar.style.top = '-80px';
+                //set the value to the negetive of height of navbar
+            } else {
+                navbar.style.top = '0';
+            }
 
-        else{
-            navbar.style.top='0';
-        }
-
-        lastScrollTop = scrollTop; //New Position Stored
-    });
-</script>
+            lastScrollTop = scrollTop; //New Position Stored
+        });
+    </script>
 </nav>

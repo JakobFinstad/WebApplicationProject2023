@@ -1,104 +1,105 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700;800&display=swap');
 
 
- footer {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        line-height: 1.5;
-        font-family: Inter, sans-serif;
-        background-color: rgba(0,0,0,0.53);
-        align-items: center;
-    }
+footer {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1.5;
+    font-family: Inter, sans-serif;
+    background-color: rgba(0, 0, 0, 0.53);
+    align-items: center;
+}
 
-    .container {
-        width: 100%;
-        /*Change to transparent*/
-        background-color: rgba(128, 128, 128, 0.18);
-        margin: auto;
-    }
+.container {
+    width: 100%;
+    /*Change to transparent*/
+    background-color: rgba(128, 128, 128, 0.18);
+    margin: auto;
+}
 
-    .row {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-    }
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
 
-    ul {
-        list-style: none;
-        padding: 0;
-    }
+ul {
+    list-style: none;
+    padding: 0;
+}
 
-    .footer-col {
-        padding: 5rem 1rem;
-        width: auto;
-        height: auto;
-        margin-right: 8rem;
-        align-items: center;
-    }
+.footer-col {
+    padding: 5rem 1rem;
+    width: auto;
+    height: auto;
+    margin-right: 8rem;
+    align-items: center;
+}
 
-    .footer-col h1 {
-        font-size: 5rem;
-        color: #ffffff;
-        text-transform: capitalize;
-        margin-bottom: 1rem;
-        font-weight: bold;
-        position: relative;
+.footer-col h1 {
+    font-size: 5rem;
+    color: #ffffff;
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    position: relative;
 
-    }
+}
 
-    .footer-col h4 {
-        font-size: 2.5rem;
-        color: #ffffff;
-        text-transform: capitalize;
-        margin-bottom: 3.5rem;
-        font-weight: bold;
-        position: relative;
-    }
+.footer-col h2 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-transform: capitalize;
+    margin-bottom: 3.5rem;
+    font-weight: bold;
+    position: relative;
+}
 
-    .footer-col h4::before{
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -1rem;
-        background-color: grey;
-        height: 0.2rem;
-        box-sizing: border-box;
-        width: 5rem;
-    }
+.footer-col h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1rem;
+    background-color: grey;
+    height: 0.2rem;
+    box-sizing: border-box;
+    width: 5rem;
+}
 
-    .footer-col ul li:not(:last-child){
-        margin-bottom: 1rem;
-    }
+.footer-col ul li:not(:last-child) {
+    margin-bottom: 1rem;
+}
 
-    .footer-col ul li a {
-        font-size: 1.8rem;
-        text-transform: capitalize;
-        text-decoration: none;
-        font-weight: 300;
-        color: #383535;
-        display: block;
-        transition: all 0.15s ease;
-        white-space: nowrap;
-    }
+.footer-col ul li a {
+    font-size: 1.8rem;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: 300;
+    color: #383535;
+    display: block;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
 
-    .footer-col ul li a:hover{
-        transform: scale(1.1);
-        color: white;
-        white-space: nowrap;
-    }
-    .footer-col ul li a:active{
-        color: rgba(255, 255, 255, 0.11);
-        padding-left: 0.8rem;
-    }
+.footer-col ul li a:hover {
+    transform: scale(1.1);
+    color: white;
+    white-space: nowrap;
+}
 
-    .footer-col p{
-        font-size: 2rem;
-        width: 30rem;
-    }
+.footer-col ul li a:active {
+    color: rgba(255, 255, 255, 0.11);
+    padding-left: 0.8rem;
+}
 
-    .footer-logo{
-        margin: 1.5rem;
-    }
+.footer-col p {
+    font-size: 2rem;
+    width: 30rem;
+}
+
+.footer-logo {
+    margin: 1.5rem;
+}
 
