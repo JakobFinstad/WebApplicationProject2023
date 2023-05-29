@@ -7,8 +7,11 @@
     <link rel="stylesheet" type="text/css" th:href="@{css/footer.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/carousel.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/products.css}"/>
     <link rel="stylesheet" th:href="@{'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css'}"/>
+
     <script type="text/javascript" th:src="@{'https://code.jquery.com/jquery-1.10.2.js'}"></script>
+
     <script th:src="@{'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js'}"></script>
     <script type="text/javascript" th:src="@{'/webjars/bootstrap/js/bootstrap.min.js'}"></script>
 
@@ -110,46 +113,44 @@
         <h2 class="review-header2">Testimonials</h2>
         <div class="reviewer">
             <div class="review-box">
-                <div class="review-paragraph">
+                <p class="review-paragraph">
 
-                </div>
+                </p>
 
                 <div class="review-image-container">
-                    <img alt="user-image" class="review-image" th:src="@{images/headshot2.jpg}" height="408" width="612"/>
+                    <img alt="user-image" class="review-image" height="408" width="612"/>
                 </div>
 
-                <div class="review-name">
-                    - Stephanie Smith
-                </div>
+                <h2 class="review-name">
+                </h2>
             </div>
             <div class="review-box">
-                <div class="review-paragraph">
+                <p class="review-paragraph">
 
-                </div>
+                </p>
 
                 <div class="review-image-container">
-                    <img alt="user-image" class="review-image" th:src="@{images/headshot.jpg}" height="408" width="612"/>
+                    <img alt="user-image" class="review-image" height="408" width="612"/>
                 </div>
 
-                <div class="review-name">
-                    - Jason White
-                </div>
+                <h2 class="review-name">
+                </h2>
             </div>
             <div class="review-box">
-                <div class="review-paragraph">
+                <p class="review-paragraph">
 
-                </div>
+                </p>
 
                 <div class="review-image-container">
-                    <img alt="user-image" class="review-image" th:src="@{images/headshot1.jpg}" height="408" width="612"/>
+                    <img alt="user-image" class="review-image"  height="408" width="612"/>
                 </div>
 
-                <div class="review-name">
-                    - Rachel Brown
-                </div>
+                <h2 class="review-name">
+                </h2>
 
             </div>
         </div>
+        <script th:src="@{/js/testimonialRetrival.js}"></script>
 
     </section>
 </article>
@@ -158,50 +159,4 @@
 <!-- Footer -->
 <div th:replace="~{fragments/footer :: footer}"></div>
 <!-- End of footer -->
-
-<script>
-    fetch('api/user')
-        .then(response => response.json())
-        .then(data => {
-            // Extract the "firstname" field from the data
-            const reviewBox = document.querySelector('.review-box');
-
-            reviewBox.forEach((reviewBox, index) => {
-                const user = data[index];
-                const firstname = user.firstname;
-                const lastname = user.lastname;
-                const imgURL = user.img;
-
-                const reviewImageContainer = reviewBox.querySelector('.review-image-container');
-                const reviewImage = reviewImageContainer.querySelector('.review-image');
-                const reviewName = reviewBox.querySelector('.review-name');
-
-                reviewImage.src = imgURL;
-                reviewName.textContent = `- ${firstname} ${lastname}`;
-            })
-
-
-
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-
-    fetch('api/review')
-        .then(response => response.json())
-        .then(data => {
-            const reviewParagraphs = document.querySelectorAll('.review-paragraph');
-
-
-            reviewParagraphs.forEach((reviewParagraphs, index) => {
-                const statement = data[index].statement;
-
-                reviewParagraphs.textContent = `"${statement}"`;
-            })
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-
-</script>
 </html>

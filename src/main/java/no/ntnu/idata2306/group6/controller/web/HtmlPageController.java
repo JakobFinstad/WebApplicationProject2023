@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui. Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  * A controller serving the html pages.
@@ -90,6 +91,7 @@ public class HtmlPageController {
      @GetMapping("/profile-page")
      public String profilePage() {return "profilePage";}
 
+
     /**
      * Get the no-access page.
      *
@@ -100,15 +102,7 @@ public class HtmlPageController {
         return "noAccess";
     }
 
-    /**
-     * Get the accounting solution page.
-     *
-     * @return accounting solution page
-     */
-    @GetMapping("/products/1")
-    public String accountingSolution() {
-        return "singleProductPage";
-    }
+    
 
 
     /**
@@ -131,5 +125,10 @@ public class HtmlPageController {
     @PreAuthorize("hasRole('ADMIN')")
     public String adminPage() {
         return "adminPage";
+    }
+
+    @GetMapping("/payment")
+    public String getPayment(Model model) {
+        return "payment";
     }
 }

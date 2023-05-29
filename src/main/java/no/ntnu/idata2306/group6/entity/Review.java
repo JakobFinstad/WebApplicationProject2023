@@ -15,6 +15,10 @@ public class Review {
     @JoinColumn(name = "userId")
     private User user;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "productId")
+    private Product product;
+
     @NotNull
     private String statement;
 
@@ -26,13 +30,29 @@ public class Review {
      * @param rating 1 to 5 rating for the service
      * @param statement the statement given by the user
      */
-    public Review(int rating, String statement) {
+    public Review(int rating, String statement, User user, Product product) {
         setRating(rating);
         setStatement(statement);
+        this.user = user;
+        setProduct(product);
     }
 
     public Review() {
 
+    }
+
+    private void setUser(User user) {
+        this.user = user;
+    }
+    private User getUser() {
+        return this.user;
+    }
+    private void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Product getProduct() {
+        return this.product;
     }
 
     /**

@@ -286,12 +286,12 @@ html {
         align-items: center;
         margin-bottom: 8rem;
         background-color: rgba(240, 255, 255, 0.59);
-        border-radius: 5%;
+        border-radius: 25px;
     }
 
     .map {
         margin: 2rem;
-        border-radius: 5%;
+        border-radius: 25px;
         object-fit: cover;
         transition: 0.5s;
         height: 35rem;
@@ -365,7 +365,9 @@ html {
 
     .review-image-container {
         margin-top: 4rem;
-        align-items: center;
+        /*align-items: center;*/
+        justify-content: center;
+        display: flex;
     }
 
     .review-image {

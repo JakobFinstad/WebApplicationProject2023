@@ -69,6 +69,7 @@ public class Product {
 //        this.info = info;
     }
 
+
     private void setProductId(int id) {
         if (id <= 0) {
             throw new IllegalArgumentException("Product ID cannot be zero or lower!");
@@ -154,10 +155,17 @@ public class Product {
      * @return the name of the product
      */
     public String getProductName() {
-        String str = productName.substring(0,1).toUpperCase();
-        str += productName.substring(1);
+        String[] words = productName.split(" ");
+        StringBuilder capitalizedString = new StringBuilder();
 
-        return str;
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                String capitalizedWord = word.substring(0, 1).toUpperCase() + word.substring(1);
+                capitalizedString.append(capitalizedWord).append(" ");
+            }
+        }
+
+        return capitalizedString.toString().trim();
     }
 
     /**
