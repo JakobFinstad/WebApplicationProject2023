@@ -51,7 +51,7 @@ public class  AuthenticationController {
 
 
     @PostMapping("/authentication")
-    public ResponseEntity<?> authenticate(@RequestBody AuthenticationRequest authenticationRequest) {
+    public ResponseEntity<Object> authenticate(@RequestBody AuthenticationRequest authenticationRequest) {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                     authenticationRequest.getUsername(),authenticationRequest.getPassword()
