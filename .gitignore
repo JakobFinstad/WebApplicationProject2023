@@ -4,3 +4,5 @@ WebApplicationProject2023.iml
 src/main/resources/keystore.p12
 
 env.properties
+
+nohup.out
