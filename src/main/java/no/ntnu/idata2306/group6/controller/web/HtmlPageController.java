@@ -49,14 +49,10 @@ public class HtmlPageController {
         return "admin";
     }
 
-    /**
-     * Get the user page for the user.
-     *
-     * @return user page
-     */
-    @GetMapping("/this_user")
-    @PreAuthorize("hasRole('USER')")
-    public String userPage() {
-        return "This is the users page";
+
+
+    @GetMapping("/payment")
+    public String getPayment(Model model) {
+        return "payment";
     }
 }

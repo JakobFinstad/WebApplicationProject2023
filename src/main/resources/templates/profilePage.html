@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{css/styles/responsive.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/footer.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/products.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/profilePage.css}">
 
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -16,23 +17,27 @@
 <div th:replace="~{fragments/header :: nav}"></div>
 <!--End of navigation bar -->
 
+<main>
+
 <ul class="profile_box">
 <!--    <img th:src="${user.imageURL}" alt="picture of the user"/>-->
-    <li><div class="profile_item" th:text="${sessionUser.firstName} + ' ' + ${sessionUser.lastName}"></div></li>
-    <li><div class="profile_item" th:text="${sessionUser.email}"></div> </li>
-    <li><div class="profile_item" th:text="${sessionUser.phoneNumber}"></div></li>
-<!--    <li><a class="profile_item" th:text="${user.email}"></a></li>-->
-<!--    <li><a class="profile_item" th:text="${user.phoneNumber}"></a></li>-->
-    <li><a class="profile_item" id="sign_out_button">Sign out</a></li>
+    <li><a class="profile_item" th:if="${user != null}" th:text="${user.firstName} + ' ' + ${user.lastName}"></a></li>
+    <li><a class="profile_item" th:if="${user != null}" th:text="${user.email}"></a> </li>
+    <li><a class="profile_item" th:if="${user != null}" th:text="${user.phoneNumber}"></a></li>
+    <li><form method="post" th:action="@{/logout}"><input id="log-out-button" type="submit" value="Log out"></form></li>
 </ul>
 
-<main>
+
 <div id="my_subscriptions">
-    <h1>Subscriptions</h1>
+    <h1>My Subscriptions</h1>
+
+
     <!-- TODO - Only include cards that the user subscribes to -->
-<!--    <section id="card-container">-->
-<!--        <main th:replace="~{fragments/product-card.html :: product-list}"></main>-->
-<!--    </section>-->
+    <!-- Featured product cards-->
+    <section id="card-container">
+        <main th:replace="~{fragments/featured-product-card.html :: featured-product-list}"></main>
+    </section>
+    <!-- End of featured product cards-->
 </div>
 </main>
 

@@ -1,12 +1,8 @@
 package no.ntnu.idata2306.group6.controller.web;
 
-import no.ntnu.idata2306.group6.entity.Category;
-import no.ntnu.idata2306.group6.entity.Subscription;
-import no.ntnu.idata2306.group6.entity.User;
+import no.ntnu.idata2306.group6.entity.*;
 import no.ntnu.idata2306.group6.entity.dto.UserDTO;
-import no.ntnu.idata2306.group6.service.AccessUserService;
-import no.ntnu.idata2306.group6.service.CategoryService;
-import no.ntnu.idata2306.group6.service.SubscriptionService;
+import no.ntnu.idata2306.group6.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,27 +11,58 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Controller
 @CrossOrigin
 public class ProfilePageController {
 
-    @Autowired
-    private AccessUserService userService;
 
-    @Autowired
-    private SubscriptionService subscriptionService;
+    private final AccessUserService userService;
 
-    @Autowired
-    private CategoryService categoryService;
+    private final SubscriptionService subscriptionService;
 
-    @GetMapping("/profile-page/{username}")
-    public String getProfilePage(@ModelAttribute UserDTO profileData, Model model, @PathVariable String username) {
+    private final CategoryService categoryService;
+
+    private final UserService userService2;
+
+    private final ProductService productService;
+
+    private final InfoService infoService;
+    @Autowired
+    public ProfilePageController(AccessUserService userService,
+                                 SubscriptionService subscriptionService,
+                                 CategoryService categoryService,
+                                 UserService userService2, ProductService productService,
+                                 InfoService infoService) {
+        this.userService = userService;
+        this.subscriptionService = subscriptionService;
+        this.categoryService = categoryService;
+        this.userService2 = userService2;
+        this.productService = productService;
+        this.infoService = infoService;
+    }
+
+    @GetMapping("/profile-page")
+    public String getProfilePage(@ModelAttribute UserDTO profileData, Model model) {
         List<Subscription> subscriptions = this.subscriptionService.findByUser(this.userService.getSessionUser());
         model.addAttribute("subscriptions", subscriptions);
 
-        return handleProfilePageRequest(username, profileData, model);
+        List<Product> products = this.productService.getRandomProducts();
+        List<Info> infos = new ArrayList<>();
+        for (Product p : products) {
+            infos.addAll((Collection<? extends Info>) infoService.findByProdId(p.getProductId()));
+//                     Iterables.concat(infos, infoService.findByProdId(p.getProductId()));
+        }
+
+
+        model.addAttribute("user", userService.getSessionUser());
+        model.addAttribute("featuredProduct", products);
+        model.addAttribute("infos", infos);
+
+        return handleProfilePageRequest(profileData, model);
     }
 
 
@@ -46,18 +73,19 @@ public class ProfilePageController {
         return handleAdminPageRequest(username, model);
     }
 
-    private String handleProfilePageRequest(String username, UserDTO postData, Model model) {
+    private String handleProfilePageRequest(UserDTO postData, Model model) {
         User authenticatedUser = userService.getSessionUser();
-        if (authenticatedUser != null && authenticatedUser.getEmail().equals(username)) {
+        if (authenticatedUser != null && authenticatedUser.getEmail().equals(userService.getSessionUser().getEmail())) {
             model.addAttribute("user", authenticatedUser);
             if (postData != null) {
-                if (userService.updateProfile(authenticatedUser, postData)) {
+                boolean yes=true;
+                if (yes) {//userService.updateProfile(authenticatedUser, postData)) {
                     model.addAttribute("successMessage", "Profile updated!");
                 } else {
                     model.addAttribute("errorMessage", "Could not update profile data!");
                 }
             }
-            return "user";
+            return "profilePage";
         } else {
             return "no-access";
         }

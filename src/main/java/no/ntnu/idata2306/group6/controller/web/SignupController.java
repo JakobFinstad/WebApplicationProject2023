@@ -41,8 +41,4 @@ public class SignupController {
         return "profilePage";
     }
 
-    @GetMapping("/profile-page")
-    public String getProfilePage() {
-        return "profilePage";
-    }
 }
