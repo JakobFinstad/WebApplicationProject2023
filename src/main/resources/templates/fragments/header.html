@@ -7,16 +7,22 @@
             <li class="menu-button"><a th:href="@{/#AboutUsSection}" class="menu-links">About us</a></li>
             <li class="menu-button"><a th:href="@{/products}" class="menu-links">Products</a></li>
             <li th:if="${user == null}" class="menu-button log-in-button"><a th:href="@{/login}"> <img
-                    alt="Image for login icon"
                     th:src="@{/images/user-icon.png}"
-                    width="55"/> </a></li>
-            <li th:if="${user != null}" class="menu-button"><a th:href="${'/profile-page?user=' + user.email}">
-                <p th:if="${user != null}" th:text="${user.firstName}">Log in</p>
-                <p th:unless="${user != null}">Log in</p>
+                    width="55"
+                    alt="Image for login icon"/> </a></li>
+            <li th:if="${user != null}" class="menu-button log-in-button"><a th:href="${'/profile-page?user=' + user.email}">
+                <img th:src="@{/images/user-icon.png}"
+                     width="55"
+                     alt="Image of user icon"/>
+<!--                <img th:if="${user != null} && ${user.imgURL != null}"-->
+<!--                     th:src="${user.imgURL}"-->
+<!--                     width="55"-->
+<!--                     alt="User image" />-->
+<!--                <img th:if="${user != null} && ${user.imgURL == null}"-->
+<!--                     th:src="@{/images/user-icon.png}"-->
+<!--                     width="55"-->
+<!--                     alt="Image for login icon"/>-->
             </a></li>
-            <li th:if="${user != null}">
-                <form method="post" th:action="@{/logout}"><input type="submit" value="Log out"></form>
-            </li>
         </ul>
     </div>
 
