@@ -3,8 +3,10 @@ package no.ntnu.idata2306.group6.controller.web;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import no.ntnu.idata2306.group6.entity.Info;
 import no.ntnu.idata2306.group6.entity.Product;
+import no.ntnu.idata2306.group6.service.AccessUserService;
 import no.ntnu.idata2306.group6.service.InfoService;
 import no.ntnu.idata2306.group6.service.ProductService;
+import no.ntnu.idata2306.group6.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,10 +26,13 @@ public class IndexController {
 
     private InfoService infoService;
 
+    private AccessUserService userService;
+
     @Autowired
-    public IndexController(ProductService productService, InfoService infoService) {
+    public IndexController(ProductService productService, InfoService infoService, AccessUserService userService) {
         this.productService = productService;
         this.infoService = infoService;
+        this.userService = userService;
     }
 
     /**
@@ -47,6 +52,7 @@ public class IndexController {
 
         model.addAttribute("featuredProduct", products);
         model.addAttribute("infos", infos);
+        model.addAttribute("user", userService.getSessionUser());
         return "index";
     }
 
