@@ -18,51 +18,47 @@
 <div id="navbar-placeholder" th:replace="~{fragments/header :: nav}"></div>
 <!-- Header -->
 
-
-<main id="login-container">
+<form id="signup-form">
     <h2 class="login-text">Sign up</h2>
-    <form id="signup-form">
-        <span>
-            <label for="firstname">First Name</label>
-            <input id="firstname" name="firstname" placeholder="First name" required/>
-        </span>
-        <span>
-            <label for="lastname">Last Name</label>
-            <input id="lastname" name="lastname" placeholder="Last name" required/>
-        </span>
-        <span>
-            <label for="phoneNumber">PhoneNumber</label>
-            <input id="phoneNumber" name="phoneNumber" type="tel">
-        </span>
-        <span>
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required placeholder="example@something.org"/>
-        </span>
-        <span>
-            <script th:src="@{/js/password-check-request.js}"></script>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password"
-                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                   title="Must contain at least one number and one uppercase and
-                       lowercase letter, and at least 8 or more characters" required oninput="check()"/>
-        </span>
-        <span>
-                <label for="password-confirm">Confirm Password</label>
-                <input id="password-confirm" name="password-confirm" type="password" required oninput="check()"/>
-            </span>
-        <h2 id="password-error"></h2>
+    <span>
+        <label for="firstname">First Name</label>
+        <input id="firstname" name="firstname" placeholder="First name" required/>
+    </span>
+    <span>
+        <label for="lastname">Last Name</label>
+        <input id="lastname" name="lastname" placeholder="Last name" required/>
+    </span>
+    <span>
+        <label for="phoneNumber">PhoneNumber</label>
+        <input id="phoneNumber" name="phoneNumber" type="tel">
+    </span>
+    <span>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required placeholder="example@something.org"/>
+    </span>
+    <span>
+        <script th:src="@{/js/password-check-request.js}"></script>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password"
+               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+               title="Must contain at least one number and one uppercase and
+                      lowercase letter, and at least 8 or more characters" required oninput="check()"/>
+    </span>
+    <span>
+        <label for="password-confirm">Confirm Password</label>
+        <input id="password-confirm" name="password-confirm" type="password" required oninput="check()"/>
+    </span>
+    <h2 id="password-error"></h2>
 
-        <span>
-            <div class="passwords">
-                <input name="terms" id="terms" type="checkbox" required>
-                <label for="terms">Read our term of knowledge</label>
-            </div>
-        </span>
+    <span>
+        <div class="passwords">
+            <input name="terms" id="terms" type="checkbox" required>
+            <label for="terms">Read our term of knowledge</label>
+        </div>
+    </span>
 
-        <button type="submit" onclick="signUp()" class="login-button">Sign up</button>
-    </form>
-
-</main>
+    <input type="submit" onclick="signUp()" class="login-button" value="sign up">
+</form>
 
 </body>
 <!-- Footer -->
