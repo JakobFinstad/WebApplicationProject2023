@@ -17,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 
 import java.io.IOException;
 
@@ -63,17 +64,33 @@ public class SecurityConfiguration {
                     .csrf().disable()
                     .cors().and()
                     .authorizeRequests()
+                    // Coding for all the scripts and the images and css files
                     .requestMatchers("/css/**", "/images/**", "/js/**", "/templates/**", "/swagger-ui/**").permitAll()
-                    .requestMatchers("/", "/home", "/index", "/login", "/signup", "/api/user/signup", "/api/testimonial", "/products","/products/{productId}").permitAll()
+
+
+                    // Request matchers for all the pages that is accessible for everyone
+                    .requestMatchers("/", "/home", "/index", "/login", "/signup", "/api/user/signup", "/api/testimonial").permitAll()
+                    .requestMatchers("/products").permitAll()
+                    .requestMatchers("/products/{productId}").permitAll()
+
+                    // Request matchers for all the pages that is accessible for everyone with a user
                     .requestMatchers("/login", "/signup").not().hasAnyRole("USER","ADMIN")
+                    .requestMatchers("/products/{productId}/payment").hasAnyRole("ADMIN", "USER")
+                    .requestMatchers("/profile-page").hasAnyRole("USER", "ADMIN")
+
+                    // Request matchers for all the admin pages
                     .requestMatchers("/admin/**").hasRole("ADMIN")
-                    .requestMatchers("/profile-page","/products/payment").hasAnyRole("USER", "ADMIN")
+
                     .requestMatchers("/swagger-ui.html", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-resources/**", "/webjars/**").permitAll()
                     .anyRequest().authenticated()
                     .and()
                     .formLogin()
                     .loginPage("/login")
+                    .defaultSuccessUrl("/")
+                    .successHandler(savedRequestAwareAuthenticationSuccessHandler())
                     .and()
+// Rest of your configuration...
+
                     .logout()
                     .logoutSuccessUrl("/").and()
                     .exceptionHandling()
@@ -92,6 +109,14 @@ public class SecurityConfiguration {
 
         return http.build();
     }
+
+    @Bean
+    public SavedRequestAwareAuthenticationSuccessHandler savedRequestAwareAuthenticationSuccessHandler() {
+        SavedRequestAwareAuthenticationSuccessHandler successHandler = new SavedRequestAwareAuthenticationSuccessHandler();
+        successHandler.setUseReferer(true);
+        return successHandler;
+    }
+
 
     private AccessDeniedHandler accessDeniedHandler() {
         return new CustomAccessDeniedHandler();

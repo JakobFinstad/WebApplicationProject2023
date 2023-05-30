@@ -1,0 +1,22 @@
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 6rem;
+    color: black;
+    text-shadow: 0.5rem 0.5rem 10rem rgba(0, 0, 0, 0.5);
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    justify-content: center;
+    margin: 0px 10rem 10rem;
+}
+
