@@ -21,7 +21,7 @@
 
 <ul class="profile_box">
 <!--    <img th:src="${user.imageURL}" alt="picture of the user"/>-->
-    <li><a class="profile_item" th:if="${user != null}" th:text="${user.firstName} + ' ' + ${user.lastName}"></a></li>
+    <li><a class="profile_item user_name" th:if="${user != null}" th:text="${user.firstName} + ' ' + ${user.lastName}"></a></li>
     <li><label class="profile_item profile_item_label" for="email">Email: </label></li>
     <li><a class="profile_item" id="email" th:if="${user != null}" th:text="${user.email}"></a> </li>
     <li><label class="profile_item profile_item_label" for="phoneNumber">Phone number: </label></li>
