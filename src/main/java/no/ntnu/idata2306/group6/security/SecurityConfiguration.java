@@ -52,23 +52,24 @@ public class SecurityConfiguration {
         boolean enableSecurity = true;
 
         if (enableSecurity) {
-            http.csrf(csrf -> csrf.disable())
-                    .cors(Customizer.withDefaults())
-                    .authorizeHttpRequests()
-                    .requestMatchers("/css/**").permitAll()
-//                    .requestMatchers("/webjars/bootstrap/js/bootstrap.min.js").permitAll()
-                    .requestMatchers("/images/**").permitAll()
-                    .requestMatchers("/js/**").permitAll()
-                    .requestMatchers("/templates/**").permitAll()
-                    .requestMatchers("/").permitAll()
-                    .requestMatchers("/login").permitAll()
+            http
+                    .csrf().disable()
+                    .cors().and()
+                    .authorizeRequests()
+                    .requestMatchers("/css/**", "/images/**", "/js/**", "/templates/**", "/swagger-ui/**").permitAll()
+                    .requestMatchers("/", "/home", "/index", "/login", "/signup", "/api/user/signup", "/api/testimonial").permitAll()
                     .requestMatchers("/admin/**").hasRole("ADMIN")
-                    .requestMatchers("/signup").permitAll()
                     .requestMatchers("/products/**").hasAnyRole("ADMIN", "USER")
-                    .requestMatchers("/api/user/signup").permitAll()
-                    .requestMatchers("/api/testimonial").permitAll()
-                    .and().formLogin().loginPage("/login")
-                    .and().logout().logoutSuccessUrl("/");
+                    .requestMatchers("/swagger-ui.html", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-resources/**", "/webjars/**").permitAll()
+                    .anyRequest().authenticated()
+                    .and()
+                    .formLogin()
+                    .loginPage("/login")
+                    .and()
+                    .logout()
+                    .logoutSuccessUrl("/");
+
+
         } else {
             http.csrf(csrf -> csrf.disable())
                     .cors(Customizer.withDefaults())
