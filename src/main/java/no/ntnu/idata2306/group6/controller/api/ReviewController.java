@@ -1,6 +1,10 @@
 package no.ntnu.idata2306.group6.controller.api;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import no.ntnu.idata2306.group6.entity.Review;
 import no.ntnu.idata2306.group6.service.ReviewService;
 import org.slf4j.Logger;
@@ -8,11 +12,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/api/review")
 public class ReviewController {
     private ReviewService reviewService;
@@ -25,17 +30,17 @@ public class ReviewController {
 
     /**
      * Get all reviews.
-     * HTTP Get to /review
+     * HTTP Get to /api/review
      *
      * @return list of all reviews currently in collection
      */
     @GetMapping
     @Operation(
             summary = "Get all reviews",
-            description = "List of all reviews currently stored in collection"
+            description = "Returns a list of all reviews currently stored in the collection"
     )
-    public ResponseEntity<Object> getAll() {
-        logger.error("Getting all ");
+    public ResponseEntity<Iterable<Review>> getAll() {
+        logger.error("Getting all reviews");
         Iterable<Review> reviews = reviewService.getAll();
         return new ResponseEntity<>(reviews, HttpStatus.OK);
     }
@@ -47,7 +52,24 @@ public class ReviewController {
      * @return review with the given id or status 404
      */
     @GetMapping("/{id}")
-    public ResponseEntity<Review> getOne(@PathVariable Integer id) {
+    @Operation(
+            summary = "Get a specific review",
+            description = "Returns the review with the given ID",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Review found",
+                            content = @Content(schema = @Schema(implementation = Review.class))
+                    ),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "Review not found"
+                    )
+            }
+    )
+    public ResponseEntity<Review> getOne(
+            @Parameter(description = "ID of the review to retrieve") @PathVariable Integer id
+    ) {
         ResponseEntity<Review> response;
         Optional<Review> review = Optional.ofNullable(reviewService.findById(id));
         if (review.isPresent()) {
@@ -66,13 +88,29 @@ public class ReviewController {
      * 400 Bad request if some data is missing or incorrect
      */
     @PostMapping()
-    @Operation(deprecated = true)
-    public ResponseEntity<String> add(@RequestBody Review review) {
+    @Operation(
+            summary = "Add a new review",
+            description = "Creates a new review and returns the ID of the newly created review",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "201",
+                            description = "Review created",
+                            content = @Content(schema = @Schema(implementation = Integer.class))
+                    ),
+                    @ApiResponse(
+                            responseCode = "400",
+                            description = "Bad request"
+                    )
+            }
+    )
+    public ResponseEntity<String> add(
+            @Parameter(description = "Review data to add", required = true) @RequestBody Review review
+    ) {
         ResponseEntity<String> response;
 
         try {
             addReviewToCollection(review);
-            response = new ResponseEntity<>("" + review.getReviewId(), HttpStatus.CREATED);
+            response = new ResponseEntity<>(String.valueOf(review.getReviewId()), HttpStatus.CREATED);
         } catch (IllegalArgumentException e) {
             response = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -103,8 +141,23 @@ public class ReviewController {
      * @return 200 OK on success, 404 Not found on error
      */
     @DeleteMapping("/{id}")
-    @Operation(hidden = true)
-    public ResponseEntity<String> delete(@PathVariable int id) {
+    @Operation(
+            summary = "Delete a review",
+            description = "Deletes the review with the given ID",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Review deleted"
+                    ),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "Review not found"
+                    )
+            }
+    )
+    public ResponseEntity<String> delete(
+            @Parameter(description = "ID of the review to delete") @PathVariable int id
+    ) {
         ResponseEntity<String> response;
         Review reviewToDelete = reviewService.findById(id);
         if (removeReviewFromCollection(reviewToDelete)) {
@@ -123,7 +176,24 @@ public class ReviewController {
      * @return 200 OK on success, 400 Bad request on error
      */
     @PutMapping("/{id}")
-    public ResponseEntity<String> update(@PathVariable int id, @RequestBody Review review) {
+    @Operation(
+            summary = "Update a review",
+            description = "Updates the review with the given ID",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Review updated"
+                    ),
+                    @ApiResponse(
+                            responseCode = "400",
+                            description = "Bad request"
+                    )
+            }
+    )
+    public ResponseEntity<String> update(
+            @Parameter(description = "ID of the review to update") @PathVariable int id,
+            @Parameter(description = "Review data to update", required = true) @RequestBody Review review
+    ) {
         ResponseEntity<String> response;
         try {
             updateReview(id, review);
@@ -143,7 +213,7 @@ public class ReviewController {
      */
     private void addReviewToCollection(Review review) throws IllegalArgumentException {
         if (review == null || review.getReviewId() < 0) {
-            throw new IllegalArgumentException("Product is invalid");
+            throw new IllegalArgumentException("Review is invalid");
         }
         reviewService.addReview(review);
     }
@@ -158,14 +228,14 @@ public class ReviewController {
     private void updateReview(int id, Review review) throws  IllegalArgumentException {
         Optional<Review> existingReview = Optional.ofNullable(reviewService.findById(id));
         if (existingReview.isEmpty()) {
-            throw new IllegalArgumentException("No product with id " + id + " found");
+            throw new IllegalArgumentException("No review with ID " + id + " found");
         }
         if (review == null) {
             throw new IllegalArgumentException("Wrong data in request body");
         }
         if (review.getReviewId() != id) {
             throw new IllegalArgumentException("Review ID in the URL does not match the ID " +
-                    "in the ID in JSON data(request body)");
+                    "in the JSON data (request body)");
         }
 
         try {

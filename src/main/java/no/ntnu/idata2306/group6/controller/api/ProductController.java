@@ -32,22 +32,22 @@ public class ProductController {
   }
 
   /**
-   * Get all products
-   * HTTP GET to /product
+   * Get all products.
    *
-   * @return List of all products currently stored in the collection; or 500 code on error.
+   * @param category optional category filter
+   * @param model    the model object
+   * @return list of all products currently stored in the collection or 500 code on error
    */
   @GetMapping
   @Operation(
-      summary = "Get all products",
-      description = "List of all products currently stored in collection"
+          summary = "Get all products",
+          description = "List of all products currently stored in collection"
   )
   public ResponseEntity<Object> getAll(@RequestParam(required = false) String category, Model model) {
     Iterable<Product> products;
     if (category == null) {
       products = productService.getAll();
     } else {
-      //products = productService.getAllByCategory(category);
       products = productService.getProductsByCategory(category);
     }
 
@@ -57,16 +57,22 @@ public class ProductController {
     return new ResponseEntity<>(products, HttpStatus.OK);
   }
 
+  /**
+   * Get all categories that one product has.
+   *
+   * @param id ID of the product
+   * @return list of all categories currently linked to the product with the given ID
+   */
   @GetMapping("/{id}/categories")
   @Operation(
           summary = "Get all categories that one product has",
           description = "List of all categories currently linked to the product with product id"
   )
-  public ResponseEntity<Object> getAllCategories(@PathVariable int id){
+  public ResponseEntity<Object> getAllCategories(@PathVariable int id) {
 
     Product product = productService.findById(id);
     Iterable<Category> categories;
-    if (product == null){
+    if (product == null) {
       categories = null;
     } else {
       categories = productService.getAllCategoriesByProduct(id);
@@ -75,14 +81,17 @@ public class ProductController {
     return new ResponseEntity<>(categories, HttpStatus.OK);
   }
 
-
   /**
-   * Get a specific product
+   * Get a specific product.
    *
    * @param id ID of the returned product
-   * @return Product with the given ID or status 404
+   * @return product with the given ID or status 404
    */
-   @GetMapping("/{id}")
+  @GetMapping("/{id}")
+  @Operation(
+          summary = "Get a specific product",
+          description = "Retrieve a product with the specified ID"
+  )
   public ResponseEntity<Product> getOne(@PathVariable Integer id) {
     ResponseEntity<Product> response;
     Optional<Product> product = Optional.ofNullable(productService.findById(id));
@@ -92,12 +101,12 @@ public class ProductController {
       response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
     return response;
-   }
+  }
 
   /**
    * HTTP POST endpoint for adding a new product.
    *
-   * @param productDTO Data of the product to add. ID will be ignored.
+   * @param productDTO data of the product to add. ID will be ignored.
    * @return 201 Created on success and the new ID in the response body,
    * 400 Bad request if some data is missing or incorrect
    */
@@ -118,7 +127,7 @@ public class ProductController {
   }
 
   /**
-   * Delete a product from the collection
+   * Delete a product from the collection.
    *
    * @param id ID of the product to delete
    * @return 200 OK on success, 404 Not found on error
@@ -129,7 +138,7 @@ public class ProductController {
     ResponseEntity<String> response;
     Product productToDelete = productService.findById(id);
     if (removeProductFromCollection(productToDelete)) {
-      response = new ResponseEntity<>(HttpStatus.FOUND);
+      response = new ResponseEntity<>(HttpStatus.OK);
     } else {
       response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -137,10 +146,10 @@ public class ProductController {
   }
 
   /**
-   * Remove Product from the collection
+   * Remove a product from the collection.
    *
-   * @param product to remove
-   * @return True when product with that ID is removed, false otherwise
+   * @param product product to remove
+   * @return true when the product with that ID is removed, false otherwise
    */
   private boolean removeProductFromCollection(Product product) {
     boolean deleted = false;
@@ -148,24 +157,28 @@ public class ProductController {
       productService.remove(product);
       deleted = true;
     } catch (DataAccessException e) {
-      logger.warn("Could not delete product with ID" + product.getProductId() + ": " + e.getMessage());
+      logger.warn("Could not delete product with ID " + product.getProductId() + ": " + e.getMessage());
     }
     return deleted;
   }
 
   /**
-   * Update a product in the repository
+   * Update a product in the repository.
    *
-   * @param id   ID of the product to update, from the URL
-   * @param product New product data to store, from request body
+   * @param id      ID of the product to update, from the URL
+   * @param product new product data to store, from the request body
    * @return 200 OK on success, 400 Bad request on error
    */
   @PutMapping("/{id}")
+  @Operation(
+          summary = "Update a product",
+          description = "Update a product with the specified ID"
+  )
   public ResponseEntity<String> update(@PathVariable int id, @RequestBody Product product) {
     ResponseEntity<String> response;
     try {
       updateProduct(id, product);
-      response = new ResponseEntity<>(HttpStatus.FOUND);
+      response = new ResponseEntity<>(HttpStatus.OK);
     } catch (Exception e) {
       response = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
@@ -174,10 +187,10 @@ public class ProductController {
   }
 
   /**
-   * Add a product to collection
+   * Add a product to the collection.
    *
-   * @param product the product to be added to collection if it is valid
-   * @throws IllegalArgumentException
+   * @param product the product to be added to the collection if it is valid
+   * @throws IllegalArgumentException if the product is invalid
    */
   private void addProductToCollection(Product product) throws IllegalArgumentException {
     if (!product.isValid()) {
@@ -187,25 +200,23 @@ public class ProductController {
   }
 
   /**
-   * Try to update a product with given ID. The product id must match the id.
+   * Try to update a product with the given ID. The product ID must match the ID.
    *
-   * @param id   ID of the product
-   * @param product The updated product data
-   * @throws IllegalArgumentException If something goes wrong.
-   *                                  Error message can be used in HTTP response.
+   * @param id      ID of the product
+   * @param product the updated product data
+   * @throws IllegalArgumentException if something goes wrong
    */
   private void updateProduct(int id, Product product) throws IllegalArgumentException {
 
     Optional<Product> existingProduct = Optional.ofNullable(productService.findById(id));
     if (existingProduct.isEmpty()) {
-      throw new IllegalArgumentException("No product with id " + id + " found");
+      throw new IllegalArgumentException("No product with ID " + id + " found");
     }
     if (product == null || !product.isValid()) {
-      throw new IllegalArgumentException("Wrong data in request body");
+      throw new IllegalArgumentException("Wrong data in the request body");
     }
     if (product.getProductId() != id) {
-      throw new IllegalArgumentException(
-          "Product ID in the URL does not match the ID in JSON data (response body)");
+      throw new IllegalArgumentException("Product ID in the URL does not match the ID in the JSON data (request body)");
     }
 
     try {
@@ -216,4 +227,3 @@ public class ProductController {
     }
   }
 }
-

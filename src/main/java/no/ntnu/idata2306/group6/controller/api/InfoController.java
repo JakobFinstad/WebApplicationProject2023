@@ -1,6 +1,8 @@
 package no.ntnu.idata2306.group6.controller.api;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import no.ntnu.idata2306.group6.entity.Info;
 import no.ntnu.idata2306.group6.service.InfoService;
 import org.slf4j.Logger;
@@ -8,11 +10,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
-
 
 @RestController
 @RequestMapping("/api/info")
@@ -29,15 +29,15 @@ public class InfoController {
      * Get all infos.
      * HTTP Get to /info
      *
-     * @return list of all infos currently in collection
+     * @return list of all infos currently in the collection
      */
     @GetMapping
     @Operation(
             summary = "Get all infos",
-            description = "List of all infos currently stored in collection"
+            description = "List of all infos currently stored in the collection"
     )
     public ResponseEntity<Object> getAll() {
-        logger.error("Getting all ");
+        logger.error("Getting all");
         Iterable<Info> infos = infoService.getAll();
 
         return new ResponseEntity<>(infos, HttpStatus.OK);
@@ -50,6 +50,14 @@ public class InfoController {
      * @return info with the given id or status 404
      */
     @GetMapping("/{id}")
+    @Operation(
+            summary = "Get a specific info",
+            description = "Retrieve an info with the specified ID"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Info found"),
+            @ApiResponse(responseCode = "404", description = "Info not found")
+    })
     public ResponseEntity<Info> getOne(@PathVariable int id) {
         ResponseEntity<Info> response;
         Optional<Info> info = Optional.ofNullable(infoService.findById(id));
@@ -70,12 +78,16 @@ public class InfoController {
      */
     @PostMapping()
     @Operation(deprecated = true)
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Info created"),
+            @ApiResponse(responseCode = "400", description = "Bad request")
+    })
     public ResponseEntity<String> add(@RequestBody Info info) {
         ResponseEntity<String> response;
 
         try {
             addInfoToCollection(info);
-            response = new ResponseEntity<>("" + info.getInfoId(), HttpStatus.CREATED);
+            response = new ResponseEntity<>(String.valueOf(info.getInfoId()), HttpStatus.CREATED);
         } catch (IllegalArgumentException e) {
             response = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -86,7 +98,7 @@ public class InfoController {
      * Remove info from the collection.
      *
      * @param info to remove
-     * @return true when product with that ID is removed, false otherwise
+     * @return true when the info with that ID is removed, false otherwise
      */
     private boolean removeInfoFromCollection(Info info) {
         boolean deleted = false;
@@ -107,6 +119,10 @@ public class InfoController {
      */
     @DeleteMapping("/{id}")
     @Operation(hidden = true)
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Info deleted"),
+            @ApiResponse(responseCode = "404", description = "Info not found")
+    })
     public ResponseEntity<String> delete(@PathVariable int id) {
         ResponseEntity<String> response;
         Info infoToDelete = infoService.findById(id);
@@ -121,11 +137,19 @@ public class InfoController {
     /**
      * Update an info in the repository.
      *
-     * @param id of the info to update, from the URL
-     * @param info new info data to store, from request body
+     * @param id   of the info to update, from the URL
+     * @param info new info data to store, from the request body
      * @return 200 OK on success, 400 Bad request on error
      */
     @PutMapping("/{id}")
+    @Operation(
+            summary = "Update an info",
+            description = "Update an info with the specified ID"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Info updated"),
+            @ApiResponse(responseCode = "400", description = "Bad request")
+    })
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody Info info) {
         ResponseEntity<String> response;
         try {
@@ -139,36 +163,35 @@ public class InfoController {
     }
 
     /**
-     * Add an info to collection.
+     * Add an info to the collection.
      *
-     * @param info the info to be added to collection if it is valid
-     * @throws IllegalArgumentException
+     * @param info the info to be added to the collection if it is valid
+     * @throws IllegalArgumentException if the info is invalid
      */
     private void addInfoToCollection(Info info) throws IllegalArgumentException {
         if (info == null || info.getInfoId() < 0) {
-            throw new IllegalArgumentException("Product is invalid");
+            throw new IllegalArgumentException("Info is invalid");
         }
         infoService.addInfo(info);
     }
 
     /**
-     * Try to update an info with given ID. The info id must match the ID.
+     * Try to update an info with the given ID. The info id must match the ID.
      *
-     * @param id of the info
+     * @param id   of the info
      * @param info the update info data
      * @throws IllegalArgumentException if something goes wrong
      */
-    private void updateInfo(int id, Info info) throws  IllegalArgumentException {
+    private void updateInfo(int id, Info info) throws IllegalArgumentException {
         Optional<Info> existingInfo = Optional.ofNullable(infoService.findById(id));
         if (existingInfo.isEmpty()) {
-            throw new IllegalArgumentException("No product with id " + id + " found");
+            throw new IllegalArgumentException("No info with ID " + id + " found");
         }
         if (info == null) {
-            throw new IllegalArgumentException("Wrong data in request body");
+            throw new IllegalArgumentException("Wrong data in the request body");
         }
         if (info.getInfoId() != id) {
-            throw new IllegalArgumentException("Info ID in the URL does not match the ID " +
-                    "in the ID in JSON data(request body)");
+            throw new IllegalArgumentException("Info ID in the URL does not match the ID in the JSON data (request body)");
         }
 
         try {
