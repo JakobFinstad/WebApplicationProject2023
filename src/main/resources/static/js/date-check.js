@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const startDateInput = document.getElementById('start-date');
-    const endDateInput = document.getElementById('end-date');
+    const startDateInput = document.getElementById('startDate');
+    const endDateInput = document.getElementById('endDate');
     const buyNowButton = document.getElementById('buy-now-button');
     const warning = document.getElementById('warning-message');
 
@@ -28,26 +28,24 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function bringToNextPage() {
-        const startDate = startDateInput.value;
-        const endDate = endDateInput.value;
-        const url = window.location.href;
-        const productId = url.split('/').pop();
-
-        if (startDate && endDate) {
-            const nextPageURL = '/products/payment' +
-                '?startDate=' + encodeURIComponent(startDate) +
-                '&endDate=' + encodeURIComponent(endDate) +
-                '&prodId=' + encodeURIComponent(productId);
-            window.location.href = nextPageURL;
-        }
-    }
+    // function bringToNextPage() {
+    //     const startDate = startDateInput.value;
+    //     const endDate = endDateInput.value;
+    //     const url = window.location.href;
+    //     const productId = url.split('/').pop();
+    //
+    //     if (startDate && endDate) {
+    //         const nextPageURL = '/products/payment' +
+    //             '?startDate=' + encodeURIComponent(startDate) +
+    //             '&endDate=' + encodeURIComponent(endDate);
+    //         window.location.href = nextPageURL;
+    //     }
+    // }
 
     buyNowButton.addEventListener('click', function (event) {
         if (buyNowButton.hasAttribute('disabled')) {
             event.preventDefault();
         } else {
-            event.preventDefault();
         }
     });
 
@@ -55,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function () {
     endDateInput.addEventListener('change', checkIfDatesFilled);
     startDateInput.addEventListener('change', compareDate);
     endDateInput.addEventListener('change', compareDate);
-    buyNowButton.addEventListener('click', bringToNextPage);
 
     compareDate();
     checkIfDatesFilled();

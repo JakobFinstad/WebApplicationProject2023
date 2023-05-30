@@ -59,10 +59,4 @@ public class HtmlPageController {
     public String userPage() {
         return "This is the users page";
     }
-
-
-    @GetMapping("/payment")
-    public String getPayment(Model model) {
-        return "payment";
-    }
 }

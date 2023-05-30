@@ -17,17 +17,16 @@
 
                     <div id="button-container">
                       <span class="main-button" id="text-and-button-container">
-                        <a th:href="@{/products/payment}" id="buy-now-button"
-                           title="Click here to see subscription options">
-                          Buy Now
-                      </a></span>
+                        <a th:href="@{'/' + ${products.productId} + '/payment(startDate=' + ${#dates.format('startDate', 'yyyy-MM-dd')} + ',endDate=' + ${#dates.format('endDate', 'yyyy-MM-dd')}}" id="buy-now-button" title="Click here to see subscription options">Buy Now
+                        </a>
+                      </span>
                     </div>
 
                     <form class="date-form">
-                        <label for="start-date" class="date-text">Start date: </label>
-                        <input type="date" id="start-date" class="date-box">
-                        <label for="end-date" class="date-text">End date: </label>
-                        <input type="date" id="end-date" class="date-box">
+                        <label for="startDate" class="date-text">Start date: </label>
+                        <input type="date" id="startDate" class="date-box" th:value="${#dates.format(subscription.startDate, 'yyyy-MM-dd')}">
+                        <label for="endDate" class="date-text">End date: </label>
+                        <input type="date" id="endDate" class="date-box" th:value="${#dates.format(subscription.endDate, 'yyyy-MM-dd')}">
                     </form>
                     <span id="warning-message"></span>
                 </div>
