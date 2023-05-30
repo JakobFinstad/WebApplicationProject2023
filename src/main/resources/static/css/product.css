@@ -94,26 +94,32 @@ main{
     color: #000000B2;
 }
 
-#buy-now-button {
+#buy-now-button, .submit-button {
+    color: white;
+    background-color: #b42e53;
+    border: 1px solid #b42e53;
+    transition: .5s;
+
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
     margin: 5rem 1rem 1rem;
     padding: 2rem;
-    text-align: center;
     text-transform: uppercase;
-    transition: 0.5s;
+
     background-size: 200% auto;
-    color: rgba(0, 0, 0, 0.7);
     box-shadow: 0 0 20px #eee;
     border-radius: 0.1em;
-    background-image: linear-gradient(to right,  azure 50%, rgba(180, 46, 83) 100%);
     font-weight: bold;
     text-decoration: none;
     font-size: 2em;
 }
 
-#buy-now-button:hover {
-    background-position: right center;
+#buy-now-button:hover, .submit-button:hover {
     cursor: pointer;
-    /*color: darkgreen;*/
+    color: white;
+    background-color: #ef4374;
 }
 
 #buy-now-button:active {
@@ -160,24 +166,6 @@ textarea {
 
 .header-feedback {
     margin: 0;
-}
-
-
-.submit-button {
-    margin: 5rem 1rem 1rem;
-    padding: 2rem;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: rgba(0, 0, 0, 0.7);
-    box-shadow: 0 0 20px #eee;
-    border-radius: 0.1em;
-    background-image: linear-gradient(to right,  azure 50%, rgba(180, 46, 83) 100%);
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 2em;
-    border: none;
 }
 
 .submit-button:hover {
