@@ -5,15 +5,15 @@
     <link rel="stylesheet" type="text/css" th:href="@{css/styles/responsive.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/footer.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/carousel.css}">
+    <!--    <link rel="stylesheet" type="text/css" th:href="@{css/carousel.css}">-->
     <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/products.css}"/>
-    <link rel="stylesheet" th:href="@{'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css'}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/products.css}">
+    <link rel="stylesheet" th:href="@{'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css'}">
 
-    <script type="text/javascript" th:src="@{'https://code.jquery.com/jquery-1.10.2.js'}"></script>
+    <script th:src="@{'https://code.jquery.com/jquery-1.10.2.js'}"></script>
 
     <script th:src="@{'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js'}"></script>
-    <script type="text/javascript" th:src="@{'/webjars/bootstrap/js/bootstrap.min.js'}"></script>
+    <script th:src="@{'/webjars/bootstrap/js/bootstrap.min.js'}"></script>
 
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -26,10 +26,11 @@
 <div id="navbar-placeholder" th:replace="~{fragments/header :: nav}"></div>
 <!-- Header -->
 
-<article id ="mainContent">
+<article id="mainContent">
 
     <div class="center-text">
-        <p id="CTAText">&nbsp;&nbsp;&nbsp;&nbsp;CHECK OUT <br><em id="Y">Y</em>OUR <br>&nbsp;&nbsp;&nbsp;&nbsp;SOLUTIONS</p>
+        <p id="CTAText">&nbsp;&nbsp;&nbsp;&nbsp;CHECK OUT <br><em id="Y">Y</em>OUR <br>&nbsp;&nbsp;&nbsp;&nbsp;SOLUTIONS
+        </p>
     </div>
 
     <!--<section class="swiper-section">
@@ -39,7 +40,7 @@
 
     <section class="our-values">
         <div class="value">
-            <img alt="Efficiency" class="value-img" th:src="@{images/clock.png}" height="170" width="170"/>
+            <img alt="Efficiency" class="value-img" th:src="@{images/clock.png}" height="170" width="170">
             <div class="value-text">
                 <h2 class="value-heading">
                     Efficiency
@@ -54,7 +55,7 @@
         </div>
 
         <div class="value">
-            <img alt="Professionalism" class="value-img" th:src="@{images/handshake.png}" height="170" width="170"/>
+            <img alt="Professionalism" class="value-img" th:src="@{images/handshake.png}" height="170" width="170">
             <div class="value-text">
                 <h2 class="value-heading">
                     Professionalism
@@ -69,7 +70,7 @@
         </div>
 
         <div class="value">
-            <img alt="Innovation" class="value-img" th:src="@{images/innovation.png}" height="170" width="170"/>
+            <img alt="Innovation" class="value-img" th:src="@{images/innovation.png}" height="170" width="170">
             <div class="value-text">
                 <h2 class="value-heading">
                     Innovation
@@ -87,24 +88,29 @@
         <h2 class="about-us-head2">Providing businesses with the best services to help them succeed</h2>
         <div class="about-us-container">
             <div class="about-us-section">
-                <p class="about-us-paragraph">Proflex Solutions is a one-stop shop for professional services. We offer a comprehensive range
+                <p class="about-us-paragraph">Proflex Solutions is a one-stop shop for professional services. We offer a
+                    comprehensive range
                     of software products and services to help businesses streamline their operations and maximize
                     efficiency. Our products include online scheduling software, business process automation software,
-                    professional tax preparation software, professional accounting software, professional legal software,
+                    professional tax preparation software, professional accounting software, professional legal
+                    software,
                     and professional financial planning software.
-                    <br>
-                    <p class="signature">- The ProFlex Team<p/>
                 </p>
+                <p class="signature">- The ProFlex Team</p>
             </div>
             <div class="about-us-section">
-                <img alt="Office" class="about-us-image" th:src="@{images/ntnu.jpg}" height="302" width="529"/>
-                <img alt="solutions" class="about-us-image" th:src="@{images/BPA-solution.jpg}" height="491.2" width="736.8"/>
+                <img alt="Office" class="about-us-image" th:src="@{images/ntnu.jpg}" height="302" width="529">
+                <img alt="solutions" class="about-us-image" th:src="@{images/BPA-solution.jpg}" height="491"
+                     width="736">
             </div>
         </div>
     </section>
 
     <section class="map-container">
-        <iframe title="barcode" class="map" th:src="@{'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4000.8789472454346!2d10.753822329497973!3d59.908253477460505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416ef4d43988db%3A0x193e074c83f141bf!2sBarcode%2C%20Oslo!5e0!3m2!1sno!2sno!4v1678727903269!5m2!1sno!2sno'}" width="700" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe title="barcode" class="map"
+                th:src="@{'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4000.8789472454346!2d10.753822329497973!3d59.908253477460505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416ef4d43988db%3A0x193e074c83f141bf!2sBarcode%2C%20Oslo!5e0!3m2!1sno!2sno!4v1678727903269!5m2!1sno!2sno'}"
+                width="700" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
 
     </section>
 
@@ -118,7 +124,7 @@
                 </p>
 
                 <div class="review-image-container">
-                    <img alt="user-image" class="review-image" height="408" width="612"/>
+                    <img alt="user-image" class="review-image" height="408" width="612">
                 </div>
 
                 <h2 class="review-name">
@@ -130,7 +136,7 @@
                 </p>
 
                 <div class="review-image-container">
-                    <img alt="user-image" class="review-image" height="408" width="612"/>
+                    <img alt="user-image" class="review-image" height="408" width="612">
                 </div>
 
                 <h2 class="review-name">
@@ -142,7 +148,7 @@
                 </p>
 
                 <div class="review-image-container">
-                    <img alt="user-image" class="review-image"  height="408" width="612"/>
+                    <img alt="user-image" class="review-image" height="408" width="612">
                 </div>
 
                 <h2 class="review-name">
