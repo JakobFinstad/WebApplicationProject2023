@@ -48,11 +48,4 @@ public class HtmlPageController {
         model.addAttribute("user", userService.getSessionUser());
         return "admin";
     }
-
-
-
-    @GetMapping("/payment")
-    public String getPayment(Model model) {
-        return "payment";
-    }
 }
