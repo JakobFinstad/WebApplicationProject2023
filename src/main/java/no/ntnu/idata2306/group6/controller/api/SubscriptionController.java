@@ -69,7 +69,7 @@ public class SubscriptionController {
         return response;
     }
 
-    @PostMapping
+    @PostMapping("place-order")
     @Operation(deprecated = true)
     public ResponseEntity<String> addSub(@RequestBody SubscriptionDTO subscriptionDTO) {
         logger.info("Adding");

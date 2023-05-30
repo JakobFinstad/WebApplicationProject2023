@@ -20,7 +20,7 @@ body {
     height: auto;
     width: 30rem;
     background-color: rgb(255, 255, 255);
-    margin-top: 2rem;
+    margin-top: 0;
     border-radius: 10px;
     box-shadow: 5px 5px 5px 5px rgba(87, 65, 65, 0.34);
 }
@@ -82,5 +82,9 @@ input {
 .payment-picture {
     display: flex;
     flex-direction: row;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+#userId {
+    visibility: hidden;
 }

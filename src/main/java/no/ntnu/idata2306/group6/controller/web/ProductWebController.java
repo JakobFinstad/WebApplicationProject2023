@@ -62,13 +62,9 @@ public class ProductWebController {
     public String getPayment(Model model, @PathVariable("id") String id,
                              @RequestParam("startDate") String startDate, @RequestParam("endDate") String endDate) {
         int prodId = Integer.parseInt(id);
-        Subscription subscription = this.subscriptionService.findById(prodId);
         model.addAttribute("products", productService.findById(Integer.parseInt(id)));
-        model.addAttribute("subscription", subscription);
-        System.out.println(subscription.getProductID());
-        System.out.println(subscription.getStartDate());
-        model.addAttribute("startDate", subscription.getStartDate());
-        model.addAttribute("endDate", subscription.getEndDate());
+        model.addAttribute("startDate", startDate);
+        model.addAttribute("endDate", endDate);
         return "payment";
     }
 }
