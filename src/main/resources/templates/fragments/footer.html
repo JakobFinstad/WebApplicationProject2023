@@ -10,25 +10,25 @@
             <div class="footer-col">
                 <h2>Account</h2>
                 <ul>
-                    <li><a href="#">Account policy</a></li>
+                    <li><a th:href="@{/profile-page}">My Account</a></li>
                     <li><a th:href="@{/signup}">Create account</a></li>
-                    <li><a th:href="@{/login}">Sign in</a></li>
+                    <li><a th:href="@{/login}">Log in</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
                 <h2>Products</h2>
                 <ul>
-                    <li><a href="#">Our products</a></li>
-                    <li><a href="#">My subscriptions</a></li>
-                    <li><a href="#">100% satisfied</a></li>
+                    <li><a th:href="@{/products}">Our products</a></li>
+                    <li><a th:href="@{/profile-page}">My subscriptions</a></li>
+                    <li><a href="@{/products?category=legal}">Legal Solutions</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
                 <h2>Company</h2>
                 <ul>
-                    <li><a href="#">About us</a></li>
+                    <li><a th:href="@{/#AboutUsSection}">About us</a></li>
                     <li><a href="#">Career</a></li>
                     <li><a href="#">Talent searching</a></li>
                 </ul>

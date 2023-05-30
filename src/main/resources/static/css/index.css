@@ -474,6 +474,18 @@ html {
         width: 20rem;
         height: 20rem;
     }
+}
+
+@media screen and (max-width: 740px) {
+    html {
+        font-size: 6px;
+    }
+}
+
+
+
+
+
 
     .review-name {
         font-size: 5rem;
