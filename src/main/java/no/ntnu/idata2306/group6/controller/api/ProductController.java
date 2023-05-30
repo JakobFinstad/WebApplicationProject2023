@@ -3,6 +3,7 @@ package no.ntnu.idata2306.group6.controller.api;
 import io.swagger.v3.oas.annotations.Operation;
 import no.ntnu.idata2306.group6.entity.Category;
 import no.ntnu.idata2306.group6.entity.Product;
+import no.ntnu.idata2306.group6.entity.dto.ProductDTO;
 import no.ntnu.idata2306.group6.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -96,16 +97,17 @@ public class ProductController {
   /**
    * HTTP POST endpoint for adding a new product.
    *
-   * @param product Data of the book to add. ID will be ignored.
+   * @param productDTO Data of the product to add. ID will be ignored.
    * @return 201 Created on success and the new ID in the response body,
    * 400 Bad request if some data is missing or incorrect
    */
   @PostMapping()
   @Operation(deprecated = true)
-  public ResponseEntity<String> add(@RequestBody Product product) {
+  public ResponseEntity<String> add(@RequestBody ProductDTO productDTO) {
     ResponseEntity<String> response;
 
     try {
+      Product product = new Product(productDTO.price(), productDTO.productName());
       addProductToCollection(product);
       response = new ResponseEntity<>("" + product.getProductId(), HttpStatus.CREATED);
     } catch (IllegalArgumentException e) {

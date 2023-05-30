@@ -61,10 +61,9 @@ public class Product {
      * @param price amount of currency that need to be paid in order to achieve this product
      * @param productName of the product
      */
-    public Product (int productId, int price, String productName, Info info) {
+    public Product (int price, String productName) {
         setPrice(price);
         setProductName(productName);
-        setProductId(productId);
 //        this.info = infos.get(0);
 //        this.info = info;
     }

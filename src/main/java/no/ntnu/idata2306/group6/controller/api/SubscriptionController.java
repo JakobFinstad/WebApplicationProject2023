@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -40,7 +43,13 @@ public class SubscriptionController {
     public ResponseEntity<Object> getALl() {
         logger.info("Getting all ");
         Iterable<Subscription> subscriptions = subscriptionService.getAll();
-        return new ResponseEntity<>(subscriptions, HttpStatus.OK);
+        List<SubscriptionDTO> subscriptionDTOS = new ArrayList<>();
+
+        Iterator<Subscription> it = subscriptions.iterator();
+        while (it.hasNext()) {
+            subscriptionDTOS.add(new SubscriptionDTO(it.next()));
+        }
+        return new ResponseEntity<>(subscriptionDTOS, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -48,12 +57,12 @@ public class SubscriptionController {
             summary = "Get one subscription",
             description = "Get out one subscription in the collection"
     )
-    public ResponseEntity<Subscription> getOne(@PathVariable int id) {
+    public ResponseEntity<SubscriptionDTO> getOne(@PathVariable int id) {
         logger.info("Getting sub with id: " + id);
-        ResponseEntity<Subscription> response;
+        ResponseEntity<SubscriptionDTO> response;
         Optional<Subscription> subscription = Optional.ofNullable(subscriptionService.findById(id));
         if (subscription.isPresent()) {
-            response = new ResponseEntity<>(subscription.get(), HttpStatus.OK);
+            response = new ResponseEntity<>(new SubscriptionDTO(subscription.get()), HttpStatus.OK);
         } else {
             response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

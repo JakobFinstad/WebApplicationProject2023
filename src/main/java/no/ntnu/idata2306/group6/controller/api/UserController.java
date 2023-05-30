@@ -72,12 +72,18 @@ public class UserController {
              summary = "Get one user",
              description = "Uses id to identify one user and return it"
      )
-    public ResponseEntity<User> getUser(@PathVariable Integer id) {
-        ResponseEntity<User> response;
+    public ResponseEntity<UserDTO> getUser(@PathVariable int id) {
+        ResponseEntity<UserDTO> response;
          Optional<User> user = userService.findById(id);
+         UserDTO userDTO = new UserDTO().setAge()
+                 .setPassword(user.get().getPassword())
+                 .setRoles(user.get().getRoles().stream().map(Role::getRoleName))
+                 .setEmail(user.get().getEmail())
+                 .setLastName(user.get().getLastName())
+                 .setPhoneNumber(user.get().getPhoneNumber());
 
          if (user.isPresent()) {
-             response = new ResponseEntity<>(user.get(), HttpStatus.OK);
+             response = new ResponseEntity<>(userDTO, HttpStatus.OK);
          } else {
              response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
          }

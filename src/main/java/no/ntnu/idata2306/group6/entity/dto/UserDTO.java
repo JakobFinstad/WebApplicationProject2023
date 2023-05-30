@@ -1,9 +1,12 @@
 package no.ntnu.idata2306.group6.entity.dto;
 
+import com.sun.jna.StringArray;
 import no.ntnu.idata2306.group6.entity.Role;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class UserDTO {
     private String email;
@@ -15,22 +18,21 @@ public class UserDTO {
     private int age;
 
     private boolean isActive;
-    private String authority;
-    private Set<Role> roleSet = new HashSet<>();
+//    private String authority;
+    private String[] roleSet = new String[5];
 
-    public UserDTO setRoles(Set<Role> roles) {
-        roleSet.clear();
-        roleSet.addAll(roles);
+    public UserDTO setRoles(Stream<String> roles) {
+        roleSet = roles.toArray(String[]::new);
         return this;
     }
 
-    public Set<Role> getRoles() {
+    public String[] getRoles() {
         return this.roleSet;
     }
 
-    public String getAuthority() {
-        return this.authority;
-    }
+//    public String getAuthority() {
+//        return this.authority;
+//    }
 
     public void activateAccount() {
         this.isActive = true;
@@ -44,14 +46,14 @@ public class UserDTO {
         return this.isActive;
     }
 
-    public UserDTO setAuthority(int authority) {
-        if (authority == 1) {
-            this.authority = "ADMIN";
-        } else {
-            this.authority = "USER";
-        }
-        return this;
-    }
+//    public UserDTO setAuthority(int authority) {
+//        if (authority == 1) {
+//            this.authority = "ADMIN";
+//        } else {
+//            this.authority = "USER";
+//        }
+//        return this;
+//    }
 
     public int getAge() {
         return this.age;

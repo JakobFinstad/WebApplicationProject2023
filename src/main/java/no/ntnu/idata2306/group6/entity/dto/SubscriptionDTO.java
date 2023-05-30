@@ -1,5 +1,7 @@
 package no.ntnu.idata2306.group6.entity.dto;
 
+import no.ntnu.idata2306.group6.entity.Subscription;
+
 import java.time.LocalDate;
 
 public class SubscriptionDTO {
@@ -11,6 +13,15 @@ public class SubscriptionDTO {
     public LocalDate getEndDate() {
         return endDate;
     }
+
+    public SubscriptionDTO(Subscription subscription) {
+        this.endDate = subscription.getEndDate();
+        this.startDate = subscription.getStartDate();
+        this.productId = subscription.getProductID().getProductId();
+        this.userId = subscription.getUser().getUserId();
+    }
+
+    public SubscriptionDTO(){}
 
     public SubscriptionDTO setEndDate(LocalDate endDate) {
         this.endDate = endDate;

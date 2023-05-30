@@ -57,7 +57,7 @@ public class SecurityConfiguration {
      */
     @Bean
     public SecurityFilterChain configureAuthorizationFilterChain(HttpSecurity http) throws Exception {
-        boolean enableSecurity = true;
+        boolean enableSecurity = false;
 
         if (enableSecurity) {
             http
