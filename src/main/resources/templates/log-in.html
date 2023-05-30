@@ -26,54 +26,60 @@
         <input type="password" id="password" name="password" placeholder="Password">
     </span>
 
-    <p th:if="${param.error}" class="alert">Invalid username or password</p>
-    <input type="submit" onclick="sendRequest()" value="login" class="login-button" th:href="@{/profile-page}">
+    <p th:if="${param.error}" name="errorField" class="alert">Invalid username or password</p>
+    <input type="submit" id="submit" class="login-button">
     <p>Don't have an account yet?&nbsp;&nbsp;<a th:href="@{/signup}" id="signup_link">Sign up here</a></p>
 </form>
+
 
 <!-- Footer -->
 <div th:replace="~{fragments/footer :: footer}"></div>
 <!-- End of footer -->
 <script>
-
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    const requestBody = {
-        username: email,
-        password: password
-    }
-
-    function sendRequest() {
-        fetch('api/authentication', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(requestBody),
-        })
-            .then(function (response) {
-                if (response.ok) {
-
-
-                    const jwtToken = response.jwt;
-                    console.log(jwtToken)
-                    const newUrl = "localhost:8080/index?token=" + jwtToken;
-
-                    // window.location.href = newUrl;
-
-                    // const newWindow = window.open(newUrl, "_blank");
-                    //
-                    // newWindow.focus();
-                } else {
-                    console.log("Error logging in");
-                    console.log(response);
-                }
-            })
-            .catch(error => {
-                console.error('Error: ', error);
-            })
-    }
+    // document.getElementById('login-container').addEventListener('submit', function (event) {
+    //     event.preventDefault(); // Prevent the form submission by default
+    //
+    //     // Perform the password check
+    //
+    //     // Check if the form is now valid
+    //     if (this.checkValidity()) {
+    //         // Get the form values
+    //         const email = document.getElementById("email").value;
+    //         console.log(email);
+    //         const password = document.getElementById("password").value;
+    //
+    //         // Create the user object
+    //         const requestBody = {
+    //             username: email,
+    //             password: password
+    //         };
+    //
+    //         // Send a POST request to your server
+    //         fetch('api/authentication', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify(requestBody),
+    //         })
+    //             .then(function (response) {
+    //                 // Handle the response from the server
+    //                 if (response.ok) {
+    //                     const jwt = response.body;
+    //                     // User created successfully
+    //                     document.getElementsByName("errorField").textContent = "User created successfully";
+    //                     window.location.href = "localhost:8080/?token=" + encodeURIComponent(jwt);
+    //                     console.log('User created successfully!');
+    //                 } else {
+    //                     // Error creating user
+    //                     console.log('Error logging in.');
+    //                 }
+    //             })
+    //             .catch(function (error) {
+    //                 console.log('Error:', error);
+    //             });
+    //     }
+    // });
 </script>
 
 
