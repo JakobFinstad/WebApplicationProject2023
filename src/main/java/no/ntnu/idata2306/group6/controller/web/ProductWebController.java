@@ -1,5 +1,7 @@
 package no.ntnu.idata2306.group6.controller.web;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import no.ntnu.idata2306.group6.entity.Info;
 import no.ntnu.idata2306.group6.entity.Product;
 import no.ntnu.idata2306.group6.entity.Subscription;
@@ -30,6 +32,7 @@ public class ProductWebController {
     private SubscriptionService subscriptionService;
 
     @GetMapping
+    @ApiOperation("Get all products")
     public String getProducts(@RequestParam(required = false, name = "category") String categoryName, Model model) {
 
         Iterable<Product> products;
@@ -52,6 +55,7 @@ public class ProductWebController {
     }
 
     @GetMapping("/{id}")
+    @ApiOperation("Get a product by ID")
     public String getOneProduct(Model model, @PathVariable("id") int id) {
         model.addAttribute("products", this.productService.findById(id));
         model.addAttribute("infos", infoService.findByProdId(id));
@@ -59,6 +63,7 @@ public class ProductWebController {
     }
 
     @GetMapping("/{id}/payment")
+    @ApiOperation("Get payment information for a product")
     public String getPayment(Model model, @PathVariable("id") String id,
                              @RequestParam("startDate") String startDate, @RequestParam("endDate") String endDate) {
         int prodId = Integer.parseInt(id);
