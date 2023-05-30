@@ -56,8 +56,9 @@ public class ProductWebController {
         return "singleProductPage";
     }
 
-    @GetMapping("/payment")
-    public String getPayment(Model model) {
+    @GetMapping("/{id}/payment")
+    public String getPayment(Model model, @PathVariable("id") int id) {
+        model.addAttribute("products", this.productService.findById(id));
         return "payment";
     }
 }
