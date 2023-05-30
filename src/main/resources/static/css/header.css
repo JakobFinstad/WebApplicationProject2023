@@ -125,22 +125,30 @@ the whole menu choice list */
     #menu__toggle {
         opacity: 0;
         display: none;
-
     }
+
+    #menu__toggle:not(:checked) ~ .menu__box {
+        display: none;
+    }
+
     #menu__toggle:checked + .menu__btn > span {
         transform: rotate(45deg);
     }
+
     #menu__toggle:checked + .menu__btn > span::before {
         top: 0;
         transform: rotate(0deg);
     }
+
     #menu__toggle:checked + .menu__btn > span::after {
         top: 0;
         transform: rotate(90deg);
     }
+
     #menu__toggle:checked ~ .menu__box {
-        right: 0 !important;
+        right: 0;
     }
+
     .menu__btn {
         position: absolute;
         top: 4rem;

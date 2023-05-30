@@ -71,14 +71,22 @@ a {
 }
 
 #Products-category-container a {
-    padding: 2rem;
-    color:gray;
+    padding: 2rem 2rem;
+    color:rgba(47,47,47,0.76);
     text-decoration: none;
     transition: .5s;
+    font-size: 1.5rem;
 }
 
 #Products-category-container a:hover {
-    color: darkgray;
+    color: #242424;
+}
+
+#shortDescription {
+    float: left;
+    left: 0;
+    right: 0;
+
 }
 
 .card {
@@ -118,6 +126,10 @@ a {
     z-index: 2;
 }
 
+.card-description h2 {
+    font-family: "Franklin Gothic Medium", serif;
+}
+
 .card .imgBox {
     display: block;
     margin-left: auto;
@@ -132,4 +144,10 @@ a {
     top: -1rem;
     box-shadow: 0 0 2rem 1rem #b9f2ff;
     cursor: pointer;
+}
+
+@media screen and (max-width: 740px) {
+    html {
+        font-size: 6px;
+    }
 }

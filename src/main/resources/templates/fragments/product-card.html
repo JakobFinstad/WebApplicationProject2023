@@ -1,17 +1,17 @@
 <main class="card-container" th:fragment="product-list">
-    <div class="card" th:each="products : ${products}">
+    <section class="card" th:each="products : ${products}">
         <a th:href="@{/products/{id}(id=${products.productId})}">
-            <div  th:each="info : ${infos}" th:if="${info.product.productId == products.productId}">
+            <section  th:each="info : ${infos}" th:if="${info.product.productId == products.productId}">
                 <div class="imgBox">
                         <img th:src="${info.imageURL}" alt="picture of the product"/>
                 </div>
 
-                <div class="card-description">
-                    <h2 th:text="${products.productName}"></h2>
-                    <p th:text="${info.shortDescription}"></p>
-                    <p th:text="${products.price} + ' kr'"></p>
-                </div>
-            </div>
+                <ul class="card-description">
+                    <li><h2 th:text="${products.productName}"></h2></li>
+                    <li id ="shortDescription" ><p th:text="${info.shortDescription}"></p></li>
+                    <li><p id="priceTag" th:text="${products.price} + ' kr'"></p><li>
+                </ul>
+            </section>
         </a>
-    </div>
+    </section>
 </main>
