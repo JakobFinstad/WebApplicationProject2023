@@ -79,7 +79,7 @@ public class SecurityConfiguration {
                     .requestMatchers("/profile-page").hasAnyRole("USER", "ADMIN")
 
                     // Request matchers for all the admin pages
-                    .requestMatchers("/admin/**").hasRole("ADMIN")
+                    .requestMatchers("/admin/**", "/api/**").hasRole("ADMIN")
 
                     .requestMatchers("/swagger-ui.html", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-resources/**", "/webjars/**").permitAll()
                     .anyRequest().authenticated()
