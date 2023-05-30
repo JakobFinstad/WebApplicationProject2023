@@ -22,38 +22,16 @@ public class HtmlPageController {
     private AccessUserService userService;
 
     /**
-     * Get the index page of the main site.
+     * Get the product page.
      *
-     * @return index
+     * @return product page
      */
-    @GetMapping("/")
-    public String home(Model model) {
-        model.addAttribute("user", userService.getSessionUser());
-        return "index";
-    }
-
-    /**
-     * Get the index page of the main site.
-     *
-     * @return index
-     */
-    @GetMapping("/home")
-    public String home2(Model model) {
-        model.addAttribute("user", userService.getSessionUser());
-        return "index";
-    }
-
-    /**
-     * Get the index page of the main site.
-     *
-     * @return index
-     */
-    @GetMapping("/index")
-    public String index(Model model) {
-        model.addAttribute("user", userService.getSessionUser());
-        return "index";
-    }
-
+  /*  @GetMapping("/products")
+    public String products(Model model){
+        Iterable<Product> products = productService.getAll();
+        model.addAttribute("products", products);
+        return "products";
+    }*/
 
     /**
      * Get the no-access page.

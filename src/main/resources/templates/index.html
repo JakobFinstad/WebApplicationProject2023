@@ -5,10 +5,10 @@
     <link rel="stylesheet" type="text/css" th:href="@{css/styles/responsive.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/footer.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/products.css}">
     <!--    <link rel="stylesheet" type="text/css" th:href="@{css/carousel.css}">-->
     <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/products.css}">
-    <!--    <link rel="stylesheet" th:href="@{'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css'}">-->
+    <link rel="stylesheet" th:href="@{'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css'}">
 
     <!--    <script th:src="@{'https://code.jquery.com/jquery-1.10.2.js'}"></script>-->
     <!--    <script th:src="@{'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js'}"></script>-->
@@ -83,7 +83,12 @@
         </div>
     </section>
 
-
+    <h2 id="featured-products-heading"> Featured products </h2>
+    <!-- Featured product cards-->
+    <section id="card-container">
+        <main th:replace="~{fragments/featured-product-card.html :: featured-product-list}"></main>
+    </section>
+    <!-- End of featured product cards-->
 
     <section class="about-us" id="AboutUsSection">
         <h1 class="about-us-head">The ProFlex Family</h1>

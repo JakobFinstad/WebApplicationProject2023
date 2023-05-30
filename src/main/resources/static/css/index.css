@@ -216,7 +216,7 @@ html {
         margin: 8rem 10rem 6rem;
     }
 
-    .about-us-head {
+    .about-us-head, #featured-products-heading {
         font-family: "Freestyle Script", sans-serif;
         font-size: 10rem;
         margin: 0;
