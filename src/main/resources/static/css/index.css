@@ -393,9 +393,6 @@ html {
 }
 
 @media screen and (max-width: 600px) {
-    html {
-        font-size: 4px;
-    }
 
     #CTAText {
         font-size: 12rem;
@@ -404,20 +401,20 @@ html {
     }
 
     .our-values {
-        display: block !important;
+        display: block;
     }
 
     .value {
-        margin: 6rem !important;
+        margin: 6rem;
     }
 
     .value-paragraph {
-        display: none !important;
+        display: none;
     }
 
     .value-img {
-        width: 35rem !important;
-        height: 35rem !important;
+        width: 35rem;
+        height: 35rem;
     }
 
     .value-heading {
@@ -474,20 +471,14 @@ html {
         width: 20rem;
         height: 20rem;
     }
+
+    .review-name {
+        font-size: 5rem;
+    }
 }
 
 @media screen and (max-width: 740px) {
     html {
         font-size: 6px;
-    }
-}
-
-
-
-
-
-
-    .review-name {
-        font-size: 5rem;
     }
 }
