@@ -1,6 +1,11 @@
 package no.ntnu.idata2306.group6.controller.api;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import no.ntnu.idata2306.group6.entity.Subscription;
 import no.ntnu.idata2306.group6.entity.dto.SubscriptionDTO;
 import no.ntnu.idata2306.group6.service.ProductService;
@@ -11,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -20,8 +26,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/api/subscriptions")
+@Tag(name = "Subscription API", description = "Endpoints for managing subscriptions")
 public class SubscriptionController {
 
     private SubscriptionService subscriptionService;
@@ -38,27 +45,53 @@ public class SubscriptionController {
     @GetMapping
     @Operation(
             summary = "Get all subscriptions",
-            description = "List of all the subscriptions currently in the collection"
+            description = "Retrieve a list of all subscriptions in the collection",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "List of subscriptions",
+                            content = @Content(
+                                    array = @ArraySchema(
+                                            schema = @Schema(implementation = SubscriptionDTO.class)
+                                    )
+                            )
+                    )
+            }
     )
-    public ResponseEntity<Object> getALl() {
-        logger.info("Getting all ");
+    public ResponseEntity<List<SubscriptionDTO>> getAllSubscriptions() {
+        logger.info("Getting all subscriptions");
         Iterable<Subscription> subscriptions = subscriptionService.getAll();
-        List<SubscriptionDTO> subscriptionDTOS = new ArrayList<>();
+        List<SubscriptionDTO> subscriptionDTOs = new ArrayList<>();
 
-        Iterator<Subscription> it = subscriptions.iterator();
-        while (it.hasNext()) {
-            subscriptionDTOS.add(new SubscriptionDTO(it.next()));
+        Iterator<Subscription> iterator = subscriptions.iterator();
+        while (iterator.hasNext()) {
+            subscriptionDTOs.add(new SubscriptionDTO(iterator.next()));
         }
-        return new ResponseEntity<>(subscriptionDTOS, HttpStatus.OK);
+        return new ResponseEntity<>(subscriptionDTOs, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     @Operation(
-            summary = "Get one subscription",
-            description = "Get out one subscription in the collection"
+            summary = "Get a subscription by ID",
+            description = "Retrieve a specific subscription by its ID",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Subscription found",
+                            content = @Content(
+                                    schema = @Schema(implementation = SubscriptionDTO.class)
+                            )
+                    ),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "Subscription not found"
+                    )
+            }
     )
-    public ResponseEntity<SubscriptionDTO> getOne(@PathVariable int id) {
-        logger.info("Getting sub with id: " + id);
+    public ResponseEntity<SubscriptionDTO> getSubscriptionById(
+            @PathVariable int id
+    ) {
+        logger.info("Getting subscription with ID: " + id);
         ResponseEntity<SubscriptionDTO> response;
         Optional<Subscription> subscription = Optional.ofNullable(subscriptionService.findById(id));
         if (subscription.isPresent()) {
@@ -70,17 +103,34 @@ public class SubscriptionController {
     }
 
     @PostMapping("place-order")
-    @Operation(deprecated = true)
-    public ResponseEntity<String> addSub(@RequestBody SubscriptionDTO subscriptionDTO) {
-        logger.info("Adding");
+    @Operation(
+            summary = "Place a subscription order",
+            description = "Place an order for a new subscription",
+            deprecated = true,
+            responses = {
+                    @ApiResponse(
+                            responseCode = "201",
+                            description = "Subscription order placed",
+                            content = @Content(
+                                    schema = @Schema(implementation = String.class)
+                            )
+                    ),
+                    @ApiResponse(
+                            responseCode = "400",
+                            description = "Bad request"
+                    )
+            }
+    )
+    public ResponseEntity<String> placeSubscriptionOrder(
+            @RequestBody SubscriptionDTO subscriptionDTO
+    ) {
+        logger.info("Placing subscription order");
 
         ResponseEntity<String> response;
 
         try {
             LocalDate startDate = subscriptionDTO.getStartDate();
-//            logger.warn("Start date : " + startDate);
             LocalDate endDate = subscriptionDTO.getEndDate();
-//            logger.warn("End date : " + endDate);
             if (startDate == null || endDate == null) {
                 throw new IllegalArgumentException("Start date and end date cannot be null.");
             }
@@ -92,9 +142,10 @@ public class SubscriptionController {
                     userService.findById(subscriptionDTO.getUserId()).get(),
                     productService.findById(subscriptionDTO.getProductId()),
                     startDate,
-                    endDate);
+                    endDate
+            );
             addSubscription(subscription);
-            response = new ResponseEntity<>("" + subscription.getSubscriptionId(), HttpStatus.CREATED);
+            response = new ResponseEntity<>(String.valueOf(subscription.getSubscriptionId()), HttpStatus.CREATED);
         } catch (IllegalArgumentException e) {
             response = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -110,19 +161,35 @@ public class SubscriptionController {
     }
 
     @DeleteMapping("/{id}")
-    @Operation(hidden = true)
-    public ResponseEntity<String> delete(@PathVariable int id) {
+    @Operation(
+            summary = "Delete a subscription",
+            description = "Delete a subscription by its ID",
+            hidden = true,
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Subscription deleted"
+                    ),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "Subscription not found"
+                    )
+            }
+    )
+    public ResponseEntity<String> deleteSubscription(
+            @PathVariable int id
+    ) {
         ResponseEntity<String> response;
         Subscription subscriptionToDelete = subscriptionService.findById(id);
-        if (removeSubFromCollection(subscriptionToDelete)) {
-            response = new ResponseEntity<>(HttpStatus.FOUND);
+        if (removeSubscriptionFromCollection(subscriptionToDelete)) {
+            response = new ResponseEntity<>(HttpStatus.OK);
         } else {
             response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return response;
     }
 
-    private boolean removeSubFromCollection(Subscription subscription) {
+    private boolean removeSubscriptionFromCollection(Subscription subscription) {
         boolean deleted = false;
         try {
             subscriptionService.remove(subscription);

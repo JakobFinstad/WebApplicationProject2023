@@ -1,6 +1,10 @@
 package no.ntnu.idata2306.group6.controller.api;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import no.ntnu.idata2306.group6.entity.Testimonial;
 import no.ntnu.idata2306.group6.entity.dto.TestimonialDTO;
 import no.ntnu.idata2306.group6.service.TestimonialService;
@@ -19,6 +23,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/testimonial")
+@Tag(name = "Testimonial API", description = "Endpoints for managing testimonials")
 public class TestimonialController {
     private TestimonialService testimonialService;
     private UserService userService;
@@ -31,38 +36,52 @@ public class TestimonialController {
         this.userService = userService;
     }
 
-    /**
-     * Get all testimonials.
-     * HTTP Get to /testimonial
-     *
-     * @return list of all testimonials currently in collection
-     */
     @GetMapping
     @Operation(
             summary = "Get all testimonials",
-            description = "List of all testimonials currently stored in collection"
+            description = "Retrieve a list of all testimonials currently stored in the collection",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "List of testimonials",
+                            content = @Content(
+                                    schema = @Schema(implementation = TestimonialDTO.class)
+                            )
+                    )
+            }
     )
     public ResponseEntity<Object> getAll() {
-        logger.error("Getting all ");
+        logger.error("Getting all testimonials");
         Iterable<Testimonial> testimonials = testimonialService.getAll();
         List<TestimonialDTO> testimonialDTOS = new ArrayList<>();
-        for (Testimonial te: testimonials) {
+        for (Testimonial te : testimonials) {
             testimonialDTOS.add(new TestimonialDTO()
                     .setTestimonialId(te.getTestimonialId())
                     .setStatement(te.getStatement())
-                            .setUserName("" + te.getUser().getFirstName() + " " + te.getUser().getLastName())
+                    .setUserName("" + te.getUser().getFirstName() + " " + te.getUser().getLastName())
                     .setUserImageSrc(te.getUser().getImgURL()));
         }
         return new ResponseEntity<>(testimonialDTOS.iterator(), HttpStatus.OK);
     }
 
-    /**
-     * Get a specific testimonial.
-     *
-     * @param id of the returned testimonial
-     * @return testimonial with the given id or status 404
-     */
     @GetMapping("/{id}")
+    @Operation(
+            summary = "Get a specific testimonial",
+            description = "Retrieve a specific testimonial by its ID",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Testimonial found",
+                            content = @Content(
+                                    schema = @Schema(implementation = Testimonial.class)
+                            )
+                    ),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "Testimonial not found"
+                    )
+            }
+    )
     public ResponseEntity<Testimonial> getOne(@PathVariable Integer id) {
         ResponseEntity<Testimonial> response;
         Optional<Testimonial> testimonial = Optional.ofNullable(testimonialService.findById(id));
@@ -74,15 +93,25 @@ public class TestimonialController {
         return response;
     }
 
-    /**
-     * HTTP POST endpoint for adding a new testimonial.
-     *
-     * @param testimonial data of the testimonial to add. ID will be ignored.
-     * @return 201 Created on success and the new ID in the response body,
-     * 400 Bad request if some data is missing or incorrect
-     */
     @PostMapping()
-    @Operation(deprecated = true)
+    @Operation(
+            summary = "Add a new testimonial",
+            description = "Add a new testimonial to the collection",
+            deprecated = true,
+            responses = {
+                    @ApiResponse(
+                            responseCode = "201",
+                            description = "Testimonial added",
+                            content = @Content(
+                                    schema = @Schema(implementation = String.class)
+                            )
+                    ),
+                    @ApiResponse(
+                            responseCode = "400",
+                            description = "Bad request"
+                    )
+            }
+    )
     public ResponseEntity<String> add(@RequestBody Testimonial testimonial) {
         ResponseEntity<String> response;
 
@@ -95,31 +124,22 @@ public class TestimonialController {
         return response;
     }
 
-    /**
-     * Remove testimonial from the collection.
-     *
-     * @param testimonial to remove
-     * @return true when product with that ID is removed, false otherwise
-     */
-    private boolean removeTestimonialFromCollection(Testimonial testimonial) {
-        boolean deleted = false;
-        try {
-            testimonialService.remove(testimonial);
-            deleted = true;
-        } catch (DataAccessException e) {
-            logger.warn("Could not delete the testimonial with ID: " + testimonial.getTestimonialId() + " : " + e.getMessage());
-        }
-        return deleted;
-    }
-
-    /**
-     * Delete a testimonial from the collection.
-     *
-     * @param id ID of the testimonial to delete
-     * @return 200 OK on success, 404 Not found on error
-     */
     @DeleteMapping("/{id}")
-    @Operation(hidden = true)
+    @Operation(
+            summary = "Delete a testimonial",
+            description = "Delete a testimonial by its ID",
+            hidden = true,
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Testimonial deleted"
+                    ),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "Testimonial not found"
+                    )
+            }
+    )
     public ResponseEntity<String> delete(@PathVariable int id) {
         ResponseEntity<String> response;
         Testimonial testimonialToDelete = testimonialService.findById(id);
@@ -131,14 +151,21 @@ public class TestimonialController {
         return response;
     }
 
-    /**
-     * Update a testimonial in the repository.
-     *
-     * @param id of the testimonial to update, from the URL
-     * @param testimonial new testimonial data to store, from request body
-     * @return 200 OK on success, 400 Bad request on error
-     */
     @PutMapping("/{id}")
+    @Operation(
+            summary = "Update a testimonial",
+            description = "Update a testimonial in the collection",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Testimonial updated"
+                    ),
+                    @ApiResponse(
+                            responseCode = "400",
+                            description = "Bad request"
+                    )
+            }
+    )
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody Testimonial testimonial) {
         ResponseEntity<String> response;
         try {
@@ -151,38 +178,34 @@ public class TestimonialController {
         return response;
     }
 
-    /**
-     * Add a testimonial to collection.
-     *
-     * @param testimonial the testimonial to be added to collection if it is valid
-     * @throws IllegalArgumentException
-     */
+    private boolean removeTestimonialFromCollection(Testimonial testimonial) {
+        boolean deleted = false;
+        try {
+            testimonialService.remove(testimonial);
+            deleted = true;
+        } catch (DataAccessException e) {
+            logger.warn("Could not delete the testimonial with ID: " + testimonial.getTestimonialId() + " : " + e.getMessage());
+        }
+        return deleted;
+    }
+
     private void addTestimonialToCollection(Testimonial testimonial) throws IllegalArgumentException {
         if (testimonial == null || testimonial.getTestimonialId() < 0) {
-            throw new IllegalArgumentException("Product is invalid");
+            throw new IllegalArgumentException("Testimonial is invalid");
         }
         testimonialService.addTestimonial(testimonial);
     }
 
-    /**
-     * Try to update a testimonial with given ID. The testimonial id must match the ID.
-     *
-     * @param id of the testimonial
-     * @param testimonial the update testimonial data
-     * @throws IllegalArgumentException if something goes wrong
-     */
-    private void updateTestimonial(int id, Testimonial testimonial) throws  IllegalArgumentException {
+    private void updateTestimonial(int id, Testimonial testimonial) throws IllegalArgumentException {
         Optional<Testimonial> existingTestimonial = Optional.ofNullable(testimonialService.findById(id));
         if (existingTestimonial.isEmpty()) {
-            throw new IllegalArgumentException("No product with id " + id + " found");
+            throw new IllegalArgumentException("No testimonial with ID " + id + " found");
         }
         if (testimonial == null) {
-            throw new IllegalArgumentException("Wrong data in request body");
+            throw new IllegalArgumentException("Wrong data in the request body");
         }
         if (testimonial.getTestimonialId() != id) {
-            throw new IllegalArgumentException("Testimonial" +
-                     "ID in the URL does not match the ID " +
-                    "in the ID in JSON data(request body)");
+            throw new IllegalArgumentException("Testimonial ID in the URL does not match the ID in the request body");
         }
 
         try {

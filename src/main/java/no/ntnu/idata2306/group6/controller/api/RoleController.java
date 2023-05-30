@@ -1,6 +1,10 @@
 package no.ntnu.idata2306.group6.controller.api;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import no.ntnu.idata2306.group6.entity.Role;
 import no.ntnu.idata2306.group6.service.RoleService;
 import org.slf4j.Logger;
@@ -8,11 +12,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/api/role")
 public class RoleController {
     private RoleService roleService;
@@ -25,17 +30,22 @@ public class RoleController {
 
     /**
      * Get all roles.
-     * HTTP Get to /role
      *
      * @return list of all roles currently in collection
      */
     @GetMapping
     @Operation(
             summary = "Get all roles",
-            description = "List of all roles currently stored in collection"
+            description = "Returns a list of all roles currently stored in the collection",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Successful operation",
+                            content = @Content(schema = @Schema(implementation = Role.class))
+                    )
+            }
     )
-    public ResponseEntity<Object> getAll() {
-        logger.error("Getting all ");
+    public ResponseEntity<Iterable<Role>> getAll() {
         Iterable<Role> roles = roleService.getAll();
         return new ResponseEntity<>(roles, HttpStatus.OK);
     }
@@ -43,11 +53,28 @@ public class RoleController {
     /**
      * Get a specific role.
      *
-     * @param id of the returned role
-     * @return role with the given id or status 404
+     * @param id ID of the requested role
+     * @return role with the given ID or status 404 if not found
      */
     @GetMapping("/{id}")
-    public ResponseEntity<Role> getOne(@PathVariable Integer id) {
+    @Operation(
+            summary = "Get a role by ID",
+            description = "Returns the role with the specified ID",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Successful operation",
+                            content = @Content(schema = @Schema(implementation = Role.class))
+                    ),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "Role not found"
+                    )
+            }
+    )
+    public ResponseEntity<Role> getOne(
+            @Parameter(description = "ID of the role to retrieve") @PathVariable Integer id
+    ) {
         ResponseEntity<Role> response;
         Optional<Role> role = Optional.ofNullable(roleService.findById(id));
         if (role.isPresent()) {
@@ -59,20 +86,36 @@ public class RoleController {
     }
 
     /**
-     * HTTP POST endpoint for adding a new role.
+     * Add a new role.
      *
-     * @param role data of the role to add. ID will be ignored.
+     * @param role role data to add (ID will be ignored)
      * @return 201 Created on success and the new ID in the response body,
      * 400 Bad request if some data is missing or incorrect
      */
-    @PostMapping()
-    @Operation(deprecated = true)
-    public ResponseEntity<String> add(@RequestBody Role role) {
+    @PostMapping
+    @Operation(
+            summary = "Add a new role",
+            description = "Adds a new role to the collection",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "201",
+                            description = "Role added successfully",
+                            content = @Content(schema = @Schema(implementation = String.class))
+                    ),
+                    @ApiResponse(
+                            responseCode = "400",
+                            description = "Bad request"
+                    )
+            }
+    )
+    public ResponseEntity<String> add(
+            @Parameter(description = "Role data to add", required = true) @RequestBody Role role
+    ) {
         ResponseEntity<String> response;
 
         try {
             addRoleToCollection(role);
-            response = new ResponseEntity<>("" + role.getRoleId(), HttpStatus.CREATED);
+            response = new ResponseEntity<>(String.valueOf(role.getRoleId()), HttpStatus.CREATED);
         } catch (IllegalArgumentException e) {
             response = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -82,8 +125,8 @@ public class RoleController {
     /**
      * Remove role from the collection.
      *
-     * @param role to remove
-     * @return true when product with that ID is removed, false otherwise
+     * @param role role to remove
+     * @return true when the role with that ID is removed, false otherwise
      */
     private boolean removeRoleFromCollection(Role role) {
         boolean deleted = false;
@@ -103,8 +146,23 @@ public class RoleController {
      * @return 200 OK on success, 404 Not found on error
      */
     @DeleteMapping("/{id}")
-    @Operation(hidden = true)
-    public ResponseEntity<String> delete(@PathVariable int id) {
+    @Operation(
+            summary = "Delete a role by ID",
+            description = "Deletes the role with the specified ID",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Role deleted successfully"
+                    ),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "Role not found"
+                    )
+            }
+    )
+    public ResponseEntity<String> delete(
+            @Parameter(description = "ID of the role to delete") @PathVariable int id
+    ) {
         ResponseEntity<String> response;
         Role roleToDelete = roleService.findById(id);
         if (removeRoleFromCollection(roleToDelete)) {
@@ -118,12 +176,29 @@ public class RoleController {
     /**
      * Update a role in the repository.
      *
-     * @param id of the role to update, from the URL
-     * @param role new role data to store, from request body
+     * @param id   ID of the role to update (from URL)
+     * @param role updated role data (from request body)
      * @return 200 OK on success, 400 Bad request on error
      */
     @PutMapping("/{id}")
-    public ResponseEntity<String> update(@PathVariable int id, @RequestBody Role role) {
+    @Operation(
+            summary = "Update a role",
+            description = "Updates the role with the specified ID",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Role updated successfully"
+                    ),
+                    @ApiResponse(
+                            responseCode = "400",
+                            description = "Bad request"
+                    )
+            }
+    )
+    public ResponseEntity<String> update(
+            @Parameter(description = "ID of the role to update") @PathVariable int id,
+            @Parameter(description = "Updated role data", required = true) @RequestBody Role role
+    ) {
         ResponseEntity<String> response;
         try {
             updateRole(id, role);
@@ -136,36 +211,35 @@ public class RoleController {
     }
 
     /**
-     * Add a role to collection.
+     * Add a role to the collection.
      *
-     * @param role the role to be added to collection if it is valid
-     * @throws IllegalArgumentException
+     * @param role the role to be added to the collection if it is valid
+     * @throws IllegalArgumentException if the role is invalid
      */
     private void addRoleToCollection(Role role) throws IllegalArgumentException {
         if (role == null || role.getRoleId() < 0) {
-            throw new IllegalArgumentException("Product is invalid");
+            throw new IllegalArgumentException("Role is invalid");
         }
         roleService.addRole(role);
     }
 
     /**
-     * Try to update a role with given ID. The role id must match the ID.
+     * Try to update a role with the given ID. The role ID must match the ID in the request body.
      *
-     * @param id of the role
-     * @param role the update role data
+     * @param id   ID of the role
+     * @param role updated role data
      * @throws IllegalArgumentException if something goes wrong
      */
-    private void updateRole(int id, Role role) throws  IllegalArgumentException {
+    private void updateRole(int id, Role role) throws IllegalArgumentException {
         Optional<Role> existingRole = Optional.ofNullable(roleService.findById(id));
         if (existingRole.isEmpty()) {
-            throw new IllegalArgumentException("No product with id " + id + " found");
+            throw new IllegalArgumentException("No role with ID " + id + " found");
         }
         if (role == null) {
-            throw new IllegalArgumentException("Wrong data in request body");
+            throw new IllegalArgumentException("Wrong data in the request body");
         }
         if (role.getRoleId() != id) {
-            throw new IllegalArgumentException("Role ID in the URL does not match the ID " +
-                    "in the ID in JSON data(request body)");
+            throw new IllegalArgumentException("Role ID in the URL does not match the ID in the request body");
         }
 
         try {
