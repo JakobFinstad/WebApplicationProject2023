@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
+/* This css design is taken from: https://codepen.io/benrobyg/pen/WgYMWL*/
 * {
     --animation-time: 2s;
     position: relative;
