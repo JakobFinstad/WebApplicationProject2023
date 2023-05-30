@@ -1,16 +1,16 @@
 package no.ntnu.idata2306.group6.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import org.springframework.security.core.GrantedAuthority;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Locale;
+import java.util.Set;
 
 /**
  * Class representing a user on the website.
- *
  */
 @Entity
 @Table
@@ -32,7 +32,7 @@ public class User {
     @NotNull
     private String password;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "userId"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "roleId")
@@ -47,12 +47,12 @@ public class User {
     /**
      * Constructor for the user on the website.
      *
-     * @param firstName of the user
-     * @param lastName of the user
-     * @param email that shall be connected with the account
+     * @param firstName   of the user
+     * @param lastName    of the user
+     * @param email       that shall be connected with the account
      * @param phoneNumber number of the user
-     * @param password of the user
-     * @param age of the user
+     * @param password    of the user
+     * @param age         of the user
      */
     public User(String firstName, String lastName, String email, int phoneNumber, String password, int age) {
         setEmail(email);
@@ -88,6 +88,7 @@ public class User {
     public int getAge() {
         return this.age;
     }
+
     /**
      * Set the roles of the user.
      *
@@ -100,6 +101,7 @@ public class User {
     public void addRole(Role role) {
         this.roles.add(role);
     }
+
     /**
      * Set the firstname of the user.
      *
@@ -118,7 +120,7 @@ public class User {
      * @param phoneNumber number that shall be connected with the account
      */
     protected void setPhoneNumber(int phoneNumber) {
-        if (phoneNumber > 00000000 && 99999999 > phoneNumber ) {
+        if (phoneNumber > 00000000 && 99999999 > phoneNumber) {
             this.phoneNumber = phoneNumber;
         } else {
             throw new IllegalArgumentException("PhoneNumber must consist of 8 integers");
@@ -131,7 +133,7 @@ public class User {
      * @param email that shall be connected
      */
     public void setEmail(String email) {
-        if(email.isEmpty()) {
+        if (email.isEmpty()) {
             throw new IllegalArgumentException("Email cannot be empty!");
         } else {
             this.email = email.toLowerCase();
@@ -144,7 +146,7 @@ public class User {
      * @param lastName of the user
      */
     public void setLastName(String lastName) {
-        if(lastName.isEmpty()) {
+        if (lastName.isEmpty()) {
             throw new IllegalArgumentException("Last name cannot be null!");
         }
         this.lastName = lastName.toLowerCase(Locale.ROOT);
@@ -186,7 +188,7 @@ public class User {
      * @return first name of the user
      */
     public String getFirstName() {
-        String str = firstName.substring(0,1).toUpperCase();
+        String str = firstName.substring(0, 1).toUpperCase();
         str += firstName.substring(1);
 
         return str;
@@ -198,7 +200,7 @@ public class User {
      * @return last name of the user
      */
     public String getLastName() {
-        String str = lastName.substring(0,1).toUpperCase();
+        String str = lastName.substring(0, 1).toUpperCase();
         str += lastName.substring(1);
 
         return str;
@@ -242,6 +244,7 @@ public class User {
 
     /**
      * Get the roles of the user.
+     *
      * @return
      */
     public Set<Role> getRoles() {
@@ -299,7 +302,7 @@ public class User {
         return this.isActive;
     }
 
-    public String getPrintFormat(){
+    public String getPrintFormat() {
         return String.format(
                 "| %-8d | %-15s | %-15s | %-3d | %-30s | "
                         + "%8d |\n",
@@ -320,9 +323,9 @@ public class User {
 
     public boolean hasRole(String role) {
         boolean hasRole = false;
-        for (Role currentRole: getRoles()
-             ) {
-            if(currentRole.getRoleName().equals(role)) {
+        for (Role currentRole : getRoles()
+        ) {
+            if (currentRole.getRoleName().equals(role)) {
                 hasRole = true;
             }
         }

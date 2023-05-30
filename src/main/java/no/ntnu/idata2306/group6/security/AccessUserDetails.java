@@ -2,6 +2,7 @@ package no.ntnu.idata2306.group6.security;
 
 import no.ntnu.idata2306.group6.entity.Role;
 import no.ntnu.idata2306.group6.entity.User;
+import no.ntnu.idata2306.group6.entity.dto.UserDTO;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,7 +15,7 @@ import java.util.Set;
 /**
  * Contains authentication information, needed by the UserDetailsService.
  */
-public class AccessUserDetails extends User implements UserDetails {
+public class AccessUserDetails extends UserDTO implements UserDetails {
     private final String email;
     private final String firstName;
     private final String lastName;
@@ -39,7 +40,7 @@ public class AccessUserDetails extends User implements UserDetails {
     }
 
     @Override
-    public Collection<? extends  GrantedAuthority> getAuthorities() {
+    public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
     }
 

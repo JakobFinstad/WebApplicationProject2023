@@ -1,25 +1,17 @@
 package no.ntnu.idata2306.group6.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties;
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
  * Creates AuthenticationManager - set up authentication type
@@ -30,12 +22,11 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfiguration {
 
     private final UserDetailsService userDetailsService;
-    private final JwtRequestFilter jwtRequestFilter;
+
 
     @Autowired
-    public SecurityConfiguration(UserDetailsService userDetailsService, JwtRequestFilter jwtRequestFilter) {
+    public SecurityConfiguration(UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
-        this.jwtRequestFilter = jwtRequestFilter;
     }
 
     /**
@@ -57,23 +48,27 @@ public class SecurityConfiguration {
      * @throws Exception
      */
     @Bean
-    public SecurityFilterChain configureAuthorizationFilterChain(HttpSecurity http) throws Exception{
-        boolean enableSecurity = false;
+    public SecurityFilterChain configureAuthorizationFilterChain(HttpSecurity http) throws Exception {
+        boolean enableSecurity = true;
 
         if (enableSecurity) {
             http.csrf(csrf -> csrf.disable())
                     .cors(Customizer.withDefaults())
-                    .authorizeHttpRequests().requestMatchers("/api/authentication").permitAll()
+                    .authorizeHttpRequests()
                     .requestMatchers("/css/**").permitAll()
+//                    .requestMatchers("/webjars/bootstrap/js/bootstrap.min.js").permitAll()
                     .requestMatchers("/images/**").permitAll()
                     .requestMatchers("/js/**").permitAll()
                     .requestMatchers("/templates/**").permitAll()
                     .requestMatchers("/").permitAll()
-                    .requestMatchers("/admin").permitAll()
+                    .requestMatchers("/login").permitAll()
+                    .requestMatchers("/admin").hasRole("ADMIN")
+                    .requestMatchers("/signup").permitAll()
+                    .requestMatchers("/products/**").hasAnyRole("ADMIN", "USER")
                     .requestMatchers("/api/user/signup").permitAll()
-                    .anyRequest().authenticated().and()
-                    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                    .and().addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+                    .requestMatchers("/api/testimonial").permitAll()
+                    .and().formLogin().loginPage("/login")
+                    .and().logout().logoutSuccessUrl("/");
         } else {
             http.csrf(csrf -> csrf.disable())
                     .cors(Customizer.withDefaults())

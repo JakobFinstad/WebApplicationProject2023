@@ -1,13 +1,57 @@
 package no.ntnu.idata2306.group6.entity.dto;
 
+import no.ntnu.idata2306.group6.entity.Role;
+
+import java.util.HashSet;
+import java.util.Set;
+
 public class UserDTO {
     private String email;
     private String firstName;
     private String lastName;
     private String password;
     private int phoneNumber;
-//    private String roleName;
+    //    private String roleName;
     private int age;
+
+    private boolean isActive;
+    private String authority;
+    private Set<Role> roleSet = new HashSet<>();
+
+    public UserDTO setRoles(Set<Role> roles) {
+        roleSet.clear();
+        roleSet.addAll(roles);
+        return this;
+    }
+
+    public Set<Role> getRoles() {
+        return this.roleSet;
+    }
+
+    public String getAuthority() {
+        return this.authority;
+    }
+
+    public void activateAccount() {
+        this.isActive = true;
+    }
+
+    public void deActivateAccount() {
+        this.isActive = false;
+    }
+
+    public boolean isActive() {
+        return this.isActive;
+    }
+
+    public UserDTO setAuthority(int authority) {
+        if (authority == 1) {
+            this.authority = "ADMIN";
+        } else {
+            this.authority = "USER";
+        }
+        return this;
+    }
 
     public int getAge() {
         return this.age;

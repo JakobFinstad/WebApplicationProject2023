@@ -1,15 +1,13 @@
 package no.ntnu.idata2306.group6.controller.web;
 
-import no.ntnu.idata2306.group6.entity.Product;
-import no.ntnu.idata2306.group6.repository.UserRepository;
+import no.ntnu.idata2306.group6.service.AccessUserService;
 import no.ntnu.idata2306.group6.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui. Model;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  * A controller serving the html pages.
@@ -21,7 +19,7 @@ public class HtmlPageController {
     ProductService productService;
 
     @Autowired
-    private UserRepository userRepository;
+    private AccessUserService userService;
 
     /**
      * Get the index page of the main site.
@@ -29,7 +27,8 @@ public class HtmlPageController {
      * @return index
      */
     @GetMapping("/")
-    public String home(){
+    public String home(Model model) {
+        model.addAttribute("user", userService.getSessionUser());
         return "index";
     }
 
@@ -39,8 +38,9 @@ public class HtmlPageController {
      * @return index
      */
     @GetMapping("/home")
-    public String home2() {
-        return home();
+    public String home2(Model model) {
+        model.addAttribute("user", userService.getSessionUser());
+        return "index";
     }
 
     /**
@@ -49,47 +49,10 @@ public class HtmlPageController {
      * @return index
      */
     @GetMapping("/index")
-    public String index() {
-        return home();
+    public String index(Model model) {
+        model.addAttribute("user", userService.getSessionUser());
+        return "index";
     }
-
-    /**
-     * Get the product page.
-     *
-     * @return product page
-     */
-  /*  @GetMapping("/products")
-    public String products(Model model){
-        Iterable<Product> products = productService.getAll();
-        model.addAttribute("products", products);
-        return "products";
-    }*/
-
-//    /**
-//     * Get the login page.
-//     *
-//     * @return login page
-//     */
-//    @GetMapping("/login")
-//    public String login() {
-//        return "log-in";
-//    }
-
-    /**
-     * Get the signup page.
-     *
-     * @return signup page
-     */
-    @GetMapping("/signup")
-    public String signup() {return "sign-up";}
-
-    /**
-     * Get the profile page.
-     *
-     * @return profile page
-     */
-     @GetMapping("/profile-page")
-     public String profilePage() {return "profilePage";}
 
 
     /**
@@ -102,8 +65,11 @@ public class HtmlPageController {
         return "noAccess";
     }
 
-    
-
+    @GetMapping("admin")
+    public String adminPage(Model model) {
+        model.addAttribute("user", userService.getSessionUser());
+        return "admin";
+    }
 
     /**
      * Get the user page for the user.
@@ -116,16 +82,6 @@ public class HtmlPageController {
         return "This is the users page";
     }
 
-    /**
-     * Get the admin page.
-     *
-     * @return admin page
-     */
-    @GetMapping("/admin")
-    @PreAuthorize("hasRole('ADMIN')")
-    public String adminPage() {
-        return "adminPage";
-    }
 
     @GetMapping("/payment")
     public String getPayment(Model model) {
