@@ -19,7 +19,7 @@ import java.util.List;
 
 @Controller
 @CrossOrigin
-public class profilePageController {
+public class ProfilePageController {
 
     @Autowired
     private AccessUserService userService;
