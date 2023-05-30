@@ -1,5 +1,6 @@
 package no.ntnu.idata2306.group6.service;
 
+import no.ntnu.idata2306.group6.entity.Product;
 import no.ntnu.idata2306.group6.entity.Subscription;
 import no.ntnu.idata2306.group6.entity.User;
 import no.ntnu.idata2306.group6.repository.SubscriptionRepository;
@@ -36,6 +37,10 @@ public class SubscriptionService {
 
     public List<Subscription> findByUser(User user) {
         return this.subscriptionRepository.findByUser(user);
+    }
+
+    public List<Product> findProductByUser(User user) {
+        return this.subscriptionRepository.findProductByUserId(user.getUserId());
     }
 
     /**

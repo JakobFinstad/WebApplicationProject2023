@@ -1,0 +1,17 @@
+<main class="card-container" th:fragment="subscribed-product-list">
+  <section class="card" th:each="products : ${subscribedProduct}">
+    <a th:href="@{/products/{id}(id=${products.productId})}">
+      <section  th:each="info : ${infos}" th:if="${info.product.productId == products.productId}">
+        <div class="imgBox">
+          <img th:src="${info.imageURL}" alt="picture of the product"/>
+        </div>
+
+        <ul class="card-description">
+          <li><h2 th:text="${products.productName}"></h2></li>
+          <li id ="shortDescription" ><p th:text="${info.shortDescription}"></p></li>
+          <li><p id="price-tag" th:text="${products.price} + ' kr'"></p><li>
+        </ul>
+      </section>
+    </a>
+  </section>
+</main>

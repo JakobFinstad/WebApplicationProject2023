@@ -1,5 +1,6 @@
 package no.ntnu.idata2306.group6.repository;
 
+import no.ntnu.idata2306.group6.entity.Product;
 import no.ntnu.idata2306.group6.entity.Subscription;
 import no.ntnu.idata2306.group6.entity.User;
 
@@ -20,4 +21,7 @@ public interface SubscriptionRepository extends CrudRepository<Subscription, Int
     Optional<Subscription> findById(int id);
 
     List<Subscription> findByUser(User user);
+
+    @Query(value = "SELECT p FROM Product p JOIN p.subscriptions s JOIN s.user u WHERE u.userId = ?1\n")
+    List<Product> findProductByUserId(int userId);
 }

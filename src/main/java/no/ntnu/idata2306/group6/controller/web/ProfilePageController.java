@@ -6,10 +6,7 @@ import no.ntnu.idata2306.group6.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -46,11 +43,12 @@ public class ProfilePageController {
     }
 
     @GetMapping("/profile-page")
-    public String getProfilePage(@ModelAttribute UserDTO profileData, Model model) {
+    public String getProfilePage(@ModelAttribute UserDTO profileData,
+                                 Model model) {
         List<Subscription> subscriptions = this.subscriptionService.findByUser(this.userService.getSessionUser());
         model.addAttribute("subscriptions", subscriptions);
 
-        List<Product> products = this.productService.getRandomProducts();
+        List<Product> products = this.subscriptionService.findProductByUser(userService.getSessionUser());
         List<Info> infos = new ArrayList<>();
         for (Product p : products) {
             infos.addAll((Collection<? extends Info>) infoService.findByProdId(p.getProductId()));
@@ -59,7 +57,7 @@ public class ProfilePageController {
 
 
         model.addAttribute("user", userService.getSessionUser());
-        model.addAttribute("featuredProduct", products);
+        model.addAttribute("subscribedProduct", products);
         model.addAttribute("infos", infos);
 
         return handleProfilePageRequest(profileData, model);
