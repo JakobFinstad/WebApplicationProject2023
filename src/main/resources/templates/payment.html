@@ -20,11 +20,11 @@
 
         <input id="email" required placeholder="example@something.org">
 
-        <input placeholder="Card Number" id="card-number" required>
+        <input placeholder="Card Number (16 numbers)" id="card-number" pattern="^\d{16}$" required>
 
         <input placeholder="Expiry-date" id="expiry-date" required>
 
-        <input placeholder="CVC-code" id="cvc" pattern="^\d{3}$" required>
+        <input placeholder="CVC-code (3 numbers)" id="cvc" pattern="^\d{3}$" required>
 
         <button id="place-order-button">Place order</button>
       </form>
