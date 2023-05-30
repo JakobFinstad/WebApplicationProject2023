@@ -65,7 +65,7 @@ public class HtmlPageController {
         return "noAccess";
     }
 
-    @GetMapping("admin")
+    @GetMapping("/admin")
     public String adminPage(Model model) {
         model.addAttribute("user", userService.getSessionUser());
         return "admin";

@@ -62,7 +62,7 @@ public class SecurityConfiguration {
                     .requestMatchers("/templates/**").permitAll()
                     .requestMatchers("/").permitAll()
                     .requestMatchers("/login").permitAll()
-                    .requestMatchers("/admin").hasRole("ADMIN")
+                    .requestMatchers("/admin/**").hasRole("ADMIN")
                     .requestMatchers("/signup").permitAll()
                     .requestMatchers("/products/**").hasAnyRole("ADMIN", "USER")
                     .requestMatchers("/api/user/signup").permitAll()
