@@ -192,6 +192,10 @@ textarea {
     margin-right: 2rem;
 }
 
+#warning-message {
+    font-size: 1rem;
+}
+
 .review-container {
     height: auto;
     margin-top: 2rem;

@@ -1,43 +1,57 @@
-function checkStartDate() {
-    var startDate = document.getElementById("start-date");
+document.addEventListener('DOMContentLoaded', function () {
+    const startDateInput = document.getElementById('start-date');
+    const endDateInput = document.getElementById('end-date');
+    const buyNowButton = document.getElementById('buy-now-button');
+    const warning = document.getElementById('warning-message');
 
-    if (startDate === "") {
-        alert("Please enter the date you wish to start your subscription");
-        return false;
+    function checkIfDatesFilled() {
+        const startDate = startDateInput.value;
+        const endDate = endDateInput.value;
+
+        if (startDate && endDate) {
+            buyNowButton.removeAttribute('disabled');
+        } else {
+            buyNowButton.setAttribute('disabled', 'disabled');
+            warning.textContent = "Please enter the dates you wish to start and end your subscription!";
+        }
     }
-    return true;
-}
 
-function checkEndDate() {
-    var endDate = document.getElementById("end-date");
+    function compareDate() {
+        const startDate = startDateInput.value;
+        const endDate = endDateInput.value;
 
-    if (endDate === "") {
-
-        alert("Please enter the date you wish to end your subscription");
-        return false;
+        if (endDate < startDate) {
+            buyNowButton.setAttribute('disabled', 'disabled');
+            warning.textContent = "Remember to set the start date before the end date!";
+        } else {
+            buyNowButton.removeAttribute('disabled');
+        }
     }
-    return true;
-}
 
-function validateDate() {
-    var buyNowButton = document.getElementById("buy-now-button");
+    function bringToNextPage() {
+        const startDate = startDateInput.value;
+        const endDate = endDateInput.value;
 
-    if (checkStartDate() && checkEndDate()) {
-        buyNowButton.hidden = false;
+        if (startDate && endDate) {
+            const nextPageURL = '/products/payment' +
+                '?startDate=' + encodeURIComponent(startDate) +
+                '&endDate=' + encodeURIComponent(endDate);
+            window.location.href = nextPageURL;
+        }
     }
-}
 
-function compareDate() {
-    var startDate = document.getElementById("start-date").value;
-    var endDate = document.getElementById("end-date").value;
+    startDateInput.addEventListener('change', checkIfDatesFilled);
+    endDateInput.addEventListener('change', checkIfDatesFilled);
+    startDateInput.addEventListener('change', compareDate);
+    endDateInput.addEventListener('change', compareDate);
+    buyNowButton.addEventListener('click', bringToNextPage);
 
-    if (endDate < startDate) {
-        throw new Error("Start date needs to be before end date!");
-    }
-}
+    buyNowButton.addEventListener('click', function (event) {
+        if (buyNowButton.hasAttribute('disabled')) {
+            event.preventDefault();
+        }
+    });
 
-var buyNowButton = document.getElementById("buy-now-button");
-buyNowButton.addEventListener("click", function (event) {
-    event.preventDefault();
-    validateDate();
+    compareDate();
+    checkIfDatesFilled();
 });
