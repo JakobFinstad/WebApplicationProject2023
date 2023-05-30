@@ -128,6 +128,7 @@ a {
 
 .card-description h2 {
     font-family: "Franklin Gothic Medium", serif;
+    text-transform: uppercase;
 }
 
 .card .imgBox {
@@ -144,6 +145,65 @@ a {
     top: -1rem;
     box-shadow: 0 0 2rem 1rem #b9f2ff;
     cursor: pointer;
+}
+
+:root {
+    --price-tag-background: rgba(74,74,74,0.9);
+    --price-tag-height: 3rem;
+}
+
+#price-tag {
+    background: var(--price-tag-background);
+    color: #fff;
+
+    /* Center the price */
+    align-items: flex-start;
+    display: flex;
+    justify-content: center;
+
+    /* Used to position the triangle */
+    position: relative;
+
+    /* Size */
+    height: var(--price-tag-height);
+
+    /* Spacing */
+    padding: 0.25rem 0.5rem;
+    width: 10rem;
+}
+
+/* The triangle */
+#price-tag::before {
+    content: '';
+
+    border-color: transparent var(--price-tag-background) transparent transparent;
+    border-style: solid;
+    border-width: calc(var(--price-tag-height) / 2) calc(var(--price-tag-height) / 2) calc(var(--price-tag-height) / 2) 0rem;
+
+    /* Position */
+    left: 0;
+    position: absolute;
+    bottom: 0;
+    transform: translate(-100%, 0px);
+}
+
+/* The dot */
+#price-tag::after {
+    content: '';
+
+    /* Make it like a circle */
+    background: #fff;
+    border-radius: 9999rem;
+
+    /* Position */
+    left: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate(-0.5rem, -50%);
+
+    /* Size */
+    height: 0.5rem;
+    width: 0.5rem;
 }
 
 @media screen and (max-width: 740px) {

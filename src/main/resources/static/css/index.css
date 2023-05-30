@@ -18,7 +18,7 @@ html {
     }
 
     #header {
-        background: transparent !important;
+        background: rgba(180, 46, 83, 0.1);
     }
 
     #mainContent {
