@@ -28,7 +28,7 @@ public class LoginController {
         String str;
 
         if (userService.getSessionUser() != null) {
-            str = "profile-page";
+            str = "profilePage";
         } else {
             str = "log-in";
         }
