@@ -25,14 +25,7 @@ public class LoginController {
     )
 
     public String login() {
-        String str;
-
-        if (userService.getSessionUser() != null) {
-            str = "profilePage";
-        } else {
-            str = "log-in";
-        }
-        return str;
+        return "login";
     }
 
 //    @GetMapping("/login")
