@@ -15,20 +15,27 @@
 
                     <p th:text="${info.longDescription}" class="product-description" id="product-description1"></p>
 
-
+                    <div th:unless="${owned}">
                     <form method="get" th:action="@{'/products/' + ${products.productId} + '/payment'}" class="date-form">
                         <label for="startDate" class="date-text">Start date: </label>
                         <input type="date" id="startDate" name="startDate" class="date-box">
                         <label for="endDate" class="date-text">End date: </label>
                         <input type="date" id="endDate" name="endDate" class="date-box">
                         <div id="button-container">
-                            <span class="main-button" id="text-and-button-container">
-                                <button id="buy-now-button"
+                            <span class="main-button">
+                                <button class="buy-now-button"
                                     title="Click here to see subscription options">Buy Now</button>
                             </span>
                         </div>
                     </form>
                     <span id="warning-message"></span>
+                    </div>
+                    <div th:if="${owned}">
+                        <form method="post" th:action="@{/subscription}" class="main-button">
+                                <button class="buy-now-button"
+                                        title="Click here to see unsubscribe from product">Unsubscribe</button>
+                        </form>
+                    </div>
                 </div>
             </section>
 

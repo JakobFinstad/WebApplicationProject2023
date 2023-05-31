@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import no.ntnu.idata2306.group6.entity.Info;
 import no.ntnu.idata2306.group6.entity.Product;
 import no.ntnu.idata2306.group6.entity.Subscription;
+import no.ntnu.idata2306.group6.entity.User;
 import no.ntnu.idata2306.group6.service.AccessUserService;
 import no.ntnu.idata2306.group6.service.InfoService;
 import no.ntnu.idata2306.group6.service.ProductService;
@@ -57,8 +58,19 @@ public class ProductWebController {
     @GetMapping("/{id}")
     @ApiOperation("Get a product by ID")
     public String getOneProduct(Model model, @PathVariable("id") int id) {
+        boolean owned = false;
+
+        for (User user: subscriptionService.findUserByProductId(id)
+             ) {
+            if (userService.getSessionUser() == user) {
+                owned = true;
+            }
+        }
+
+        model.addAttribute("owned", owned);
         model.addAttribute("products", this.productService.findById(id));
         model.addAttribute("infos", infoService.findByProdId(id));
+
         return "singleProductPage";
     }
 
@@ -70,6 +82,7 @@ public class ProductWebController {
         model.addAttribute("products", productService.findById(Integer.parseInt(id)));
         model.addAttribute("startDate", startDate);
         model.addAttribute("endDate", endDate);
+        model.addAttribute("users", userService.getSessionUser());
         return "payment";
     }
 }

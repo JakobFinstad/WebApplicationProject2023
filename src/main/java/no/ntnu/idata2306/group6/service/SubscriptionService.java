@@ -105,4 +105,7 @@ public class SubscriptionService {
         return errorMessage;
     }
 
+    public List<User> findUserByProductId(int id) {
+        return subscriptionRepository.findUserByProductId(id);
+    }
 }

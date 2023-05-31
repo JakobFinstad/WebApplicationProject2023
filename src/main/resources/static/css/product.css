@@ -94,7 +94,7 @@ main{
     color: #000000B2;
 }
 
-#buy-now-button, .submit-button {
+.buy-now-button, .submit-button {
     color: white;
     background-color: #b42e53;
     border: 1px solid #b42e53;
@@ -116,13 +116,13 @@ main{
     font-size: 2em;
 }
 
-#buy-now-button:hover, .submit-button:hover {
+.buy-now-button:hover, .submit-button:hover {
     cursor: pointer;
     color: white;
     background-color: #ef4374;
 }
 
-#buy-now-button:active {
+.buy-now-button:active {
     color: rgba(0, 0, 0, 0.7);
     transition: 0s;
 }
