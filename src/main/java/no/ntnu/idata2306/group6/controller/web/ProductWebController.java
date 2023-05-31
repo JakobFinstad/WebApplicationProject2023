@@ -98,6 +98,6 @@ public class ProductWebController {
     @ApiOperation("Unsubscribe from  a product")
     public String unsubscribeFromProduct(Model model, @PathVariable("id") int productId) {
         subscriptionService.removeByProductIdAndUserId(productId, userService.getSessionUser().getUserId());
-        return "profilePage";
+        return "deletionSuccessfull";
     }
 }

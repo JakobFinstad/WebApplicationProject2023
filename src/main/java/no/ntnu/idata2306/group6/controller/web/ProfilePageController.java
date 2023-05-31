@@ -58,11 +58,19 @@ public class ProfilePageController {
             infos.addAll((Collection<? extends Info>) infoService.findByProdId(p.getProductId()));
         }
 
+        String str;
+
+        if (userService.getSessionUser() != null) {
+            str = "profilePage";
+        } else {
+            str = "login";
+        }
+
         model.addAttribute("user", userService.getSessionUser());
         model.addAttribute("subscribedProduct", products);
         model.addAttribute("infos", infos);
 
-        return handleProfilePageRequest(profileData, model);
+        return str;
     }
 
 

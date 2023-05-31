@@ -23,8 +23,16 @@ public class LoginController {
             summary = "Get the login page",
             description = "Returns the HTML page for the login"
     )
+
     public String login() {
-        return "log-in";
+        String str;
+
+        if (userService.getSessionUser() != null) {
+            str = "profile-page";
+        } else {
+            str = "log-in";
+        }
+        return str;
     }
 
 //    @GetMapping("/login")
