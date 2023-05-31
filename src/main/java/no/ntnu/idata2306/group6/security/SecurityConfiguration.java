@@ -86,7 +86,7 @@ public class SecurityConfiguration {
                     .and()
                     .formLogin()
                     .loginPage("/login")
-                    .defaultSuccessUrl("/profile-page")
+                    .defaultSuccessUrl("/")
                     .successHandler(savedRequestAwareAuthenticationSuccessHandler())
                     .and()
 // Rest of your configuration...
