@@ -6,7 +6,6 @@ import no.ntnu.idata2306.group6.entity.User;
 import no.ntnu.idata2306.group6.repository.SubscriptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -107,5 +106,9 @@ public class SubscriptionService {
 
     public List<User> findUserByProductId(int id) {
         return subscriptionRepository.findUserByProductId(id);
+    }
+
+    public void removeByProductIdAndUserId(int productId, int userid) {
+        subscriptionRepository.deleteByUserUserIdAndProductProductId(productId, userid);
     }
 }

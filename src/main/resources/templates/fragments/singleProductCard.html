@@ -31,8 +31,8 @@
                     <span id="warning-message"></span>
                     </div>
                     <div th:if="${owned}">
-                        <form method="post" th:action="@{/subscription}" class="main-button">
-                                <button class="buy-now-button"
+                        <form th:action="@{'/products/' + ${products.productId} + '/subscription/delete'}" method="post"  class="main-button">
+                                <button type="submit" class="buy-now-button"
                                         title="Click here to see unsubscribe from product">Unsubscribe</button>
                         </form>
                     </div>

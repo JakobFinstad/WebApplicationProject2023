@@ -1,10 +1,8 @@
 package no.ntnu.idata2306.group6.controller.web;
 
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import no.ntnu.idata2306.group6.entity.Info;
 import no.ntnu.idata2306.group6.entity.Product;
-import no.ntnu.idata2306.group6.entity.Subscription;
 import no.ntnu.idata2306.group6.entity.User;
 import no.ntnu.idata2306.group6.service.AccessUserService;
 import no.ntnu.idata2306.group6.service.InfoService;
@@ -12,9 +10,9 @@ import no.ntnu.idata2306.group6.service.ProductService;
 import no.ntnu.idata2306.group6.service.SubscriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,14 +21,23 @@ import java.util.List;
 @Controller
 @RequestMapping("/products")
 public class ProductWebController {
+
+    private final ProductService productService;
+    private final InfoService infoService;
+
+    private final AccessUserService userService;
+    private final SubscriptionService subscriptionService;
+
     @Autowired
-    private ProductService productService;
-    @Autowired
-    private InfoService infoService;
-    @Autowired
-    private AccessUserService userService;
-    @Autowired
-    private SubscriptionService subscriptionService;
+    public ProductWebController(ProductService productService,
+                                InfoService infoService,
+                                AccessUserService userService,
+                                SubscriptionService subscriptionService) {
+        this.productService = productService;
+        this.infoService = infoService;
+        this.userService = userService;
+        this.subscriptionService = subscriptionService;
+    }
 
     @GetMapping
     @ApiOperation("Get all products")
@@ -84,5 +91,13 @@ public class ProductWebController {
         model.addAttribute("endDate", endDate);
         model.addAttribute("users", userService.getSessionUser());
         return "payment";
+    }
+
+    @Transactional
+    @PostMapping("/{id}/subscription/delete")
+    @ApiOperation("Unsubscribe from  a product")
+    public String unsubscribeFromProduct(Model model, @PathVariable("id") int productId) {
+        subscriptionService.removeByProductIdAndUserId(productId, userService.getSessionUser().getUserId());
+        return "profilePage";
     }
 }
