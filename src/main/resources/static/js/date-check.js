@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    buyNowButton.addEventListener('click', function (event) {
+    buyNowButton.addEventListener('submit', function (event) {
         if (buyNowButton.hasAttribute('disabled')) {
             event.preventDefault();
         } else {
