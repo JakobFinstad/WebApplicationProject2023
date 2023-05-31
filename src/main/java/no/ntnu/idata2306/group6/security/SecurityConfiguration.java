@@ -74,7 +74,7 @@ public class SecurityConfiguration {
                     .requestMatchers("/products/{productId}").permitAll()
 
                     // Request matchers for all the pages that is accessible for everyone with a user
-                    .requestMatchers("/login", "/signup").not().hasAnyRole("USER","ADMIN")
+//                    .requestMatchers("/login", "/signup").not().hasAnyRole("USER","ADMIN")
                     .requestMatchers("/products/{productId}/payment").hasAnyRole("ADMIN", "USER")
                     .requestMatchers("/profile-page").hasAnyRole("USER", "ADMIN")
 
