@@ -134,11 +134,14 @@ public class AccessUserService implements UserDetailsService {
         if (userRole != null) {
             System.out.println("here2");
             User user = new User(firstName, lastName, email, phoneNumber, PasswordUtil.hashPassword(password), age);
-            user.addRole(userRole);
+            addRoleToUser(user, userRole);
             userRepository.save(user);
         }
     }
 
+    public void addRoleToUser(User user, Role userRole) {
+        userRepository.addRoleToUser(user.getUserId(),userRole.getRoleId());
+    }
     public boolean updateProfile(User user, UserDTO userDto) {
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());

@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import no.ntnu.idata2306.group6.entity.Role;
 import no.ntnu.idata2306.group6.entity.User;
 import no.ntnu.idata2306.group6.entity.dto.UserDTO;
+import no.ntnu.idata2306.group6.service.AccessUserService;
 import no.ntnu.idata2306.group6.service.RoleService;
 import no.ntnu.idata2306.group6.service.UserService;
 import no.ntnu.idata2306.group6.util.PasswordUtil;
@@ -14,25 +15,31 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/api/user")
 public class UserController {
 
-    @Autowired
+
     private UserService userService;
+
+
+    private AccessUserService accessUserService;
 
     @Autowired
     private RoleService roleService;
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class.getSimpleName());
 
-    public UserController(UserService userService) {
+    @Autowired
+    public UserController(UserService userService, AccessUserService accessUserService) {
         this.userService = userService;
+        this.accessUserService = accessUserService;
     }
 
     @GetMapping
@@ -94,7 +101,7 @@ public class UserController {
         ResponseEntity<String> response;
 
         try {
-            Role role = roleService.findById(3);
+            Role role = roleService.findById(2);
             userDTO.setPassword(PasswordUtil.hashPassword(userDTO.getPassword()));
             User user = new User(
                     userDTO.getFirstName(),
@@ -104,8 +111,7 @@ public class UserController {
                     userDTO.getPassword(),
                     userDTO.getAge()
             );
-            user.addRole(role);
-            addUserToCollection(user);
+            addUserToCollection(user,role);
             response = new ResponseEntity<>("" + user.getUserId(), HttpStatus.CREATED);
         } catch (IllegalArgumentException e) {
             response = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -154,11 +160,12 @@ public class UserController {
         return response;
     }
 
-    private void addUserToCollection(User user) {
+    private void addUserToCollection(User user, Role role) {
         if (!user.isValid()) {
             throw new IllegalArgumentException("User is not valid");
         }
         userService.addUser(user);
+        accessUserService.addRoleToUser(user,role);
     }
 
     private boolean removeUserFromCollection(int id) {
