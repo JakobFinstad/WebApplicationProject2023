@@ -28,20 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // function bringToNextPage() {
-    //     const startDate = startDateInput.value;
-    //     const endDate = endDateInput.value;
-    //     const url = window.location.href;
-    //     const productId = url.split('/').pop();
-    //
-    //     if (startDate && endDate) {
-    //         const nextPageURL = '/products/payment' +
-    //             '?startDate=' + encodeURIComponent(startDate) +
-    //             '&endDate=' + encodeURIComponent(endDate);
-    //         window.location.href = nextPageURL;
-    //     }
-    // }
-
     buyNowButton.addEventListener('click', function (event) {
         if (buyNowButton.hasAttribute('disabled')) {
             event.preventDefault();

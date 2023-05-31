@@ -10,8 +10,11 @@
   <div class="payment-container">
     <section class="payment-information-container">
       <h1 class="top-text">Checkout</h1>
+      <h2 class="product-info">Product:</h2>
       <input id="product-name" th:text="${products.getProductName()}">
+      <h2 class="product-info">Start date:</h2>
       <h3 id="start-date" class="dates"></h3>
+      <h2 class="product-info">End date:</h2>
       <h3 id="end-date" class="dates"></h3>
 
       <form id="sub-form" class="form-information">

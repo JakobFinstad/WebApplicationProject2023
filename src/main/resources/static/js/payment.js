@@ -5,10 +5,13 @@ function displayInfo() {
     const endDate = params.get('endDate');
 
     document.getElementById('product-name').textContent = "Product name: " + productId;
-    document.getElementById('start-date').textContent = "Start date: " + startDate;
     document.getElementById("userId").setAttribute("value", productId);
 
-    document.getElementById('end-date').textContent = "End date: " + endDate;
+    document.getElementById('start-date').textContent = startDate;
+    document.getElementById('start-date').setAttribute("value",startDate)
+
+    document.getElementById('end-date').textContent = endDate;
+    document.getElementById('end-date').setAttribute("value",endDate)
     sessionStorage.setItem('userId', productId);
 }
 
@@ -19,11 +22,17 @@ document.getElementById('sub-form').addEventListener('submit', function (event) 
     event.preventDefault();
 
 
+
     // Get the form data
     const userId = document.getElementById("userId").title;
+    console.log(userId);
     const productId = document.getElementById("productId").title;
-    const startDate = document.getElementById("start-date").value;
-    const endDate = document.getElementById("end-date").value;
+    console.log(productId);
+    const startDate = document.getElementById("start-date").textContent;
+    console.log(startDate);
+    const endDate = document.getElementById("end-date").textContent;
+    console.log(endDate);
+
 
 
     if (this.checkValidity()) {

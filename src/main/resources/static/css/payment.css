@@ -38,6 +38,10 @@ body {
     font-size: 3rem;
 }
 
+.product-info {
+    margin: 0;
+}
+
 .form-information {
     display: flex;
     flex-direction: column;
