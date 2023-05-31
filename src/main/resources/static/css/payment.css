@@ -20,7 +20,7 @@ body {
     height: auto;
     width: 30rem;
     background-color: rgb(255, 255, 255);
-    margin-top: 0;
+    margin-top: 1rem;
     border-radius: 10px;
     box-shadow: 5px 5px 5px 5px rgba(87, 65, 65, 0.34);
 }
@@ -85,6 +85,12 @@ input {
     margin-bottom: 0.5rem;
 }
 
-#userId {
-    visibility: hidden;
+.dates {
+    font-size: 1rem;
 }
+
+#product-name, #userId, #productId {
+    visibility: hidden;
+    height: 0;
+}
+

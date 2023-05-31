@@ -10,13 +10,14 @@
   <div class="payment-container">
     <section class="payment-information-container">
       <h1 class="top-text">Checkout</h1>
-      <h2 id="product-name" th:text="${products.productName}"></h2>
-      <h3 id="start-date"></h3>
-      <h3 id="end-date"></h3>
+      <input id="product-name" th:text="${products.getProductName()}">
+      <h3 id="start-date" class="dates"></h3>
+      <h3 id="end-date" class="dates"></h3>
 
       <form id="sub-form" class="form-information">
 
-        <input id="userId" disabled>
+        <input id="userId" th:title="${users.getUserId()}" disabled>
+        <input id="productId" th:title="${products.getProductId()}" disabled>
         <input placeholder="Name of card holder" id="name-on-card" required>
 
         <input id="email" required placeholder="example@something.org">

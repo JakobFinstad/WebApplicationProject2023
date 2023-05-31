@@ -82,6 +82,7 @@ public class ProductWebController {
         model.addAttribute("products", productService.findById(Integer.parseInt(id)));
         model.addAttribute("startDate", startDate);
         model.addAttribute("endDate", endDate);
+        model.addAttribute("users", userService.getSessionUser());
         return "payment";
     }
 }
