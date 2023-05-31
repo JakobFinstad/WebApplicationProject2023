@@ -24,4 +24,7 @@ public interface SubscriptionRepository extends CrudRepository<Subscription, Int
 
     @Query(value = "SELECT p FROM Product p JOIN p.subscriptions s JOIN s.user u WHERE u.userId = ?1\n")
     List<Product> findProductByUserId(int userId);
+
+    @Query(value = "SELECT u FROM User u JOIN u.subscriptions s JOIN s.product p WHERE p.productId = ?1\n")
+    List<User> findUserByProductId(int id);
 }
