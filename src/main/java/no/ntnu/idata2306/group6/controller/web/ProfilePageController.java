@@ -1,5 +1,7 @@
 package no.ntnu.idata2306.group6.controller.web;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import no.ntnu.idata2306.group6.entity.*;
 import no.ntnu.idata2306.group6.entity.dto.UserDTO;
 import no.ntnu.idata2306.group6.service.*;
@@ -14,6 +16,7 @@ import java.util.List;
 
 @Controller
 @CrossOrigin
+@Api(tags = "Profile Page Web API")
 public class ProfilePageController {
 
 
@@ -43,6 +46,7 @@ public class ProfilePageController {
     }
 
     @GetMapping("/profile-page")
+    @ApiOperation("Get the profile page")
     public String getProfilePage(@ModelAttribute UserDTO profileData,
                                  Model model) {
         List<Subscription> subscriptions = this.subscriptionService.findByUser(this.userService.getSessionUser());
@@ -52,9 +56,7 @@ public class ProfilePageController {
         List<Info> infos = new ArrayList<>();
         for (Product p : products) {
             infos.addAll((Collection<? extends Info>) infoService.findByProdId(p.getProductId()));
-//                     Iterables.concat(infos, infoService.findByProdId(p.getProductId()));
         }
-
 
         model.addAttribute("user", userService.getSessionUser());
         model.addAttribute("subscribedProduct", products);
@@ -65,6 +67,7 @@ public class ProfilePageController {
 
 
     @GetMapping("/admin/{username}")
+    @ApiOperation("Get the admin page")
     public String getAdmin(Model model, @PathVariable String username) {
         Iterable<Category> categories = this.categoryService.getAll();
         model.addAttribute("categories", categories);
@@ -76,7 +79,7 @@ public class ProfilePageController {
         if (authenticatedUser != null && authenticatedUser.getEmail().equals(userService.getSessionUser().getEmail())) {
             model.addAttribute("user", authenticatedUser);
             if (postData != null) {
-                boolean yes=true;
+                boolean yes = true;
                 if (yes) {//userService.updateProfile(authenticatedUser, postData)) {
                     model.addAttribute("successMessage", "Profile updated!");
                 } else {
@@ -100,5 +103,4 @@ public class ProfilePageController {
         }
         return "admin";
     }
-    
 }
