@@ -50,7 +50,7 @@ document.getElementById('sub-form').addEventListener('submit', function (event) 
             .then(function (response) {
                 if (response.ok) {
                     document.getElementById("info-box").textContent = "You subscribed successfully!"
-                    window.location.href = "https://group06.web-tek.ninja:8080/"
+                    window.location.href = "https://group06.web-tek.ninja:8443/"
                     console.log("Subscription added successfully!");
                 } else {
                     console.log('Error adding subscription')

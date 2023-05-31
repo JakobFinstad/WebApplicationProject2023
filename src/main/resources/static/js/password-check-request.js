@@ -49,7 +49,7 @@ document.getElementById('signup-form').addEventListener('submit', function (even
                 if (response.ok) {
                     // User created successfully
                     document.getElementById("password-error").textContent = "User created successfully"
-                    window.location.href = "https://group06.web-tek.ninja:8080/"
+                    window.location.href = "https://group06.web-tek.ninja:8443/"
                     console.log('User created successfully!');
                 } else {
                     // Error creating user
