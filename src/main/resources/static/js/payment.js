@@ -25,13 +25,10 @@ document.getElementById('sub-form').addEventListener('submit', function (event) 
 
     // Get the form data
     const userId = document.getElementById("userId").title;
-    console.log(userId);
     const productId = document.getElementById("productId").title;
-    console.log(productId);
     const startDate = document.getElementById("start-date").textContent;
-    console.log(startDate);
     const endDate = document.getElementById("end-date").textContent;
-    console.log(endDate);
+
 
 
 
@@ -52,6 +49,7 @@ document.getElementById('sub-form').addEventListener('submit', function (event) 
         })
             .then(function (response) {
                 if (response.ok) {
+                    document.getElementById("info-box").textContent = "You subscribed successfully!"
                     window.location.href = "https://group06.web-tek.ninja:8080/"
                     console.log("Subscription added successfully!");
                 } else {
